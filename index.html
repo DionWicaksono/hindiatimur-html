@@ -1516,7 +1516,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+<script>
   // ── HAMBURGER MENU ──────────────────────────────
   (function() {
     var btn = document.getElementById('navHamburger');
@@ -1537,16 +1537,13 @@
     btn.addEventListener('click', function() {
       if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
     });
-    // Close on link click
     menu.querySelectorAll('a').forEach(function(a) {
       a.addEventListener('click', closeMenu);
     });
-    // Close on Escape
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeMenu();
     });
   })();
-
 </script><script>
   // Sticky nav shadow
   const nav = document.getElementById('nav');
