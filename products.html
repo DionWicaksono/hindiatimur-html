@@ -35,15 +35,18 @@ body {
 }
 
 /* ── NAV ─────────────────────────────── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5vw; height: 72px;
-  background: rgba(250,248,243,0.94);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  transition: box-shadow 0.3s;
-}
+ nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    /* Two-row layout: logo centered on top, links below */
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 20px 5vw 14px;
+    transition: background 0.35s, box-shadow 0.35s, padding 0.35s, grid-template-rows 0.35s;
+    background: rgba(28,43,30,0.18);
+    backdrop-filter: blur(6px);
+  }
 nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
