@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seasonal Availability Guide: When to Source Premium Indonesian Produce | Hindia Timur Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E8;--warm-white:#FAF8F3;--forest:#1C2B1E;--moss:#2D4A32;--sage:#4A6741;--gold:#B8924A;--gold-light:#D4AC6E;--earth:#6B4E2A;--text:#1A1A18;--text-mid:#3D3D38;--text-light:#6B6B60;--border:rgba(28,43,30,0.10);--border-strong:rgba(28,43,30,0.18);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--text);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:72px;background:rgba(250,248,243,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
+nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.06);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--forest);text-decoration:none;letter-spacing:0.02em;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{text-decoration:none;color:var(--text-mid);font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--forest)!important;color:var(--cream)!important;padding:0.5rem 1.3rem;border-radius:2px;}
+.nav-cta:hover{background:var(--gold)!important;color:var(--forest)!important;}
+.post-hero{padding-top:72px;min-height:70vh;display:grid;grid-template-columns:1fr 1fr;}
+.hero-image{position:relative;overflow:hidden;}
+.hero-image img{width:100%;height:100%;object-fit:cover;filter:saturate(0.85);}
+.hero-image-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(28,43,30,0.4) 0%,transparent 55%),linear-gradient(0deg,rgba(28,43,30,0.55) 0%,transparent 40%);}
+.hero-meta-badge{position:absolute;bottom:2.5rem;left:2.5rem;background:rgba(250,248,243,0.92);backdrop-filter:blur(6px);padding:0.7rem 1.1rem;border-radius:2px;font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--forest);}
+.hero-content{background:var(--forest);display:flex;flex-direction:column;justify-content:center;padding:7vw 6vw 7vw 7vw;position:relative;overflow:hidden;}
+.hero-content::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 15%,rgba(184,146,74,0.15) 0%,transparent 55%);pointer-events:none;}
+.breadcrumb{position:relative;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,240,232,0.3);margin-bottom:1.8rem;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(245,240,232,0.4);text-decoration:none;transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{opacity:0.4;}
+.post-category-badge{position:relative;display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.4rem;}
+.post-category-badge::before{content:'';display:block;width:24px;height:1px;background:var(--gold);}
+.post-h1{position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.4rem);font-weight:300;line-height:1.12;color:var(--cream);margin-bottom:1.5rem;letter-spacing:-0.01em;}
+.post-h1 em{font-style:italic;color:var(--gold-light);}
+.post-meta-row{position:relative;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;padding-top:1.8rem;border-top:1px solid rgba(245,240,232,0.1);}
+.meta-author{display:flex;align-items:center;gap:0.75rem;}
+.author-avatar{width:36px;height:36px;border-radius:50%;background:rgba(184,146,74,0.2);border:1px solid rgba(184,146,74,0.35);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold-light);flex-shrink:0;}
+.author-name{font-size:0.82rem;font-weight:500;color:var(--cream);}
+.author-role{font-size:0.7rem;font-weight:300;color:rgba(245,240,232,0.45);margin-top:0.1rem;}
+.meta-divider{width:1px;height:28px;background:rgba(245,240,232,0.12);}
+.meta-date{font-size:0.72rem;color:rgba(245,240,232,0.4);letter-spacing:0.06em;}
+.article-wrap{display:grid;grid-template-columns:1fr 320px;gap:0;align-items:start;padding:6rem 8vw;}
+.article-body{padding-right:5rem;border-right:1px solid var(--border);}
+.article-body p{font-size:0.95rem;font-weight:300;line-height:1.85;color:var(--text-mid);margin-bottom:1.5rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.2vw,2rem);font-weight:300;color:var(--forest);line-height:1.2;margin-top:3rem;margin-bottom:1rem;}
+.article-body h2 em{font-style:italic;color:var(--earth);}
+.article-body ul{list-style:none;margin:1rem 0 1.5rem;display:flex;flex-direction:column;gap:0.7rem;}
+.article-body ul li{display:flex;gap:1rem;align-items:flex-start;font-size:0.92rem;font-weight:300;line-height:1.7;color:var(--text-mid);}
+.article-body ul li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:0.55rem;}
+.article-body ul li strong{font-weight:500;color:var(--forest);}
+.pull-quote{border-left:3px solid var(--gold);padding:1.2rem 1.8rem;margin:2.5rem 0;background:var(--cream);border-radius:0 2px 2px 0;}
+.pull-quote p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;font-weight:300;color:var(--forest);line-height:1.5;margin-bottom:0!important;}
+.article-divider{border:none;border-top:1px solid var(--border);margin:3rem 0;}
+.author-card{background:var(--cream);border:1px solid var(--border);padding:1.8rem 2rem;border-radius:2px;margin-top:3rem;}
+.author-card-label{font-size:0.62rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem;display:flex;align-items:center;gap:0.5rem;}
+.author-card-label::before{content:'';display:block;width:16px;height:1px;background:var(--gold);}
+.author-card-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--forest);margin-bottom:0.5rem;}
+.author-card-bio{font-size:0.83rem;font-weight:300;line-height:1.7;color:var(--text-light);}
+.article-sidebar{padding-left:3rem;position:sticky;top:92px;}
+.sidebar-card{background:var(--cream);border:1px solid var(--border);border-radius:2px;padding:1.8rem;margin-bottom:1.5rem;}
+.sidebar-card-title{font-size:0.62rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.5rem;}
+.sidebar-card-title::before{content:'';display:block;width:16px;height:1px;background:var(--gold);}
+.related-list{display:flex;flex-direction:column;gap:0;}
+.related-item{display:block;padding:0.9rem 0;border-bottom:1px solid var(--border);text-decoration:none;transition:opacity 0.2s;}
+.related-item:last-child{border-bottom:none;padding-bottom:0;}
+.related-item:hover{opacity:0.75;}
+.related-cat{font-size:0.58rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;}
+.related-title{font-size:0.82rem;font-weight:400;color:var(--forest);line-height:1.35;}
+.related-meta{font-size:0.68rem;color:var(--text-light);margin-top:0.3rem;}
+.sidebar-dark{background:var(--forest);border:none;}
+.sidebar-dark .sidebar-card-title{color:var(--gold-light);}
+.sidebar-dark .sidebar-card-title::before{background:var(--gold);}
+.sidebar-cta-text{font-size:0.85rem;font-weight:300;line-height:1.7;color:rgba(245,240,232,0.65);margin-bottom:1.2rem;}
+.sidebar-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--gold);color:var(--forest);font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 1.2rem;border-radius:2px;text-decoration:none;transition:background 0.2s;}
+.sidebar-btn:hover{background:var(--gold-light);}
+.post-nav{background:var(--cream);border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:1px;background-color:var(--border);}
+.post-nav-item{background:var(--cream);padding:2.2rem 8vw;text-decoration:none;display:flex;align-items:center;gap:1.2rem;transition:background 0.2s;}
+.post-nav-item:hover{background:var(--warm-white);}
+.post-nav-item.next{flex-direction:row-reverse;text-align:right;}
+.nav-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--text-mid);transition:all 0.2s;}
+.post-nav-item:hover .nav-arrow{background:var(--forest);border-color:var(--forest);color:var(--cream);}
+.nav-arrow svg{width:14px;height:14px;}
+.nav-direction{font-size:0.62rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.3rem;}
+.nav-post-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--forest);line-height:1.3;}
+footer{background:#111612;padding:3.5rem 8vw 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(245,240,232,0.06);}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--cream);text-decoration:none;display:block;margin-bottom:0.8rem;}
+.footer-logo span{color:var(--gold);}
+.footer-tagline{font-size:0.8rem;font-weight:300;line-height:1.7;color:rgba(245,240,232,0.28);max-width:280px;}
+.footer-col-title{font-size:0.65rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(245,240,232,0.25);margin-bottom:1.2rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.footer-links a{font-size:0.8rem;color:rgba(245,240,232,0.35);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold-light);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;font-size:0.72rem;color:rgba(245,240,232,0.18);}
+@media(max-width:1024px){.article-wrap{grid-template-columns:1fr;padding:4rem 7vw;}.article-body{padding-right:0;border-right:none;border-bottom:1px solid var(--border);padding-bottom:3rem;margin-bottom:3rem;}.article-sidebar{padding-left:0;position:static;}}
+@media(max-width:768px){.nav-links{display:none;}.post-hero{grid-template-columns:1fr;min-height:auto;}.hero-image{height:55vw;min-height:280px;}.post-nav{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
+
+  /* ─── NAV (shared) ─────────────────────────────── */
+  nav#nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 18px 5vw 12px;
+    transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+    background: rgba(28,43,30,0.20);
+    backdrop-filter: blur(8px);
+  }
+  nav#nav.scrolled {
+    grid-template-rows: auto;
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+    align-items: center;
+    padding: 0 5vw;
+    height: 64px;
+    background: rgba(245,239,228,0.97);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  }
+
+  .nav-logo {
+    grid-row: 1; grid-column: 1;
+    display: flex; align-items: center; gap: 0;
+    text-decoration: none; line-height: 1;
+    justify-self: center;
+  }
+  nav#nav.scrolled .nav-logo { justify-self: start; }
+
+  /* Badge image — visible when NOT scrolled */
+  .nav-logo-img-main {
+    display: block;
+    width: 110px; height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  nav#nav.scrolled .nav-logo-img-main {
+    opacity: 0; transform: scale(0.8);
+    pointer-events: none; position: absolute;
+  }
+
+  /* Text logotype — visible when scrolled */
+  .nav-logo-img-scrolled {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600;
+    color: var(--forest); letter-spacing: 0.02em;
+    white-space: nowrap; line-height: 1;
+    opacity: 0; transform: translateX(-4px);
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+    max-height: 0; overflow: hidden;
+  }
+  .nav-logo-img-scrolled span { color: var(--gold); }
+  nav#nav.scrolled .nav-logo-img-scrolled {
+    opacity: 1; transform: translateX(0);
+    pointer-events: auto;
+    max-height: 3rem; overflow: visible;
+  }
+
+  .nav-links {
+    grid-row: 2; grid-column: 1;
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    background: rgba(28,43,30,0.30);
+    backdrop-filter: blur(4px);
+    padding: 7px 24px;
+    border-radius: 30px;
+    margin-top: 6px;
+    transition: background 0.35s, padding 0.35s, margin 0.35s;
+  }
+  nav#nav.scrolled .nav-links {
+    grid-row: 1; grid-column: 2;
+    justify-self: end;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0;
+  }
+  .nav-links a {
+    text-decoration: none; color: rgba(245,240,232,0.88);
+    transition: color 0.2s;
+  }
+  nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+  nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--forest) !important;
+    padding: 0.4rem 1.1rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+  /* ─── HAMBURGER ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: rgba(245,240,232,0.9); border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+    transform-origin: center;
+  }
+  nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ─── MOBILE MENU ── */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 300;
+    background: var(--forest);
+    flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; transform: translateY(-12px);
+    transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s;
+    pointer-events: none;
+  }
+  .mobile-menu::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+
+  .mobile-menu-logo-wrap {
+    display: flex; justify-content: center; margin-bottom: 2rem; position: relative; z-index: 1;
+  }
+  .mobile-menu-logo-wrap img {
+    width: 90px; height: auto;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.4s 0.04s, transform 0.4s 0.04s;
+  }
+  .mobile-menu.open .mobile-menu-logo-wrap img { opacity: 1; transform: translateY(0); }
+
+  .mobile-menu ul {
+    list-style: none; display: flex; flex-direction: column;
+    align-items: center; gap: 0;
+    width: 100%; padding: 0 8vw;
+    position: relative; z-index: 1;
+  }
+  .mobile-menu ul li {
+    width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08); text-align: center;
+  }
+  .mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+  .mobile-menu ul li a {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem,7vw,2.4rem); font-weight: 300;
+    color: rgba(245,240,232,0.75); text-decoration: none;
+    letter-spacing: 0.02em; padding: 1.1rem 0;
+    transform: translateY(20px); opacity: 0;
+    transition: color 0.2s, transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.4s;
+  }
+  .mobile-menu.open ul li a { transform: translateY(0); opacity: 1; }
+  .mobile-menu ul li:nth-child(1) a { transition-delay: 0.08s; }
+  .mobile-menu ul li:nth-child(2) a { transition-delay: 0.12s; }
+  .mobile-menu ul li:nth-child(3) a { transition-delay: 0.16s; }
+  .mobile-menu ul li:nth-child(4) a { transition-delay: 0.20s; }
+  .mobile-menu ul li:nth-child(5) a { transition-delay: 0.24s; }
+  .mobile-menu ul li a:hover { color: var(--gold-light); }
+  .mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+  .mobile-menu-footer {
+    position: absolute; bottom: 2.5rem; left: 0; right: 0; text-align: center;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(245,240,232,0.2);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .mobile-menu { display: flex; }
+    .nav-hamburger { display: flex; }
+
+    nav#nav {
+      grid-template-rows: auto auto !important;
+      grid-template-columns: 1fr !important;
+      justify-items: center !important;
+      padding: 10px 5vw 6px !important;
+      background: rgba(28,43,30,0.28) !important;
+    }
+    nav#nav.scrolled {
+      grid-template-rows: auto !important;
+      grid-template-columns: 1fr auto !important;
+      justify-items: start !important;
+      padding: 0 5vw !important;
+      height: 56px !important;
+    }
+    .nav-logo { grid-row: 1; grid-column: 1; justify-self: center !important; }
+    .nav-logo-img-main { width: 80px; }
+    nav#nav.scrolled .nav-logo { justify-self: start !important; }
+
+    .nav-hamburger { grid-row: 2; grid-column: 1; justify-self: center; margin-top: 2px; }
+    nav#nav.scrolled .nav-hamburger { grid-row: 1; grid-column: 2; justify-self: end; margin-top: 0; }
+  }
+
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.png" alt="Hindia Timur">
+    <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="products.html">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-menu-logo-wrap">
+    <img src="hindia-timur-logo.png" alt="Hindia Timur">
+  </div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
+</div><article>
+<section class="post-hero">
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=1100&q=85&fit=crop" alt="Seasonal Availability Guide: When to Source Premium Indonesian Produce">
+    <div class="hero-image-overlay"></div>
+    <div class="hero-meta-badge">Product Sourcing</div>
+  </div>
+  <div class="hero-content">
+    <p class="breadcrumb">
+      <a href="hindiatimur__6_.html">Home</a><span>/</span>
+      <a href="blog.html">Blog</a><span>/</span>
+      Product Sourcing
+    </p>
+    <div class="post-category-badge">Product Sourcing</div>
+    <h1 class="post-h1">Seasonal Availability Guide: When to Source Premium Indonesian Produce</h1>
+    <div class="post-meta-row">
+      <div class="meta-author">
+        <div class="author-avatar">B</div>
+        <div>
+          <div class="author-name">Bambang Setiawan</div>
+          <div class="author-role">Supply Chain Specialist</div>
+        </div>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-date">February 15, 2026</div>
+    </div>
+  </div>
+</section>
+<div class="article-wrap">
+  <div class="article-body">
+
+    <p>Understanding seasonal availability is crucial for importers and retailers planning inventory and maximising freshness. Indonesia's tropical climate and diverse geography create multiple growing seasons, allowing year-round production of many crops. This comprehensive guide helps you plan sourcing strategies around peak availability periods.</p>
+
+    <h2>Year-Round <em>Availability</em></h2>
+    <p>Unlike temperate regions with distinct seasonal patterns, Indonesia's equatorial climate enables production of certain crops throughout the year. Coffee, vanilla, cacao, and spices are available year-round, though quality and pricing fluctuate seasonally. Building multi-month forward supply agreements with your trading partner is the most effective way to lock in peak-season quality at predictable prices.</p>
+
+    <div class="pull-quote">
+      <p>The importers who get the best product are not always the ones who pay the most — they are the ones who plan the furthest ahead and build genuine relationships with their supply partners.</p>
+    </div>
+
+    <h2>Peak Seasons <em>by Product</em></h2>
+    <ul>
+      <li><strong>January – March:</strong> Peak season for coffee (main harvest), gula aren, honey, and coconut products. Excellent quality and competitive pricing for forward contracts.</li>
+      <li><strong>April – June:</strong> Prime season for vanilla, cacao, and spices. Tropical fruits including avocado reach peak availability. Ideal timing for fresh produce orders.</li>
+      <li><strong>July – September:</strong> Excellent availability of dried products, charcoal briquettes, and processed goods. Secondary coffee harvest begins in some regions. Reduced fresh fruit availability.</li>
+      <li><strong>October – December:</strong> Transition season with mixed availability. Some products enter new harvest cycles while others wind down. Good opportunity for negotiating year-end pricing and placing early next-year contracts.</li>
+    </ul>
+
+    <h2>Strategic <em>Sourcing Tips</em></h2>
+    <ul>
+      <li><strong>Plan Ahead:</strong> Communicate sourcing needs 2–3 months in advance to secure best pricing and quality during peak seasons.</li>
+      <li><strong>Diversify Products:</strong> Combine peak-season purchases with off-season inventory to maintain steady supply and manage cash flow.</li>
+      <li><strong>Build Relationships:</strong> Direct partnerships with exporters like Hindia Timur enable priority access to premium lots during peak seasons.</li>
+      <li><strong>Quality Monitoring:</strong> Peak season doesn't always mean best quality — verify specifications and conduct quality checks on all shipments.</li>
+      <li><strong>Storage Planning:</strong> Consider shelf life and storage requirements when planning large peak-season purchases.</li>
+    </ul>
+
+    <hr class="article-divider">
+
+    <h2>Climate <em>Considerations</em></h2>
+    <p>Indonesia's monsoon patterns influence availability in meaningful ways. The dry season (May–September) generally offers better quality and more stable supply for dried and processed goods, while the wet season (November–March) can introduce quality challenges for fresh produce but often features competitive pricing and peak volumes for certain crops.</p>
+    <p>Climate variability is increasing in Indonesia, as it is globally. Building flexibility into your sourcing contracts — with agreed quality thresholds and contingency volumes — protects your supply chain against seasonal disruptions. Our team monitors conditions on the ground and communicates proactively with buyer partners when significant climate events affect availability.</p>
+
+    <div class="author-card">
+      <div class="author-card-label">About the Author</div>
+      <div class="author-card-name">Bambang Setiawan</div>
+      <p class="author-card-bio">Bambang Setiawan is a supply chain specialist with 16 years of experience in Indonesian agricultural exports. He helps international buyers optimise sourcing strategies and navigate seasonal market dynamics.</p>
+    </div>
+  </div>
+  <aside class="article-sidebar">
+    <div class="sidebar-card sidebar-dark">
+      <div class="sidebar-card-title">Source Indonesian Products</div>
+      <p class="sidebar-cta-text">Ready to source premium Indonesian produce with full compliance documentation? Our team responds within 24 hours.</p>
+      <a href="exporter-quote.html" class="sidebar-btn">Request a Quote</a>
+    </div>
+    
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Related Articles</div>
+      <div class="related-list">
+        <a class="related-item" href="blog-sustainable-coconut-farming.html">
+          <div class="related-cat">Farming Practices</div>
+          <div class="related-title">Sustainable Coconut Palm Farming</div>
+          <div class="related-meta">Budi Santoso · Mar 2, 2026</div>
+        </a>
+        <a class="related-item" href="blog-vanilla-sourcing-journey.html">
+          <div class="related-cat">Product Sourcing</div>
+          <div class="related-title">The Journey of Premium Vanilla Beans</div>
+          <div class="related-meta">Siti Wijaya · Feb 28, 2026</div>
+        </a>
+        <a class="related-item" href="blog-water-conservation-tropical.html">
+          <div class="related-cat">Sustainability</div>
+          <div class="related-title">Water Conservation in Tropical Agriculture</div>
+          <div class="related-meta">Dr. Rina Kusuma · Feb 10, 2026</div>
+        </a>
+      </div>
+    </div>
+  </aside>
+</div>
+</article>
+<nav class="post-nav">
+  <a class="post-nav-item prev" href="blog-organic-certification-fair-trade.html">
+    <div class="nav-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+    <div><div class="nav-direction">Previous</div><div class="nav-post-title">Organic Certification & Fair Trade: Our Commitment to Ethical Sourcing</div></div>
+  </a>
+  <a class="post-nav-item next" href="blog-water-conservation-tropical.html">
+    <div><div class="nav-direction">Next</div><div class="nav-post-title">Water Conservation in Tropical Agriculture: Indonesia's Innovative Approach</div></div>
+    <div class="nav-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+  </a>
+</nav>
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html"><img src="hindia-timur-logo.png" alt="Hindia Timur" style="width:90px;height:auto;display:block;margin-bottom:1rem;opacity:0.85;"></a></a>
+      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Products</div>
+      <ul class="footer-links">
+        <li><a href="coffee.html">Specialty Coffee</a></li>
+        <li><a href="hindiatimur-products.html">View Full Catalog</a></li>
+        <li><a href="exporter-quote.html">Request a Quote</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Insights</div>
+      <ul class="footer-links">
+        <li><a href="blog.html">All Articles</a></li>
+        <li><a href="blog-sustainable-coconut-farming.html">Sustainable Farming</a></li>
+        <li><a href="blog-vanilla-sourcing-journey.html">Vanilla Sourcing</a></li>
+        <li><a href="blog-coffee-heritage-volcanic.html">Coffee Heritage</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Hindia Timur</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+        <li><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Hindia Timur. All rights reserved.</span>
+    <span>Sourced from Indonesia. Delivered to the World.</span>
+  </div>
+</footer>
+
+
+<script>
+(function() {
+  var nav = document.getElementById('nav');
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+
+  // Scroll → scrolled class
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  if (!btn || !menu) return;
+  function openMenu() {
+    btn.classList.add('open'); menu.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open'); menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', function() {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+})();
+</script>
+</body>
+</html>

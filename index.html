@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hindia Timur | Premium Indonesian Produce for Global Importers</title>
+<meta name="description" content="Export-grade Indonesian produce with full phytosanitary compliance and traceable supply chains. Partner with Hindia Timur for consistent, certified quality.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F3;
+    --forest: #1C2B1E;
+    --moss: #2D4A32;
+    --sage: #4A6741;
+    --gold: #B8924A;
+    --gold-light: #D4AC6E;
+    --earth: #6B4E2A;
+    --text: #1A1A18;
+    --text-mid: #3D3D38;
+    --text-light: #6B6B60;
+    --border: rgba(28,43,30,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ─── NAV ─────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    /* Two-row layout: logo centered on top, links below */
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 20px 5vw 14px;
+    transition: background 0.35s, box-shadow 0.35s, padding 0.35s, grid-template-rows 0.35s;
+    background: rgba(28,43,30,0.18);
+    backdrop-filter: blur(6px);
+  }
+  nav.scrolled {
+    /* Collapse to single-row: logo-left, links-right */
+    grid-template-rows: auto;
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+    align-items: center;
+    padding: 0 5vw;
+    height: 64px;
+    background: rgba(245,239,228,0.97);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  }
+
+  /* ── Logo wrapper ── */
+  .nav-logo {
+    grid-row: 1; grid-column: 1;
+    display: block; text-decoration: none; line-height: 0;
+    /* Center it in the full-width column */
+    justify-self: center;
+    transition: justify-self 0s;
+  }
+  nav.scrolled .nav-logo {
+    justify-self: start;
+  }
+
+  /* Badge logo — shown unscrolled */
+  .nav-logo-img-main {
+    display: block;
+    width: 130px; height: auto;
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4));
+    transition: opacity 0.25s, transform 0.25s;
+    transform-origin: left center;
+  }
+  nav.scrolled .nav-logo-img-main {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    position: absolute; /* take out of flow when scrolled */
+  }
+
+  /* Text logotype — shown when scrolled */
+  .nav-logo-img-scrolled {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600;
+    color: var(--forest); letter-spacing: 0.02em;
+    white-space: nowrap; line-height: 1;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+    /* Hidden by default — takes no space */
+    max-height: 0; overflow: hidden;
+  }
+  .nav-logo-img-scrolled span { color: var(--gold); }
+  nav.scrolled .nav-logo-img-scrolled {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    max-height: 3rem; overflow: visible;
+  }
+
+  /* ── Nav links ── */
+  .nav-links {
+    grid-row: 2; grid-column: 1;
+    display: flex; gap: 2.2rem; list-style: none; align-items: center;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    /* Subtle dark band so links are legible over any hero */
+    background: rgba(28,43,30,0.30);
+    backdrop-filter: blur(4px);
+    padding: 8px 28px;
+    border-radius: 30px;
+    margin-top: 6px;
+    transition: background 0.35s, padding 0.35s, margin 0.35s, border-radius 0.35s;
+  }
+  nav.scrolled .nav-links {
+    grid-row: 1; grid-column: 2;
+    justify-self: end;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .nav-links a {
+    text-decoration: none; color: rgba(245,240,232,0.88);
+    transition: color 0.2s;
+  }
+  nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover { color: var(--gold-light); }
+  nav.scrolled .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--forest) !important;
+    padding: 0.45rem 1.2rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  nav.scrolled .nav-cta {
+    background: var(--forest) !important;
+    color: var(--cream) !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--forest) !important; }
+  nav.scrolled .nav-cta:hover { background: var(--gold) !important; }
+
+  /* ─── HERO ─────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    padding-top: 0;
+  }
+
+  .hero-left {
+    background: var(--forest);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 10rem 6vw 7vw 8vw;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(184,146,74,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(45,74,50,0.8) 0%, transparent 50%);
+  }
+
+  .hero-eyebrow {
+    position: relative;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.8rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-h1 {
+    position: relative;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    position: relative;
+    font-size: 1rem; font-weight: 300; line-height: 1.7;
+    color: rgba(245,240,232,0.75);
+    max-width: 440px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    position: relative;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--gold);
+    color: var(--forest);
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,240,232,0.35);
+    font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  .hero-stats {
+    position: relative;
+    margin-top: 4rem;
+    display: flex; gap: 3rem;
+    border-top: 1px solid rgba(245,240,232,0.12);
+    padding-top: 2rem;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin-top: 0.3rem;
+  }
+
+  .hero-right {
+    position: relative;
+    background: var(--cream);
+    overflow: hidden;
+  }
+
+  .hero-right img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(0.9) contrast(1.05);
+  }
+
+  .hero-right-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(28,43,30,0.3) 0%, transparent 50%);
+  }
+
+  .hero-badge {
+    position: absolute; bottom: 3rem; right: 3rem;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 1.4rem 1.8rem;
+    border-radius: 2px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    max-width: 220px;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .badge-title {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .badge-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 600; line-height: 1.3;
+    color: var(--forest);
+  }
+
+  /* ─── TRUST BAR ─────────────────────────────── */
+  .trust-bar {
+    background: var(--forest);
+    padding: 1.4rem 8vw;
+    display: flex; align-items: center; justify-content: center; gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(245,240,232,0.65);
+  }
+  .trust-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+
+  /* ─── SECTION UTILITIES ─────────────────────── */
+  section { padding: 8rem 8vw; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 28px; height: 1px; background: var(--gold);
+  }
+  .section-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--forest); margin-bottom: 1.5rem;
+  }
+  .section-h2 em { font-style: italic; color: var(--sage); }
+  .section-lead {
+    font-size: 1rem; font-weight: 300; line-height: 1.75;
+    color: var(--text-mid); max-width: 560px;
+  }
+
+  /* ─── WHY PARTNER ─────────────────────────────── */
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+    margin-top: 5rem;
+  }
+  .why-left { position: relative; }
+  .why-image-wrap {
+    position: relative; border-radius: 2px; overflow: hidden;
+    aspect-ratio: 4/5;
+  }
+  .why-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .why-image-card {
+    position: absolute; top: 2.5rem; right: -2rem;
+    background: var(--forest);
+    color: var(--cream);
+    padding: 1.6rem 2rem;
+    border-radius: 2px;
+    max-width: 210px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+  }
+  .why-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300; color: var(--gold-light); line-height: 1;
+  }
+  .why-card-label {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(245,240,232,0.6); margin-top: 0.3rem;
+  }
+
+  .why-right { }
+  .pillar-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 2.2rem; }
+  .pillar {
+    display: grid; grid-template-columns: 3rem 1fr;
+    gap: 1.2rem; align-items: start;
+    padding-bottom: 2.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pillar:last-child { border-bottom: none; padding-bottom: 0; }
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300; color: var(--gold);
+    line-height: 1; padding-top: 0.1rem;
+  }
+  .pillar-title {
+    font-size: 0.9rem; font-weight: 500; color: var(--forest);
+    margin-bottom: 0.4rem; letter-spacing: 0.02em;
+  }
+  .pillar-body {
+    font-size: 0.88rem; font-weight: 300; line-height: 1.7; color: var(--text-light);
+  }
+
+  /* ─── PRODUCTS ─────────────────────────────── */
+  .products-section { background: var(--cream); }
+  .products-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem; flex-wrap: wrap; gap: 2rem;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .product-card {
+    background: var(--warm-white);
+    padding: 2rem 1.8rem;
+    cursor: pointer;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .product-card:hover { background: var(--forest); }
+  .product-card:hover::before { transform: scaleX(1); }
+  .product-card:hover .product-name { color: var(--cream); }
+  .product-card:hover .product-desc { color: rgba(245,240,232,0.6); }
+  .product-card:hover .product-tag { background: rgba(184,146,74,0.2); color: var(--gold-light); }
+
+  .product-icon {
+    width: 44px; height: 44px; margin-bottom: 1.2rem;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    border: 1px solid var(--border);
+    transition: background 0.25s;
+  }
+  .product-card:hover .product-icon { background: rgba(184,146,74,0.15); border-color: transparent; }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--forest); margin-bottom: 0.5rem;
+    transition: color 0.25s;
+  }
+  .product-desc {
+    font-size: 0.8rem; font-weight: 300; line-height: 1.6;
+    color: var(--text-light); margin-bottom: 1rem;
+    transition: color 0.25s;
+  }
+  .product-tag {
+    display: inline-block;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--sage);
+    background: rgba(74,103,65,0.1);
+    padding: 0.25rem 0.65rem;
+    border-radius: 1px;
+    transition: all 0.25s;
+  }
+  .product-tag.export { color: var(--gold); background: rgba(184,146,74,0.1); }
+
+  /* ─── PROCESS ─────────────────────────────── */
+  .process-section { background: var(--forest); }
+  .process-section .section-h2 { color: var(--cream); }
+  .process-section .section-lead { color: rgba(245,240,232,0.65); }
+  .process-section .section-label { color: var(--gold-light); }
+  .process-section .section-label::before { background: var(--gold-light); }
+
+  .process-steps {
+    margin-top: 5rem;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 10%; right: 10%;
+    height: 1px; background: rgba(245,240,232,0.12);
+  }
+  .process-step { text-align: center; padding: 0 1rem; }
+  .step-circle {
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 1px solid rgba(184,146,74,0.4);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    background: var(--forest);
+    position: relative; z-index: 1;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .step-circle:hover { border-color: var(--gold); background: rgba(184,146,74,0.1); }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: var(--gold-light);
+  }
+  .step-title {
+    font-size: 0.82rem; font-weight: 500; color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .step-body {
+    font-size: 0.78rem; font-weight: 300; line-height: 1.6;
+    color: rgba(245,240,232,0.5);
+  }
+
+  /* ─── COMPLIANCE ─────────────────────────────── */
+  .compliance-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; padding: 0;
+    min-height: 560px;
+  }
+  .compliance-left {
+    background: var(--moss);
+    padding: 7rem 7vw;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .compliance-left .section-label { color: var(--gold-light); }
+  .compliance-left .section-label::before { background: var(--gold-light); }
+  .compliance-left .section-h2 { color: var(--cream); }
+  .compliance-left .section-lead { color: rgba(245,240,232,0.7); }
+
+  .cert-list {
+    margin-top: 2.5rem;
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .cert-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(245,240,232,0.1);
+    font-size: 0.85rem; font-weight: 400;
+    color: rgba(245,240,232,0.75);
+  }
+  .cert-check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(184,146,74,0.2);
+    border: 1px solid rgba(184,146,74,0.4);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.65rem; color: var(--gold-light);
+  }
+
+  .compliance-right {
+    background: var(--cream);
+    padding: 7rem 7vw;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .dest-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.2rem; margin-top: 2.5rem;
+  }
+  .dest-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 1.4rem;
+    border-radius: 2px;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .dest-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 24px rgba(184,146,74,0.12);
+  }
+  .dest-name {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--forest); margin-bottom: 0.3rem;
+  }
+  .dest-detail {
+    font-size: 0.78rem; font-weight: 300; color: var(--text-light); line-height: 1.5;
+  }
+
+  /* ─── TESTIMONIAL ─────────────────────────────── */
+  .testimonial-section { background: var(--warm-white); text-align: center; }
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    font-weight: 300; font-style: italic;
+    line-height: 1.4;
+    color: var(--forest);
+    max-width: 760px; margin: 0 auto 2rem;
+  }
+  .testimonial-quote::before { content: '\201C'; color: var(--gold); }
+  .testimonial-quote::after { content: '\201D'; color: var(--gold); }
+  .testimonial-attr {
+    font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-light);
+  }
+  .testimonial-attr strong { color: var(--forest); }
+
+  /* ─── CTA ─────────────────────────────── */
+  .cta-section {
+    background: var(--forest);
+    padding: 8rem 8vw;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; top: -40%; right: -10%;
+    width: 60vw; height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,146,74,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-left .section-h2 { color: var(--cream); max-width: 420px; }
+  .cta-left .section-lead { color: rgba(245,240,232,0.65); }
+  .cta-left .section-label { color: var(--gold-light); }
+  .cta-left .section-label::before { background: var(--gold-light); }
+
+  .cta-form {
+    background: rgba(245,240,232,0.05);
+    border: 1px solid rgba(245,240,232,0.12);
+    padding: 3rem;
+    border-radius: 2px;
+    position: relative; z-index: 1;
+  }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400;
+    color: var(--cream); margin-bottom: 0.4rem;
+  }
+  .form-sub {
+    font-size: 0.82rem; font-weight: 300; color: rgba(245,240,232,0.5);
+    margin-bottom: 2rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(245,240,232,0.5); margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(245,240,232,0.06);
+    border: 1px solid rgba(245,240,232,0.15);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; font-weight: 300;
+    padding: 0.8rem 1rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(245,240,232,0.25); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+    background: rgba(245,240,232,0.08);
+  }
+  .form-group select option { background: var(--forest); color: var(--cream); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--forest);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 0.5rem;
+  }
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ─── FOOTER ─────────────────────────────── */
+  footer {
+    background: #111612;
+    padding: 5rem 8vw 3rem;
+    color: rgba(245,240,232,0.5);
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem; margin-bottom: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+  }
+  .footer-brand { }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600;
+    color: var(--cream); display: block; margin-bottom: 1rem;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-tagline {
+    font-size: 0.85rem; font-weight: 300; line-height: 1.7;
+    max-width: 280px;
+  }
+  .footer-col-title {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--cream); margin-bottom: 1.4rem;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-links a {
+    text-decoration: none; color: rgba(245,240,232,0.45);
+    font-size: 0.85rem; font-weight: 300;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.75rem; letter-spacing: 0.06em;
+  }
+
+  /* ─── SOURCING MODELS ────────────────────────── */
+  .sourcing-section .pillar { border-bottom-color: rgba(245,240,232,0.1); }
+  .sourcing-section .why-grid { margin-top: 3rem; }
+  .sourcing-section .why-image-card { background: rgba(245,240,232,0.06); border: 1px solid rgba(245,240,232,0.12); box-shadow: none; }
+  .sourcing-section {
+    background: var(--forest);
+    padding: 8rem 8vw;
+    position: relative; overflow: hidden;
+  }
+  .sourcing-section::before {
+    content: '';
+    position: absolute; bottom: -20%; left: -10%;
+    width: 55vw; height: 55vw; border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,146,74,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .sourcing-section .section-label { color: var(--gold-light); }
+  .sourcing-section .section-label::before { background: var(--gold-light); }
+  .sourcing-section .section-h2 { color: var(--cream); }
+  .sourcing-intro {
+    font-size: 1rem; font-weight: 300; line-height: 1.75;
+    color: rgba(245,240,232,0.62); max-width: 600px;
+    margin-bottom: 4rem;
+  }
+
+  .sourcing-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(245,240,232,0.07);
+    border: 1px solid rgba(245,240,232,0.07);
+    position: relative; z-index: 1;
+  }
+
+  .sourcing-card {
+    background: rgba(245,240,232,0.03);
+    padding: 2.4rem 2rem;
+    position: relative; overflow: hidden;
+    cursor: default;
+    transition: background 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .sourcing-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s;
+  }
+  .sourcing-card:hover { background: rgba(245,240,232,0.06); }
+  .sourcing-card:hover::before { transform: scaleX(1); }
+
+  .sourcing-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem; font-weight: 300;
+    color: rgba(184,146,74,0.18);
+    line-height: 1; margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .sourcing-icon {
+    width: 42px; height: 42px;
+    border: 1px solid rgba(184,146,74,0.25);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.4rem;
+    font-size: 1rem;
+    background: rgba(184,146,74,0.06);
+    transition: border-color 0.3s, background 0.3s;
+    flex-shrink: 0;
+  }
+  .sourcing-card:hover .sourcing-icon {
+    border-color: rgba(184,146,74,0.5);
+    background: rgba(184,146,74,0.12);
+  }
+
+  .sourcing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600;
+    color: var(--cream); line-height: 1.25;
+    margin-bottom: 0.9rem;
+  }
+
+  .sourcing-body {
+    font-size: 0.82rem; font-weight: 300; line-height: 1.7;
+    color: rgba(245,240,232,0.5);
+    flex: 1;
+    margin-bottom: 1.4rem;
+  }
+
+  .sourcing-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: gap 0.2s, color 0.2s;
+    margin-top: auto;
+  }
+  .sourcing-link:hover { gap: 0.7rem; color: var(--gold-light); }
+  .sourcing-link svg { width: 11px; height: 11px; }
+
+  @media (max-width: 1100px) {
+    .sourcing-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .sourcing-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .sourcing-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── ANIMATIONS ─────────────────────────────── */
+  /* Content visible by default; .js-animate class (added by JS) enables the effect */
+  .fade-up { opacity: 1; transform: none; }
+  .js-animate .fade-up {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .js-animate .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .js-animate .fade-up-delay-1 { transition-delay: 0.1s; }
+  .js-animate .fade-up-delay-2 { transition-delay: 0.2s; }
+  .js-animate .fade-up-delay-3 { transition-delay: 0.3s; }
+  .js-animate .fade-up-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+    .process-steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .process-steps::before { display: none; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 5rem 7vw; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-image-card { right: 0; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .compliance-section { grid-template-columns: 1fr; }
+    .cta-section { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .dest-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    section { padding: 5rem 7vw; }
+    .trust-bar { gap: 2rem; padding: 1.4rem 7vw; }
+  }
+
+  @media (max-width: 480px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+
+  /* ─── HAMBURGER BUTTON ──────────────────── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: none; border: none;
+    cursor: pointer; padding: 4px;
+    z-index: 301;
+    position: relative;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px; height: 1.5px;
+    background: rgba(245,240,232,0.85);
+    border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1),
+                opacity 0.25s ease,
+                width 0.3s ease;
+    transform-origin: center;
+  }
+  nav.scrolled .nav-hamburger span { background: var(--forest); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ─── FULLSCREEN MOBILE MENU ────────────── */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: var(--forest);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1),
+                transform 0.35s cubic-bezier(0.23,1,0.32,1);
+    pointer-events: none;
+  }
+  .mobile-menu::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+  .mobile-menu-logo-wrap {
+    display: flex; justify-content: center; margin-bottom: 2rem; position: relative; z-index: 1;
+  }
+  .mobile-menu-logo-wrap img {
+    width: 100px; height: auto;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition-delay: 0.04s;
+  }
+  .mobile-menu.open .mobile-menu-logo-wrap img { opacity: 1; transform: translateY(0); }
+
+  .mobile-menu ul {
+    list-style: none;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0;
+    width: 100%;
+    padding: 0 8vw;
+    position: relative; z-index: 1;
+    text-align: center;
+  }
+  .mobile-menu ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+  }
+  .mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+  .mobile-menu ul li a {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    font-weight: 300;
+    color: rgba(245,240,232,0.75);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    padding: 1.1rem 0;
+    text-align: center;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: color 0.2s,
+                transform 0.4s cubic-bezier(0.23,1,0.32,1),
+                opacity 0.4s ease;
+  }
+  .mobile-menu.open ul li a { transform: translateY(0); opacity: 1; }
+  .mobile-menu ul li:nth-child(1) a { transition-delay: 0.08s; }
+  .mobile-menu ul li:nth-child(2) a { transition-delay: 0.12s; }
+  .mobile-menu ul li:nth-child(3) a { transition-delay: 0.16s; }
+  .mobile-menu ul li:nth-child(4) a { transition-delay: 0.20s; }
+  .mobile-menu ul li:nth-child(5) a { transition-delay: 0.24s; }
+  .mobile-menu ul li a:hover,
+  .mobile-menu ul li a:focus { color: var(--gold-light); }
+  .mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+  .mobile-menu-footer {
+    position: absolute; bottom: 2.5rem; left: 0; right: 0;
+    text-align: center;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(245,240,232,0.2);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .mobile-menu { display: flex; }
+
+    /* Mobile: stack logo on top row, hamburger on second row, both centered */
+    nav {
+      grid-template-rows: auto auto !important;
+      grid-template-columns: 1fr !important;
+      justify-items: center !important;
+      padding: 12px 5vw 8px !important;
+      background: rgba(28,43,30,0.25) !important;
+      backdrop-filter: blur(8px) !important;
+    }
+    nav.scrolled {
+      grid-template-rows: auto !important;
+      grid-template-columns: 1fr auto !important;
+      justify-items: start !important;
+      padding: 0 5vw !important;
+      height: 56px !important;
+    }
+
+    .nav-logo { grid-row: 1; grid-column: 1; justify-self: center !important; }
+    .nav-logo-img-main { width: 80px; }
+
+    .nav-hamburger {
+      display: flex;
+      grid-row: 2; grid-column: 1;
+      justify-self: center;
+      margin-top: 4px;
+    }
+    nav.scrolled .nav-hamburger {
+      grid-row: 1; grid-column: 2;
+      justify-self: end;
+      margin-top: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.png" alt="Hindia Timur">
+    <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="products.html">Products</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+<button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-menu-logo-wrap">
+    <img src="hindia-timur-logo.png" alt="Hindia Timur">
+  </div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────── -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Indonesia's Premier Export Partner</p>
+    <h1 class="hero-h1">
+      Premium Indonesian Produce.<br>
+      <em>Delivered to the World.</em>
+    </h1>
+    <p class="hero-sub">
+      Your single-source partner for export-grade Indonesian produce -- from farm to your facility, with full phytosanitary compliance, documented traceability, and consistent quality across every shipment.
+    </p>
+    <div class="hero-actions">
+      <a href="exporter-quote.html" class="btn-primary">Request a Quote</a>
+      <a href="products.html" class="btn-secondary">View Product Catalog</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Export Products</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Export Destinations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Compliant Shipments</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=900&q=80&fit=crop" alt="Indonesian tropical produce in lush green landscape" />
+    <div class="hero-right-overlay"></div>
+    <div class="hero-badge">
+      <div class="badge-title">Ethically Sourced</div>
+      <div class="badge-text">Direct from Indonesian family farms</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ─────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-dot"></span>Phytosanitary Certified</div>
+  <div class="trust-item"><span class="trust-dot"></span>Full Chain of Custody</div>
+  <div class="trust-item"><span class="trust-dot"></span>Flexible MOQ</div>
+  <div class="trust-item"><span class="trust-dot"></span>Custom OEM Labeling</div>
+  <div class="trust-item"><span class="trust-dot"></span>DDP &amp; FOB Shipping</div>
+  <div class="trust-item"><span class="trust-dot"></span>Responsive Account Management</div>
+</div>
+
+<!-- ─── WHY + SOURCING MODELS (MERGED) ────────────── -->
+<section class="sourcing-section">
+
+  <!-- Header -->
+  <div class="section-label">Why Partner With Us</div>
+  <h2 class="section-h2" style="color:var(--cream); margin-bottom:0.5rem;">
+    The Sourcing Partner <em>International<br>Importers Trust</em>
+  </h2>
+  <p class="sourcing-intro">
+    Every shipment is compliant, every batch traceable, every volume commitment honoured. Choose the engagement model that fits your supply chain -- we adapt to you.
+  </p>
+
+  <!-- Top: image + 3 credentials -->
+  <div class="why-grid" style="margin-bottom:4rem;">
+    <div class="why-left fade-up">
+      <div class="why-image-wrap">
+        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=700&q=80&fit=crop" alt="Rich volcanic soil and lush Indonesian farmland" />
+      </div>
+      <div class="why-image-card">
+        <div class="why-card-num">17,000+</div>
+        <div class="why-card-label">Islands of Biodiversity</div>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="pillar-list" style="margin-top:0;">
+        <div class="pillar fade-up">
+          <div class="pillar-num" style="color:var(--gold-light);">01</div>
+          <div>
+            <div class="pillar-title" style="color:var(--cream);">Phytosanitary &amp; Customs Compliance</div>
+            <p class="pillar-body" style="color:rgba(245,240,232,0.5);">Every shipment leaves with full phytosanitary certification meeting destination-country requirements -- EU, US FDA, EFSA, Codex Alimentarius, and beyond. Your cargo clears customs the first time.</p>
+          </div>
+        </div>
+        <div class="pillar fade-up fade-up-delay-1">
+          <div class="pillar-num" style="color:var(--gold-light);">02</div>
+          <div>
+            <div class="pillar-title" style="color:var(--cream);">Verified Farm-to-Port Traceability</div>
+            <p class="pillar-body" style="color:rgba(245,240,232,0.5);">GPS-tagged farm records, batch codes, and harvest logs give you complete visibility from source to departure port. Any product, any batch, traced back to its origin on demand.</p>
+          </div>
+        </div>
+        <div class="pillar fade-up fade-up-delay-2" style="border-bottom:none; padding-bottom:0;">
+          <div class="pillar-num" style="color:var(--gold-light);">03</div>
+          <div>
+            <div class="pillar-title" style="color:var(--cream);">Consistent Grade &amp; Volume Commitments</div>
+            <p class="pillar-body" style="color:rgba(245,240,232,0.5);">We don't sell one good shipment. Multi-season supply agreements with locked grading specs and volume commitments mean your buyers always get what they expect.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div style="border-top:1px solid rgba(245,240,232,0.1); margin-bottom:3.5rem; position:relative;">
+    <div style="position:absolute; top:-0.7rem; left:50%; transform:translateX(-50%); background:var(--forest); padding:0 1.5rem;">
+      <span style="font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold);">Choose Your Model</span>
+    </div>
+  </div>
+
+  <!-- Subtitle -->
+  <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,2.2vw,1.9rem); font-weight:300; color:var(--cream); margin-bottom:0.6rem; line-height:1.2;">
+    Five Ways to Partner <em style="color:var(--gold-light);">With Hindia Timur</em>
+  </p>
+  <p class="sourcing-intro" style="margin-bottom:2.5rem;">
+    Whether you need full end-to-end sourcing or just compliance support for an existing supplier, we have a structured model for your situation.
+  </p>
+
+  <!-- 5 model cards -->
+  <div class="sourcing-grid">
+
+    <div class="sourcing-card fade-up">
+      <div class="sourcing-num">01</div>
+      <div class="sourcing-icon">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:18px;height:18px;color:var(--gold-light)"><path d="M10 2a6 6 0 00-6 6c0 4 6 10 6 10s6-6 6-10a6 6 0 00-6-6z"/><circle cx="10" cy="8" r="2"/></svg>
+      </div>
+      <div class="sourcing-title">Direct Exporter</div>
+      <p class="sourcing-body">Our own harvests, the shortest path. We grow and export Specialty Coffee, Moringa, and Vanilla directly -- giving you the most competitive pricing, zero middlemen, and absolute control over cultivation standards.</p>
+      <a href="exporter-quote.html" class="sourcing-link">Get direct pricing <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="sourcing-card fade-up fade-up-delay-1">
+      <div class="sourcing-num">02</div>
+      <div class="sourcing-icon">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:18px;height:18px;color:var(--gold-light)"><circle cx="10" cy="10" r="7"/><path d="M6.5 10a3.5 3.5 0 007 0"/><path d="M10 6v1m0 6v1"/></svg>
+      </div>
+      <div class="sourcing-title">Full Sourcing Agent</div>
+      <p class="sourcing-body">Your eyes and ears across the archipelago. We identify, vet, and manage suppliers from Java to Sulawesi, handling procurement, quality oversight, documentation, and logistics -- fully managed, end to end.</p>
+      <a href="exporter-quote.html" class="sourcing-link">Discuss your needs <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="sourcing-card fade-up fade-up-delay-2">
+      <div class="sourcing-num">03</div>
+      <div class="sourcing-icon">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:18px;height:18px;color:var(--gold-light)"><path d="M4 10l4 4 8-8"/></svg>
+      </div>
+      <div class="sourcing-title">QC + Compliance Only</div>
+      <p class="sourcing-body">Already have a supplier? We add a layer of assurance. On-the-ground quality inspections, phytosanitary paperwork, and export documentation handled on your behalf -- so your existing supply chain becomes bulletproof at customs.</p>
+      <a href="exporter-quote.html" class="sourcing-link">Enquire about QC <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="sourcing-card fade-up fade-up-delay-3">
+      <div class="sourcing-num">04</div>
+      <div class="sourcing-icon">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:18px;height:18px;color:var(--gold-light)"><rect x="3" y="8" width="14" height="9" rx="1"/><path d="M7 8V6a3 3 0 016 0v2"/></svg>
+      </div>
+      <div class="sourcing-title">Trading &amp; Spot Supply</div>
+      <p class="sourcing-body">Need volume fast? We maintain ready-to-ship inventory across our full catalog. Stable pricing, consistent quality grades, and swift dispatch -- ideal for wholesalers, distributors, and commodity traders who need reliable spot supply.</p>
+      <a href="exporter-quote.html" class="sourcing-link">Request stock list <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="sourcing-card fade-up fade-up-delay-4">
+      <div class="sourcing-num">05</div>
+      <div class="sourcing-icon">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:18px;height:18px;color:var(--gold-light)"><path d="M9 3H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4"/><path d="M15 3l2 2-7 7H8v-2l7-7z"/></svg>
+      </div>
+      <div class="sourcing-title">Private Label / OEM</div>
+      <p class="sourcing-body">Indonesian quality, your brand on the shelf. We produce Moringa Powder, Patchouli Oil, Cacao, and more under your label -- with retail-ready packaging, formulation support, and the full certification set your market requires.</p>
+      <a href="exporter-quote.html" class="sourcing-link">Explore OEM options <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PRODUCTS ─────────────────────────────── -->
+<section class="products-section" id="products">
+  <div class="products-header">
+    <div>
+      <div class="section-label">Our Export Catalog</div>
+      <h2 class="section-h2">20+ Export-Grade <em>Indonesian Products</em></h2>
+    </div>
+    <a href="products.html" class="btn-primary" style="background:var(--forest); color:var(--cream);">Request Full Catalog</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card fade-up">
+      <div class="product-icon">&#9749;</div>
+      <div class="product-name">Specialty Coffee</div>
+      <div class="product-desc">Single-origin Arabica and Robusta from Flores, Toraja, and Aceh highlands. Natural, washed, and honey processed.</div>
+      <span class="product-tag export">High Demand</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-1">
+      <div class="product-icon">&#127807;</div>
+      <div class="product-name">Moringa Powder</div>
+      <div class="product-desc">Sustainably harvested, spray-dried or freeze-dried. Bulk and private-label options. Certificate of Analysis available.</div>
+      <span class="product-tag">Superfood</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-2">
+      <div class="product-icon">&#127815;</div>
+      <div class="product-name">Premium Avocado</div>
+      <div class="product-desc">Creamy, export-grade varieties with consistent Brix levels. Packed fresh or processed for foodservice accounts.</div>
+      <span class="product-tag">Fresh Produce</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-3">
+      <div class="product-icon">&#127753;</div>
+      <div class="product-name">Vanilla Beans</div>
+      <div class="product-desc">Grade A Planifolia vanilla from East Java. Moisture content &lt;30%. Ideal for extract makers, confectionery, and flavour houses.</div>
+      <span class="product-tag export">High Value</span>
+    </div>
+    <div class="product-card fade-up">
+      <div class="product-icon">&#129362;</div>
+      <div class="product-name">Agarwood (Oud)</div>
+      <div class="product-desc">Ethically sourced Aquilaria resin-infused heartwood and distilled oud oil. CITES documentation provided.</div>
+      <span class="product-tag export">Luxury</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-1">
+      <div class="product-icon">&#127795;</div>
+      <div class="product-name">Sandalwood</div>
+      <div class="product-desc">Timor and East Nusa Tenggara origin. Certified sustainable. Powder, chips, and essential oil available.</div>
+      <span class="product-tag export">Luxury</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-2">
+      <div class="product-icon">&#127855;</div>
+      <div class="product-name">Raw Forest Honey</div>
+      <div class="product-desc">Unprocessed multiflora honey from Kalimantan rainforest hives. Lab-tested for purity, no additives.</div>
+      <span class="product-tag">Artisanal</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-3">
+      <div class="product-icon">&#127807;</div>
+      <div class="product-name">Patchouli Oil</div>
+      <div class="product-desc">Steam-distilled from Aceh-origin plants. Low dark patchouli content. ISO GC/MS specs available.</div>
+      <span class="product-tag">Essential Oil</span>
+    </div>
+    <div class="product-card fade-up">
+      <div class="product-icon">&#127814;</div>
+      <div class="product-name">Cacao &amp; Chocolate</div>
+      <div class="product-desc">Fermented Sulawesi and Flores cacao beans. Single-origin chocolate and bulk cocoa mass available.</div>
+      <span class="product-tag">Artisanal</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-1">
+      <div class="product-icon">&#127822;</div>
+      <div class="product-name">Gula Aren (Palm Sugar)</div>
+      <div class="product-desc">Natural low-GI sweetener from Arenga pinnata palms. Block, granule, and liquid forms. Certified organic available.</div>
+      <span class="product-tag">Organic</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-2">
+      <div class="product-icon">&#127807;</div>
+      <div class="product-name">Porang / Konjac Flour</div>
+      <div class="product-desc">High-glucomannan Amorphophallus muelleri flour for food tech, noodle manufacturing, and nutraceuticals.</div>
+      <span class="product-tag">Industrial</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-3">
+      <div class="product-icon">&#129388;</div>
+      <div class="product-name">Charcoal Briquettes</div>
+      <div class="product-desc">High-density coconut shell and wood briquettes. Custom shapes for hookah, BBQ, and industrial markets.</div>
+      <span class="product-tag">Industrial</span>
+    </div>
+    <div class="product-card fade-up">
+      <div class="product-icon">&#127807;</div>
+      <div class="product-name">Indigo Paste</div>
+      <div class="product-desc">Natural plant-derived indigo dye for sustainable textile manufacturers and natural dye houses worldwide.</div>
+      <span class="product-tag">Specialty</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-1">
+      <div class="product-icon">&#127807;</div>
+      <div class="product-name">Tapioca Starch</div>
+      <div class="product-desc">Food-grade cassava starch with consistent moisture and viscosity. Bulk container shipments available.</div>
+      <span class="product-tag">Food Ingredient</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-2">
+      <div class="product-icon">&#127807;</div>
+      <div class="product-name">Premium Spices</div>
+      <div class="product-desc">Clove, nutmeg, white pepper, and long pepper. Whole, cracked, and ground specifications available.</div>
+      <span class="product-tag export">High Demand</span>
+    </div>
+    <div class="product-card fade-up fade-up-delay-3">
+      <div class="product-icon">&#129368;</div>
+      <div class="product-name">Kratom (Export Only)</div>
+      <div class="product-desc">Mitragyna speciosa powder and crushed leaf for compliant international markets. Full documentation included.</div>
+      <span class="product-tag export">Export Only</span>
+    </div>
+  </div>
+  <p style="margin-top:2rem; font-size:0.82rem; color:var(--text-light); text-align:center;">
+    Additional products available including cashew, sorghum, corncob, red beans, and ambergris. Contact us for the full catalog.
+  </p>
+</section>
+
+<!-- ─── PROCESS ─────────────────────────────── -->
+<section class="process-section" id="process">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-h2" style="max-width:560px;">From Initial Inquiry to <em>Port Delivery</em></h2>
+  <p class="section-lead">We've streamlined the entire sourcing process -- so you spend less time chasing paperwork and more time growing your business.</p>
+  <div class="process-steps">
+    <div class="process-step fade-up">
+      <div class="step-circle"><span class="step-num">01</span></div>
+      <div class="step-title">Inquiry &amp; Scoping</div>
+      <p class="step-body">Submit your product requirements, volume, grade specs, and target market. We respond within 24 hours.</p>
+    </div>
+    <div class="process-step fade-up fade-up-delay-1">
+      <div class="step-circle"><span class="step-num">02</span></div>
+      <div class="step-title">Sample &amp; Quotation</div>
+      <p class="step-body">Receive physical product samples and a detailed commercial quote including all compliance and logistics costs.</p>
+    </div>
+    <div class="process-step fade-up fade-up-delay-2">
+      <div class="step-circle"><span class="step-num">03</span></div>
+      <div class="step-title">Agreement &amp; Production</div>
+      <p class="step-body">Sign the supply agreement, confirm packaging and labeling specs, and we begin sourcing or production.</p>
+    </div>
+    <div class="process-step fade-up fade-up-delay-3">
+      <div class="step-circle"><span class="step-num">04</span></div>
+      <div class="step-title">QC &amp; Documentation</div>
+      <p class="step-body">Quality inspection, lab testing, and preparation of all export documents: phytosanitary, CoA, CoO, packing list, and more.</p>
+    </div>
+    <div class="process-step fade-up fade-up-delay-4">
+      <div class="step-circle"><span class="step-num">05</span></div>
+      <div class="step-title">Shipment &amp; Tracking</div>
+      <p class="step-body">Goods dispatched via your preferred Incoterm (FOB, CIF, DDP) with full tracking and post-shipment support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMPLIANCE ─────────────────────────────── -->
+<section class="compliance-section" id="compliance" style="padding:0;">
+  <div class="compliance-left">
+    <div class="section-label">Regulatory Confidence</div>
+    <h2 class="section-h2">Built for <em>Global Market<br>Entry</em></h2>
+    <p class="section-lead">We understand that your business depends on paperwork being right the first time. Every shipment we process is compliant before it leaves Indonesia.</p>
+    <div class="cert-list">
+      <div class="cert-item"><div class="cert-check">&#10003;</div>Phytosanitary Certificate (BKP / Ministry of Agriculture)</div>
+      <div class="cert-item"><div class="cert-check">&#10003;</div>Certificate of Origin (SKTM / Trade Ministry)</div>
+      <div class="cert-item"><div class="cert-check">&#10003;</div>Certificate of Analysis (ISO-accredited labs)</div>
+      <div class="cert-item"><div class="cert-check">&#10003;</div>CITES Permits (for Agarwood &amp; Sandalwood)</div>
+      <div class="cert-item"><div class="cert-check">&#10003;</div>Halal Certification (MUI) available on request</div>
+      <div class="cert-item"><div class="cert-check">&#10003;</div>Organic Certification (IMO / USDA NOP) for select products</div>
+      <div class="cert-item"><div class="cert-check">&#10003;</div>EU Timber Regulation (EUTR) documentation</div>
+    </div>
+  </div>
+  <div class="compliance-right">
+    <div class="section-label">Markets We Serve</div>
+    <h2 class="section-h2">Trusted Across <em>Key Import Markets</em></h2>
+    <p class="section-lead">We have active partners and successful shipment histories across major importing regions.</p>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-name">European Union</div>
+        <div class="dest-detail">Germany, Netherlands, France, Belgium. Full EFSA &amp; RASFF compliance.</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-name">United States</div>
+        <div class="dest-detail">FDA-registered facility documentation. FSVP and DUNS compliant exports.</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-name">Middle East</div>
+        <div class="dest-detail">UAE, Saudi Arabia, Qatar. Halal certification and Arabic labeling available.</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-name">East Asia</div>
+        <div class="dest-detail">Japan, South Korea, China. Japanese agricultural quarantine pre-compliance.</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-name">South Asia</div>
+        <div class="dest-detail">India, Sri Lanka, Bangladesh. Regional logistics partners for cost efficiency.</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-name">Australia &amp; NZ</div>
+        <div class="dest-detail">DAFF biosecurity-compliant documentation for all agricultural shipments.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIAL ─────────────────────────────── -->
+<section class="testimonial-section">
+  <div class="section-label" style="justify-content:center; margin-bottom:2.5rem;">What Our Partners Say</div>
+  <p class="testimonial-quote">
+    Hindia Timur has been our trusted supplier for over three years. Their consistency in quality and reliability in delivery is unmatched. The phytosanitary compliance documentation is always impeccable -- customs clearance has never been smoother.
+  </p>
+  <p class="testimonial-attr">
+    <strong>Ahmad Wijaya</strong> &nbsp;&mdash;&nbsp; Procurement Manager, PT Global Exports
+  </p>
+</section>
+
+<!-- ─── CTA / CONTACT ─────────────────────────────── -->
+<section class="cta-section" id="contact" style="padding-top:8rem; padding-bottom:8rem;">
+  <div class="cta-left">
+    <div class="section-label">Start Your Partnership</div>
+    <h2 class="section-h2">Ready to Source from Indonesia's Best?</h2>
+    <p class="section-lead">
+      Tell us what you need. We'll respond within 24 hours with availability, pricing, and a sample offer. No obligation, no sales pressure.
+    </p>
+    <div style="margin-top:2.5rem; display:flex; flex-direction:column; gap:1.2rem;">
+      <div style="display:flex;align-items:center;gap:1rem;font-size:0.85rem;color:rgba(245,240,232,0.6);">
+        <span style="color:var(--gold); font-size:1rem;">&#10003;</span> Free product samples for qualified importers
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;font-size:0.85rem;color:rgba(245,240,232,0.6);">
+        <span style="color:var(--gold); font-size:1rem;">&#10003;</span> Response within 24 business hours
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;font-size:0.85rem;color:rgba(245,240,232,0.6);">
+        <span style="color:var(--gold); font-size:1rem;">&#10003;</span> Full compliance documentation before commitment
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;font-size:0.85rem;color:rgba(245,240,232,0.6);">
+        <span style="color:var(--gold); font-size:1rem;">&#10003;</span> Dedicated account manager assigned from day one
+      </div>
+    </div>
+    <div style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(245,240,232,0.1);">
+      <p style="font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,240,232,0.35); margin-bottom:0.8rem;">Direct Contact</p>
+      <p style="font-size:0.9rem; color:rgba(245,240,232,0.65);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5b32353d341b3332353f323a2f32362e2975383436">[email&#160;protected]</a></p>
+      <p style="font-size:0.9rem; color:rgba(245,240,232,0.65); margin-top:0.3rem;">WhatsApp: +62 (XXX) XXX-XXXX</p>
+    </div>
+  </div>
+  <div class="cta-form">
+    <div class="form-title">Request a Quote</div>
+    <div class="form-sub">Fill in your details and we'll be in touch shortly.</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Jane">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Smith">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Company Name</label>
+      <input type="text" placeholder="Global Imports Co.">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Country</label>
+        <input type="text" placeholder="Germany">
+      </div>
+      <div class="form-group">
+        <label>Business Email</label>
+        <input type="email" placeholder="jane@company.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Product(s) of Interest</label>
+      <select>
+        <option value="" disabled selected>Select a product category</option>
+        <option>Specialty Coffee</option>
+        <option>Moringa Powder</option>
+        <option>Vanilla Beans</option>
+        <option>Agarwood / Oud Oil</option>
+        <option>Sandalwood</option>
+        <option>Patchouli Oil</option>
+        <option>Cacao / Chocolate</option>
+        <option>Gula Aren (Palm Sugar)</option>
+        <option>Porang / Konjac Flour</option>
+        <option>Charcoal Briquettes</option>
+        <option>Premium Spices</option>
+        <option>Other / Multiple Products</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message (Optional)</label>
+      <textarea placeholder="Tell us your volume requirements, target destination, or any specific grade/packaging needs..."></textarea>
+    </div>
+    <button class="btn-submit" onclick="handleSubmit(this)">Send Inquiry</button>
+    <p style="font-size:0.72rem; color:rgba(245,240,232,0.3); margin-top:1rem; text-align:center; line-height:1.5;">
+      By submitting, you agree to our privacy policy. We never share your data with third parties.
+    </p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo-link">
+        <img src="hindia-timur-logo.png" alt="Hindia Timur" style="width:100px;height:auto;display:block;margin-bottom:1rem;filter:brightness(0.9) sepia(0.2);">
+      </a>
+      <p class="footer-tagline">
+        Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth -- with integrity, compliance, and consistency.
+      </p>
+    </div>
+    <div>
+      <div class="footer-col-title">Products</div>
+      <ul class="footer-links">
+        <li><a href="coffee.html">Specialty Coffee</a></li>
+        <li><a href="products.html">Moringa &amp; Superfoods</a></li>
+        <li><a href="products.html">Agarwood &amp; Oud</a></li>
+        <li><a href="products.html">Spices &amp; Extracts</a></li>
+        <li><a href="products.html">View Full Catalog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">For Importers</div>
+      <ul class="footer-links">
+        <li><a href="#compliance">Compliance &amp; Certifications</a></li>
+        <li><a href="#process">Sourcing Process</a></li>
+        <li><a href="exporter-quote.html">Request Samples</a></li>
+        <li><a href="exporter-quote.html">OEM &amp; Private Label</a></li>
+        <li><a href="exporter-quote.html">Get a Quote</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Hindia Timur</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+        <li><a href="#">Blog &amp; Insights</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="exporter-quote.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Hindia Timur. All rights reserved.</span>
+    <span>Sourced from Indonesia. Delivered to the World.</span>
+  </div>
+</footer>
+
+<script>
+// ── NAV: scroll class + hamburger menu ───────────────────────────────────────
+(function() {
+  var nav = document.getElementById('nav');
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  if (!btn || !menu) return;
+  function openMenu() {
+    btn.classList.add('open'); menu.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open'); menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', function() {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+})();
+
+// ── Fade-up scroll animations ────────────────────────────────────────────────
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+  document.body.classList.add('js-animate');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0, rootMargin: '0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 800);
+})();
+
+// ── Form submit handler ──────────────────────────────────────────────────────
+function handleSubmit(btn) {
+  btn.textContent = 'Sending\u2026';
+  btn.disabled = true;
+  setTimeout(() => { btn.textContent = '\u2713 Sent — We\'ll be in touch shortly'; btn.style.background = 'var(--sage)'; }, 1400);
+}
+</script>
+</body>

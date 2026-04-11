@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a Quote | Hindia Timur — Premium Indonesian Produce for Export</title>
+<meta name="description" content="Get competitive pricing for export-grade Indonesian products with guaranteed phytosanitary compliance and full traceability. Request a quote from Hindia Timur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E8;
+  --warm-white: #FAF8F3;
+  --forest: #1C2B1E;
+  --moss: #2D4A32;
+  --sage: #4A6741;
+  --gold: #B8924A;
+  --gold-light: #D4AC6E;
+  --earth: #6B4E2A;
+  --text: #1A1A18;
+  --text-mid: #3D3D38;
+  --text-light: #6B6B60;
+  --border: rgba(28,43,30,0.12);
+  --border-light: rgba(28,43,30,0.08);
+  --error: #C0392B;
+  --success: #2D6A4F;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--text);
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ─── NAV ─────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 72px;
+  background: rgba(250,248,243,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 600;
+  color: var(--forest); text-decoration: none; letter-spacing: 0.02em;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: var(--text-mid);
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold); }
+.nav-cta {
+  background: var(--forest) !important; color: var(--cream) !important;
+  padding: 0.5rem 1.3rem; border-radius: 2px;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+/* ─── PAGE HEADER ─────────────────────── */
+.page-header {
+  padding: 120px 8vw 0;
+  background: var(--forest);
+  position: relative; overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6vw;
+  align-items: end;
+  min-height: 360px;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(184,146,74,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 5% 90%, rgba(45,74,50,0.65) 0%, transparent 50%);
+  pointer-events: none;
+}
+/* decorative vertical line */
+.page-header::after {
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  width: 1px; height: 100%;
+  background: rgba(245,240,232,0.06);
+  pointer-events: none;
+}
+
+.header-left {
+  position: relative; z-index: 1;
+  padding-bottom: 5rem;
+}
+.breadcrumb {
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.3); margin-bottom: 1.6rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.breadcrumb a { color: rgba(245,240,232,0.4); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold-light); }
+.breadcrumb span { opacity: 0.4; }
+
+.page-eyebrow {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.page-eyebrow::before {
+  content: ''; display: block; width: 30px; height: 1px; background: var(--gold);
+}
+
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--cream); margin-bottom: 1.4rem;
+  letter-spacing: -0.01em;
+}
+.page-title em { font-style: italic; color: var(--gold-light); }
+
+.page-lead {
+  font-size: 0.95rem; font-weight: 300; line-height: 1.75;
+  color: rgba(245,240,232,0.62); max-width: 480px;
+}
+
+/* why cards in header-right */
+.header-right {
+  position: relative; z-index: 1;
+  padding-bottom: 5rem;
+  display: flex; flex-direction: column; gap: 0;
+  border-left: 1px solid rgba(245,240,232,0.08);
+  padding-left: 5vw;
+}
+.why-item {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid rgba(245,240,232,0.07);
+}
+.why-item:last-child { border-bottom: none; }
+.why-icon {
+  width: 38px; height: 38px; flex-shrink: 0;
+  border: 1px solid rgba(184,146,74,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(184,146,74,0.07);
+  color: var(--gold-light);
+  margin-top: 0.1rem;
+}
+.why-icon svg { width: 16px; height: 16px; }
+.why-title {
+  font-size: 0.82rem; font-weight: 500; color: var(--cream);
+  margin-bottom: 0.2rem;
+}
+.why-body {
+  font-size: 0.78rem; font-weight: 300; line-height: 1.6;
+  color: rgba(245,240,232,0.45);
+}
+
+/* ─── TRUST BAR ─────────────────────────── */
+.trust-bar {
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 1.2rem 8vw;
+  display: flex; align-items: center; justify-content: center; gap: 3.5rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-mid);
+}
+.trust-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+}
+
+/* ─── MAIN LAYOUT ─────────────────────── */
+.main-wrap {
+  display: grid;
+  grid-template-columns: 1fr 460px;
+  gap: 0;
+  align-items: start;
+  padding: 5rem 8vw 8rem;
+  position: relative;
+}
+
+/* ─── FORM SIDE ───────────────────────── */
+.form-panel {
+  padding-right: 5vw;
+  border-right: 1px solid var(--border);
+}
+
+.form-section-title {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold);
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-bottom: 1.6rem; margin-top: 3rem;
+}
+.form-section-title:first-child { margin-top: 0; }
+.form-section-title::before {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--gold);
+}
+.form-section-title span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 300;
+  color: var(--forest); letter-spacing: 0; text-transform: none;
+  margin-left: 0.4rem;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1rem; }
+.form-group label {
+  display: block;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.45rem;
+}
+.form-group label .req { color: var(--gold); margin-left: 2px; }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem; font-weight: 300;
+  padding: 0.78rem 1rem;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  appearance: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(28,43,30,0.25); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(184,146,74,0.08);
+}
+.form-group input.error,
+.form-group select.error { border-color: var(--error); }
+.form-group .error-msg {
+  font-size: 0.68rem; color: var(--error); margin-top: 0.3rem; display: none;
+}
+.form-group.has-error .error-msg { display: block; }
+.form-group.has-error input,
+.form-group.has-error select { border-color: var(--error); }
+
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B60' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer; }
+
+/* Quantity compound field */
+.qty-wrap { display: grid; grid-template-columns: 1fr 140px; gap: 0; }
+.qty-wrap input { border-radius: 2px 0 0 2px; border-right: none; }
+.qty-wrap select { border-radius: 0 2px 2px 0; border-color: var(--border); background-color: var(--cream); }
+.qty-wrap input:focus { z-index: 1; position: relative; }
+
+/* Product checkboxes */
+.product-check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.check-item {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  user-select: none;
+}
+.check-item:hover { border-color: var(--gold); background: rgba(184,146,74,0.04); }
+.check-item input[type="checkbox"] { display: none; }
+.check-box {
+  width: 16px; height: 16px; flex-shrink: 0;
+  border: 1px solid var(--border-light); border-radius: 1px;
+  background: var(--warm-white);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.check-box svg { width: 9px; height: 9px; opacity: 0; color: var(--forest); transition: opacity 0.15s; }
+.check-item.checked { border-color: var(--gold); background: rgba(184,146,74,0.06); }
+.check-item.checked .check-box { background: var(--gold); border-color: var(--gold); }
+.check-item.checked .check-box svg { opacity: 1; color: #fff; }
+.check-label { font-size: 0.8rem; font-weight: 400; color: var(--text-mid); }
+.check-item.checked .check-label { color: var(--forest); font-weight: 500; }
+
+/* Certifications tags */
+.cert-check-wrap {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.cert-toggle {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.06em;
+  color: var(--text-light); cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+.cert-toggle:hover { border-color: var(--sage); color: var(--sage); }
+.cert-toggle input { display: none; }
+.cert-toggle.checked { background: var(--sage); border-color: var(--sage); color: #fff; }
+
+/* Divider */
+.form-divider {
+  border: none; border-top: 1px solid var(--border-light);
+  margin: 2.5rem 0;
+}
+
+/* Submit */
+.btn-submit-wrap { margin-top: 2rem; }
+.btn-submit {
+  width: 100%;
+  background: var(--forest);
+  color: var(--cream);
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 1.15rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+}
+.btn-submit:hover { background: var(--gold); color: var(--forest); transform: translateY(-1px); }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.btn-submit svg { width: 15px; height: 15px; }
+
+.form-privacy {
+  font-size: 0.7rem; color: var(--text-light); text-align: center;
+  margin-top: 1rem; line-height: 1.55;
+}
+.form-privacy a { color: var(--text-light); text-decoration: underline; }
+
+/* ─── SIDEBAR ──────────────────────────── */
+.sidebar {
+  padding-left: 4vw;
+  position: sticky; top: 100px;
+}
+
+.sidebar-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2rem 2rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-card-title {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.sidebar-card-title::before { content: ''; display: block; width: 18px; height: 1px; background: var(--gold); }
+
+.contact-list { display: flex; flex-direction: column; gap: 1rem; }
+.contact-row {
+  display: flex; gap: 0.9rem; align-items: flex-start;
+}
+.contact-icon {
+  width: 34px; height: 34px; flex-shrink: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%; background: var(--warm-white);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+}
+.contact-icon svg { width: 14px; height: 14px; }
+.contact-label {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.2rem;
+}
+.contact-value {
+  font-size: 0.85rem; font-weight: 400; color: var(--forest);
+}
+.contact-value a { color: var(--forest); text-decoration: none; transition: color 0.2s; }
+.contact-value a:hover { color: var(--gold); }
+
+/* process steps */
+.sidebar-steps { display: flex; flex-direction: column; gap: 0; }
+.sidebar-step {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+}
+.sidebar-step:last-child { border-bottom: none; }
+.step-num-circle {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--warm-white);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; font-weight: 400; color: var(--gold);
+  margin-top: 0.05rem;
+}
+.step-s-title {
+  font-size: 0.8rem; font-weight: 500; color: var(--forest); margin-bottom: 0.15rem;
+}
+.step-s-body {
+  font-size: 0.75rem; font-weight: 300; line-height: 1.55; color: var(--text-light);
+}
+
+/* dark card */
+.sidebar-card-dark {
+  background: var(--forest);
+  border: none;
+}
+.sidebar-card-dark .sidebar-card-title { color: var(--gold-light); }
+.sidebar-card-dark .sidebar-card-title::before { background: var(--gold); }
+
+.sample-note {
+  font-size: 0.85rem; font-weight: 300; line-height: 1.7;
+  color: rgba(245,240,232,0.65); margin-bottom: 1.4rem;
+}
+.sample-note strong { color: var(--cream); font-weight: 500; }
+
+.btn-sample {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background: var(--gold); color: var(--forest);
+  text-decoration: none; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 1.5rem; border-radius: 2px;
+  transition: background 0.2s;
+  width: 100%;
+}
+.btn-sample:hover { background: var(--gold-light); }
+.btn-sample svg { width: 13px; height: 13px; }
+
+/* ─── SUCCESS STATE ─────────────────── */
+.success-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(28,43,30,0.6);
+  backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+  padding: 2rem;
+}
+.success-overlay.show { display: flex; }
+.success-modal {
+  background: var(--warm-white);
+  padding: 4rem 3.5rem;
+  border-radius: 2px;
+  max-width: 500px; width: 100%;
+  text-align: center;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+  animation: slideUp 0.4s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.success-check {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(45,106,79,0.1);
+  border: 1px solid rgba(45,106,79,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.6rem;
+  color: var(--success);
+}
+.success-check svg { width: 28px; height: 28px; }
+.success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 300; color: var(--forest);
+  margin-bottom: 0.8rem;
+}
+.success-body {
+  font-size: 0.9rem; font-weight: 300; line-height: 1.7;
+  color: var(--text-mid); margin-bottom: 2rem;
+}
+.success-ref {
+  display: inline-block;
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); background: rgba(184,146,74,0.1);
+  border: 1px solid rgba(184,146,74,0.2);
+  padding: 0.4rem 1rem; border-radius: 20px;
+  margin-bottom: 2rem;
+}
+.btn-close-success {
+  background: var(--forest); color: var(--cream); border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.9rem 2.5rem; border-radius: 2px; cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-close-success:hover { background: var(--gold); color: var(--forest); }
+
+/* ─── FOOTER ────────────────────────── */
+footer {
+  background: #111612;
+  padding: 3.5rem 8vw 2rem;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+  padding-bottom: 3rem; border-bottom: 1px solid rgba(245,240,232,0.06);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 600; color: var(--cream);
+  text-decoration: none; display: block; margin-bottom: 0.8rem;
+}
+.footer-logo span { color: var(--gold); }
+.footer-tagline {
+  font-size: 0.8rem; font-weight: 300; line-height: 1.7;
+  color: rgba(245,240,232,0.28); max-width: 280px;
+}
+.footer-col-title {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(245,240,232,0.25); margin-bottom: 1.2rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.footer-links a {
+  font-size: 0.8rem; color: rgba(245,240,232,0.35); text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold-light); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.72rem; color: rgba(245,240,232,0.18);
+  flex-wrap: wrap; gap: 0.5rem;
+}
+
+/* ─── FADE UP ─────────────────────────── */
+.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─────────────────────── */
+@media (max-width: 1100px) {
+  .main-wrap { grid-template-columns: 1fr; }
+  .form-panel { border-right: none; padding-right: 0; }
+  .sidebar { padding-left: 0; padding-top: 3rem; position: static; }
+  .page-header { grid-template-columns: 1fr; }
+  .header-right { border-left: none; padding-left: 0; border-top: 1px solid rgba(245,240,232,0.08); padding-top: 2rem; margin-top: 2rem; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .product-check-grid { grid-template-columns: 1fr; }
+  .trust-bar { gap: 1.5rem; padding: 1.2rem 7vw; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .page-header { padding: 110px 7vw 0; min-height: auto; }
+  .header-left { padding-bottom: 3rem; }
+  .main-wrap { padding: 3rem 7vw 5rem; }
+}
+@media (max-width: 480px) {
+  .cert-check-wrap { gap: 0.4rem; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+
+  /* ─── HAMBURGER BUTTON ──────────────────── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: none; border: none;
+    cursor: pointer; padding: 4px;
+    z-index: 301;
+    position: relative;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px; height: 1.5px;
+    background: var(--forest);
+    border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1),
+                opacity 0.25s ease,
+                width 0.3s ease;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ─── FULLSCREEN MOBILE MENU ────────────── */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: var(--forest);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1),
+                transform 0.35s cubic-bezier(0.23,1,0.32,1);
+    pointer-events: none;
+  }
+  .mobile-menu::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+  .mobile-menu nav-inner {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mobile-menu ul {
+    list-style: none;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0;
+    width: 100%;
+    padding: 0 8vw;
+    position: relative;
+  }
+  .mobile-menu ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+    overflow: hidden;
+  }
+  .mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+  .mobile-menu ul li a {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    font-weight: 300;
+    color: rgba(245,240,232,0.75);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    padding: 1.1rem 0;
+    text-align: center;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: color 0.2s,
+                transform 0.4s cubic-bezier(0.23,1,0.32,1),
+                opacity 0.4s ease;
+  }
+  .mobile-menu.open ul li a { transform: translateY(0); opacity: 1; }
+  .mobile-menu ul li:nth-child(1) a { transition-delay: 0.06s; }
+  .mobile-menu ul li:nth-child(2) a { transition-delay: 0.10s; }
+  .mobile-menu ul li:nth-child(3) a { transition-delay: 0.14s; }
+  .mobile-menu ul li:nth-child(4) a { transition-delay: 0.18s; }
+  .mobile-menu ul li:nth-child(5) a { transition-delay: 0.22s; }
+  .mobile-menu ul li a:hover,
+  .mobile-menu ul li a:focus { color: var(--gold-light); }
+  .mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+  .mobile-menu-footer {
+    position: absolute; bottom: 2.5rem;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(245,240,232,0.2);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+    .nav-hamburger.open span { background: var(--cream); }
+  }
+
+
+  /* ─── NAV (shared) ─────────────────────────────── */
+  nav#nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 18px 5vw 12px;
+    transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+    background: rgba(28,43,30,0.20);
+    backdrop-filter: blur(8px);
+  }
+  nav#nav.scrolled {
+    grid-template-rows: auto;
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+    align-items: center;
+    padding: 0 5vw;
+    height: 64px;
+    background: rgba(245,239,228,0.97);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  }
+
+  .nav-logo {
+    grid-row: 1; grid-column: 1;
+    display: flex; align-items: center; gap: 0;
+    text-decoration: none; line-height: 1;
+    justify-self: center;
+  }
+  nav#nav.scrolled .nav-logo { justify-self: start; }
+
+  /* Badge image — visible when NOT scrolled */
+  .nav-logo-img-main {
+    display: block;
+    width: 110px; height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  nav#nav.scrolled .nav-logo-img-main {
+    opacity: 0; transform: scale(0.8);
+    pointer-events: none; position: absolute;
+  }
+
+  /* Text logotype — visible when scrolled */
+  .nav-logo-img-scrolled {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600;
+    color: var(--forest); letter-spacing: 0.02em;
+    white-space: nowrap; line-height: 1;
+    opacity: 0; transform: translateX(-4px);
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+    max-height: 0; overflow: hidden;
+  }
+  .nav-logo-img-scrolled span { color: var(--gold); }
+  nav#nav.scrolled .nav-logo-img-scrolled {
+    opacity: 1; transform: translateX(0);
+    pointer-events: auto;
+    max-height: 3rem; overflow: visible;
+  }
+
+  .nav-links {
+    grid-row: 2; grid-column: 1;
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    background: rgba(28,43,30,0.30);
+    backdrop-filter: blur(4px);
+    padding: 7px 24px;
+    border-radius: 30px;
+    margin-top: 6px;
+    transition: background 0.35s, padding 0.35s, margin 0.35s;
+  }
+  nav#nav.scrolled .nav-links {
+    grid-row: 1; grid-column: 2;
+    justify-self: end;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0;
+  }
+  .nav-links a {
+    text-decoration: none; color: rgba(245,240,232,0.88);
+    transition: color 0.2s;
+  }
+  nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+  nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--forest) !important;
+    padding: 0.4rem 1.1rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+  /* ─── HAMBURGER ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: rgba(245,240,232,0.9); border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+    transform-origin: center;
+  }
+  nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ─── MOBILE MENU ── */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 300;
+    background: var(--forest);
+    flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; transform: translateY(-12px);
+    transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s;
+    pointer-events: none;
+  }
+  .mobile-menu::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+
+  .mobile-menu-logo-wrap {
+    display: flex; justify-content: center; margin-bottom: 2rem; position: relative; z-index: 1;
+  }
+  .mobile-menu-logo-wrap img {
+    width: 90px; height: auto;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.4s 0.04s, transform 0.4s 0.04s;
+  }
+  .mobile-menu.open .mobile-menu-logo-wrap img { opacity: 1; transform: translateY(0); }
+
+  .mobile-menu ul {
+    list-style: none; display: flex; flex-direction: column;
+    align-items: center; gap: 0;
+    width: 100%; padding: 0 8vw;
+    position: relative; z-index: 1;
+  }
+  .mobile-menu ul li {
+    width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08); text-align: center;
+  }
+  .mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+  .mobile-menu ul li a {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem,7vw,2.4rem); font-weight: 300;
+    color: rgba(245,240,232,0.75); text-decoration: none;
+    letter-spacing: 0.02em; padding: 1.1rem 0;
+    transform: translateY(20px); opacity: 0;
+    transition: color 0.2s, transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.4s;
+  }
+  .mobile-menu.open ul li a { transform: translateY(0); opacity: 1; }
+  .mobile-menu ul li:nth-child(1) a { transition-delay: 0.08s; }
+  .mobile-menu ul li:nth-child(2) a { transition-delay: 0.12s; }
+  .mobile-menu ul li:nth-child(3) a { transition-delay: 0.16s; }
+  .mobile-menu ul li:nth-child(4) a { transition-delay: 0.20s; }
+  .mobile-menu ul li:nth-child(5) a { transition-delay: 0.24s; }
+  .mobile-menu ul li a:hover { color: var(--gold-light); }
+  .mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+  .mobile-menu-footer {
+    position: absolute; bottom: 2.5rem; left: 0; right: 0; text-align: center;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(245,240,232,0.2);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .mobile-menu { display: flex; }
+    .nav-hamburger { display: flex; }
+
+    nav#nav {
+      grid-template-rows: auto auto !important;
+      grid-template-columns: 1fr !important;
+      justify-items: center !important;
+      padding: 10px 5vw 6px !important;
+      background: rgba(28,43,30,0.28) !important;
+    }
+    nav#nav.scrolled {
+      grid-template-rows: auto !important;
+      grid-template-columns: 1fr auto !important;
+      justify-items: start !important;
+      padding: 0 5vw !important;
+      height: 56px !important;
+    }
+    .nav-logo { grid-row: 1; grid-column: 1; justify-self: center !important; }
+    .nav-logo-img-main { width: 80px; }
+    nav#nav.scrolled .nav-logo { justify-self: start !important; }
+
+    .nav-hamburger { grid-row: 2; grid-column: 1; justify-self: center; margin-top: 2px; }
+    nav#nav.scrolled .nav-hamburger { grid-row: 1; grid-column: 2; justify-self: end; margin-top: 0; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.png" alt="Hindia Timur">
+    <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="products.html">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-menu-logo-wrap">
+    <img src="hindia-timur-logo.png" alt="Hindia Timur">
+  </div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
+</div>
+
+<!-- ─── PAGE HEADER ────────────────────────── -->
+<header class="page-header">
+  <div class="header-left">
+    <p class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      Request a Quote
+    </p>
+    <div class="page-eyebrow">Export Inquiries</div>
+    <h1 class="page-title">
+      Request a Quote for<br><em>Premium Indonesian Produce</em>
+    </h1>
+    <p class="page-lead">
+      Get competitive pricing for export-grade Indonesian products with guaranteed phytosanitary compliance and full traceability. Our specialists respond within 24 business hours.
+    </p>
+  </div>
+  <div class="header-right">
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2a6 6 0 00-6 6c0 4 6 10 6 10s6-6 6-10a6 6 0 00-6-6z"/><circle cx="10" cy="8" r="2"/></svg>
+      </div>
+      <div>
+        <div class="why-title">Compliance Guaranteed</div>
+        <div class="why-body">All products meet international phytosanitary standards. Your cargo clears customs the first time.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h14M3 10h14M3 15h10"/></svg>
+      </div>
+      <div>
+        <div class="why-title">Full Traceability</div>
+        <div class="why-body">GPS-tagged farm records and batch codes give you complete visibility from source to departure port.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="16" height="11" rx="1"/><path d="M7 7V5a3 3 0 016 0v2"/></svg>
+      </div>
+      <div>
+        <div class="why-title">Reliable Logistics</div>
+        <div class="why-body">FOB, CIF, and DDP shipping options with dedicated logistics support from day one.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 2"/></svg>
+      </div>
+      <div>
+        <div class="why-title">Competitive Pricing</div>
+        <div class="why-body">Direct sourcing from Indonesian producers with no unnecessary intermediaries.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── TRUST BAR ─────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-dot"></span>24h Quote Turnaround</div>
+  <div class="trust-item"><span class="trust-dot"></span>Free Samples for Qualified Importers</div>
+  <div class="trust-item"><span class="trust-dot"></span>No Obligation</div>
+  <div class="trust-item"><span class="trust-dot"></span>Dedicated Account Manager</div>
+  <div class="trust-item"><span class="trust-dot"></span>Full Compliance Docs Included</div>
+</div>
+
+<!-- ─── MAIN ─────────────────────────────── -->
+<div class="main-wrap">
+
+  <!-- ── FORM ──────────────────────────── -->
+  <div class="form-panel">
+    <form id="quoteForm" novalidate>
+
+      <!-- Company Information -->
+      <div class="form-section-title fade-up">01 <span>Company Information</span></div>
+
+      <div class="form-row fade-up">
+        <div class="form-group" id="fg-company">
+          <label>Company Name <span class="req">*</span></label>
+          <input type="text" id="company" name="company" placeholder="e.g. Global Imports GmbH" autocomplete="organization">
+          <div class="error-msg">Please enter your company name.</div>
+        </div>
+        <div class="form-group" id="fg-contact">
+          <label>Contact Person <span class="req">*</span></label>
+          <input type="text" id="contact" name="contact" placeholder="Full name" autocomplete="name">
+          <div class="error-msg">Please enter a contact name.</div>
+        </div>
+      </div>
+
+      <div class="form-row fade-up">
+        <div class="form-group" id="fg-email">
+          <label>Business Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email">
+          <div class="error-msg">Please enter a valid email address.</div>
+        </div>
+        <div class="form-group" id="fg-phone">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="form-group fade-up" id="fg-country">
+        <label>Destination Country <span class="req">*</span></label>
+        <select id="country" name="country">
+          <option value="" disabled selected>Select destination country</option>
+          <optgroup label="Europe">
+            <option>Germany</option>
+            <option>Netherlands</option>
+            <option>France</option>
+            <option>Belgium</option>
+            <option>United Kingdom</option>
+            <option>Italy</option>
+            <option>Spain</option>
+            <option>Poland</option>
+            <option>Sweden</option>
+            <option>Other EU Country</option>
+          </optgroup>
+          <optgroup label="North America">
+            <option>United States</option>
+            <option>Canada</option>
+            <option>Mexico</option>
+          </optgroup>
+          <optgroup label="Middle East">
+            <option>United Arab Emirates</option>
+            <option>Saudi Arabia</option>
+            <option>Qatar</option>
+            <option>Kuwait</option>
+            <option>Other Middle East</option>
+          </optgroup>
+          <optgroup label="East Asia">
+            <option>Japan</option>
+            <option>South Korea</option>
+            <option>China</option>
+            <option>Taiwan</option>
+            <option>Hong Kong</option>
+          </optgroup>
+          <optgroup label="South & Southeast Asia">
+            <option>India</option>
+            <option>Singapore</option>
+            <option>Malaysia</option>
+            <option>Thailand</option>
+            <option>Vietnam</option>
+            <option>Other SE Asia</option>
+          </optgroup>
+          <optgroup label="Oceania">
+            <option>Australia</option>
+            <option>New Zealand</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option>Other Country</option>
+          </optgroup>
+        </select>
+        <div class="error-msg">Please select a destination country.</div>
+      </div>
+
+      <hr class="form-divider fade-up">
+
+      <!-- Product Requirements -->
+      <div class="form-section-title fade-up">02 <span>Product Requirements</span></div>
+
+      <div class="form-group fade-up" id="fg-products">
+        <label>Products Interested In <span class="req">*</span> <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--text-light);font-size:0.68rem;">(select all that apply)</span></label>
+        <div class="product-check-grid" id="productCheckGrid">
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Specialty Coffee (Arabica)">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Specialty Coffee (Arabica)</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Specialty Coffee (Robusta)">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Specialty Coffee (Robusta)</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Moringa Powder">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Moringa Powder</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Vanilla Beans">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Vanilla Beans</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Agarwood (Oud)">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Agarwood (Oud)</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Sandalwood">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Sandalwood</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Premium Spices">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Premium Spices</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Patchouli Oil">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Patchouli Oil</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Indigo Paste">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Indigo Paste</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Raw Honey (Madu Hutan)">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Raw Honey (Madu Hutan)</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Kratom">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Kratom</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Charcoal Briquettes">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Charcoal Briquettes</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="products" value="Corncob">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Corncob</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)" id="otherCheckItem">
+            <input type="checkbox" name="products" value="Other">
+            <span class="check-box"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4l3 3 5-6"/></svg></span>
+            <span class="check-label">Other Product</span>
+          </label>
+        </div>
+        <div class="error-msg" id="products-error">Please select at least one product.</div>
+        <!-- Other product input, shown conditionally -->
+        <div id="otherProductWrap" style="display:none; margin-top:0.5rem;">
+          <input type="text" id="otherProduct" placeholder="Please specify the product(s)">
+        </div>
+      </div>
+
+      <div class="form-row fade-up">
+        <div class="form-group" id="fg-quantity">
+          <label>Estimated Quantity <span class="req">*</span></label>
+          <div class="qty-wrap">
+            <input type="number" id="quantity" name="quantity" placeholder="e.g. 500" min="1">
+            <select id="qtyUnit" name="qtyUnit">
+              <option value="kg">kg</option>
+              <option value="metric tons">metric tons</option>
+              <option value="containers (20ft)">containers (20ft)</option>
+              <option value="containers (40ft)">containers (40ft)</option>
+            </select>
+          </div>
+          <div class="error-msg">Please enter an estimated quantity.</div>
+        </div>
+        <div class="form-group" id="fg-timeline">
+          <label>Delivery Timeline <span class="req">*</span></label>
+          <select id="timeline" name="timeline">
+            <option value="" disabled selected>Select timeline</option>
+            <option value="urgent">Urgent (ASAP)</option>
+            <option value="1month">Within 1 month</option>
+            <option value="1-3months">1–3 months</option>
+            <option value="regular">Regular supply (Monthly)</option>
+            <option value="future">Future planning</option>
+          </select>
+          <div class="error-msg">Please select a delivery timeline.</div>
+        </div>
+      </div>
+
+      <hr class="form-divider fade-up">
+
+      <!-- Additional Details -->
+      <div class="form-section-title fade-up">03 <span>Additional Details</span></div>
+
+      <div class="form-group fade-up">
+        <label>Quality Specifications</label>
+        <textarea id="qualitySpecs" name="qualitySpecs" placeholder="e.g. Grade A, moisture ≤12%, screen size 15+, organic certified, specific origin (Gayo, Flores, etc.)&#10;Include any grading, processing method, or physical spec requirements here."></textarea>
+      </div>
+
+      <div class="form-group fade-up">
+        <label>Required Certifications <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--text-light);font-size:0.68rem;">(select all applicable)</span></label>
+        <div class="cert-check-wrap" id="certWrap">
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="Phytosanitary Certificate">Phytosanitary Certificate</label>
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="Certificate of Origin">Certificate of Origin</label>
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="Certificate of Analysis">Certificate of Analysis</label>
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="Organic Certification">Organic Certification</label>
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="Halal Certificate">Halal Certificate (MUI)</label>
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="CITES Permit">CITES Permit</label>
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="Pesticide Residue Analysis">Pesticide Residue Analysis</label>
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="GC/MS Analysis">GC/MS Analysis (oils)</label>
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="USDA NOP">USDA NOP</label>
+          <label class="cert-toggle" onclick="toggleCert(this)"><input type="checkbox" name="certs" value="FDA Documentation">FDA Documentation</label>
+        </div>
+      </div>
+
+      <div class="form-group fade-up">
+        <label>Additional Notes or Questions</label>
+        <textarea id="notes" name="notes" placeholder="Tell us anything else relevant — preferred incoterm (FOB, CIF, DDP), OEM / private label requirements, target price, packaging preferences, or any questions for our team."></textarea>
+      </div>
+
+      <!-- Incoterm preference (bonus field) -->
+      <div class="form-row fade-up">
+        <div class="form-group">
+          <label>Preferred Incoterm</label>
+          <select id="incoterm" name="incoterm">
+            <option value="" disabled selected>Select incoterm (optional)</option>
+            <option value="FOB">FOB — Free on Board</option>
+            <option value="CIF">CIF — Cost, Insurance, Freight</option>
+            <option value="DDP">DDP — Delivered Duty Paid</option>
+            <option value="CFR">CFR — Cost and Freight</option>
+            <option value="EXW">EXW — Ex Works</option>
+            <option value="discuss">To be discussed</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Sourcing Model</label>
+          <select id="sourcingModel" name="sourcingModel">
+            <option value="" disabled selected>How can we help? (optional)</option>
+            <option value="direct">Direct Export (own product)</option>
+            <option value="agent">Full Sourcing Agent</option>
+            <option value="qc">QC + Compliance Only</option>
+            <option value="spot">Trading / Spot Supply</option>
+            <option value="oem">Private Label / OEM</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-submit-wrap fade-up">
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 10H3M10 3l7 7-7 7"/></svg>
+          Submit Quote Request
+        </button>
+        <p class="form-privacy">
+          By submitting, you agree to our <a href="#">Privacy Policy</a>.
+          We never share your details with third parties.
+          Expect a response within 24 business hours.
+        </p>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- ── SIDEBAR ──────────────────────── -->
+  <div class="sidebar">
+
+    <!-- Free samples card -->
+    <div class="sidebar-card sidebar-card-dark fade-up">
+      <div class="sidebar-card-title">Free Product Samples</div>
+      <p class="sample-note">
+        Qualified importers can request <strong>1–5 kg sample lots</strong> of most products before placing a commercial order. Physical samples come with a certificate of analysis.
+      </p>
+      <a href="#" class="btn-sample" onclick="document.getElementById('notes').focus(); document.getElementById('notes').placeholder = 'I would like to request product samples. Please specify what you need above...'">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="13" height="13"><path d="M10 2v16M2 10l8 8 8-8"/></svg>
+        Request Sample via Quote Form
+      </a>
+    </div>
+
+    <!-- Contact card -->
+    <div class="sidebar-card fade-up">
+      <div class="sidebar-card-title">Direct Contact</div>
+      <div class="contact-list">
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M2 5l8 6 8-6"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 3A1.5 1.5 0 005 4.5v1A10 10 0 0014.5 15h1a1.5 1.5 0 001.5-1.5v-1a1 1 0 00-.7-.95l-2-.67a1 1 0 00-1.05.3l-.7.7a8 8 0 01-3.93-3.93l.7-.7a1 1 0 00.3-1.05l-.67-2A1 1 0 006.5 3z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value"><a href="#">+62 (XXX) XXX-XXXX</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2.5 2.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Response Time</div>
+            <div class="contact-value">Within 24 business hours</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process card -->
+    <div class="sidebar-card fade-up">
+      <div class="sidebar-card-title">What Happens Next</div>
+      <div class="sidebar-steps">
+        <div class="sidebar-step">
+          <div class="step-num-circle">1</div>
+          <div>
+            <div class="step-s-title">We Review Your Request</div>
+            <div class="step-s-body">Our sourcing team reviews your product, volume, and destination requirements within 24 hours.</div>
+          </div>
+        </div>
+        <div class="sidebar-step">
+          <div class="step-num-circle">2</div>
+          <div>
+            <div class="step-s-title">Pricing &amp; Availability</div>
+            <div class="step-s-body">You receive a detailed commercial quote with pricing, lead time, and available stock information.</div>
+          </div>
+        </div>
+        <div class="sidebar-step">
+          <div class="step-num-circle">3</div>
+          <div>
+            <div class="step-s-title">Sample &amp; Confirmation</div>
+            <div class="step-s-body">Qualified buyers receive physical samples before committing to a full commercial order.</div>
+          </div>
+        </div>
+        <div class="sidebar-step">
+          <div class="step-num-circle">4</div>
+          <div>
+            <div class="step-s-title">Supply Agreement</div>
+            <div class="step-s-body">We finalise terms, packaging specs, and a dedicated account manager is assigned to your account.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── SUCCESS MODAL ─────────────────────── -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-modal">
+    <div class="success-check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    </div>
+    <h2 class="success-title">Inquiry Submitted</h2>
+    <p class="success-body">
+      Thank you for reaching out. Our team will review your requirements and respond with pricing, availability, and a sample offer within 24 business hours.
+    </p>
+    <div class="success-ref" id="successRef">REF: HT-000000</div>
+    <br>
+    <button class="btn-close-success" onclick="closeSuccess()">Back to Homepage</button>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html"><img src="hindia-timur-logo.png" alt="Hindia Timur" style="width:90px;height:auto;display:block;margin-bottom:1rem;opacity:0.85;"></a></a>
+      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Products</div>
+      <ul class="footer-links">
+        <li><a href="coffee.html">Specialty Coffee</a></li>
+        <li><a href="products.html">Moringa &amp; Superfoods</a></li>
+        <li><a href="products.html">Agarwood &amp; Oud</a></li>
+        <li><a href="products.html">Spices &amp; Extracts</a></li>
+        <li><a href="products.html">View Full Catalog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">For Importers</div>
+      <ul class="footer-links">
+        <li><a href="index.html#compliance">Compliance &amp; Certifications</a></li>
+        <li><a href="index.html#process">Sourcing Process</a></li>
+        <li><a href="exporter-quote.html">Request Samples</a></li>
+        <li><a href="exporter-quote.html">OEM &amp; Private Label</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Hindia Timur</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+        <li><a href="#">Blog &amp; Insights</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="exporter-quote.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Hindia Timur. All rights reserved.</span>
+    <span>Sourced from Indonesia. Delivered to the World.</span>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL SHADOW ─────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── FADE-UP ANIMATIONS ────────────────────
+if ('IntersectionObserver' in window) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 900);
+}
+
+// ── PRODUCT CHECKBOXES ────────────────────
+function toggleCheck(label) {
+  // Prevent double-fire from native label behavior
+  event.preventDefault();
+  label.classList.toggle('checked');
+  const cb = label.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+  // Show "Other" field if selected
+  if (cb.value === 'Other') {
+    document.getElementById('otherProductWrap').style.display = cb.checked ? 'block' : 'none';
+  }
+  // Clear product error
+  document.getElementById('fg-products').classList.remove('has-error');
+}
+
+// ── CERT TOGGLES ──────────────────────────
+function toggleCert(label) {
+  event.preventDefault();
+  label.classList.toggle('checked');
+  const cb = label.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+}
+
+// ── FORM VALIDATION ───────────────────────
+function validateForm() {
+  let valid = true;
+
+  // Company
+  const company = document.getElementById('company');
+  setError('fg-company', !company.value.trim(), 'Please enter your company name.');
+  if (!company.value.trim()) valid = false;
+
+  // Contact
+  const contact = document.getElementById('contact');
+  setError('fg-contact', !contact.value.trim(), 'Please enter a contact name.');
+  if (!contact.value.trim()) valid = false;
+
+  // Email
+  const email = document.getElementById('email');
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+  setError('fg-email', !emailOk, 'Please enter a valid email address.');
+  if (!emailOk) valid = false;
+
+  // Country
+  const country = document.getElementById('country');
+  setError('fg-country', !country.value, 'Please select a destination country.');
+  if (!country.value) valid = false;
+
+  // Products
+  const checkedProducts = document.querySelectorAll('#productCheckGrid input[type="checkbox"]:checked');
+  const prodError = checkedProducts.length === 0;
+  document.getElementById('fg-products').classList.toggle('has-error', prodError);
+  if (prodError) valid = false;
+
+  // Quantity
+  const qty = document.getElementById('quantity');
+  setError('fg-quantity', !qty.value || parseFloat(qty.value) <= 0, 'Please enter an estimated quantity.');
+  if (!qty.value || parseFloat(qty.value) <= 0) valid = false;
+
+  // Timeline
+  const timeline = document.getElementById('timeline');
+  setError('fg-timeline', !timeline.value, 'Please select a delivery timeline.');
+  if (!timeline.value) valid = false;
+
+  return valid;
+}
+
+function setError(groupId, hasError, message) {
+  const group = document.getElementById(groupId);
+  if (!group) return;
+  group.classList.toggle('has-error', hasError);
+  const msg = group.querySelector('.error-msg');
+  if (msg && message) msg.textContent = message;
+}
+
+// ── FORM SUBMIT ───────────────────────────
+document.getElementById('quoteForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (!validateForm()) {
+    // Scroll to first error
+    const firstError = document.querySelector('.has-error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = `
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" style="animation:spin 0.8s linear infinite"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" opacity="0.25"/><path d="M10 2a8 8 0 018 8" stroke-linecap="round"/></svg>
+    Sending…
+  `;
+
+  // Simulate submission (replace with real endpoint)
+  setTimeout(() => {
+    // Generate ref
+    const ref = 'HT-' + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById('successRef').textContent = 'REF: ' + ref;
+    document.getElementById('successOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }, 1400);
+});
+
+function closeSuccess() {
+  window.location.href = 'index.html';
+}
+
+// Close success on overlay click
+document.getElementById('successOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeSuccess();
+});
+
+// ── SPIN KEYFRAME ─────────────────────────
+const style = document.createElement('style');
+style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+document.head.appendChild(style);
+
+  // ── HAMBURGER MENU ──────────────────────────────
+  (function() {
+    var btn = document.getElementById('navHamburger');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    function openMenu() {
+      btn.classList.add('open');
+      menu.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    btn.addEventListener('click', function() {
+      if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+    });
+    // Close on link click
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+</script>
+
+<script>
+(function() {
+  var nav = document.getElementById('nav');
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+
+  // Scroll → scrolled class
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  if (!btn || !menu) return;
+  function openMenu() {
+    btn.classList.add('open'); menu.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open'); menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', function() {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+})();
+</script>
+</body>
+</html>

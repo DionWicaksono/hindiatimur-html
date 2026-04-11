@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Insights | Hindia Timur — Indonesia's Agricultural Heritage</title>
+<meta name="description" content="Explore stories of sustainable farming, ethical sourcing, and the people behind premium Indonesian produce. Insights from Indonesia's agricultural heritage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E8;
+  --warm-white: #FAF8F3;
+  --forest: #1C2B1E;
+  --moss: #2D4A32;
+  --sage: #4A6741;
+  --gold: #B8924A;
+  --gold-light: #D4AC6E;
+  --earth: #6B4E2A;
+  --text: #1A1A18;
+  --text-mid: #3D3D38;
+  --text-light: #6B6B60;
+  --border: rgba(28,43,30,0.10);
+  --border-strong: rgba(28,43,30,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--text);
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── NAV ─────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 72px;
+  background: rgba(250,248,243,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 600;
+  color: var(--forest); text-decoration: none; letter-spacing: 0.02em;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: var(--text-mid);
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--forest); }
+.nav-cta {
+  background: var(--forest) !important; color: var(--cream) !important;
+  padding: 0.5rem 1.3rem; border-radius: 2px;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+/* ── PAGE HEADER ─────────────────────── */
+.page-header {
+  padding: 130px 8vw 72px;
+  background: var(--forest);
+  position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 75% 30%, rgba(184,146,74,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 80%, rgba(45,74,50,0.65) 0%, transparent 50%);
+  pointer-events: none;
+}
+.breadcrumb {
+  position: relative;
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.3); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.breadcrumb a { color: rgba(245,240,232,0.4); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold-light); }
+.breadcrumb span { opacity: 0.4; }
+
+.header-inner {
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: end;
+}
+.page-eyebrow {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.page-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--cream); margin-bottom: 1.2rem;
+}
+.page-title em { font-style: italic; color: var(--gold-light); }
+.page-lead {
+  font-size: 0.95rem; font-weight: 300; line-height: 1.75;
+  color: rgba(245,240,232,0.65); max-width: 480px;
+}
+
+/* Featured post in header */
+.header-featured {
+  background: rgba(245,240,232,0.05);
+  border: 1px solid rgba(245,240,232,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.25s;
+  text-decoration: none;
+  display: block;
+}
+.header-featured:hover { background: rgba(245,240,232,0.08); }
+.header-featured-image {
+  width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative;
+}
+.header-featured-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(0.85);
+  transition: transform 0.5s;
+}
+.header-featured:hover .header-featured-image img { transform: scale(1.03); }
+.header-featured-body { padding: 1.6rem 1.8rem; }
+.featured-tag {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 0.7rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.featured-tag::before { content: ''; display: block; width: 16px; height: 1px; background: var(--gold); }
+.featured-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 400; color: var(--cream);
+  line-height: 1.25; margin-bottom: 0.6rem;
+}
+.featured-meta {
+  font-size: 0.72rem; color: rgba(245,240,232,0.38); letter-spacing: 0.06em;
+}
+
+/* ── FILTER BAR ───────────────────────── */
+.filter-bar {
+  position: sticky; top: 72px; z-index: 100;
+  background: rgba(250,248,243,0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 8vw;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; min-height: 58px;
+}
+.filter-tabs { display: flex; }
+.filter-tab {
+  font-size: 0.74rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-light); padding: 1.1rem 1.2rem;
+  cursor: pointer; border: none; background: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.filter-tab:hover { color: var(--forest); }
+.filter-tab.active { color: var(--forest); border-bottom-color: var(--gold); }
+.count-label {
+  font-size: 0.76rem; color: var(--text-light); white-space: nowrap;
+  flex-shrink: 0;
+}
+.count-label strong { color: var(--forest); }
+
+/* ── BLOG GRID ────────────────────────── */
+.blog-section { padding: 4rem 8vw 8rem; }
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.post-card {
+  background: var(--warm-white);
+  display: flex; flex-direction: column;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s;
+  position: relative; overflow: hidden;
+}
+.post-card.hidden { display: none; }
+.post-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s;
+}
+.post-card:hover::after { transform: scaleX(1); }
+.post-card:hover { background: var(--forest); }
+.post-card:hover .post-title { color: var(--cream); }
+.post-card:hover .post-excerpt { color: rgba(245,240,232,0.55); }
+.post-card:hover .post-meta { color: rgba(245,240,232,0.35); }
+.post-card:hover .post-category { color: var(--gold-light); background: rgba(184,146,74,0.12); }
+.post-card:hover .read-more { color: var(--gold-light); }
+.post-card:hover .post-img { filter: saturate(0.6) brightness(0.65); }
+
+.post-image-wrap {
+  width: 100%; aspect-ratio: 16/10; overflow: hidden; position: relative;
+  background: var(--cream);
+}
+.post-img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(0.88);
+  transition: transform 0.5s, filter 0.5s;
+}
+.post-card:hover .post-image-wrap .post-img { transform: scale(1.04); }
+
+.post-body { padding: 1.7rem 1.8rem 1.2rem; flex: 1; display: flex; flex-direction: column; }
+
+.post-category {
+  display: inline-block;
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--sage);
+  background: rgba(74,103,65,0.08);
+  padding: 0.22rem 0.6rem; border-radius: 1px;
+  margin-bottom: 0.8rem;
+  transition: all 0.25s;
+}
+.post-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400; line-height: 1.25;
+  color: var(--forest); margin-bottom: 0.7rem;
+  transition: color 0.25s;
+}
+.post-excerpt {
+  font-size: 0.82rem; font-weight: 300; line-height: 1.7;
+  color: var(--text-light); margin-bottom: 1.2rem; flex: 1;
+  transition: color 0.25s;
+}
+.post-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 1.8rem;
+  border-top: 1px solid var(--border);
+  transition: border-color 0.25s;
+}
+.post-card:hover .post-footer { border-color: rgba(245,240,232,0.08); }
+.post-meta {
+  font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.04em;
+  transition: color 0.25s;
+}
+.read-more {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-mid);
+  display: flex; align-items: center; gap: 0.4rem;
+  transition: color 0.25s;
+}
+.read-more svg { width: 11px; height: 11px; transition: transform 0.2s; }
+.post-card:hover .read-more svg { transform: translateX(3px); }
+
+/* ── NEWSLETTER STRIP ─────────────────── */
+.newsletter-strip {
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 8vw;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center;
+}
+.nl-eyebrow {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.nl-eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
+.nl-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+  font-weight: 300; line-height: 1.2;
+  color: var(--forest); margin-bottom: 0.8rem;
+}
+.nl-title em { font-style: italic; color: var(--earth); }
+.nl-desc {
+  font-size: 0.9rem; font-weight: 300; line-height: 1.75; color: var(--text-light);
+}
+.nl-form { display: flex; gap: 0; }
+.nl-input {
+  flex: 1; border: 1px solid var(--border-strong); border-right: none;
+  background: var(--warm-white); color: var(--text);
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 300;
+  padding: 0.85rem 1.1rem; border-radius: 2px 0 0 2px; outline: none;
+  transition: border-color 0.2s;
+}
+.nl-input:focus { border-color: var(--gold); }
+.nl-input::placeholder { color: rgba(28,43,30,0.3); }
+.nl-btn {
+  background: var(--forest); color: var(--cream); border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.85rem 1.8rem; border-radius: 0 2px 2px 0; cursor: pointer;
+  transition: background 0.2s; white-space: nowrap;
+}
+.nl-btn:hover { background: var(--gold); color: var(--forest); }
+.nl-privacy {
+  font-size: 0.68rem; color: var(--text-light); margin-top: 0.75rem; line-height: 1.5;
+}
+
+/* ── TOPIC CLOUD ──────────────────────── */
+.topics-section {
+  padding: 4rem 8vw;
+  background: var(--forest);
+  position: relative; overflow: hidden;
+}
+.topics-section::before {
+  content: '';
+  position: absolute; top: -40%; right: -5%;
+  width: 40vw; height: 40vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,146,74,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.topics-inner {
+  position: relative;
+  display: flex; align-items: center; gap: 4rem; flex-wrap: wrap;
+}
+.topics-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-light); white-space: nowrap;
+  display: flex; align-items: center; gap: 0.7rem; flex-shrink: 0;
+}
+.topics-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+.topics-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.topic-pill {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase;
+  background: rgba(245,240,232,0.05);
+  border: 1px solid rgba(245,240,232,0.12);
+  color: rgba(245,240,232,0.55);
+  padding: 0.4rem 1rem; border-radius: 20px;
+  cursor: pointer; transition: all 0.2s;
+}
+.topic-pill:hover { background: rgba(184,146,74,0.12); border-color: rgba(184,146,74,0.3); color: var(--gold-light); }
+
+/* ── CTA STRIP ────────────────────────── */
+.cta-strip {
+  background: var(--moss);
+  padding: 5rem 8vw;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 3rem; align-items: center;
+  position: relative; overflow: hidden;
+}
+.cta-strip::before {
+  content: '';
+  position: absolute; top: -50%; right: -5%;
+  width: 40vw; height: 40vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,146,74,0.1) 0%, transparent 70%);
+}
+.cta-eyebrow {
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 0.8rem;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.cta-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+.cta-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 0.6rem;
+}
+.cta-h2 em { font-style: italic; color: var(--gold-light); }
+.cta-sub { font-size: 0.88rem; font-weight: 300; color: rgba(245,240,232,0.55); max-width: 480px; }
+.cta-btns { display: flex; flex-direction: column; gap: 0.8rem; flex-shrink: 0; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--forest);
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1rem 2rem; border-radius: 2px; text-decoration: none;
+  transition: background 0.2s, transform 0.2s; white-space: nowrap;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: rgba(245,240,232,0.6);
+  border: 1px solid rgba(245,240,232,0.2);
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1rem 2rem; border-radius: 2px; text-decoration: none;
+  transition: border-color 0.2s, color 0.2s; white-space: nowrap;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+/* ── FOOTER ─────────────────────────────── */
+footer {
+  background: #111612;
+  padding: 4rem 8vw 2.5rem;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(245,240,232,0.06);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 600; color: var(--cream);
+  text-decoration: none; display: block; margin-bottom: 0.8rem;
+}
+.footer-logo span { color: var(--gold); }
+.footer-tagline {
+  font-size: 0.8rem; font-weight: 300; line-height: 1.7;
+  color: rgba(245,240,232,0.28); max-width: 280px;
+}
+.footer-col-title {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(245,240,232,0.25); margin-bottom: 1.2rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.footer-links a {
+  font-size: 0.8rem; color: rgba(245,240,232,0.35); text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold-light); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+  font-size: 0.72rem; color: rgba(245,240,232,0.18);
+}
+
+/* ── ANIMATIONS ─────────────────────────── */
+.fade-up { opacity: 1; transform: none; }
+.js-anim .fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.js-anim .fade-up.visible { opacity: 1; transform: translateY(0); }
+.js-anim .fd2 { transition-delay: 0.1s; }
+.js-anim .fd3 { transition-delay: 0.2s; }
+
+/* ── RESPONSIVE ─────────────────────────── */
+@media (max-width: 1024px) {
+  .posts-grid { grid-template-columns: repeat(2, 1fr); }
+  .header-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .newsletter-strip { grid-template-columns: 1fr; gap: 3rem; }
+  .cta-strip { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .filter-bar { padding: 0 7vw; }
+  .filter-tabs { overflow-x: auto; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .posts-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .nl-form { flex-direction: column; }
+  .nl-input { border-right: 1px solid var(--border-strong); border-radius: 2px; }
+  .nl-btn { border-radius: 2px; }
+}
+
+  /* ─── NAV (shared) ─────────────────────────────── */
+  nav#nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 18px 5vw 12px;
+    transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+    background: rgba(28,43,30,0.20);
+    backdrop-filter: blur(8px);
+  }
+  nav#nav.scrolled {
+    grid-template-rows: auto;
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+    align-items: center;
+    padding: 0 5vw;
+    height: 64px;
+    background: rgba(245,239,228,0.97);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  }
+
+  .nav-logo {
+    grid-row: 1; grid-column: 1;
+    display: flex; align-items: center; gap: 0;
+    text-decoration: none; line-height: 1;
+    justify-self: center;
+  }
+  nav#nav.scrolled .nav-logo { justify-self: start; }
+
+  /* Badge image — visible when NOT scrolled */
+  .nav-logo-img-main {
+    display: block;
+    width: 110px; height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  nav#nav.scrolled .nav-logo-img-main {
+    opacity: 0; transform: scale(0.8);
+    pointer-events: none; position: absolute;
+  }
+
+  /* Text logotype — visible when scrolled */
+  .nav-logo-img-scrolled {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600;
+    color: var(--forest); letter-spacing: 0.02em;
+    white-space: nowrap; line-height: 1;
+    opacity: 0; transform: translateX(-4px);
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+    max-height: 0; overflow: hidden;
+  }
+  .nav-logo-img-scrolled span { color: var(--gold); }
+  nav#nav.scrolled .nav-logo-img-scrolled {
+    opacity: 1; transform: translateX(0);
+    pointer-events: auto;
+    max-height: 3rem; overflow: visible;
+  }
+
+  .nav-links {
+    grid-row: 2; grid-column: 1;
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    background: rgba(28,43,30,0.30);
+    backdrop-filter: blur(4px);
+    padding: 7px 24px;
+    border-radius: 30px;
+    margin-top: 6px;
+    transition: background 0.35s, padding 0.35s, margin 0.35s;
+  }
+  nav#nav.scrolled .nav-links {
+    grid-row: 1; grid-column: 2;
+    justify-self: end;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0;
+  }
+  .nav-links a {
+    text-decoration: none; color: rgba(245,240,232,0.88);
+    transition: color 0.2s;
+  }
+  nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+  nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--forest) !important;
+    padding: 0.4rem 1.1rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+  /* ─── HAMBURGER ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: rgba(245,240,232,0.9); border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+    transform-origin: center;
+  }
+  nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ─── MOBILE MENU ── */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 300;
+    background: var(--forest);
+    flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; transform: translateY(-12px);
+    transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s;
+    pointer-events: none;
+  }
+  .mobile-menu::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+
+  .mobile-menu-logo-wrap {
+    display: flex; justify-content: center; margin-bottom: 2rem; position: relative; z-index: 1;
+  }
+  .mobile-menu-logo-wrap img {
+    width: 90px; height: auto;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.4s 0.04s, transform 0.4s 0.04s;
+  }
+  .mobile-menu.open .mobile-menu-logo-wrap img { opacity: 1; transform: translateY(0); }
+
+  .mobile-menu ul {
+    list-style: none; display: flex; flex-direction: column;
+    align-items: center; gap: 0;
+    width: 100%; padding: 0 8vw;
+    position: relative; z-index: 1;
+  }
+  .mobile-menu ul li {
+    width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08); text-align: center;
+  }
+  .mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+  .mobile-menu ul li a {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem,7vw,2.4rem); font-weight: 300;
+    color: rgba(245,240,232,0.75); text-decoration: none;
+    letter-spacing: 0.02em; padding: 1.1rem 0;
+    transform: translateY(20px); opacity: 0;
+    transition: color 0.2s, transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.4s;
+  }
+  .mobile-menu.open ul li a { transform: translateY(0); opacity: 1; }
+  .mobile-menu ul li:nth-child(1) a { transition-delay: 0.08s; }
+  .mobile-menu ul li:nth-child(2) a { transition-delay: 0.12s; }
+  .mobile-menu ul li:nth-child(3) a { transition-delay: 0.16s; }
+  .mobile-menu ul li:nth-child(4) a { transition-delay: 0.20s; }
+  .mobile-menu ul li:nth-child(5) a { transition-delay: 0.24s; }
+  .mobile-menu ul li a:hover { color: var(--gold-light); }
+  .mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+  .mobile-menu-footer {
+    position: absolute; bottom: 2.5rem; left: 0; right: 0; text-align: center;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(245,240,232,0.2);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .mobile-menu { display: flex; }
+    .nav-hamburger { display: flex; }
+
+    nav#nav {
+      grid-template-rows: auto auto !important;
+      grid-template-columns: 1fr !important;
+      justify-items: center !important;
+      padding: 10px 5vw 6px !important;
+      background: rgba(28,43,30,0.28) !important;
+    }
+    nav#nav.scrolled {
+      grid-template-rows: auto !important;
+      grid-template-columns: 1fr auto !important;
+      justify-items: start !important;
+      padding: 0 5vw !important;
+      height: 56px !important;
+    }
+    .nav-logo { grid-row: 1; grid-column: 1; justify-self: center !important; }
+    .nav-logo-img-main { width: 80px; }
+    nav#nav.scrolled .nav-logo { justify-self: start !important; }
+
+    .nav-hamburger { grid-row: 2; grid-column: 1; justify-self: center; margin-top: 2px; }
+    nav#nav.scrolled .nav-hamburger { grid-row: 1; grid-column: 2; justify-self: end; margin-top: 0; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.png" alt="Hindia Timur">
+    <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="products.html">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-menu-logo-wrap">
+    <img src="hindia-timur-logo.png" alt="Hindia Timur">
+  </div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
+</div><!-- PAGE HEADER -->
+<header class="page-header">
+  <p class="breadcrumb">
+    <a href="hindiatimur__6_.html">Home</a>
+    <span>/</span>
+    Blog &amp; Insights
+  </p>
+  <div class="header-inner">
+    <div>
+      <div class="page-eyebrow">Insights &amp; Stories</div>
+      <h1 class="page-title">
+        Insights from Indonesia's<br><em>Agricultural Heritage</em>
+      </h1>
+      <p class="page-lead">
+        Explore stories of sustainable farming, ethical sourcing, and the people behind premium Indonesian produce — from volcanic highlands to global markets.
+      </p>
+    </div>
+    <!-- Featured post -->
+    <a class="header-featured" href="blog-sustainable-coconut-farming.html">
+      <div class="header-featured-image">
+        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=900&q=80&fit=crop" alt="Sustainable Coconut Palm Farming">
+      </div>
+      <div class="header-featured-body">
+        <div class="featured-tag">Farming Practices — Latest Post</div>
+        <div class="featured-title">Sustainable Coconut Palm Farming: Preserving Indonesia's Agricultural Heritage</div>
+        <div class="featured-meta">Budi Santoso &nbsp;·&nbsp; March 2, 2026</div>
+      </div>
+    </a>
+  </div>
+</header>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <div class="filter-tabs">
+    <button class="filter-tab active" data-filter="all">All Articles</button>
+    <button class="filter-tab" data-filter="farming">Farming Practices</button>
+    <button class="filter-tab" data-filter="sourcing">Product Sourcing</button>
+    <button class="filter-tab" data-filter="sustainability">Sustainability</button>
+  </div>
+  <span class="count-label"><strong id="countNum">6</strong> articles</span>
+</div>
+
+<!-- BLOG GRID -->
+<section class="blog-section">
+  <div class="posts-grid" id="postsGrid">
+
+    <a class="post-card fade-up" href="blog-sustainable-coconut-farming.html"
+       data-category="farming" style="animation-delay:0.03s">
+      <div class="post-image-wrap">
+        <img class="post-img" src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=700&q=75&fit=crop" alt="Sustainable coconut farming">
+      </div>
+      <div class="post-body">
+        <span class="post-category">Farming Practices</span>
+        <div class="post-title">Sustainable Coconut Palm Farming: Preserving Indonesia's Agricultural Heritage</div>
+        <p class="post-excerpt">How Indonesian farmers are combining traditional wisdom with modern science to create sustainable coconut cultivation systems that protect both livelihoods and ecosystems.</p>
+      </div>
+      <div class="post-footer">
+        <span class="post-meta">Budi Santoso &nbsp;·&nbsp; March 2, 2026</span>
+        <span class="read-more">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+
+    <a class="post-card fade-up fd2" href="blog-vanilla-sourcing-journey.html"
+       data-category="sourcing" style="animation-delay:0.06s">
+      <div class="post-image-wrap">
+        <img class="post-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=75&fit=crop" alt="Vanilla beans">
+      </div>
+      <div class="post-body">
+        <span class="post-category">Product Sourcing</span>
+        <div class="post-title">From Farm to Table: The Journey of Premium Vanilla Beans</div>
+        <p class="post-excerpt">A deep dive into the intricate journey from delicate orchid flowers to premium vanilla beans — a tale of patience, hand-pollination, and months-long curing that defines Indonesian vanilla.</p>
+      </div>
+      <div class="post-footer">
+        <span class="post-meta">Siti Wijaya &nbsp;·&nbsp; February 28, 2026</span>
+        <span class="read-more">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+
+    <a class="post-card fade-up fd3" href="blog-coffee-heritage-volcanic.html"
+       data-category="farming" style="animation-delay:0.09s">
+      <div class="post-image-wrap">
+        <img class="post-img" src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=700&q=75&fit=crop" alt="Indonesian coffee beans">
+      </div>
+      <div class="post-body">
+        <span class="post-category">Farming Practices</span>
+        <div class="post-title">Indonesian Coffee Heritage: Single-Origin Excellence from Volcanic Highlands</div>
+        <p class="post-excerpt">From the mineral-rich volcanic soils of Sumatra to the misty mountains of Java and Sulawesi — a portrait of Indonesia's remarkable coffee diversity and the farmers behind it.</p>
+      </div>
+      <div class="post-footer">
+        <span class="post-meta">Ahmad Wijaya &nbsp;·&nbsp; February 25, 2026</span>
+        <span class="read-more">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+
+    <a class="post-card fade-up" href="blog-organic-certification-fair-trade.html"
+       data-category="sustainability" style="animation-delay:0.03s">
+      <div class="post-image-wrap">
+        <img class="post-img" src="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=700&q=75&fit=crop" alt="Organic farming and fair trade">
+      </div>
+      <div class="post-body">
+        <span class="post-category">Sustainability</span>
+        <div class="post-title">Organic Certification &amp; Fair Trade: Our Commitment to Ethical Sourcing</div>
+        <p class="post-excerpt">Why premium quality and ethical practice are inseparable at Hindia Timur — the real meaning of organic certification, fair trade pricing, and the impact on farming communities.</p>
+      </div>
+      <div class="post-footer">
+        <span class="post-meta">Dr. Rina Kusuma &nbsp;·&nbsp; February 20, 2026</span>
+        <span class="read-more">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+
+    <a class="post-card fade-up fd2" href="blog-seasonal-availability-guide.html"
+       data-category="sourcing" style="animation-delay:0.06s">
+      <div class="post-image-wrap">
+        <img class="post-img" src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=700&q=75&fit=crop" alt="Indonesian spices seasonal guide">
+      </div>
+      <div class="post-body">
+        <span class="post-category">Product Sourcing</span>
+        <div class="post-title">Seasonal Availability Guide: When to Source Premium Indonesian Produce</div>
+        <p class="post-excerpt">A practical guide for importers planning inventory around Indonesia's harvest cycles — with peak season breakdowns by product and strategic sourcing tips for year-round supply.</p>
+      </div>
+      <div class="post-footer">
+        <span class="post-meta">Bambang Setiawan &nbsp;·&nbsp; February 15, 2026</span>
+        <span class="read-more">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+
+    <a class="post-card fade-up fd3" href="blog-water-conservation-tropical.html"
+       data-category="sustainability" style="animation-delay:0.09s">
+      <div class="post-image-wrap">
+        <img class="post-img" src="https://images.unsplash.com/photo-1574223286436-ef5dcaae2929?w=700&q=75&fit=crop" alt="Water conservation tropical agriculture">
+      </div>
+      <div class="post-body">
+        <span class="post-category">Sustainability</span>
+        <div class="post-title">Water Conservation in Tropical Agriculture: Indonesia's Innovative Approach</div>
+        <p class="post-excerpt">How Indonesian farming communities are pioneering water management techniques — from rainwater harvesting to precision irrigation — that reduce consumption while maintaining yields.</p>
+      </div>
+      <div class="post-footer">
+        <span class="post-meta">Dr. Rina Kusuma &nbsp;·&nbsp; February 10, 2026</span>
+        <span class="read-more">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- TOPIC CLOUD -->
+<div class="topics-section">
+  <div class="topics-inner">
+    <div class="topics-label">Topics Covered</div>
+    <div class="topics-pills">
+      <span class="topic-pill">Sustainable Farming</span>
+      <span class="topic-pill">Coffee Origins</span>
+      <span class="topic-pill">Vanilla Cultivation</span>
+      <span class="topic-pill">Organic Certification</span>
+      <span class="topic-pill">Fair Trade</span>
+      <span class="topic-pill">Water Management</span>
+      <span class="topic-pill">Supply Chain</span>
+      <span class="topic-pill">Seasonal Sourcing</span>
+      <span class="topic-pill">Farmer Communities</span>
+      <span class="topic-pill">Phytosanitary Compliance</span>
+      <span class="topic-pill">Indonesian Biodiversity</span>
+    </div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter-strip">
+  <div class="fade-up">
+    <div class="nl-eyebrow">Stay Informed</div>
+    <h2 class="nl-title">Insights Delivered to<br><em>Your Inbox</em></h2>
+    <p class="nl-desc">Subscribe to receive updates on farming practices, sourcing stories, and sustainability initiatives from Indonesia's agricultural heartland. No noise — just substance.</p>
+  </div>
+  <div class="fade-up fd2">
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="your@company.com" id="nlEmail">
+      <button class="nl-btn" onclick="handleNl(this)">Subscribe</button>
+    </div>
+    <p class="nl-privacy">We respect your privacy. Unsubscribe at any time. No spam, ever.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div>
+    <div class="cta-eyebrow">Ready to Partner?</div>
+    <div class="cta-h2">From Story to <em>Supply Agreement</em></div>
+    <p class="cta-sub">The farms and practices we write about are the same ones we source from. Request a quote and receive products with the traceability and compliance documentation your market requires.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="hindiatimur-products.html" class="btn-primary">Browse Product Catalog</a>
+    <a href="exporter-quote.html" class="btn-outline">Request a Quote</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html"><img src="hindia-timur-logo.png" alt="Hindia Timur" style="width:90px;height:auto;display:block;margin-bottom:1rem;opacity:0.85;"></a></a>
+      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Products</div>
+      <ul class="footer-links">
+        <li><a href="coffee.html">Specialty Coffee</a></li>
+        <li><a href="hindiatimur-products.html">Moringa &amp; Superfoods</a></li>
+        <li><a href="hindiatimur-products.html">Agarwood &amp; Oud</a></li>
+        <li><a href="hindiatimur-products.html">Spices &amp; Extracts</a></li>
+        <li><a href="hindiatimur-products.html">View Full Catalog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Insights</div>
+      <ul class="footer-links">
+        <li><a href="blog-sustainable-coconut-farming.html">Sustainable Farming</a></li>
+        <li><a href="blog-vanilla-sourcing-journey.html">Vanilla Sourcing</a></li>
+        <li><a href="blog-coffee-heritage-volcanic.html">Coffee Heritage</a></li>
+        <li><a href="blog-organic-certification-fair-trade.html">Organic &amp; Fair Trade</a></li>
+        <li><a href="blog.html">All Articles</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Hindia Timur</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+        <li><a href="hindiatimur__6_.html#compliance">Compliance</a></li>
+        <li><a href="exporter-quote.html">Request a Quote</a></li>
+        <li><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Hindia Timur. All rights reserved.</span>
+    <span>Sourced from Indonesia. Delivered to the World.</span>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+if ('IntersectionObserver' in window) {
+  document.body.classList.add('js-anim');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 900);
+}
+
+// Filter tabs
+const tabs = document.querySelectorAll('.filter-tab');
+const cards = document.querySelectorAll('.post-card');
+const countNum = document.getElementById('countNum');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    let count = 0;
+    cards.forEach(card => {
+      const cat = card.dataset.category || '';
+      const show = filter === 'all' || cat === filter;
+      card.classList.toggle('hidden', !show);
+      if (show) count++;
+    });
+    countNum.textContent = count;
+  });
+});
+
+function handleNl(btn) {
+  const email = document.getElementById('nlEmail').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('nlEmail').style.borderColor = '#C0392B';
+    return;
+  }
+  btn.textContent = '✓ Subscribed';
+  btn.style.background = 'var(--sage)';
+  btn.disabled = true;
+}
+</script>
+
+<script>
+(function() {
+  var nav = document.getElementById('nav');
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+
+  // Scroll → scrolled class
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  if (!btn || !menu) return;
+  function openMenu() {
+    btn.classList.add('open'); menu.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open'); menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', function() {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+})();
+</script>
+</body>
+</html>
