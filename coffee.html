@@ -86,10 +86,7 @@ body {
   .nav-links {
     display: flex; gap: 2rem; list-style: none; align-items: center;
     font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-    background: rgba(28,43,30,0.30);
-    backdrop-filter: blur(4px);
-    padding: 7px 24px; border-radius: 30px;
-    transition: background 0.35s, padding 0.35s, border-radius 0.35s;
+   
   }
   nav#nav.scrolled .nav-links {
     background: transparent; backdrop-filter: none;
@@ -148,6 +145,8 @@ body {
     nav#nav.scrolled .nav-logo { margin-bottom: 0; }
     .nav-logo-img-main { width: 80px; }
   }
+
+  
 </style>
 </head>
 <body>
@@ -748,93 +747,68 @@ body {
 </footer>
 
 <script>
-// ── NAV SCROLL SHADOW ─────────────────────────
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
-
-// ── SCROLL FADE ANIMATIONS ────────────────────
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  // ── HAMBURGER MENU ──────────────────────────────
+  (function() {
+    var btn = document.getElementById('navHamburger');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    function openMenu() {
+      btn.classList.add('open');
+      menu.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    btn.addEventListener('click', function() {
+      if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
     });
-  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  setTimeout(() => {
-    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
-  }, 1000);
-}
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+</script><script>
+  // Sticky nav shadow
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
 
-// ── VARIETY SWITCH ────────────────────────────
-const arabicaSpecs = {
-  title: 'Arabica — Flavor Profile',
-  tags: ['Chocolate', 'Caramel', 'Floral', 'Fruity', 'Bright Acidity'],
-  acidity: { w: '72%', label: 'High' },
-  body: { w: '55%', label: 'Medium' },
-  sweet: { w: '65%', label: 'Good' }
-};
-const robustaSpecs = {
-  title: 'Robusta — Flavor Profile',
-  tags: ['Earthy', 'Dark Chocolate', 'Nutty', 'Full-Bodied', 'Low Acidity'],
-  acidity: { w: '25%', label: 'Low' },
-  body: { w: '88%', label: 'Full' },
-  sweet: { w: '35%', label: 'Mild' }
-};
+  // Fade-up scroll animations — opt-in only, content always visible without JS
+  (function() {
+    // Only enable animation if IntersectionObserver is supported
+    if (!('IntersectionObserver' in window)) return;
 
-function switchVariety(variety, btn) {
-  // Update buttons
-  document.querySelectorAll('.variety-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+    // Add class to body to enable CSS animations
+    document.body.classList.add('js-animate');
 
-  // Update hero flavor panel
-  const data = variety === 'arabica' ? arabicaSpecs : robustaSpecs;
-  document.getElementById('heroFlavorTitle').textContent = data.title;
-  const tagsEl = document.getElementById('heroFlavorTags');
-  tagsEl.innerHTML = data.tags.map(t => `<span class="flavor-tag">${t}</span>`).join('');
-  document.getElementById('barAcidity').style.width = data.acidity.w;
-  document.getElementById('valAcidity').textContent = data.acidity.label;
-  document.getElementById('barBody').style.width = data.body.w;
-  document.getElementById('valBody').textContent = data.body.label;
-  document.getElementById('barSweet').style.width = data.sweet.w;
-  document.getElementById('valSweet').textContent = data.sweet.label;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px' });
 
-  // Toggle specs panels
-  document.getElementById('specs-arabica').classList.toggle('active', variety === 'arabica');
-  document.getElementById('specs-robusta').classList.toggle('active', variety === 'robusta');
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Re-trigger fade-up
-  const activeSpec = document.getElementById(`specs-${variety}`);
-  activeSpec.classList.remove('visible');
-  setTimeout(() => activeSpec.classList.add('visible'), 50);
-}
-
-// ── FAQ TOGGLE ────────────────────────────────
-function toggleFaq(item) {
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-// ── FORM SUBMIT ───────────────────────────────
-function handleSubmit(btn) {
-  const original = btn.textContent;
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = '✓ Inquiry Sent';
-    btn.style.background = 'var(--sage)';
+    // Safety net: after 800ms force-reveal anything still hidden
     setTimeout(() => {
-      btn.textContent = original;
-      btn.disabled = false;
-      btn.style.background = '';
-    }, 3000);
-  }, 1200);
-}
-</script>
+      document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 800);
+  })();
+
+  // Form submit handler
+  function handleSubmit(btn) {
+    btn.textConten
+
 </body>
 </html>
