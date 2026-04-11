@@ -81,7 +81,7 @@
     width: 130px; height: auto;
     filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4));
     transition: opacity 0.25s, transform 0.25s;
-    transform-origin: left center;
+    transform-origin: center center;
   }
   nav.scrolled .nav-logo-img-main {
     opacity: 0;
@@ -1000,7 +1000,7 @@
       grid-template-rows: unset !important;
       grid-template-columns: unset !important;
     }
-    .nav-logo { justify-self: unset !important; }
+    .nav-logo { margin: 0 auto !important; transform-origin: center center !important; }
     .nav-logo-img-main { width: 80px; }
     .nav-hamburger { position: static !important; justify-self: unset !important; margin-top: 0; }
     .nav-hamburger.open span { background: var(--forest); }
