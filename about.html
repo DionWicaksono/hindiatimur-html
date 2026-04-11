@@ -750,11 +750,27 @@ footer {
     color: rgba(245,240,232,0.2);
   }
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
     .nav-links { display: none !important; }
-    .nav-hamburger { display: flex; }
     .mobile-menu { display: flex; }
-    .nav-hamburger.open span { background: var(--cream); }
+
+    nav {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: auto !important;
+      padding: 12px 5vw !important;
+      gap: 6px !important;
+      background: rgba(250,248,243,0.96) !important;
+      backdrop-filter: blur(14px) !important;
+    }
+    .nav-logo { width: auto; }
+    .nav-logo-img-main { width: 80px; }
+    .nav-hamburger {
+      display: flex;
+      position: static !important;
+    }
   }
 
 

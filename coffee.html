@@ -259,26 +259,21 @@ nav.scrolled .nav-hamburger span { background: var(--forest); }
   .nav-links { display: none !important; }
   .mobile-menu { display: flex; }
   .nav-hamburger { display: flex; }
-  nav {
-    grid-template-rows: auto auto !important;
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-    padding: 12px 5vw 8px !important;
-    background: rgba(28,43,30,0.25) !important;
-    backdrop-filter: blur(8px) !important;
+  nav, nav#nav {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: auto !important;
+    padding: 12px 5vw !important;
+    gap: 6px !important;
+    grid-template-rows: unset !important;
+    grid-template-columns: unset !important;
   }
-  nav.scrolled {
-    grid-template-rows: auto !important;
-    grid-template-columns: 1fr auto !important;
-    justify-items: start !important;
-    padding: 0 5vw !important;
-    height: 56px !important;
-  }
-  .nav-logo { grid-row: 1 !important; grid-column: 1 !important; justify-self: center !important; }
-  .nav-logo-img-main { width: 90px; }
-  nav.scrolled .nav-logo { justify-self: start !important; }
-  .nav-hamburger { grid-row: 2 !important; grid-column: 1 !important; justify-self: center; margin-top: 2px; }
-  nav.scrolled .nav-hamburger { grid-row: 1 !important; grid-column: 2 !important; justify-self: end; margin-top: 0; }
+  .nav-logo { justify-self: unset !important; }
+  .nav-logo-img-main { width: 80px; }
+  .nav-hamburger { position: static !important; justify-self: unset !important; margin-top: 0; }
+  .nav-hamburger.open span { background: var(--forest); }
 }
 
 /* ─── HERO ──────────────────────────────────────── */
