@@ -35,6 +35,7 @@ body {
 }
 
   /* ─── NAV ─────────────────────────────────────────────── */
+  /* ─── NAV ─────────────────────────────────────────────── */
   nav#nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; flex-direction: column; align-items: center;
@@ -51,13 +52,100 @@ body {
     box-shadow: 0 1px 12px rgba(0,0,0,0.08);
   }
 
-<<<<<<< HEAD
   .nav-logo {
     display: block; text-decoration: none; line-height: 0;
     margin-bottom: 10px;
   }
   nav#nav.scrolled .nav-logo { margin-bottom: 0; }
-=======
+
+  .nav-logo-img-main {
+    display: block; width: 110px; height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: opacity 0.25s, width 0.25s;
+  }
+  nav#nav.scrolled .nav-logo-img-main {
+    width: 0; opacity: 0; pointer-events: none; overflow: hidden;
+  }
+
+  .nav-logo-img-scrolled {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600;
+    color: var(--forest); letter-spacing: 0.02em;
+    white-space: nowrap; line-height: 1;
+    width: 0; opacity: 0; overflow: hidden;
+    transition: opacity 0.25s, width 0.25s;
+    pointer-events: none;
+  }
+  .nav-logo-img-scrolled span { color: var(--gold); }
+  nav#nav.scrolled .nav-logo-img-scrolled {
+    width: auto; opacity: 1; pointer-events: auto; overflow: visible;
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+   
+  }
+  nav#nav.scrolled .nav-links {
+    background: transparent; backdrop-filter: none;
+    padding: 0; border-radius: 0;
+  }
+  .nav-links a {
+    text-decoration: none; color: rgba(245,240,232,0.88); transition: color 0.2s;
+  }
+  nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+  nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--gold) !important; color: var(--forest) !important;
+    padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
+  }
+  nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: rgba(245,240,232,0.9); border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+    transform-origin: center;
+  }
+  nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    nav#nav {
+      flex-direction: column !important;
+      align-items: center !important;
+      padding: 14px 5vw 10px !important;
+      background: rgba(28,43,30,0.28) !important;
+    }
+    nav#nav.scrolled {
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      padding: 0 5vw !important;
+      height: 56px !important;
+      background: rgba(245,239,228,0.97) !important;
+    }
+    .nav-logo { margin-bottom: 6px; }
+    nav#nav.scrolled .nav-logo { margin-bottom: 0; }
+    .nav-logo-img-main { width: 80px; }
+  }
+
+  
 /* ── PAGE HEADER ─────────────────────── */
 .page-header {
   padding: 140px 8vw 70px;
@@ -80,7 +168,6 @@ body {
 .breadcrumb a { color: rgba(245,240,232,0.45); text-decoration: none; }
 .breadcrumb a:hover { color: var(--gold-light); }
 .breadcrumb span { margin: 0 0.6rem; }
->>>>>>> parent of d3c7622 (Update products.html)
 
   .nav-logo-img-main {
     display: block; width: 110px; height: auto;
@@ -1318,408 +1405,1478 @@ footer {
   </div>
 </div>
 
-<script>
-// ── NAV SCROLL ────────────────────────────
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
 
-// ── FILTER LOGIC ─────────────────────────
-const tabs = document.querySelectorAll('.filter-tab');
-const cards = document.querySelectorAll('.product-card');
-const countNum = document.getElementById('countNum');
-
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const filter = tab.dataset.filter;
-    let count = 0;
-    cards.forEach((card, i) => {
-      const cats = card.dataset.category || '';
-      const show = filter === 'all' || cats.includes(filter);
-      card.classList.toggle('hidden', !show);
-      if (show) { count++; card.style.animationDelay = (count * 0.04) + 's'; }
+</body>
+</html><script>
+  // ── HAMBURGER MENU ──────────────────────────────
+  (function() {
+    var btn = document.getElementById('navHamburger');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    function openMenu() {
+      btn.classList.add('open');
+      menu.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    btn.addEventListener('click', function() {
+      if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
     });
-    countNum.textContent = count;
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+</script><script>
+  // Sticky nav shadow
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
   });
-});
 
-// ── VIEW TOGGLE ───────────────────────────
-const grid = document.getElementById('productsGrid');
-document.getElementById('gridViewBtn').addEventListener('click', function() {
-  grid.classList.remove('list-view');
-  this.classList.add('active');
-  document.getElementById('listViewBtn').classList.remove('active');
-});
-document.getElementById('listViewBtn').addEventListener('click', function() {
-  grid.classList.add('list-view');
-  this.classList.add('active');
-  document.getElementById('gridViewBtn').classList.remove('active');
-});
+  // Fade-up scroll animations — opt-in only, content always visible without JS
+  (function() {
+    // Only enable animation if IntersectionObserver is supported
+    if (!('IntersectionObserver' in window)) return;
 
-// ── PRODUCT DATA ──────────────────────────
-const productData = {
-  coffee: {
-    category: 'Superfoods & Beverages',
-    title: 'Specialty Coffee',
-    desc: 'Indonesia is the world\'s fourth-largest coffee producer, and our specialty lots come from the country\'s most prized growing regions -- Flores (Bajawa), Toraja, Aceh Gayo, and Java Estate. We offer green bean, roasted, and ground specifications. Processing methods include natural sun-dried, fully washed, and honey process. Minimum screen size 15+, 0% black/brown defects for Grade 1.',
-    origin: 'Flores · Toraja · Aceh · Java',
-    img: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Varieties', val: 'Arabica, Robusta, Liberica' },
-      { key: 'Processing', val: 'Natural, Washed, Honey' },
-      { key: 'Min. Order', val: '1 x 20ft FCL (~18MT)' },
-      { key: 'Packaging', val: 'GrainPro / Jute bags / OEM' },
-      { key: 'Moisture', val: '≤12.5%' },
-      { key: 'Lead Time', val: '3–5 weeks' }
-    ],
-    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Rainforest Alliance (select lots)', 'Organic (select lots)']
-  },
-  moringa: {
-    category: 'Superfoods & Nutraceuticals',
-    title: 'Moringa Powder',
-    desc: 'Sourced from cultivated Moringa oleifera farms in East Java and Nusa Tenggara Barat. Leaves are harvested at 60–90 day intervals for peak nutritional density, then cleaned, dried at controlled temperatures (max 50°C for low-heat process), and milled to 80–200 mesh. We provide full heavy metal, microbiological, and nutritional CoA from ISO 17025-accredited laboratories with every order.',
-    origin: 'East Java · NTB',
-    img: 'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Particle Size', val: '80–200 mesh' },
-      { key: 'Processing', val: 'Spray-dried / Freeze-dried' },
-      { key: 'Min. Order', val: '500 kg' },
-      { key: 'Packaging', val: '25kg kraft bags / OEM' },
-      { key: 'Moisture', val: '≤8%' },
-      { key: 'Shelf Life', val: '24 months sealed' }
-    ],
-    certs: ['Phytosanitary Certificate', 'Certificate of Analysis (ISO Lab)', 'Halal (MUI)', 'Organic (IMO / USDA NOP)', 'Heavy Metal Test Report']
-  },
-  vanilla: {
-    category: 'Premium Flavour Ingredients',
-    title: 'Vanilla Beans',
-    desc: 'Indonesian Vanilla planifolia from East Java is prized for its creamy, smooth vanillin profile with secondary notes of wood and dried fruit. Our Grade A beans (18–20cm, moisture 28–32%) are hand-selected and cured for a minimum of 6 months. Grade B split and short beans are available for extract manufacturers at reduced pricing. We supply single-origin and blended lots.',
-    origin: 'East Java · Bali',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Grade A', val: '18–20cm, ≥1.5% vanillin' },
-      { key: 'Grade B', val: 'Short/split for extract' },
-      { key: 'Moisture', val: '28–32%' },
-      { key: 'Min. Order', val: '25 kg' },
-      { key: 'Packaging', val: 'Vacuum-sealed bundles' },
-      { key: 'Lead Time', val: '2–4 weeks' }
-    ],
-    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Organic (available on request)']
-  },
-  agarwood: {
-    category: 'Luxury Fragrance',
-    title: 'Agarwood (Oud)',
-    desc: 'Agarwood is one of the most valuable natural fragrance materials in the world, and Indonesian Aquilaria malaccensis and A. microcarpa are highly regarded in the Middle Eastern, Japanese, and luxury Western markets. We source ethically from plantation and managed-wild sources with full CITES documentation. Available as raw wood chips, powder, and steam/CO2-distilled oud oil.',
-    origin: 'Kalimantan · Sumatra',
-    img: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Forms', val: 'Chips, Powder, Oud Oil' },
-      { key: 'Grading', val: 'Super, A, B, C grade chips' },
-      { key: 'Oil Yield', val: '0.3–0.8% from raw wood' },
-      { key: 'Min. Order', val: '1 kg oil / 50 kg chips' },
-      { key: 'CITES', val: 'Appendix II compliant' },
-      { key: 'Lead Time', val: '4–8 weeks' }
-    ],
-    certs: ['CITES Appendix II Export Permit', 'Phytosanitary Certificate', 'GC/MS Analysis (oil)', 'Certificate of Origin', 'Chain of Custody Documentation']
-  },
-  sandalwood: {
-    category: 'Luxury Fragrance',
-    title: 'Sandalwood',
-    desc: 'Indonesian sandalwood (Santalum album) from Timor is renowned as one of the finest in the world, second only to Mysore in prestige. We work with licensed, government-approved plantation and regulated harvest sources in East Nusa Tenggara. Products include heartwood chips, powder, and steam-distilled essential oil rich in alpha and beta-santalol -- the key quality indicators for perfumers.',
-    origin: 'Nusa Tenggara Timur · Timor',
-    img: 'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Forms', val: 'Chips, Powder, Essential Oil' },
-      { key: 'Santalol Content', val: '≥70% (alpha+beta)' },
-      { key: 'Min. Order', val: '1 kg oil / 100 kg wood' },
-      { key: 'Packaging', val: 'Airtight drums or bags' },
-      { key: 'Harvest', val: 'Licensed & sustainable' },
-      { key: 'Lead Time', val: '4–8 weeks' }
-    ],
-    certs: ['CITES Appendix II Export Permit', 'Phytosanitary Certificate', 'GC/MS Analysis (oil)', 'Sustainable Harvest Certificate', 'Certificate of Origin']
-  },
-  patchouli: {
-    category: 'Essential Oils',
-    title: 'Patchouli Oil',
-    desc: 'Indonesia supplies approximately 90% of the world\'s patchouli oil, with Aceh Province producing the most prized light patchouli. Our steam-distilled oil is produced from fresh Pogostemon cablin leaves, yielding a high patchoulol (30–35%) content. We offer light patchouli (freshly distilled), dark patchouli (aged), and aged-rectified grades to suit fine fragrance, cosmetic, and aromatherapy applications.',
-    origin: 'Aceh · North Sumatra',
-    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Grades', val: 'Light, Dark, Aged-Rectified' },
-      { key: 'Patchoulol', val: '30–35% (GC verified)' },
-      { key: 'Specific Gravity', val: '0.950–0.975' },
-      { key: 'Min. Order', val: '25 kg' },
-      { key: 'Packaging', val: 'Aluminium drums' },
-      { key: 'Lead Time', val: '2–3 weeks' }
-    ],
-    certs: ['GC/MS Certificate of Analysis', 'Phytosanitary Certificate', 'Certificate of Origin', 'ISO 3757 Compliance']
-  },
-  honey: {
-    category: 'Artisanal Superfoods',
-    title: 'Raw Forest Honey (Madu Hutan)',
-    desc: 'Madu Hutan is wild forest honey harvested by indigenous Dayak communities from Apis dorsata (giant honeybee) hives in the Kalimantan rainforest canopy. It is completely unheated, unfiltered, and unprocessed -- preserving all natural enzymes, pollens, and antioxidants. Each batch is tested for HMF, moisture, sugar content, and microbial safety by independent labs.',
-    origin: 'Kalimantan Rainforest',
-    img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Type', val: 'Wild multiflora (Apis dorsata)' },
-      { key: 'Moisture', val: '≤20%' },
-      { key: 'HMF', val: '≤40 mg/kg' },
-      { key: 'Min. Order', val: '100 kg' },
-      { key: 'Packaging', val: 'Food-grade drums or jars' },
-      { key: 'Shelf Life', val: '24 months' }
-    ],
-    certs: ['Certificate of Analysis (accredited lab)', 'Phytosanitary Certificate', 'Microbiological Safety Report', 'Fair Trade Sourcing Documentation']
-  },
-  cacao: {
-    category: 'Fine Flavour Cacao',
-    title: 'Cacao & Chocolate',
-    desc: 'Indonesian cacao, especially from Sulawesi (Trinitario origin) and Flores (local varieties), is increasingly recognized by fine chocolate makers worldwide. Our fermented beans are processed at farmer-cooperative level, with 5–7 day fermentation and controlled sun-drying. We supply fermented dried beans, roasted nibs, cocoa mass, cocoa butter, and single-origin chocolate drops for confectionery manufacturers.',
-    origin: 'Sulawesi · Flores · West Java',
-    img: 'https://images.unsplash.com/photo-1511381939415-e44015466834?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Types', val: 'Fermented beans, Nibs, Mass' },
-      { key: 'Fermentation', val: '5–7 days box fermented' },
-      { key: 'Fat Content', val: '50–55% (cocoa mass)' },
-      { key: 'Min. Order', val: '500 kg beans / 100 kg processed' },
-      { key: 'Packaging', val: 'GrainPro / Foil-lined bags' },
-      { key: 'Lead Time', val: '3–5 weeks' }
-    ],
-    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Certificate of Origin', 'Fine Flavour Classification (select lots)']
-  },
-  'gula-aren': {
-    category: 'Natural Sweeteners',
-    title: 'Gula Aren (Palm Sugar)',
-    desc: 'Gula Aren is harvested from the sap of Arenga pinnata palm trees by tapping the flower stems. It is a natural, minimally processed sweetener with a lower glycemic index (35–50) than refined cane sugar, a rich caramel-molasses flavour, and naturally occurring minerals. Available in traditional block form, granulated, and liquid concentrate for food and beverage manufacturers.',
-    origin: 'West Java · Sulawesi · Sumatra',
-    img: 'https://images.unsplash.com/photo-1611080541599-8c6dbde6ed28?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Forms', val: 'Block, Granule, Liquid' },
-      { key: 'Brix', val: '70–80° (liquid)' },
-      { key: 'GI Index', val: '35–50 (vs cane sugar 65+)' },
-      { key: 'Min. Order', val: '500 kg' },
-      { key: 'Packaging', val: 'OEM retail or bulk bags' },
-      { key: 'Lead Time', val: '2–4 weeks' }
-    ],
-    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Organic Certification (IMO / USDA NOP available)', 'Halal Certificate (MUI)']
-  },
-  porang: {
-    category: 'Food Technology Ingredient',
-    title: 'Porang / Konjac Flour',
-    desc: 'Amorphophallus muelleri (porang) is Indonesia\'s native konjac species, yielding high-glucomannan flour for the food technology, health food, and industrial markets. Our flour is standardized for glucomannan content (minimum 65–75%), particle size, and viscosity. Primary markets include shirataki noodle manufacturers, food texturizer producers, pharmaceutical excipient suppliers, and nutraceutical brands.',
-    origin: 'East Java · NTT · South Sulawesi',
-    img: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Glucomannan', val: '65–75% minimum' },
-      { key: 'Viscosity', val: '≥28,000 mPa·s' },
-      { key: 'Particle Size', val: '120–200 mesh' },
-      { key: 'Min. Order', val: '1 MT' },
-      { key: 'Packaging', val: '25 kg kraft bags' },
-      { key: 'Lead Time', val: '3–5 weeks' }
-    ],
-    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Food Grade Safety Certificate', 'Heavy Metal Analysis', 'Microbiological Report']
-  },
-  tapioca: {
-    category: 'Food & Industrial Starch',
-    title: 'Tapioca Starch',
-    desc: 'Food-grade cassava (Manihot esculenta) starch from Lampung and East Java -- two of Indonesia\'s highest-production regions. Our tapioca starch meets international food additive standards with consistent whiteness (≥92 KETT), low moisture (≤14%), and controlled SO2 levels. Suitable for food processing, paper manufacturing, textile sizing, and adhesive applications.',
-    origin: 'Lampung · East Java',
-    img: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Moisture', val: '≤14%' },
-      { key: 'Whiteness', val: '≥92 KETT' },
-      { key: 'SO2 Residue', val: '≤30 ppm' },
-      { key: 'Min. Order', val: '1 x 20ft FCL (20MT)' },
-      { key: 'Packaging', val: '50 kg PP bags / bulk' },
-      { key: 'Lead Time', val: '2–3 weeks' }
-    ],
-    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Food Safety Certificate', 'FSSC 22000 (facility)']
-  },
-  avocado: {
-    category: 'Fresh & Processed Produce',
-    title: 'Premium Avocado',
-    desc: 'Indonesia\'s avocado production is concentrated in East Java and Bali, where volcanic soil and tropical climate produce dense, buttery fruit. Export varieties include Pogama (large, smooth skin) and Mentega (small, yellow flesh). We supply fresh export-grade fruit (Class I), IQF frozen halves, and cold-pressed avocado oil for cosmetic and food markets.',
-    origin: 'East Java · Bali',
-    img: 'https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Varieties', val: 'Pogama, Mentega, Hass' },
-      { key: 'Forms', val: 'Fresh, IQF, Puree, Oil' },
-      { key: 'Brix (fresh)', val: '4–8°' },
-      { key: 'Min. Order', val: '1 MT fresh / 500 kg IQF' },
-      { key: 'Cold Chain', val: '5°C throughout' },
-      { key: 'Lead Time', val: '2–4 weeks (seasonal)' }
-    ],
-    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'GlobalGAP (select farms)', 'Cold Chain Documentation']
-  },
-  spices: {
-    category: 'Aromatic Spices',
-    title: 'Premium Spices',
-    desc: 'The Maluku Islands (the original Spice Islands) gave Indonesia its historic place at the centre of global trade, and the quality of its cloves, nutmeg, and mace remains unparalleled. We supply whole, cracked, and ground specifications of clove, nutmeg, mace, white pepper (Muntok), black pepper, and long pepper with volatile oil analysis and aflatoxin testing on every shipment.',
-    origin: 'Maluku · West Java · Bangka',
-    img: 'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Products', val: 'Clove, Nutmeg, Pepper, Mace' },
-      { key: 'Forms', val: 'Whole, Cracked, Ground' },
-      { key: 'Volatile Oil', val: 'As per ASTA / ISO spec' },
-      { key: 'Min. Order', val: '500 kg per SKU' },
-      { key: 'Packaging', val: '25 kg bags / OEM' },
-      { key: 'Lead Time', val: '2–4 weeks' }
-    ],
-    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Aflatoxin Test Report', 'Pesticide Residue Analysis']
-  },
-  charcoal: {
-    category: 'Industrial Products',
-    title: 'Charcoal Briquettes',
-    desc: 'Indonesian coconut shell charcoal is world-renowned for its high carbon content (≥85%), low ash (≤5%), and long burn time -- making it the premium choice for hookah (shisha), restaurant grill, and premium BBQ markets. We also produce hardwood briquettes for industrial kiln and biomass energy applications. Custom shapes (hex, cube, finger, pillow) and private-label packaging available.',
-    origin: 'Java · Sulawesi · Kalimantan',
-    img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Fixed Carbon', val: '≥85% (coconut shell)' },
-      { key: 'Ash Content', val: '≤5%' },
-      { key: 'Moisture', val: '≤8%' },
-      { key: 'Min. Order', val: '1 x 20ft FCL (22MT)' },
-      { key: 'Shapes', val: 'Hex, Cube, Finger, Pillow' },
-      { key: 'Lead Time', val: '3–5 weeks' }
-    ],
-    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'SGS Inspection Available', 'Custom OEM Packaging']
-  },
-  indigo: {
-    category: 'Natural Dyes',
-    title: 'Natural Indigo Paste',
-    desc: 'Indonesian natural indigo (Indigofera tinctoria) is produced through traditional fermentation and oxidation of fresh leaf harvest. Our paste is standardized for indigotin content (35–45%) and is free from synthetic additives. It is used by sustainable textile brands, natural dye houses, artisan batik makers, and fashion brands committed to non-synthetic colouration.',
-    origin: 'Java · Bali',
-    img: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Indigotin Content', val: '35–45%' },
-      { key: 'Form', val: 'Paste (wet, 40% DM)' },
-      { key: 'pH', val: '7.5–9.0' },
-      { key: 'Min. Order', val: '50 kg' },
-      { key: 'Packaging', val: 'HDPE buckets or drums' },
-      { key: 'Lead Time', val: '2–4 weeks' }
-    ],
-    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'OEKO-TEX (select batches)', 'Synthetic-Free Declaration']
-  },
-  cashew: {
-    category: 'Nuts & Kernels',
-    title: 'Cashew',
-    desc: 'Indonesian cashew production from East Nusa Tenggara and East Java yields high-quality kernels with good splitting characteristics and consistent whiteness. We supply W240, W320, and W450 grade whole white kernels, as well as splits, pieces, and cashew nut shell liquid (CNSL) for industrial chemical applications. Processed in HACCP-certified shelling facilities.',
-    origin: 'NTT · East Java',
-    img: 'https://images.unsplash.com/photo-1509366275-2b0f62c4f8f7?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Grades', val: 'W240, W320, W450, LWP' },
-      { key: 'Moisture', val: '≤5%' },
-      { key: 'Min. Order', val: '1 MT' },
-      { key: 'Packaging', val: 'Vacuum tins / 25 lb cartons' },
-      { key: 'Shelf Life', val: '12 months (vacuum)' },
-      { key: 'Lead Time', val: '3–4 weeks' }
-    ],
-    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Allergen Statement', 'HACCP Facility Certificate', 'Pesticide Residue Analysis']
-  },
-  'red-beans': {
-    category: 'Legumes & Grains',
-    title: 'Red Beans',
-    desc: 'Indonesian red kidney beans (Phaseolus vulgaris) are grown in the highland regions of Java and Sulawesi, offering a rich, earthy flavour and firm texture after cooking. We supply size-sorted, colour-graded beans for retail, foodservice, and commodity trading accounts. Available in 25 kg and 50 kg polypropylene bags, and can supply aflatoxin and pesticide testing on request.',
-    origin: 'Java · Sulawesi',
-    img: 'https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Variety', val: 'Dark Red Kidney Bean' },
-      { key: 'Moisture', val: '≤14%' },
-      { key: 'Admixture', val: '≤1%' },
-      { key: 'Min. Order', val: '10 MT' },
-      { key: 'Packaging', val: '25 / 50 kg PP bags' },
-      { key: 'Lead Time', val: '2–3 weeks' }
-    ],
-    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Aflatoxin Test Report']
-  },
-  sorghum: {
-    category: 'Grains & Cereals',
-    title: 'Sorghum',
-    desc: 'Sorghum (Sorghum bicolor) is gaining global market share as a gluten-free grain for human food, animal feed, and biofuel production. Indonesian sorghum is drought-resilient and grown without heavy chemical inputs in NTT and East Java. We supply food-grade (for flour milling, brewing, and snack manufacture) and feed-grade lots, with tannin analysis available.',
-    origin: 'NTT · East Java',
-    img: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Grades', val: 'Food Grade, Feed Grade' },
-      { key: 'Moisture', val: '≤14%' },
-      { key: 'Test Weight', val: '≥56 kg/hL' },
-      { key: 'Min. Order', val: '20 MT' },
-      { key: 'Packaging', val: 'Bulk / 50 kg bags' },
-      { key: 'Lead Time', val: '3–4 weeks' }
-    ],
-    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Pesticide Residue Analysis']
-  },
-  corncob: {
-    category: 'Agricultural By-Products',
-    title: 'Corncob',
-    desc: 'Corncob is a versatile agricultural by-product with applications in animal feed supplementation, Pleurotus mushroom cultivation substrate, industrial abrasive blasting media, biomass fuel, and cob powder as a filler material. We supply whole dried cobs, coarsely ground corncob meal, and fine-ground powder to specification.',
-    origin: 'East Java · NTT · West Kalimantan',
-    img: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Forms', val: 'Whole, Coarse Meal, Fine Powder' },
-      { key: 'Moisture', val: '≤12%' },
-      { key: 'Particle Size', val: 'Custom (10–60 grit)' },
-      { key: 'Min. Order', val: '5 MT' },
-      { key: 'Packaging', val: 'Bulk bags / PP sacks' },
-      { key: 'Lead Time', val: '2–3 weeks' }
-    ],
-    certs: ['Phytosanitary Certificate', 'Certificate of Analysis', 'Moisture &amp; Ash Report']
-  },
-  kratom: {
-    category: 'Botanical Extract (Export Only)',
-    title: 'Kratom',
-    desc: 'Mitragyna speciosa is a tropical evergreen tree native to Southeast Asia. Kratom leaf and powder are legally exported from Indonesia to compliant markets. We supply crushed leaf, powder, and concentrated extract with full alkaloid profile (mitragynine, 7-hydroxymitragynine) documentation. Note: buyers are solely responsible for verifying legality in their import jurisdiction. We do not supply to prohibited markets.',
-    origin: 'West Kalimantan',
-    img: 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=800&q=80&fit=crop',
-    specs: [
-      { key: 'Forms', val: 'Powder, Crushed Leaf, Extract' },
-      { key: 'Mitragynine', val: '1.2–1.8% (powder)' },
-      { key: 'Moisture', val: '≤10%' },
-      { key: 'Min. Order', val: '25 kg' },
-      { key: 'Packaging', val: 'Sealed bags / drums' },
-      { key: 'Lead Time', val: '2–3 weeks' }
-    ],
-    certs: ['Certificate of Analysis (alkaloid profile)', 'Phytosanitary Certificate', 'Certificate of Origin', 'Heavy Metal & Microbial Analysis']
-  }
-};
+    // Add class to body to enable CSS animations
+    document.body.classList.add('js-animate');
 
-// ── MODAL LOGIC ───────────────────────────
-const overlay = document.getElementById('modalOverlay');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px' });
 
-document.querySelectorAll('.product-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const id = card.dataset.id;
-    const data = productData[id];
-    if (!data) return;
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    document.getElementById('modalCategory').textContent = data.category;
-    document.getElementById('modalTitle').textContent = data.title;
-    document.getElementById('modalDesc').textContent = data.desc;
-    document.getElementById('modalOriginBadge').textContent = data.origin;
-    document.getElementById('modalImg').src = data.img;
-    document.getElementById('modalImg').alt = data.title;
+    // Safety net: after 800ms force-reveal anything still hidden
+    setTimeout(() => {
+      document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 800);
+  })();
 
-    const specsEl = document.getElementById('modalSpecs');
-    specsEl.innerHTML = data.specs.map(s =>
-      `<div class="modal-spec"><div class="modal-spec-key">${s.key}</div><div class="modal-spec-val">${s.val}</div></div>`
-    ).join('');
-
-    const certsEl = document.getElementById('modalCerts');
-    certsEl.innerHTML = data.certs.map(c =>
-      `<span class="modal-cert">${c}</span>`
-    ).join('');
-
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-});
-
-function closeModal() {
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
+  // Form submit handler
+  function handleSubmit(btn) {
+    btn.textConten
+E html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Catalog | Hindia Timur — Premium Indonesian Produce for Export</title>
+<meta name="description" content="Browse 20+ export-grade Indonesian products: specialty coffee, moringa, vanilla, agarwood, patchouli oil, spices and more. Full compliance documentation available.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E8;
+  --warm-white: #FAF8F3;
+  --forest: #1C2B1E;
+  --moss: #2D4A32;
+  --sage: #4A6741;
+  --gold: #B8924A;
+  --gold-light: #D4AC6E;
+  --earth: #6B4E2A;
+  --text: #1A1A18;
+  --text-mid: #3D3D38;
+  --text-light: #6B6B60;
+  --border: rgba(28,43,30,0.10);
+  --border-strong: rgba(28,43,30,0.18);
 }
-overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-</script>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+  /* ─── NAV ─────────────────────────────────────────────── */
+  /* ─── NAV ─────────────────────────────────────────────── */
+  nav#nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 18px 5vw 12px;
+    transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+    background: rgba(28,43,30,0.20);
+    backdrop-filter: blur(8px);
+  }
+  nav#nav.scrolled {
+    flex-direction: row; justify-content: space-between; align-items: center;
+    padding: 0 5vw; height: 64px;
+    background: rgba(245,239,228,0.97);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  }
+
+  .nav-logo {
+    display: block; text-decoration: none; line-height: 0;
+    margin-bottom: 10px;
+  }
+  nav#nav.scrolled .nav-logo { margin-bottom: 0; }
+
+  .nav-logo-img-main {
+    display: block; width: 110px; height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: opacity 0.25s, width 0.25s;
+  }
+  nav#nav.scrolled .nav-logo-img-main {
+    width: 0; opacity: 0; pointer-events: none; overflow: hidden;
+  }
+
+  .nav-logo-img-scrolled {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600;
+    color: var(--forest); letter-spacing: 0.02em;
+    white-space: nowrap; line-height: 1;
+    width: 0; opacity: 0; overflow: hidden;
+    transition: opacity 0.25s, width 0.25s;
+    pointer-events: none;
+  }
+  .nav-logo-img-scrolled span { color: var(--gold); }
+  nav#nav.scrolled .nav-logo-img-scrolled {
+    width: auto; opacity: 1; pointer-events: auto; overflow: visible;
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+   
+  }
+  nav#nav.scrolled .nav-links {
+    background: transparent; backdrop-filter: none;
+    padding: 0; border-radius: 0;
+  }
+  .nav-links a {
+    text-decoration: none; color: rgba(245,240,232,0.88); transition: color 0.2s;
+  }
+  nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+  nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--gold) !important; color: var(--forest) !important;
+    padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
+  }
+  nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: rgba(245,240,232,0.9); border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+    transform-origin: center;
+  }
+  nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    nav#nav {
+      flex-direction: column !important;
+      align-items: center !important;
+      padding: 14px 5vw 10px !important;
+      background: rgba(28,43,30,0.28) !important;
+    }
+    nav#nav.scrolled {
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      padding: 0 5vw !important;
+      height: 56px !important;
+      background: rgba(245,239,228,0.97) !important;
+    }
+    .nav-logo { margin-bottom: 6px; }
+    nav#nav.scrolled .nav-logo { margin-bottom: 0; }
+    .nav-logo-img-main { width: 80px; }
+  }
+
+  
+/* ── PAGE HEADER ─────────────────────── */
+.page-header {
+  padding: 140px 8vw 70px;
+  background: var(--forest);
+  position: relative; overflow: hidden;
+  margin-top: 120px;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 40%, rgba(184,146,74,0.13) 0%, transparent 55%),
+              radial-gradient(ellipse at 10% 80%, rgba(45,74,50,0.6) 0%, transparent 50%);
+  pointer-events: none;
+}
+.breadcrumb {
+  position: relative;
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.35); margin-bottom: 1.4rem;
+}
+.breadcrumb a { color: rgba(245,240,232,0.45); text-decoration: none; }
+.breadcrumb a:hover { color: var(--gold-light); }
+.breadcrumb span { margin: 0 0.6rem; }
+
+  .nav-logo-img-main {
+    display: block; width: 110px; height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: opacity 0.25s, width 0.25s;
+  }
+  nav#nav.scrolled .nav-logo-img-main {
+    width: 0; opacity: 0; pointer-events: none; overflow: hidden;
+  }
+
+  .nav-logo-img-scrolled {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600;
+    color: var(--forest); letter-spacing: 0.02em;
+    white-space: nowrap; line-height: 1;
+    width: 0; opacity: 0; overflow: hidden;
+    transition: opacity 0.25s, width 0.25s;
+    pointer-events: none;
+  }
+  .nav-logo-img-scrolled span { color: var(--gold); }
+  nav#nav.scrolled .nav-logo-img-scrolled {
+    width: auto; opacity: 1; pointer-events: auto; overflow: visible;
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    background: rgba(28,43,30,0.30);
+    backdrop-filter: blur(4px);
+    padding: 7px 24px; border-radius: 30px;
+    transition: background 0.35s, padding 0.35s, border-radius 0.35s;
+  }
+  nav#nav.scrolled .nav-links {
+    background: transparent; backdrop-filter: none;
+    padding: 0; border-radius: 0;
+  }
+  .nav-links a {
+    text-decoration: none; color: rgba(245,240,232,0.88); transition: color 0.2s;
+  }
+  nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+  nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--gold) !important; color: var(--forest) !important;
+    padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
+  }
+  nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: rgba(245,240,232,0.9); border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+    transform-origin: center;
+  }
+  nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    nav#nav {
+      flex-direction: column !important;
+      align-items: center !important;
+      padding: 14px 5vw 10px !important;
+      background: rgba(28,43,30,0.28) !important;
+    }
+    nav#nav.scrolled {
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      padding: 0 5vw !important;
+      height: 56px !important;
+      background: rgba(245,239,228,0.97) !important;
+    }
+    .nav-logo { margin-bottom: 6px; }
+    nav#nav.scrolled .nav-logo { margin-bottom: 0; }
+    .nav-logo-img-main { width: 80px; }
+  }
+
+
+/* ── PAGE HEADER ─────────────────────── */
+.page-header {
+  padding: 140px 8vw 70px;
+  background: var(--forest);
+  position: relative; overflow: hidden;
+  margin-top: 120px;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 40%, rgba(184,146,74,0.13) 0%, transparent 55%),
+              radial-gradient(ellipse at 10% 80%, rgba(45,74,50,0.6) 0%, transparent 50%);
+  pointer-events: none;
+}
+.breadcrumb {
+  position: relative;
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.35); margin-bottom: 1.4rem;
+  margin-top: 120px;
+}
+.breadcrumb a { color: rgba(245,240,232,0.45); text-decoration: none; }
+.breadcrumb a:hover { color: var(--gold-light); }
+.breadcrumb span { margin: 0 0.6rem; }
+
+.page-title {
+  position: relative;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5vw, 4.4rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--cream); margin-bottom: 1.2rem;
+}
+.page-title em { font-style: italic; color: var(--gold-light); }
+
+.page-lead {
+  position: relative;
+  font-size: 1rem; font-weight: 300; line-height: 1.75;
+  color: rgba(245,240,232,0.65); max-width: 580px; margin-bottom: 2.5rem;
+}
+
+.header-stats {
+  position: relative;
+  display: flex; gap: 3.5rem; flex-wrap: wrap;
+  padding-top: 2.5rem; border-top: 1px solid rgba(245,240,232,0.1);
+}
+.h-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 300; color: var(--gold-light); line-height: 1;
+}
+.h-stat-label {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.4); margin-top: 0.25rem;
+}
+
+/* ── FILTER BAR ───────────────────────── */
+.filter-bar {
+  position: sticky; top: 72px; z-index: 100;
+  background: rgba(250,248,243,0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 8vw;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+  min-height: 62px;
+}
+.filter-tabs {
+  display: flex; gap: 0; flex-wrap: wrap;
+}
+.filter-tab {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-light); padding: 1.2rem 1.3rem;
+  cursor: pointer; border: none; background: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.filter-tab:hover { color: var(--forest); }
+.filter-tab.active { color: var(--forest); border-bottom-color: var(--gold); }
+
+.filter-right {
+  display: flex; align-items: center; gap: 1rem;
+}
+.count-label {
+  font-size: 0.78rem; color: var(--text-light); white-space: nowrap;
+}
+.count-label strong { color: var(--forest); }
+
+.view-toggle { display: flex; gap: 0.3rem; }
+.view-btn {
+  width: 32px; height: 32px; border: 1px solid var(--border);
+  background: none; cursor: pointer; border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-light); transition: all 0.2s;
+}
+.view-btn.active, .view-btn:hover {
+  background: var(--forest); border-color: var(--forest); color: var(--cream);
+}
+
+/* ── CATALOG GRID ─────────────────────── */
+.catalog-section {
+  padding: 3.5rem 8vw 7rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.products-grid.list-view {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+/* ── PRODUCT CARD (grid) ──────────────── */
+.product-card {
+  background: var(--warm-white);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s;
+  position: relative;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.product-card.hidden {
+  display: none;
+}
+.product-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s;
+}
+.product-card:hover::after { transform: scaleX(1); }
+.product-card:hover { background: var(--forest); }
+.product-card:hover .card-name { color: var(--cream); }
+.product-card:hover .card-desc { color: rgba(245,240,232,0.55); }
+.product-card:hover .card-footer { border-color: rgba(245,240,232,0.08); }
+.product-card:hover .card-tag { background: rgba(184,146,74,0.15); color: var(--gold-light); }
+.product-card:hover .card-cta { color: var(--gold-light); }
+.product-card:hover .card-origin { color: rgba(245,240,232,0.4); }
+
+.card-image-wrap {
+  width: 100%; aspect-ratio: 4/3;
+  overflow: hidden; position: relative;
+  background: var(--cream);
+}
+.card-image-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s, filter 0.5s;
+  filter: saturate(0.85);
+}
+.product-card:hover .card-image-wrap img {
+  transform: scale(1.04);
+  filter: saturate(0.65) brightness(0.7);
+}
+.card-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(28,43,30,0.3) 100%);
+  opacity: 0; transition: opacity 0.35s;
+}
+.product-card:hover .card-img-overlay { opacity: 1; }
+
+.card-body { padding: 1.6rem 1.6rem 1rem; flex: 1; }
+
+.card-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 0.6rem;
+}
+.card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 600;
+  color: var(--forest); line-height: 1.2;
+  transition: color 0.25s;
+}
+.card-tag {
+  display: inline-block; flex-shrink: 0;
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.2rem 0.55rem; border-radius: 1px;
+  transition: all 0.25s;
+}
+.tag-high { color: var(--gold); background: rgba(184,146,74,0.1); }
+.tag-luxury { color: var(--earth); background: rgba(107,78,42,0.1); }
+.tag-organic { color: var(--sage); background: rgba(74,103,65,0.1); }
+.tag-export { color: #7B3F00; background: rgba(123,63,0,0.1); }
+.tag-industrial { color: #4A5568; background: rgba(74,85,104,0.1); }
+.tag-specialty { color: #5B4FCF; background: rgba(91,79,207,0.08); }
+
+.card-desc {
+  font-size: 0.82rem; font-weight: 300; line-height: 1.65;
+  color: var(--text-light); margin-bottom: 0.8rem;
+  transition: color 0.25s;
+}
+.card-specs {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem;
+}
+.spec-pill {
+  font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-light); background: var(--cream);
+  border: 1px solid var(--border); padding: 0.18rem 0.55rem; border-radius: 20px;
+  transition: all 0.25s;
+}
+.product-card:hover .spec-pill { background: rgba(245,240,232,0.08); border-color: rgba(245,240,232,0.15); color: rgba(245,240,232,0.5); }
+
+.card-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.9rem 1.6rem;
+  border-top: 1px solid var(--border);
+  transition: border-color 0.25s;
+}
+.card-origin {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
+  color: var(--text-light); text-transform: uppercase;
+  transition: color 0.25s;
+}
+.card-cta {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--forest);
+  display: flex; align-items: center; gap: 0.4rem;
+  transition: color 0.25s;
+}
+.card-cta svg { width: 12px; height: 12px; transition: transform 0.2s; }
+.product-card:hover .card-cta svg { transform: translateX(3px); }
+
+/* ── LIST VIEW CARD ───────────────────── */
+.products-grid.list-view .product-card {
+  flex-direction: row;
+  min-height: 130px;
+}
+.products-grid.list-view .card-image-wrap {
+  width: 160px; flex-shrink: 0; aspect-ratio: auto;
+}
+.products-grid.list-view .card-body {
+  padding: 1.4rem 1.8rem; display: flex; gap: 2rem; align-items: center; flex: 1;
+}
+.products-grid.list-view .card-main { flex: 1; }
+.products-grid.list-view .card-top { margin-bottom: 0.4rem; }
+.products-grid.list-view .card-desc { margin-bottom: 0.5rem; }
+.products-grid.list-view .card-specs { margin-bottom: 0; }
+.products-grid.list-view .card-footer {
+  width: 200px; flex-shrink: 0; flex-direction: column; align-items: flex-end; justify-content: center;
+  border-top: none; border-left: 1px solid var(--border); gap: 0.8rem;
+}
+
+/* ── MODAL ────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(18,26,19,0.7);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: var(--warm-white);
+  width: 100%; max-width: 900px; max-height: 90vh;
+  border-radius: 2px; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s;
+}
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+
+.modal-image {
+  background: var(--cream);
+  position: relative; overflow: hidden;
+}
+.modal-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(0.88);
+}
+.modal-image-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(28,43,30,0.5) 100%);
+}
+.modal-origin-badge {
+  position: absolute; bottom: 1.5rem; left: 1.5rem;
+  background: rgba(250,248,243,0.92); backdrop-filter: blur(4px);
+  padding: 0.6rem 1rem; border-radius: 2px;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--forest);
+}
+
+.modal-body {
+  padding: 2.5rem 2.5rem;
+  overflow-y: auto; max-height: 90vh;
+  display: flex; flex-direction: column;
+}
+.modal-eyebrow {
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.7rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.modal-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 400; color: var(--forest);
+  line-height: 1.15; margin-bottom: 1rem;
+}
+.modal-desc {
+  font-size: 0.88rem; font-weight: 300; line-height: 1.75;
+  color: var(--text-mid); margin-bottom: 1.5rem;
+}
+.modal-section-title {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.7rem; margin-top: 1.4rem;
+}
+.modal-specs-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.6rem; margin-bottom: 0.5rem;
+}
+.modal-spec {
+  background: var(--cream); border: 1px solid var(--border);
+  padding: 0.7rem 0.9rem; border-radius: 2px;
+}
+.modal-spec-key {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.2rem;
+}
+.modal-spec-val {
+  font-size: 0.82rem; font-weight: 400; color: var(--forest);
+}
+.modal-cert-list {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem;
+}
+.modal-cert {
+  font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+  background: rgba(74,103,65,0.08); color: var(--sage);
+  border: 1px solid rgba(74,103,65,0.2);
+  padding: 0.25rem 0.65rem; border-radius: 20px;
+}
+.modal-actions {
+  display: flex; gap: 0.8rem; margin-top: auto; padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.modal-btn-primary {
+  flex: 1; background: var(--forest); color: var(--cream);
+  border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.9rem 1.2rem; border-radius: 2px; cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-btn-primary:hover { background: var(--gold); color: var(--forest); }
+.modal-btn-secondary {
+  background: none; color: var(--text-mid); border: 1px solid var(--border-strong);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.9rem 1.2rem; border-radius: 2px; cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.modal-btn-secondary:hover { border-color: var(--forest); color: var(--forest); }
+
+.modal-close {
+  position: absolute; top: 1.2rem; right: 1.2rem; z-index: 10;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(250,248,243,0.9); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--forest); font-size: 1rem;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: var(--cream); }
+
+/* ── CTA STRIP ────────────────────────── */
+.cta-strip {
+  background: var(--forest);
+  padding: 5rem 8vw;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 3rem; align-items: center;
+  position: relative; overflow: hidden;
+}
+.cta-strip::before {
+  content: '';
+  position: absolute; top: -30%; right: -5%;
+  width: 40vw; height: 40vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,146,74,0.1) 0%, transparent 70%);
+}
+.cta-left {}
+.cta-eyebrow {
+  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 0.9rem;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.cta-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+.cta-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300;
+  color: var(--cream); line-height: 1.2; margin-bottom: 0.8rem;
+}
+.cta-h2 em { font-style: italic; color: var(--gold-light); }
+.cta-sub {
+  font-size: 0.9rem; font-weight: 300; color: rgba(245,240,232,0.55); max-width: 500px;
+}
+.cta-right {
+  display: flex; flex-direction: column; gap: 0.8rem; flex-shrink: 0;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--forest);
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1rem 2rem; border-radius: 2px; text-decoration: none;
+  transition: background 0.2s, transform 0.2s; white-space: nowrap;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: rgba(245,240,232,0.6);
+  border: 1px solid rgba(245,240,232,0.2);
+  font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1rem 2rem; border-radius: 2px; text-decoration: none;
+  transition: border-color 0.2s, color 0.2s; white-space: nowrap;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+/* ── FOOTER ───────────────────────────── */
+footer {
+  background: #111612;
+  padding: 4rem 8vw 2.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;
+  border-top: 1px solid rgba(245,240,232,0.05);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 600; color: var(--cream); text-decoration: none;
+}
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 0.75rem; color: rgba(245,240,232,0.35); text-decoration: none;
+  letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold-light); }
+.footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.2); }
+
+/* ── RESPONSIVE ───────────────────────── */
+@media (max-width: 1200px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) {
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .modal { grid-template-columns: 1fr; }
+  .modal-image { height: 220px; }
+  .cta-strip { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .products-grid { grid-template-columns: 1fr; }
+  .filter-tabs { overflow-x: auto; }
+  .modal-specs-grid { grid-template-columns: 1fr; }
+  .products-grid.list-view .card-image-wrap { width: 100px; }
+  .products-grid.list-view .card-footer { display: none; }
+}
+
+/* ── FADE ANIMATION ───────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.product-card { animation: fadeInUp 0.45s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.png" alt="Hindia Timur">
+    <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="products.html" class="active">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-menu-logo-wrap">
+    <img src="hindia-timur-logo.png" alt="Hindia Timur">
+  </div>
+  <ul>
+    <li><a href="products.html" class="active">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <p class="breadcrumb"><a href="index.html">Home</a><span>/</span>Products</p>
+  <h1 class="page-title">Export-Grade Indonesian<br><em>Produce Catalog</em></h1>
+  <p class="page-lead">
+    Twenty commodities sourced directly from Indonesia's most productive growing regions. Every product available for bulk export with full compliance documentation.
+  </p>
+  <div class="header-stats">
+    <div>
+      <div class="h-stat-num">20+</div>
+      <div class="h-stat-label">Product Lines</div>
+    </div>
+    <div>
+      <div class="h-stat-num">15+</div>
+      <div class="h-stat-label">Export Markets</div>
+    </div>
+    <div>
+      <div class="h-stat-num">100%</div>
+      <div class="h-stat-label">Phytosanitary Compliant</div>
+    </div>
+    <div>
+      <div class="h-stat-num">24h</div>
+      <div class="h-stat-label">Quote Turnaround</div>
+    </div>
+  </div>
+</header>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <div class="filter-tabs">
+    <button class="filter-tab active" data-filter="all">All Products</button>
+    <button class="filter-tab" data-filter="superfoods">Superfoods</button>
+    <button class="filter-tab" data-filter="fragrance">Fragrance &amp; Oils</button>
+    <button class="filter-tab" data-filter="food">Food &amp; Sweeteners</button>
+    <button class="filter-tab" data-filter="industrial">Industrial</button>
+    <button class="filter-tab" data-filter="luxury">Luxury</button>
+  </div>
+  <div class="filter-right">
+    <span class="count-label"><strong id="countNum">20</strong> products shown</span>
+    <div class="view-toggle">
+      <button class="view-btn active" id="gridViewBtn" title="Grid view">
+        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="0.5"/><rect x="9" y="1" width="6" height="6" rx="0.5"/><rect x="1" y="9" width="6" height="6" rx="0.5"/><rect x="9" y="9" width="6" height="6" rx="0.5"/></svg>
+      </button>
+      <button class="view-btn" id="listViewBtn" title="List view">
+        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="2" width="14" height="2" rx="0.5"/><rect x="1" y="7" width="14" height="2" rx="0.5"/><rect x="1" y="12" width="14" height="2" rx="0.5"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CATALOG GRID -->
+<section class="catalog-section">
+  <div class="products-grid" id="productsGrid">
+
+    <!-- 1. Specialty Coffee -->
+    <div class="product-card" data-category="superfoods food" data-id="coffee"
+      style="animation-delay:0.03s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=75&fit=crop" alt="Indonesian specialty coffee beans">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Specialty Coffee</div>
+          <span class="card-tag tag-high">High Demand</span>
+        </div>
+        <p class="card-desc">Single-origin Arabica and Robusta from Flores, Toraja, Aceh, and Java volcanic highlands. Natural, washed, and honey processed.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Green Bean</span>
+          <span class="spec-pill">Roasted</span>
+          <span class="spec-pill">Specialty Grade</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Flores · Toraja · Aceh</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 2. Moringa Powder -->
+    <div class="product-card" data-category="superfoods" data-id="moringa"
+      style="animation-delay:0.06s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=600&q=75&fit=crop" alt="Moringa powder in bowl">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Moringa Powder</div>
+          <span class="card-tag tag-organic">Organic</span>
+        </div>
+        <p class="card-desc">Sustainably harvested Moringa oleifera leaves, spray-dried or freeze-dried. Certificate of Analysis with every batch.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Spray-Dried</span>
+          <span class="spec-pill">Freeze-Dried</span>
+          <span class="spec-pill">Bulk &amp; OEM</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">East Java · NTB</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 3. Vanilla Beans -->
+    <div class="product-card" data-category="food superfoods" data-id="vanilla"
+      style="animation-delay:0.09s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75&fit=crop" alt="Vanilla beans">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Vanilla Beans</div>
+          <span class="card-tag tag-high">High Value</span>
+        </div>
+        <p class="card-desc">Grade A Planifolia vanilla from East Java. Moisture &lt;30%. Ideal for extract houses, confectionery, and flavour manufacturers.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Grade A</span>
+          <span class="spec-pill">Grade B (Extract)</span>
+          <span class="spec-pill">Whole Pod</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">East Java · Bali</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 4. Agarwood -->
+    <div class="product-card" data-category="fragrance luxury" data-id="agarwood"
+      style="animation-delay:0.12s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&q=75&fit=crop" alt="Agarwood oud resin">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Agarwood (Oud)</div>
+          <span class="card-tag tag-luxury">Luxury</span>
+        </div>
+        <p class="card-desc">Ethically sourced Aquilaria resin-infused heartwood and distilled oud oil. CITES permits provided for all international shipments.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Wood Chips</span>
+          <span class="spec-pill">Oud Oil</span>
+          <span class="spec-pill">CITES Certified</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Kalimantan · Sumatra</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 5. Sandalwood -->
+    <div class="product-card" data-category="fragrance luxury" data-id="sandalwood"
+      style="animation-delay:0.15s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=600&q=75&fit=crop" alt="Sandalwood essential oil and wood">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Sandalwood</div>
+          <span class="card-tag tag-luxury">Luxury</span>
+        </div>
+        <p class="card-desc">Timor and East Nusa Tenggara origin. Certified sustainable. Powder, chips, and essential oil. Preferred by perfumers and incense makers globally.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Wood Powder</span>
+          <span class="spec-pill">Chips</span>
+          <span class="spec-pill">Essential Oil</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">NTT · Timor</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 6. Patchouli Oil -->
+    <div class="product-card" data-category="fragrance" data-id="patchouli"
+      style="animation-delay:0.18s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=75&fit=crop" alt="Essential oil bottles with herbs">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Patchouli Oil</div>
+          <span class="card-tag tag-high">High Demand</span>
+        </div>
+        <p class="card-desc">Steam-distilled from Aceh-origin Pogostemon cablin. Low dark patchouli content, high patchoulol. ISO GC/MS spec sheets available.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Steam Distilled</span>
+          <span class="spec-pill">Light &amp; Dark</span>
+          <span class="spec-pill">GC/MS Certified</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Aceh · North Sumatra</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 7. Raw Forest Honey -->
+    <div class="product-card" data-category="food superfoods" data-id="honey"
+      style="animation-delay:0.21s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=600&q=75&fit=crop" alt="Raw forest honey in jar">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Raw Forest Honey</div>
+          <span class="card-tag tag-organic">Artisanal</span>
+        </div>
+        <p class="card-desc">Unprocessed Apis dorsata multiflora honey from Kalimantan rainforest hives. Lab-tested for purity, no additives or heating treatment.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Raw Unfiltered</span>
+          <span class="spec-pill">Madu Hutan</span>
+          <span class="spec-pill">Purity Tested</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Kalimantan</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 8. Cacao / Chocolate -->
+    <div class="product-card" data-category="food superfoods" data-id="cacao"
+      style="animation-delay:0.24s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=600&q=75&fit=crop" alt="Cacao beans and chocolate">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Cacao &amp; Chocolate</div>
+          <span class="card-tag tag-organic">Artisanal</span>
+        </div>
+        <p class="card-desc">Fermented Sulawesi and Flores Trinitario cacao beans. Single-origin chocolate, cocoa mass, nibs, and butter available.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Fermented Beans</span>
+          <span class="spec-pill">Cocoa Mass</span>
+          <span class="spec-pill">Nibs &amp; Butter</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Sulawesi · Flores</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 9. Gula Aren -->
+    <div class="product-card" data-category="food" data-id="gula-aren"
+      style="animation-delay:0.27s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1611080541599-8c6dbde6ed28?w=600&q=75&fit=crop" alt="Palm sugar gula aren">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Gula Aren (Palm Sugar)</div>
+          <span class="card-tag tag-organic">Low GI</span>
+        </div>
+        <p class="card-desc">Natural low-glycemic sweetener from Arenga pinnata palms. Block, granule, and liquid forms. Certified organic option available for EU/US markets.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Block</span>
+          <span class="spec-pill">Granule</span>
+          <span class="spec-pill">Liquid</span>
+          <span class="spec-pill">Organic Available</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">West Java · Sulawesi</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 10. Porang / Konjac -->
+    <div class="product-card" data-category="food industrial" data-id="porang"
+      style="animation-delay:0.30s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=600&q=75&fit=crop" alt="Konjac flour and roots">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Porang / Konjac Flour</div>
+          <span class="card-tag tag-industrial">Industrial</span>
+        </div>
+        <p class="card-desc">High-glucomannan Amorphophallus muelleri flour for food technology, shirataki noodles, and nutraceutical applications. Standardized glucomannan content.</p>
+        <div class="card-specs">
+          <span class="spec-pill">70%+ Glucomannan</span>
+          <span class="spec-pill">Food Grade</span>
+          <span class="spec-pill">Industrial Grade</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">East Java · NTT</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 11. Tapioca Starch -->
+    <div class="product-card" data-category="food industrial" data-id="tapioca"
+      style="animation-delay:0.33s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=75&fit=crop" alt="White starch powder in bowl">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Tapioca Starch</div>
+          <span class="card-tag tag-industrial">Food Ingredient</span>
+        </div>
+        <p class="card-desc">Food-grade cassava starch with consistent moisture, whiteness, and viscosity specs. Bulk container shipments. Suitable for food processing and industrial use.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Food Grade</span>
+          <span class="spec-pill">Moisture &lt;14%</span>
+          <span class="spec-pill">20MT+ MOQ</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Lampung · East Java</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 12. Avocado -->
+    <div class="product-card" data-category="food superfoods" data-id="avocado"
+      style="animation-delay:0.36s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=600&q=75&fit=crop" alt="Fresh avocados">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Premium Avocado</div>
+          <span class="card-tag tag-high">Fresh Produce</span>
+        </div>
+        <p class="card-desc">Creamy export-grade Pogama and Mentega varieties with consistent Brix levels. Fresh, IQF, and processed (puree, oil) forms available.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Fresh</span>
+          <span class="spec-pill">IQF Frozen</span>
+          <span class="spec-pill">Puree &amp; Oil</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">East Java · Bali</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 13. Premium Spices -->
+    <div class="product-card" data-category="food superfoods" data-id="spices"
+      style="animation-delay:0.39s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=600&q=75&fit=crop" alt="Indonesian spices cloves nutmeg">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Premium Spices</div>
+          <span class="card-tag tag-high">High Demand</span>
+        </div>
+        <p class="card-desc">Clove, nutmeg, white pepper, black pepper, and long pepper. Whole, cracked, and ground. Origin-certified from Maluku and West Java.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Clove</span>
+          <span class="spec-pill">Nutmeg</span>
+          <span class="spec-pill">White Pepper</span>
+          <span class="spec-pill">Long Pepper</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Maluku · West Java</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 14. Charcoal Briquettes -->
+    <div class="product-card" data-category="industrial" data-id="charcoal"
+      style="animation-delay:0.42s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=75&fit=crop" alt="Charcoal briquettes">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Charcoal Briquettes</div>
+          <span class="card-tag tag-industrial">Industrial</span>
+        </div>
+        <p class="card-desc">High-density coconut shell and hardwood briquettes. Custom shapes for hookah, BBQ, restaurant, and industrial markets. Long burn time, low ash.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Coconut Shell</span>
+          <span class="spec-pill">Hardwood</span>
+          <span class="spec-pill">Custom Shape</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Java · Sulawesi</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 15. Indigo Paste -->
+    <div class="product-card" data-category="industrial specialty" data-id="indigo"
+      style="animation-delay:0.45s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&q=75&fit=crop" alt="Natural indigo dye blue textile">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Indigo Paste</div>
+          <span class="card-tag tag-specialty">Specialty</span>
+        </div>
+        <p class="card-desc">Natural plant-derived indigofera tinctoria paste for sustainable textile manufacturers, natural dye houses, and artisan fabric producers worldwide.</p>
+        <div class="card-specs">
+          <span class="spec-pill">40% Indigotin</span>
+          <span class="spec-pill">Textile Grade</span>
+          <span class="spec-pill">Natural Dye</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Java · Bali</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 16. Cashew -->
+    <div class="product-card" data-category="food" data-id="cashew"
+      style="animation-delay:0.48s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1509366275-2b0f62c4f8f7?w=600&q=75&fit=crop" alt="Raw cashew nuts">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Cashew</div>
+          <span class="card-tag tag-high">Snack &amp; Ingredient</span>
+        </div>
+        <p class="card-desc">Premium W240, W320, W450 grade cashew kernels and cashew nut shell liquid (CNSL). Vacuum-packed or bulk, with allergen documentation.</p>
+        <div class="card-specs">
+          <span class="spec-pill">W240 / W320</span>
+          <span class="spec-pill">Raw &amp; Roasted</span>
+          <span class="spec-pill">CNSL Available</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">NTT · East Java</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 17. Red Beans -->
+    <div class="product-card" data-category="food" data-id="red-beans"
+      style="animation-delay:0.51s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=600&q=75&fit=crop" alt="Red kidney beans">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Red Beans</div>
+          <span class="card-tag tag-high">Culinary</span>
+        </div>
+        <p class="card-desc">Nutrient-rich Phaseolus vulgaris kidney beans. Consistent size and color sorting. For retail, foodservice, and commodity export accounts.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Kidney Bean</span>
+          <span class="spec-pill">Dark Red</span>
+          <span class="spec-pill">25–50kg Bags</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Java · Sulawesi</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 18. Sorghum -->
+    <div class="product-card" data-category="food industrial" data-id="sorghum"
+      style="animation-delay:0.54s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&q=75&fit=crop" alt="Sorghum grain stalks">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Sorghum</div>
+          <span class="card-tag tag-organic">Sustainable</span>
+        </div>
+        <p class="card-desc">Gluten-free ancient grain for flour milling, animal feed, ethanol production, and specialty food markets. Drought-resilient, sustainably grown.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Food Grade</span>
+          <span class="spec-pill">Feed Grade</span>
+          <span class="spec-pill">Gluten Free</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">NTT · East Java</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 19. Corncob -->
+    <div class="product-card" data-category="industrial" data-id="corncob"
+      style="animation-delay:0.57s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&q=75&fit=crop" alt="Corn and corncob">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Corncob</div>
+          <span class="card-tag tag-industrial">Feed &amp; Industrial</span>
+        </div>
+        <p class="card-desc">Dried and ground corncob for animal feed, mushroom cultivation substrate, abrasive media, and biomass fuel. Consistent particle size available.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Whole Dried</span>
+          <span class="spec-pill">Ground Powder</span>
+          <span class="spec-pill">Animal Feed</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">East Java · NTT</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+    <!-- 20. Kratom -->
+    <div class="product-card" data-category="superfoods" data-id="kratom"
+      style="animation-delay:0.60s">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=600&q=75&fit=crop" alt="Green botanical leaves herbs">
+        <div class="card-img-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-name">Kratom</div>
+          <span class="card-tag tag-export">Export Only</span>
+        </div>
+        <p class="card-desc">Mitragyna speciosa powder and crushed leaf for compliant international markets. Full alkaloid profile documentation. Legal destination compliance buyer's responsibility.</p>
+        <div class="card-specs">
+          <span class="spec-pill">Powder</span>
+          <span class="spec-pill">Crushed Leaf</span>
+          <span class="spec-pill">Full Lab Docs</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-origin">Kalimantan</span>
+        <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+
+  </div><!-- /products-grid -->
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-left">
+    <div class="cta-eyebrow">Ready to Source?</div>
+    <h2 class="cta-h2">Can't Find What You Need?<br><em>We Custom Source Too.</em></h2>
+    <p class="cta-sub">
+      If your product isn't listed, we can still help. Our sourcing team covers hundreds of Indonesian agricultural commodities. Tell us your spec and we'll find a supplier.
+    </p>
+  </div>
+  <div class="cta-right">
+    <a href="exporter-quote.html" class="btn-primary">Request a Quote</a>
+    <a href="index.html#compliance" class="btn-outline">View Certifications</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-logo-img-wrap" style="display:block;margin-bottom:1rem;">
+        <img src="hindia-timur-logo.png" alt="Hindia Timur" style="width:90px;height:auto;opacity:0.85;">
+      </a>
+      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Products</div>
+      <ul class="footer-links">
+        <li><a href="coffee.html">Specialty Coffee</a></li>
+        <li><a href="products.html">Moringa &amp; Superfoods</a></li>
+        <li><a href="products.html">Agarwood &amp; Oud</a></li>
+        <li><a href="products.html">Spices &amp; Extracts</a></li>
+        <li><a href="products.html">View Full Catalog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Insights</div>
+      <ul class="footer-links">
+        <li><a href="blog-sustainable-coconut-farming.html">Sustainable Farming</a></li>
+        <li><a href="blog-vanilla-sourcing-journey.html">Vanilla Sourcing</a></li>
+        <li><a href="blog-coffee-heritage-volcanic.html">Coffee Heritage</a></li>
+        <li><a href="blog-organic-certification-fair-trade.html">Organic &amp; Fair Trade</a></li>
+        <li><a href="blog.html">All Articles</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Hindia Timur</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="exporter-quote.html">Request a Quote</a></li>
+        <li><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Hindia Timur. All rights reserved.</span>
+    <span>Sourced from Indonesia. Delivered to the World.</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <div class="modal-image" id="modalImage">
+      <img id="modalImg" src="" alt="">
+      <div class="modal-image-overlay"></div>
+      <div class="modal-origin-badge" id="modalOriginBadge"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-eyebrow" id="modalCategory"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-section-title">Export Specifications</div>
+      <div class="modal-specs-grid" id="modalSpecs"></div>
+      <div class="modal-section-title">Available Certifications</div>
+      <div class="modal-cert-list" id="modalCerts"></div>
+      <div class="modal-actions">
+        <button class="modal-btn-primary" onclick="closeModal()">Request Quote for This Product</button>
+        <button class="modal-btn-secondary" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+    <button class="modal-close" onclick="closeModal()">&#10005;</button>
+  </div>
+</div>
+
+
 </body>
 </html>
