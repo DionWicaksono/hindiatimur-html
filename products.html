@@ -2962,7 +2962,468 @@ footer {
     <button class="modal-close" onclick="closeModal()">&#10005;</button>
   </div>
 </div>
+<script>
+// ── NAV SCROLL ────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
 
+// ── FILTER LOGIC ─────────────────────────
+const tabs = document.querySelectorAll('.filter-tab');
+const cards = document.querySelectorAll('.product-card');
+const countNum = document.getElementById('countNum');
 
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    let count = 0;
+    cards.forEach((card, i) => {
+      const cats = card.dataset.category || '';
+      const show = filter === 'all' || cats.includes(filter);
+      card.classList.toggle('hidden', !show);
+      if (show) { count++; card.style.animationDelay = (count * 0.04) + 's'; }
+    });
+    countNum.textContent = count;
+  });
+});
+
+// ── VIEW TOGGLE ───────────────────────────
+const grid = document.getElementById('productsGrid');
+document.getElementById('gridViewBtn').addEventListener('click', function() {
+  grid.classList.remove('list-view');
+  this.classList.add('active');
+  document.getElementById('listViewBtn').classList.remove('active');
+});
+document.getElementById('listViewBtn').addEventListener('click', function() {
+  grid.classList.add('list-view');
+  this.classList.add('active');
+  document.getElementById('gridViewBtn').classList.remove('active');
+});
+
+// ── PRODUCT DATA ──────────────────────────
+const productData = {
+  coffee: {
+    category: 'Superfoods & Beverages',
+    title: 'Specialty Coffee',
+    desc: 'Indonesia is the world\'s fourth-largest coffee producer, and our specialty lots come from the country\'s most prized growing regions -- Flores (Bajawa), Toraja, Aceh Gayo, and Java Estate. We offer green bean, roasted, and ground specifications. Processing methods include natural sun-dried, fully washed, and honey process. Minimum screen size 15+, 0% black/brown defects for Grade 1.',
+    origin: 'Flores · Toraja · Aceh · Java',
+    img: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Varieties', val: 'Arabica, Robusta, Liberica' },
+      { key: 'Processing', val: 'Natural, Washed, Honey' },
+      { key: 'Min. Order', val: '1 x 20ft FCL (~18MT)' },
+      { key: 'Packaging', val: 'GrainPro / Jute bags / OEM' },
+      { key: 'Moisture', val: '≤12.5%' },
+      { key: 'Lead Time', val: '3–5 weeks' }
+    ],
+    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Rainforest Alliance (select lots)', 'Organic (select lots)']
+  },
+  moringa: {
+    category: 'Superfoods & Nutraceuticals',
+    title: 'Moringa Powder',
+    desc: 'Sourced from cultivated Moringa oleifera farms in East Java and Nusa Tenggara Barat. Leaves are harvested at 60–90 day intervals for peak nutritional density, then cleaned, dried at controlled temperatures (max 50°C for low-heat process), and milled to 80–200 mesh. We provide full heavy metal, microbiological, and nutritional CoA from ISO 17025-accredited laboratories with every order.',
+    origin: 'East Java · NTB',
+    img: 'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Particle Size', val: '80–200 mesh' },
+      { key: 'Processing', val: 'Spray-dried / Freeze-dried' },
+      { key: 'Min. Order', val: '500 kg' },
+      { key: 'Packaging', val: '25kg kraft bags / OEM' },
+      { key: 'Moisture', val: '≤8%' },
+      { key: 'Shelf Life', val: '24 months sealed' }
+    ],
+    certs: ['Phytosanitary Certificate', 'Certificate of Analysis (ISO Lab)', 'Halal (MUI)', 'Organic (IMO / USDA NOP)', 'Heavy Metal Test Report']
+  },
+  vanilla: {
+    category: 'Premium Flavour Ingredients',
+    title: 'Vanilla Beans',
+    desc: 'Indonesian Vanilla planifolia from East Java is prized for its creamy, smooth vanillin profile with secondary notes of wood and dried fruit. Our Grade A beans (18–20cm, moisture 28–32%) are hand-selected and cured for a minimum of 6 months. Grade B split and short beans are available for extract manufacturers at reduced pricing. We supply single-origin and blended lots.',
+    origin: 'East Java · Bali',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Grade A', val: '18–20cm, ≥1.5% vanillin' },
+      { key: 'Grade B', val: 'Short/split for extract' },
+      { key: 'Moisture', val: '28–32%' },
+      { key: 'Min. Order', val: '25 kg' },
+      { key: 'Packaging', val: 'Vacuum-sealed bundles' },
+      { key: 'Lead Time', val: '2–4 weeks' }
+    ],
+    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Organic (available on request)']
+  },
+  agarwood: {
+    category: 'Luxury Fragrance',
+    title: 'Agarwood (Oud)',
+    desc: 'Agarwood is one of the most valuable natural fragrance materials in the world, and Indonesian Aquilaria malaccensis and A. microcarpa are highly regarded in the Middle Eastern, Japanese, and luxury Western markets. We source ethically from plantation and managed-wild sources with full CITES documentation. Available as raw wood chips, powder, and steam/CO2-distilled oud oil.',
+    origin: 'Kalimantan · Sumatra',
+    img: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Forms', val: 'Chips, Powder, Oud Oil' },
+      { key: 'Grading', val: 'Super, A, B, C grade chips' },
+      { key: 'Oil Yield', val: '0.3–0.8% from raw wood' },
+      { key: 'Min. Order', val: '1 kg oil / 50 kg chips' },
+      { key: 'CITES', val: 'Appendix II compliant' },
+      { key: 'Lead Time', val: '4–8 weeks' }
+    ],
+    certs: ['CITES Appendix II Export Permit', 'Phytosanitary Certificate', 'GC/MS Analysis (oil)', 'Certificate of Origin', 'Chain of Custody Documentation']
+  },
+  sandalwood: {
+    category: 'Luxury Fragrance',
+    title: 'Sandalwood',
+    desc: 'Indonesian sandalwood (Santalum album) from Timor is renowned as one of the finest in the world, second only to Mysore in prestige. We work with licensed, government-approved plantation and regulated harvest sources in East Nusa Tenggara. Products include heartwood chips, powder, and steam-distilled essential oil rich in alpha and beta-santalol -- the key quality indicators for perfumers.',
+    origin: 'Nusa Tenggara Timur · Timor',
+    img: 'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Forms', val: 'Chips, Powder, Essential Oil' },
+      { key: 'Santalol Content', val: '≥70% (alpha+beta)' },
+      { key: 'Min. Order', val: '1 kg oil / 100 kg wood' },
+      { key: 'Packaging', val: 'Airtight drums or bags' },
+      { key: 'Harvest', val: 'Licensed & sustainable' },
+      { key: 'Lead Time', val: '4–8 weeks' }
+    ],
+    certs: ['CITES Appendix II Export Permit', 'Phytosanitary Certificate', 'GC/MS Analysis (oil)', 'Sustainable Harvest Certificate', 'Certificate of Origin']
+  },
+  patchouli: {
+    category: 'Essential Oils',
+    title: 'Patchouli Oil',
+    desc: 'Indonesia supplies approximately 90% of the world\'s patchouli oil, with Aceh Province producing the most prized light patchouli. Our steam-distilled oil is produced from fresh Pogostemon cablin leaves, yielding a high patchoulol (30–35%) content. We offer light patchouli (freshly distilled), dark patchouli (aged), and aged-rectified grades to suit fine fragrance, cosmetic, and aromatherapy applications.',
+    origin: 'Aceh · North Sumatra',
+    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Grades', val: 'Light, Dark, Aged-Rectified' },
+      { key: 'Patchoulol', val: '30–35% (GC verified)' },
+      { key: 'Specific Gravity', val: '0.950–0.975' },
+      { key: 'Min. Order', val: '25 kg' },
+      { key: 'Packaging', val: 'Aluminium drums' },
+      { key: 'Lead Time', val: '2–3 weeks' }
+    ],
+    certs: ['GC/MS Certificate of Analysis', 'Phytosanitary Certificate', 'Certificate of Origin', 'ISO 3757 Compliance']
+  },
+  honey: {
+    category: 'Artisanal Superfoods',
+    title: 'Raw Forest Honey (Madu Hutan)',
+    desc: 'Madu Hutan is wild forest honey harvested by indigenous Dayak communities from Apis dorsata (giant honeybee) hives in the Kalimantan rainforest canopy. It is completely unheated, unfiltered, and unprocessed -- preserving all natural enzymes, pollens, and antioxidants. Each batch is tested for HMF, moisture, sugar content, and microbial safety by independent labs.',
+    origin: 'Kalimantan Rainforest',
+    img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Type', val: 'Wild multiflora (Apis dorsata)' },
+      { key: 'Moisture', val: '≤20%' },
+      { key: 'HMF', val: '≤40 mg/kg' },
+      { key: 'Min. Order', val: '100 kg' },
+      { key: 'Packaging', val: 'Food-grade drums or jars' },
+      { key: 'Shelf Life', val: '24 months' }
+    ],
+    certs: ['Certificate of Analysis (accredited lab)', 'Phytosanitary Certificate', 'Microbiological Safety Report', 'Fair Trade Sourcing Documentation']
+  },
+  cacao: {
+    category: 'Fine Flavour Cacao',
+    title: 'Cacao & Chocolate',
+    desc: 'Indonesian cacao, especially from Sulawesi (Trinitario origin) and Flores (local varieties), is increasingly recognized by fine chocolate makers worldwide. Our fermented beans are processed at farmer-cooperative level, with 5–7 day fermentation and controlled sun-drying. We supply fermented dried beans, roasted nibs, cocoa mass, cocoa butter, and single-origin chocolate drops for confectionery manufacturers.',
+    origin: 'Sulawesi · Flores · West Java',
+    img: 'https://images.unsplash.com/photo-1511381939415-e44015466834?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Types', val: 'Fermented beans, Nibs, Mass' },
+      { key: 'Fermentation', val: '5–7 days box fermented' },
+      { key: 'Fat Content', val: '50–55% (cocoa mass)' },
+      { key: 'Min. Order', val: '500 kg beans / 100 kg processed' },
+      { key: 'Packaging', val: 'GrainPro / Foil-lined bags' },
+      { key: 'Lead Time', val: '3–5 weeks' }
+    ],
+    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Certificate of Origin', 'Fine Flavour Classification (select lots)']
+  },
+  'gula-aren': {
+    category: 'Natural Sweeteners',
+    title: 'Gula Aren (Palm Sugar)',
+    desc: 'Gula Aren is harvested from the sap of Arenga pinnata palm trees by tapping the flower stems. It is a natural, minimally processed sweetener with a lower glycemic index (35–50) than refined cane sugar, a rich caramel-molasses flavour, and naturally occurring minerals. Available in traditional block form, granulated, and liquid concentrate for food and beverage manufacturers.',
+    origin: 'West Java · Sulawesi · Sumatra',
+    img: 'https://images.unsplash.com/photo-1611080541599-8c6dbde6ed28?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Forms', val: 'Block, Granule, Liquid' },
+      { key: 'Brix', val: '70–80° (liquid)' },
+      { key: 'GI Index', val: '35–50 (vs cane sugar 65+)' },
+      { key: 'Min. Order', val: '500 kg' },
+      { key: 'Packaging', val: 'OEM retail or bulk bags' },
+      { key: 'Lead Time', val: '2–4 weeks' }
+    ],
+    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Organic Certification (IMO / USDA NOP available)', 'Halal Certificate (MUI)']
+  },
+  porang: {
+    category: 'Food Technology Ingredient',
+    title: 'Porang / Konjac Flour',
+    desc: 'Amorphophallus muelleri (porang) is Indonesia\'s native konjac species, yielding high-glucomannan flour for the food technology, health food, and industrial markets. Our flour is standardized for glucomannan content (minimum 65–75%), particle size, and viscosity. Primary markets include shirataki noodle manufacturers, food texturizer producers, pharmaceutical excipient suppliers, and nutraceutical brands.',
+    origin: 'East Java · NTT · South Sulawesi',
+    img: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Glucomannan', val: '65–75% minimum' },
+      { key: 'Viscosity', val: '≥28,000 mPa·s' },
+      { key: 'Particle Size', val: '120–200 mesh' },
+      { key: 'Min. Order', val: '1 MT' },
+      { key: 'Packaging', val: '25 kg kraft bags' },
+      { key: 'Lead Time', val: '3–5 weeks' }
+    ],
+    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Food Grade Safety Certificate', 'Heavy Metal Analysis', 'Microbiological Report']
+  },
+  tapioca: {
+    category: 'Food & Industrial Starch',
+    title: 'Tapioca Starch',
+    desc: 'Food-grade cassava (Manihot esculenta) starch from Lampung and East Java -- two of Indonesia\'s highest-production regions. Our tapioca starch meets international food additive standards with consistent whiteness (≥92 KETT), low moisture (≤14%), and controlled SO2 levels. Suitable for food processing, paper manufacturing, textile sizing, and adhesive applications.',
+    origin: 'Lampung · East Java',
+    img: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Moisture', val: '≤14%' },
+      { key: 'Whiteness', val: '≥92 KETT' },
+      { key: 'SO2 Residue', val: '≤30 ppm' },
+      { key: 'Min. Order', val: '1 x 20ft FCL (20MT)' },
+      { key: 'Packaging', val: '50 kg PP bags / bulk' },
+      { key: 'Lead Time', val: '2–3 weeks' }
+    ],
+    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Food Safety Certificate', 'FSSC 22000 (facility)']
+  },
+  avocado: {
+    category: 'Fresh & Processed Produce',
+    title: 'Premium Avocado',
+    desc: 'Indonesia\'s avocado production is concentrated in East Java and Bali, where volcanic soil and tropical climate produce dense, buttery fruit. Export varieties include Pogama (large, smooth skin) and Mentega (small, yellow flesh). We supply fresh export-grade fruit (Class I), IQF frozen halves, and cold-pressed avocado oil for cosmetic and food markets.',
+    origin: 'East Java · Bali',
+    img: 'https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Varieties', val: 'Pogama, Mentega, Hass' },
+      { key: 'Forms', val: 'Fresh, IQF, Puree, Oil' },
+      { key: 'Brix (fresh)', val: '4–8°' },
+      { key: 'Min. Order', val: '1 MT fresh / 500 kg IQF' },
+      { key: 'Cold Chain', val: '5°C throughout' },
+      { key: 'Lead Time', val: '2–4 weeks (seasonal)' }
+    ],
+    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'GlobalGAP (select farms)', 'Cold Chain Documentation']
+  },
+  spices: {
+    category: 'Aromatic Spices',
+    title: 'Premium Spices',
+    desc: 'The Maluku Islands (the original Spice Islands) gave Indonesia its historic place at the centre of global trade, and the quality of its cloves, nutmeg, and mace remains unparalleled. We supply whole, cracked, and ground specifications of clove, nutmeg, mace, white pepper (Muntok), black pepper, and long pepper with volatile oil analysis and aflatoxin testing on every shipment.',
+    origin: 'Maluku · West Java · Bangka',
+    img: 'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Products', val: 'Clove, Nutmeg, Pepper, Mace' },
+      { key: 'Forms', val: 'Whole, Cracked, Ground' },
+      { key: 'Volatile Oil', val: 'As per ASTA / ISO spec' },
+      { key: 'Min. Order', val: '500 kg per SKU' },
+      { key: 'Packaging', val: '25 kg bags / OEM' },
+      { key: 'Lead Time', val: '2–4 weeks' }
+    ],
+    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Aflatoxin Test Report', 'Pesticide Residue Analysis']
+  },
+  charcoal: {
+    category: 'Industrial Products',
+    title: 'Charcoal Briquettes',
+    desc: 'Indonesian coconut shell charcoal is world-renowned for its high carbon content (≥85%), low ash (≤5%), and long burn time -- making it the premium choice for hookah (shisha), restaurant grill, and premium BBQ markets. We also produce hardwood briquettes for industrial kiln and biomass energy applications. Custom shapes (hex, cube, finger, pillow) and private-label packaging available.',
+    origin: 'Java · Sulawesi · Kalimantan',
+    img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Fixed Carbon', val: '≥85% (coconut shell)' },
+      { key: 'Ash Content', val: '≤5%' },
+      { key: 'Moisture', val: '≤8%' },
+      { key: 'Min. Order', val: '1 x 20ft FCL (22MT)' },
+      { key: 'Shapes', val: 'Hex, Cube, Finger, Pillow' },
+      { key: 'Lead Time', val: '3–5 weeks' }
+    ],
+    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'SGS Inspection Available', 'Custom OEM Packaging']
+  },
+  indigo: {
+    category: 'Natural Dyes',
+    title: 'Natural Indigo Paste',
+    desc: 'Indonesian natural indigo (Indigofera tinctoria) is produced through traditional fermentation and oxidation of fresh leaf harvest. Our paste is standardized for indigotin content (35–45%) and is free from synthetic additives. It is used by sustainable textile brands, natural dye houses, artisan batik makers, and fashion brands committed to non-synthetic colouration.',
+    origin: 'Java · Bali',
+    img: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Indigotin Content', val: '35–45%' },
+      { key: 'Form', val: 'Paste (wet, 40% DM)' },
+      { key: 'pH', val: '7.5–9.0' },
+      { key: 'Min. Order', val: '50 kg' },
+      { key: 'Packaging', val: 'HDPE buckets or drums' },
+      { key: 'Lead Time', val: '2–4 weeks' }
+    ],
+    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'OEKO-TEX (select batches)', 'Synthetic-Free Declaration']
+  },
+  cashew: {
+    category: 'Nuts & Kernels',
+    title: 'Cashew',
+    desc: 'Indonesian cashew production from East Nusa Tenggara and East Java yields high-quality kernels with good splitting characteristics and consistent whiteness. We supply W240, W320, and W450 grade whole white kernels, as well as splits, pieces, and cashew nut shell liquid (CNSL) for industrial chemical applications. Processed in HACCP-certified shelling facilities.',
+    origin: 'NTT · East Java',
+    img: 'https://images.unsplash.com/photo-1509366275-2b0f62c4f8f7?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Grades', val: 'W240, W320, W450, LWP' },
+      { key: 'Moisture', val: '≤5%' },
+      { key: 'Min. Order', val: '1 MT' },
+      { key: 'Packaging', val: 'Vacuum tins / 25 lb cartons' },
+      { key: 'Shelf Life', val: '12 months (vacuum)' },
+      { key: 'Lead Time', val: '3–4 weeks' }
+    ],
+    certs: ['Certificate of Analysis', 'Phytosanitary Certificate', 'Allergen Statement', 'HACCP Facility Certificate', 'Pesticide Residue Analysis']
+  },
+  'red-beans': {
+    category: 'Legumes & Grains',
+    title: 'Red Beans',
+    desc: 'Indonesian red kidney beans (Phaseolus vulgaris) are grown in the highland regions of Java and Sulawesi, offering a rich, earthy flavour and firm texture after cooking. We supply size-sorted, colour-graded beans for retail, foodservice, and commodity trading accounts. Available in 25 kg and 50 kg polypropylene bags, and can supply aflatoxin and pesticide testing on request.',
+    origin: 'Java · Sulawesi',
+    img: 'https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Variety', val: 'Dark Red Kidney Bean' },
+      { key: 'Moisture', val: '≤14%' },
+      { key: 'Admixture', val: '≤1%' },
+      { key: 'Min. Order', val: '10 MT' },
+      { key: 'Packaging', val: '25 / 50 kg PP bags' },
+      { key: 'Lead Time', val: '2–3 weeks' }
+    ],
+    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Aflatoxin Test Report']
+  },
+  sorghum: {
+    category: 'Grains & Cereals',
+    title: 'Sorghum',
+    desc: 'Sorghum (Sorghum bicolor) is gaining global market share as a gluten-free grain for human food, animal feed, and biofuel production. Indonesian sorghum is drought-resilient and grown without heavy chemical inputs in NTT and East Java. We supply food-grade (for flour milling, brewing, and snack manufacture) and feed-grade lots, with tannin analysis available.',
+    origin: 'NTT · East Java',
+    img: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Grades', val: 'Food Grade, Feed Grade' },
+      { key: 'Moisture', val: '≤14%' },
+      { key: 'Test Weight', val: '≥56 kg/hL' },
+      { key: 'Min. Order', val: '20 MT' },
+      { key: 'Packaging', val: 'Bulk / 50 kg bags' },
+      { key: 'Lead Time', val: '3–4 weeks' }
+    ],
+    certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Pesticide Residue Analysis']
+  },
+  corncob: {
+    category: 'Agricultural By-Products',
+    title: 'Corncob',
+    desc: 'Corncob is a versatile agricultural by-product with applications in animal feed supplementation, Pleurotus mushroom cultivation substrate, industrial abrasive blasting media, biomass fuel, and cob powder as a filler material. We supply whole dried cobs, coarsely ground corncob meal, and fine-ground powder to specification.',
+    origin: 'East Java · NTT · West Kalimantan',
+    img: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Forms', val: 'Whole, Coarse Meal, Fine Powder' },
+      { key: 'Moisture', val: '≤12%' },
+      { key: 'Particle Size', val: 'Custom (10–60 grit)' },
+      { key: 'Min. Order', val: '5 MT' },
+      { key: 'Packaging', val: 'Bulk bags / PP sacks' },
+      { key: 'Lead Time', val: '2–3 weeks' }
+    ],
+    certs: ['Phytosanitary Certificate', 'Certificate of Analysis', 'Moisture &amp; Ash Report']
+  },
+  kratom: {
+    category: 'Botanical Extract (Export Only)',
+    title: 'Kratom',
+    desc: 'Mitragyna speciosa is a tropical evergreen tree native to Southeast Asia. Kratom leaf and powder are legally exported from Indonesia to compliant markets. We supply crushed leaf, powder, and concentrated extract with full alkaloid profile (mitragynine, 7-hydroxymitragynine) documentation. Note: buyers are solely responsible for verifying legality in their import jurisdiction. We do not supply to prohibited markets.',
+    origin: 'West Kalimantan',
+    img: 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=800&q=80&fit=crop',
+    specs: [
+      { key: 'Forms', val: 'Powder, Crushed Leaf, Extract' },
+      { key: 'Mitragynine', val: '1.2–1.8% (powder)' },
+      { key: 'Moisture', val: '≤10%' },
+      { key: 'Min. Order', val: '25 kg' },
+      { key: 'Packaging', val: 'Sealed bags / drums' },
+      { key: 'Lead Time', val: '2–3 weeks' }
+    ],
+    certs: ['Certificate of Analysis (alkaloid profile)', 'Phytosanitary Certificate', 'Certificate of Origin', 'Heavy Metal & Microbial Analysis']
+  }
+};
+
+// ── MODAL LOGIC ───────────────────────────
+const overlay = document.getElementById('modalOverlay');
+
+document.querySelectorAll('.product-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const id = card.dataset.id;
+    const data = productData[id];
+    if (!data) return;
+
+    document.getElementById('modalCategory').textContent = data.category;
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalDesc').textContent = data.desc;
+    document.getElementById('modalOriginBadge').textContent = data.origin;
+    document.getElementById('modalImg').src = data.img;
+    document.getElementById('modalImg').alt = data.title;
+
+    const specsEl = document.getElementById('modalSpecs');
+    specsEl.innerHTML = data.specs.map(s =>
+      `<div class="modal-spec"><div class="modal-spec-key">${s.key}</div><div class="modal-spec-val">${s.val}</div></div>`
+    ).join('');
+
+    const certsEl = document.getElementById('modalCerts');
+    certsEl.innerHTML = data.certs.map(c =>
+      `<span class="modal-cert">${c}</span>`
+    ).join('');
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ── HAMBURGER MENU ──────────────────────────────
+  (function() {
+    var btn = document.getElementById('navHamburger');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    function openMenu() {
+      btn.classList.add('open');
+      menu.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    btn.addEventListener('click', function() {
+      if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+    });
+    // Close on link click
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+</script>
+
+<script>
+(function() {
+  var nav = document.getElementById('nav');
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+
+  // Scroll → scrolled class
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+  if (!btn || !menu) return;
+  function openMenu() {
+    btn.classList.add('open'); menu.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open'); menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', function() {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+})();
+</script>
 </body>
 </html>
