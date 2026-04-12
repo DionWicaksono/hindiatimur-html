@@ -1595,7 +1595,11 @@ document.head.appendChild(style);
 
   // Form submit handler
   function handleSubmit(btn) {
-    btn.textConten
+   btn.textContent = 'Sending\u2026';
+  btn.disabled = true;
+  setTimeout(() => { btn.textContent = '\u2713 Sent — We\'ll be in touch shortly'; btn.style.background = 'var(--sage)'; }, 1400);
+}
+</script>
 
 </body>
 </html>
