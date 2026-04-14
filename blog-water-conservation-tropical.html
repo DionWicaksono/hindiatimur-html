@@ -128,6 +128,29 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
 @media(max-width:768px){.post-hero{grid-template-columns:1fr;min-height:auto;}.hero-image{height:55vw;min-height:280px;}.post-nav{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
 
+  .nav-logo-img-main {
+    display: block; width: 110px; height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: opacity 0.25s, width 0.25s;
+  }
+  nav#nav.scrolled .nav-logo-img-main {
+    width: 0; opacity: 0; pointer-events: none; overflow: hidden;
+  }
+  .nav-logo-img-scrolled {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600;
+    color: var(--forest); letter-spacing: 0.02em;
+    white-space: nowrap; line-height: 1;
+    width: 0; opacity: 0; overflow: hidden;
+    transition: opacity 0.25s, width 0.25s;
+    pointer-events: none;
+  }
+  .nav-logo-img-scrolled span { color: var(--gold); }
+  nav#nav.scrolled .nav-logo-img-scrolled {
+    width: auto; opacity: 1; pointer-events: auto; overflow: visible;
+  }
+
   .nav-hamburger {
     display: none;
     flex-direction: column; justify-content: center; align-items: center;
