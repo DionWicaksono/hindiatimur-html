@@ -25,7 +25,7 @@
   "headline": "Water Conservation in Tropical Agriculture",
   "description": "How Indonesian farmers manage water resources through rainwater harvesting, improved irrigation, and soil conservation.",
   "author": {"@type": "Person", "name": "Dr. Rina Kusuma"},
-  "publisher": {"@type": "Organization", "name": "Hindia Timur", "logo": {"@type": "ImageObject", "url": "https://www.hindiatimur.com/hindia-timur-logo.png"}},
+  "publisher": {"@type": "Organization", "name": "Hindia Timur", "logo": {"@type": "ImageObject", "url": "https://www.hindiatimur.com/hindia-timur-logo.webp"}},
   "datePublished": "2026-02-10",
   "url": "https://www.hindiatimur.com/blog-water-conservation-tropical.html",
   "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1200&q=85&fit=crop",
@@ -128,19 +128,154 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
 @media(max-width:768px){.nav-links{display:none;} nav{justify-content:center !important;} .nav-logo{margin:0 auto !important;}
   nav { justify-content: center !important; }.post-hero{grid-template-columns:1fr;min-height:auto;}.hero-image{height:55vw;min-height:280px;}.post-nav{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: rgba(245,240,232,0.9); border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+    transform-origin: center;
+  }
+  nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    nav#nav {
+      flex-direction: column !important;
+      align-items: center !important;
+      padding: 14px 5vw 10px !important;
+      background: rgba(28,43,30,0.28) !important;
+    }
+    nav#nav.scrolled {
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      padding: 0 5vw !important;
+      height: 56px !important;
+      background: rgba(245,239,228,0.97) !important;
+    }
+    .nav-logo { margin-bottom: 6px; }
+    nav#nav.scrolled .nav-logo { margin-bottom: 0; }
+    .nav-logo-img-main { width: 80px; }
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: var(--forest);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1),
+                transform 0.35s cubic-bezier(0.23,1,0.32,1);
+    pointer-events: none;
+  }
+  .mobile-menu::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+  .mobile-menu ul {
+    list-style: none;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0;
+    width: 100%;
+    padding: 0 8vw;
+    position: relative;
+  }
+  .mobile-menu ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+    overflow: hidden;
+  }
+  .mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+  .mobile-menu ul li a {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    font-weight: 300;
+    color: rgba(245,240,232,0.75);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    padding: 1.1rem 0;
+    text-align: center;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: color 0.2s,
+                transform 0.4s cubic-bezier(0.23,1,0.32,1),
+                opacity 0.4s ease;
+  }
+  .mobile-menu.open ul li a { transform: translateY(0); opacity: 1; }
+  .mobile-menu ul li:nth-child(1) a { transition-delay: 0.06s; }
+  .mobile-menu ul li:nth-child(2) a { transition-delay: 0.10s; }
+  .mobile-menu ul li:nth-child(3) a { transition-delay: 0.14s; }
+  .mobile-menu ul li:nth-child(4) a { transition-delay: 0.18s; }
+  .mobile-menu ul li:nth-child(5) a { transition-delay: 0.22s; }
+  .mobile-menu ul li a:hover,
+  .mobile-menu ul li a:focus { color: var(--gold-light); }
+  .mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+  .mobile-menu-footer {
+    position: absolute; bottom: 2.5rem;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(245,240,232,0.2);
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+    .nav-hamburger.open span { background: var(--cream); }
+  }
+
 </style>
 </head>
 <body>
 <nav id="nav">
-  <a href="hindiatimur__6_.html" class="nav-logo">Hindia <span>Timur</span></a>
+  <a href="index.html" class="nav-logo">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.webp" alt="Hindia Timur">
+    <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
+  </a>
   <ul class="nav-links">
-    <li><a href="hindiatimur__6_.html#products">Products</a></li>
-    <li><a href="hindiatimur__6_.html#compliance">Compliance</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="blog.html">Blog</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
     <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-menu-logo-wrap">
+    <img src="hindia-timur-logo.webp" alt="Hindia Timur">
+  </div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="index.html#compliance">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
+</div>
 <article>
 <section class="post-hero">
   <div class="hero-image">
@@ -150,7 +285,7 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
   </div>
   <div class="hero-content">
     <p class="breadcrumb">
-      <a href="hindiatimur__6_.html">Home</a><span>/</span>
+      <a href="index.html">Home</a><span>/</span>
       <a href="blog.html">Blog</a><span>/</span>
       Sustainability
     </p>
@@ -247,14 +382,14 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
 <footer>
   <div class="footer-top">
     <div>
-      <a href="hindiatimur__6_.html" class="footer-logo">Hindia <span>Timur</span></a>
+      <a href="index.html" class="footer-logo">Hindia <span>Timur</span></a>
       <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
     </div>
     <div>
       <div class="footer-col-title">Products</div>
       <ul class="footer-links">
         <li><a href="coffee.html">Specialty Coffee</a></li>
-        <li><a href="hindiatimur-products.html">View Full Catalog</a></li>
+        <li><a href="products.html">View Full Catalog</a></li>
         <li><a href="exporter-quote.html">Request a Quote</a></li>
       </ul>
     </div>
@@ -284,6 +419,36 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
 <script>
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+</script>
+
+<script>
+  // ── HAMBURGER MENU ──────────────────────────────
+  (function() {
+    var btn = document.getElementById('navHamburger');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    function openMenu() {
+      btn.classList.add('open');
+      menu.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    btn.addEventListener('click', function() {
+      if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+    });
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
 </script>
 </body>
 </html>

@@ -29,7 +29,7 @@
     "@type": "Organization",
     "name": "Hindia Timur",
     "url": "https://www.hindiatimur.com",
-    "logo": "https://www.hindiatimur.com/hindia-timur-logo.png"
+    "logo": "https://www.hindiatimur.com/hindia-timur-logo.webp"
   }
 }
 </script>
@@ -918,7 +918,7 @@ footer {
 <!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">
-    <img class="nav-logo-img-main" src="hindia-timur-logo.png" alt="Hindia Timur">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.webp" alt="Hindia Timur">
     <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
   </a>
   <ul class="nav-links">
@@ -933,7 +933,7 @@ footer {
 </nav>
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
   <div class="mobile-menu-logo-wrap">
-    <img src="hindia-timur-logo.png" alt="Hindia Timur">
+    <img src="hindia-timur-logo.webp" alt="Hindia Timur">
   </div>
   <ul>
     <li><a href="products.html">Products</a></li>
@@ -1238,28 +1238,28 @@ footer {
   <div class="form-card fade-up fd2">
     <div class="form-card-title">Farmer Partnership Application</div>
     <div class="form-card-sub">Our team will contact you within 24 hours to discuss partnership opportunities.</div>
-
+    <form id="farmerForm" action="https://formspree.io/f/xreydgrv" method="POST">
     <div class="form-row">
       <div class="form-group">
         <label>Full Name <span style="color:var(--gold);">*</span></label>
-        <input type="text" placeholder="Bapak Sutrisno">
+        <input type="text" name="name" placeholder="Bapak Sutrisno">
       </div>
       <div class="form-group">
         <label>Phone Number <span style="color:var(--gold);">*</span></label>
-        <input type="tel" placeholder="+62 8XX XXXX XXXX">
+        <input type="tel" name="phone" placeholder="+62 8XX XXXX XXXX">
       </div>
     </div>
     <div class="form-group">
       <label>Email Address <span style="color:var(--gold);">*</span></label>
-      <input type="email" placeholder="you@email.com">
+      <input type="email" name="email" placeholder="you@email.com">
     </div>
     <div class="form-group">
       <label>Province / Region</label>
-      <input type="text" placeholder="e.g. East Java, Aceh, Kalimantan…">
+      <input type="text" name="region" placeholder="e.g. East Java, Aceh, Kalimantan…">
     </div>
     <div class="form-group">
       <label>Primary Commodity / Product <span style="color:var(--gold);">*</span></label>
-      <select>
+      <select name="commodity">
         <option value="" disabled selected>Select your main product</option>
         <option>Specialty Coffee (Arabica)</option>
         <option>Specialty Coffee (Robusta)</option>
@@ -1282,7 +1282,7 @@ footer {
     </div>
     <div class="form-group">
       <label>Annual Production Volume <span style="color:var(--gold);">*</span></label>
-      <select>
+      <select name="volume">
         <option value="" disabled selected>Select production volume</option>
         <option>Less than 500 kg/year</option>
         <option>500 – 2,000 kg/year</option>
@@ -1294,7 +1294,7 @@ footer {
     </div>
     <div class="form-group">
       <label>Current Certifications</label>
-      <select>
+      <select name="certifications">
         <option value="" disabled selected>Select if applicable</option>
         <option>No certifications yet</option>
         <option>Organic (IMO / USDA NOP)</option>
@@ -1307,10 +1307,11 @@ footer {
     </div>
     <div class="form-group">
       <label>Tell us about your farm (optional)</label>
-      <textarea placeholder="How long have you been farming? Do you work as an individual or cooperative? Any additional context about your operation or what you're looking for…"></textarea>
+      <textarea name="message" placeholder="How long have you been farming? Do you work as an individual or cooperative? Any additional context about your operation or what you're looking for…"></textarea>
     </div>
-    <button class="btn-submit" onclick="handleSubmit(this)">Submit Application</button>
+    <button type="submit" class="btn-submit" id="farmerSubmitBtn">Submit Application</button>
     <p class="form-privacy">We respect your privacy. Your information will only be used to contact you about partnership opportunities.</p>
+    </form>
   </div>
 </section>
 
@@ -1333,7 +1334,7 @@ footer {
 <footer>
   <div class="footer-top">
     <div>
-      <a href="index.html"><img src="hindia-timur-logo.png" alt="Hindia Timur" style="width:90px;height:auto;display:block;margin-bottom:1rem;opacity:0.85;"></a></a>
+      <a href="index.html"><img src="hindia-timur-logo.webp" alt="Hindia Timur" style="width:90px;height:auto;display:block;margin-bottom:1rem;opacity:0.85;"></a></a>
       <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
     </div>
     <div>
@@ -1527,9 +1528,45 @@ window.addEventListener('scroll', () => {
     }, 800);
   })();
 
-  // Form submit handler
-  function handleSubmit(btn) {
-    btn.textConten
+  // ── FARMER FORM SUBMIT ──────────────────────────────
+  (function() {
+    var form = document.getElementById('farmerForm');
+    var btn  = document.getElementById('farmerSubmitBtn');
+    if (!form || !btn) return;
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var original = btn.textContent;
+      btn.textContent = 'Submitting…';
+      btn.disabled = true;
+      try {
+        var res = await fetch('https://formspree.io/f/xreydgrv', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          btn.textContent = '✓ Application Submitted';
+          btn.style.background = 'var(--sage)';
+          form.reset();
+          setTimeout(function() {
+            btn.textContent = original;
+            btn.disabled = false;
+            btn.style.background = '';
+          }, 4000);
+        } else {
+          throw new Error('Server error');
+        }
+      } catch(err) {
+        btn.textContent = 'Error — please try again';
+        btn.style.background = 'var(--earth)';
+        btn.disabled = false;
+        setTimeout(function() {
+          btn.textContent = original;
+          btn.style.background = '';
+        }, 3000);
+      }
+    });
+  })();
 
 </body>
 </html>

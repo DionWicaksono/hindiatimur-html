@@ -29,7 +29,7 @@
     "@type": "Organization",
     "name": "Hindia Timur",
     "url": "https://www.hindiatimur.com",
-    "logo": "https://www.hindiatimur.com/hindia-timur-logo.png"
+    "logo": "https://www.hindiatimur.com/hindia-timur-logo.webp"
   }
 }
 </script>
@@ -802,7 +802,7 @@ footer {
 <!-- ─── NAV ─────────────────────────────────── -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">
-    <img class="nav-logo-img-main" src="hindia-timur-logo.png" alt="Hindia Timur">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.webp" alt="Hindia Timur">
     <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
   </a>
   <ul class="nav-links">
@@ -817,7 +817,7 @@ footer {
 </nav>
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
   <div class="mobile-menu-logo-wrap">
-    <img src="hindia-timur-logo.png" alt="Hindia Timur">
+    <img src="hindia-timur-logo.webp" alt="Hindia Timur">
   </div>
   <ul>
     <li><a href="products.html">Products</a></li>
@@ -898,7 +898,7 @@ footer {
 
   <!-- ── FORM ──────────────────────────── -->
   <div class="form-panel">
-    <form id="quoteForm" novalidate>
+    <form action="https://formspree.io/f/xwvrzkaz" method="POST">
 
       <!-- Company Information -->
       <div class="form-section-title fade-up">01 <span>Company Information</span></div>
@@ -1276,7 +1276,7 @@ footer {
 <footer>
   <div class="footer-top">
     <div>
-      <a href="index.html"><img src="hindia-timur-logo.png" alt="Hindia Timur" style="width:90px;height:auto;display:block;margin-bottom:1rem;opacity:0.85;"></a>
+      <a href="index.html"><img src="hindia-timur-logo.webp" alt="Hindia Timur" style="width:90px;height:auto;display:block;margin-bottom:1rem;opacity:0.85;"></a>
       <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
     </div>
     <div>
@@ -1411,10 +1411,9 @@ function setError(groupId, hasError, message) {
 }
 
 // ── FORM SUBMIT ───────────────────────────
-document.getElementById('quoteForm').addEventListener('submit', function(e) {
+document.getElementById('quoteForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   if (!validateForm()) {
-    // Scroll to first error
     const firstError = document.querySelector('.has-error');
     if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
@@ -1427,14 +1426,32 @@ document.getElementById('quoteForm').addEventListener('submit', function(e) {
     Sending…
   `;
 
-  // Simulate submission (replace with real endpoint)
-  setTimeout(() => {
-    // Generate ref
-    const ref = 'HT-' + Math.floor(100000 + Math.random() * 900000);
-    document.getElementById('successRef').textContent = 'REF: ' + ref;
-    document.getElementById('successOverlay').classList.add('show');
-    document.body.style.overflow = 'hidden';
-  }, 1400);
+  try {
+    const res = await fetch('https://formspree.io/f/xwvrzkaz', {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      const ref = 'HT-' + Math.floor(100000 + Math.random() * 900000);
+      document.getElementById('successRef').textContent = 'REF: ' + ref;
+      document.getElementById('successOverlay').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.innerHTML = `
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><circle cx="10" cy="10" r="8"/><path d="M10 6v4m0 4h.01" stroke-linecap="round"/></svg>
+      Submission failed — please try again
+    `;
+    btn.style.background = 'var(--earth)';
+    setTimeout(() => {
+      btn.innerHTML = 'Send Inquiry &rarr;';
+      btn.style.background = '';
+    }, 4000);
+  }
 });
 
 function closeSuccess() {
