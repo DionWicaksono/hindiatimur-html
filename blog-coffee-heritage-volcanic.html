@@ -40,8 +40,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--text);overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:72px;background:rgba(250,248,243,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
-nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.06);}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--forest);text-decoration:none;letter-spacing:0.02em;}
 .nav-logo span{color:var(--gold);}
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
@@ -451,12 +449,12 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
   </aside>
 </div>
 </article>
-<nav class="post-nav">
+<div class="post-nav">
   <a class="post-nav-item prev" href="blog-vanilla-sourcing-journey.html"> <div><div class="nav-direction">Previous</div><div class="nav-post-title">From Farm to Table: The Journey of Premium Vanilla Beans</div></div>
   </a>
   <a class="post-nav-item next" href="blog-organic-certification-fair-trade.html">
     <div><div class="nav-direction">Next</div><div class="nav-post-title">Organic Certification & Fair Trade: Our Commitment to Ethical Sourcing</div></div> </a>
-</nav>
+</div>
 <footer>
   <div class="footer-top">
     <div>

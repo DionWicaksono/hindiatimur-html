@@ -40,15 +40,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--text);overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:72px;background:rgba(250,248,243,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
-nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.06);}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--forest);text-decoration:none;letter-spacing:0.02em;}
-.nav-logo span{color:var(--gold);}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
-.nav-links a{text-decoration:none;color:var(--text-mid);font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
-.nav-links a:hover{color:var(--gold);}
-.nav-cta{background:var(--forest)!important;color:var(--cream)!important;padding:0.5rem 1.3rem;border-radius:2px;}
-.nav-cta:hover{background:var(--gold)!important;color:var(--forest)!important;}
 .post-hero{padding-top:72px;min-height:70vh;display:grid;grid-template-columns:1fr 1fr;}
 .hero-image{position:relative;overflow:hidden;}
 .hero-image img{width:100%;height:100%;object-fit:cover;filter:saturate(0.85);}
@@ -128,6 +119,29 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
 @media(max-width:768px){.post-hero{grid-template-columns:1fr;min-height:auto;}.hero-image{height:55vw;min-height:280px;}.post-nav{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
 
+  /* ─── NAV ─────────────────────────────────────────────── */
+  nav#nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 18px 5vw 12px;
+    transition: background 0.35s, box-shadow 0.35s, padding 0.35s, flex-direction 0.1s;
+    background: rgba(28,43,30,0.20);
+    backdrop-filter: blur(8px);
+  }
+  nav#nav.scrolled {
+    flex-direction: row; justify-content: space-between; align-items: center;
+    padding: 0 5vw; height: 64px;
+    background: rgba(245,239,228,0.97);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  }
+
+  .nav-logo {
+    display: block; text-decoration: none; line-height: 0;
+    margin-bottom: 10px;
+  }
+  nav#nav.scrolled .nav-logo { margin-bottom: 0; }
+
   .nav-logo-img-main {
     display: block; width: 110px; height: auto;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
@@ -150,6 +164,25 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
   nav#nav.scrolled .nav-logo-img-scrolled {
     width: auto; opacity: 1; pointer-events: auto; overflow: visible;
   }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  nav#nav.scrolled .nav-links { background: transparent; backdrop-filter: none; padding: 0; }
+  .nav-links a { text-decoration: none; color: rgba(245,240,232,0.88); transition: color 0.2s; }
+  nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+  nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--gold) !important; color: var(--forest) !important;
+    padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
+  }
+  nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
 
   .nav-hamburger {
     display: none;
@@ -395,12 +428,12 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
   </aside>
 </div>
 </article>
-<nav class="post-nav">
+<div class="post-nav">
   <a class="post-nav-item prev" href="blog-seasonal-availability-guide.html"> <div><div class="nav-direction">Previous</div><div class="nav-post-title">Seasonal Availability Guide: When to Source Premium Indonesian Produce</div></div>
   </a>
   <a class="post-nav-item next" href="blog-sustainable-coconut-farming.html">
     <div><div class="nav-direction">Next</div><div class="nav-post-title">Sustainable Coconut Palm Farming: Preserving Indonesia's Agricultural Heritage</div></div> </a>
-</nav>
+</div>
 <footer>
   <div class="footer-top">
     <div>
