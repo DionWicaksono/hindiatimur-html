@@ -391,12 +391,22 @@ nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
   background-image: var(--overlay-logo);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 35%;
+  background-size: 50%;
   opacity: 0;
   transition: opacity 0.3s ease, background-color 0.3s ease;
   pointer-events: none;
 }
-.product-card:hover .card-img-overlay { opacity: 1; }
+.product-card:hover .card-img-overlay {
+  background-color: rgba(28, 43, 30, 0.55);
+  opacity: 1;
+}
+/* Mobile — faint always-on logomark since no hover exists */
+@media (hover: none) {
+  .card-img-overlay {
+    opacity: 1;
+    background-color: rgba(28, 43, 30, 0.28);
+  }
+}
 
 .card-body { padding: 1.6rem 1.6rem 1rem; flex: 1; }
 .card-top {
