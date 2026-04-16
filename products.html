@@ -385,9 +385,16 @@ nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
   filter: saturate(0.65) brightness(0.7);
 }
 .card-img-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(28,43,30,0.3) 100%);
-  opacity: 0; transition: opacity 0.35s;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(28, 43, 30, 0);
+  background-image: var(--overlay-logo);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35%;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  pointer-events: none;
 }
 .product-card:hover .card-img-overlay { opacity: 1; }
 
@@ -786,8 +793,8 @@ footer {
     <!-- 1. Specialty Coffee -->
     <div class="product-card" data-category="superfoods food" data-id="coffee" style="animation-delay:0.03s">
       <div class="card-image-wrap">
-        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=75&fit=crop" alt="Indonesian specialty coffee beans">
-        <div class="card-img-overlay"></div>
+        <img src="assets/products/coffee-premium.webp" alt="Indonesian specialty coffee beans">
+        <div class="card-img-overlay" style="--overlay-logo: url('assets/overlays/coffee.png')"></div>
       </div>
       <div class="card-body">
         <div class="card-top">
