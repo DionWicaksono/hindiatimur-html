@@ -1831,35 +1831,47 @@ const productData = {
 
 // ── MODAL LOGIC ───────────────────────────
 const overlay = document.getElementById('modalOverlay');
-
 document.querySelectorAll('.product-card').forEach(card => {
   card.addEventListener('click', () => {
     const id = card.dataset.id;
     const data = productData[id];
     if (!data) return;
-
     document.getElementById('modalCategory').textContent = data.category;
     document.getElementById('modalTitle').textContent = data.title;
     document.getElementById('modalDesc').textContent = data.desc;
     document.getElementById('modalOriginBadge').textContent = data.origin;
     document.getElementById('modalImg').src = data.img;
     document.getElementById('modalImg').alt = data.title;
-
     const specsEl = document.getElementById('modalSpecs');
     specsEl.innerHTML = data.specs.map(s =>
       `<div class="modal-spec"><div class="modal-spec-key">${s.key}</div><div class="modal-spec-val">${s.val}</div></div>`
     ).join('');
-
     const certsEl = document.getElementById('modalCerts');
     certsEl.innerHTML = data.certs.map(c =>
       `<span class="modal-cert">${c}</span>`
     ).join('');
 
+    // Variant switcher — renders only when product has variants defined
+    const switcherContainer = document.getElementById('modalVariantSwitcher');
+    if (switcherContainer) {
+      if (data.variants && data.variants.length) {
+        switcherContainer.innerHTML = data.variants.map((v, i) =>
+          `<button class="modal-variant-btn${i === 0 ? ' active' : ''}" onclick="
+            this.closest('.modal-variant-switcher').querySelectorAll('.modal-variant-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+          ">${v}</button>`
+        ).join('');
+        switcherContainer.style.display = 'flex';
+      } else {
+        switcherContainer.innerHTML = '';
+        switcherContainer.style.display = 'none';
+      }
+    }
+
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   });
 });
-
 function closeModal() {
   overlay.classList.remove('open');
   document.body.style.overflow = '';
