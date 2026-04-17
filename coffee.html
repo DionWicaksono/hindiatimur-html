@@ -247,6 +247,17 @@ nav.scrolled .nav-hamburger span { background: var(--forest); }
 .mobile-menu ul li a:hover,
 .mobile-menu ul li a:focus { color: var(--gold-light); }
 .mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+.mobile-menu-close {
+  display: block;
+  margin-bottom: 2rem;
+  background: none; border: none; cursor: pointer; padding: 0;
+  color: var(--gold-light);
+  font-size: 2rem; line-height: 1;
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.mobile-menu-close:hover { opacity: 1; transform: scale(1.15); }
+
 .mobile-menu-footer {
   position: absolute; bottom: 2.5rem; left: 0; right: 0;
   text-align: center;
@@ -925,6 +936,7 @@ footer {
   <div class="mobile-menu-logo-wrap">
     <img src="hindia-timur-logo.png" alt="Hindia Timur">
   </div>
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
   <ul>
     <li><a href="products.html">Products</a></li>
     <li><a href="index.html#compliance">Compliance</a></li>

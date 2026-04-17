@@ -471,6 +471,17 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
     opacity: 0.92;
   }
 
+  .mobile-menu-close {
+    display: block;
+    margin-bottom: 2rem;
+    background: none; border: none; cursor: pointer; padding: 0;
+    color: var(--gold-light);
+    font-size: 2rem; line-height: 1;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .mobile-menu-close:hover { opacity: 1; transform: scale(1.15); }
+
   .mobile-menu-footer {
     position: absolute; bottom: 2.5rem;
     font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
@@ -507,6 +518,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   <div class="mobile-menu-logo-wrap">
     <img src="hindia-timur-logo.webp" alt="Hindia Timur">
   </div>
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
   <ul>
     <li><a href="products.html">Products</a></li>
     <li><a href="index.html#compliance">Compliance</a></li>
@@ -722,6 +734,8 @@ window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.
     menu.querySelectorAll('a').forEach(function(a) {
       a.addEventListener('click', closeMenu);
     });
+    var closeBtn = document.getElementById('mobileMenuClose');
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeMenu();
     });
