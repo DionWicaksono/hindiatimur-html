@@ -605,6 +605,31 @@ nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
   transition: background 0.2s;
 }
 .modal-close:hover { background: var(--cream); }
+.modal-variant-switcher {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 1rem 0 0.2rem;
+}
+.modal-variant-btn {
+  padding: 5px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.modal-variant-btn.active,
+.modal-variant-btn:hover {
+  background: var(--gold);
+  color: var(--forest);
+}  
 
 /* ── CTA STRIP ────────────────────────── */
 .cta-strip {
@@ -1281,7 +1306,29 @@ footer {
         <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
       </div>
     </div>
-
+    <!-- 21. Fruit Chips -->
+<div class="product-card" data-category="food-sweeteners" data-id="fruit-chips" style="animation-delay:0.63s">
+  <div class="card-image-wrap">
+    <img src="assets/products/fruit-chips-premium.svg" alt="Indonesian fruit chips banana jackfruit coconut">
+    <div class="card-img-overlay" style="--overlay-logo: url('assets/overlays/fruit-chips.png')"></div>
+  </div>
+  <div class="card-body">
+    <div class="card-top">
+      <div class="card-name">Fruit Chips</div>
+      <span class="card-tag tag-artisanal">Artisanal</span>
+    </div>
+    <p class="card-desc">Export-grade banana, jackfruit, and coconut chips for snack, retail, and private-label markets. Low moisture, consistent slice, minimal oil. Plain, salted, and sweetened variants available.</p>
+    <div class="card-specs">
+      <span class="spec-pill">Banana</span>
+      <span class="spec-pill">Jackfruit</span>
+      <span class="spec-pill">Coconut</span>
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="card-origin">Java · Sulawesi · North Maluku</span>
+    <span class="card-cta">Details <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+  </div>
+</div>
   </div><!-- /products-grid -->
 </section>
 
@@ -1761,7 +1808,24 @@ const productData = {
       { key: 'Lead Time', val: '2–3 weeks' }
     ],
     certs: ['Certificate of Analysis (alkaloid profile)', 'Phytosanitary Certificate', 'Certificate of Origin', 'Heavy Metal & Microbial Analysis']
-  }
+  },
+  fruit-chips: {
+  category: 'Food & Sweeteners',
+  title: 'Fruit Chips',
+  desc: 'Export-grade Indonesian fruit chips — banana, jackfruit, and coconut — dried and packaged for snack, retail, and private-label markets. Consistent slice thickness, low moisture, and minimal oil. Available in plain, lightly salted, and sweetened variants.',
+  origin: 'Java · Sulawesi · North Maluku',
+  img: 'assets/products/fruit-chips-premium.svg',
+  variants: ['Banana Chips', 'Jackfruit Chips', 'Coconut Chips'],
+  specs: [
+    { key: 'Moisture',     val: '≤ 5%' },
+    { key: 'Fat Content',  val: '10–18%' },
+    { key: 'Shelf Life',   val: '12 months' },
+    { key: 'Pack Formats', val: 'Bulk / OEM' },
+    { key: 'MOQ',          val: '500 kg' },
+    { key: 'Incoterms',    val: 'FOB · CIF · DDP' }
+  ],
+  certs: ['Phytosanitary Certificate', 'Certificate of Origin', 'Certificate of Analysis', 'Halal (MUI) on request']
+},
 };
 
 // ── MODAL LOGIC ───────────────────────────
