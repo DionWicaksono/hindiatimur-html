@@ -238,3 +238,22 @@ Never `})();` directly followed by `</body>` — that is always a bug.
 </div>   ← must be </div>, never </nav>
 ```
 Using `<nav>` causes the element to inherit all `nav` tag CSS (`position: fixed`, `z-index: 200`, `flex-direction: column`, etc.) and float over the footer.
+
+---
+
+## Post-fix note — April 18, 2026 (nav selector standardisation + gold hamburger)
+
+**Problems fixed:**
+1. `exporter-quote.html` hamburger unclickable — page used plain `nav` selector with `background: rgba(28,43,30,0.20)` (dark transparent). Hamburger spans were `var(--forest)` = invisible on dark bg.
+2. `about.html` wrong header background — had both plain `nav` (light bar) AND `nav#nav` (dark transparent). The more-specific `nav#nav` won, making the header dark instead of light.
+3. `coffee.html`, `faq.html`, `blog.html` — same dual/plain selector issues.
+4. Hamburger span colour was inconsistent across pages (`var(--forest)`, `rgba(245,240,232,0.9)`, `var(--cream)`).
+
+**Fixes applied to all 13 pages:**
+- Replaced all nav CSS with the single canonical `nav#nav` block (see Canonical CSS section above)
+- All plain `nav` selector blocks removed
+- All hamburger span colours unified to `var(--gold)` (`#B8924A`) — visible on both light and dark backgrounds
+
+**Updated rule — Span bar colour:**
+- ~~`var(--forest)` on light-bar pages, `rgba(245,240,232,0.9)` on transparent-overlay pages~~
+- **All pages: `var(--gold)` (`#B8924A`)** — uniform, always visible, on-brand
