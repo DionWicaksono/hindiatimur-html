@@ -892,45 +892,6 @@ footer {
   .nav-cta:hover { background: var(--gold-light) !important; }
   nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
 
-  .nav-hamburger {
-    display: none;
-    flex-direction: column; justify-content: center; align-items: center;
-    gap: 5px; width: 40px; height: 40px;
-    background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
-  }
-  .nav-hamburger span {
-    display: block; width: 22px; height: 1.5px;
-    background: rgba(245,240,232,0.9); border-radius: 2px;
-    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
-    transform-origin: center;
-  }
-  nav#nav.scrolled .nav-hamburger span { background: var(--forest); }
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-  @media (max-width: 768px) {
-    .nav-links { display: none !important; }
-    .nav-hamburger { display: flex; }
-    nav#nav {
-      flex-direction: column !important;
-      align-items: center !important;
-      padding: 14px 5vw 10px !important;
-      background: rgba(28,43,30,0.28) !important;
-    }
-    nav#nav.scrolled {
-      flex-direction: row !important;
-      justify-content: space-between !important;
-      padding: 0 5vw !important;
-      height: 56px !important;
-      background: rgba(245,239,228,0.97) !important;
-    }
-    .nav-logo { margin-bottom: 6px; }
-    nav#nav.scrolled .nav-logo { margin-bottom: 0; }
-    .nav-logo-img-main { width: 80px; }
-  }
-
-  
 </style>
 </head>
 <body>
@@ -1492,34 +1453,6 @@ window.addEventListener('scroll', () => {
 </script>
 
 <script>
-  // ── HAMBURGER MENU ──────────────────────────────
-  (function() {
-    var btn = document.getElementById('navHamburger');
-    var menu = document.getElementById('mobileMenu');
-    if (!btn || !menu) return;
-    function openMenu() {
-      btn.classList.add('open');
-      menu.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMenu() {
-      btn.classList.remove('open');
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-    btn.addEventListener('click', function() {
-      if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
-    });
-    menu.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', closeMenu);
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeMenu();
-    });
-  })();
-</script><script>
   // Sticky nav shadow
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
