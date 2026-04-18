@@ -221,3 +221,20 @@ Three blog posts (`blog-coffee-heritage-volcanic.html`, `blog-organic-certificat
 </html>
 ```
 Never `})();` directly followed by `</body>` — that is always a bug.
+
+---
+
+## Post-fix note — April 18, 2026 (footer split on vanilla + coconut)
+
+**Root cause:** `blog-vanilla-sourcing-journey.html` and `blog-sustainable-coconut-farming.html` had `<div class="post-nav">` opened but closed with `</nav>` instead of `</div>`. The browser parsed the mismatched tag, broke the box model, and rendered the footer split or displaced.
+
+**Fix:** `</nav>` → `</div>` on the post-nav container in both files.
+
+**Rule:** The Previous/Next post bar must always be a `<div>`, never a `<nav>`:
+```html
+<div class="post-nav">
+  <a class="post-nav-item prev" href="...">...</a>
+  <a class="post-nav-item next" href="...">...</a>
+</div>   ← must be </div>, never </nav>
+```
+Using `<nav>` causes the element to inherit all `nav` tag CSS (`position: fixed`, `z-index: 200`, `flex-direction: column`, etc.) and float over the footer.
