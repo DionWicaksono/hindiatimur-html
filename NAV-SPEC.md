@@ -195,3 +195,29 @@ window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.
 - WhatsApp number placeholder `+62 (XXX) XXX-XXXX` needs real number sitewide
 - Blog nav "active" state marks Blog on all blog post pages but does not differentiate individual posts (low priority)
 - Individual product pages (`/products/[slug]`) not yet built — use transparent-overlay nav type when created
+
+---
+
+## Post-fix note — April 18, 2026
+
+### Root cause of "half footer / no scroll transform" on blog posts
+
+Three blog posts (`blog-coffee-heritage-volcanic.html`, `blog-organic-certification-fair-trade.html`, `blog-seasonal-availability-guide.html`) were missing the closing `</script>` tag on the last script block.
+
+**What happens:** The browser encounters an unclosed `<script>` block and treats everything after it — including footer HTML — as JavaScript. The footer is silently swallowed. The scroll JS inside that block also never executes, so the logo transform never fires.
+
+**Symptom pattern:**
+- Footer renders truncated or missing → unclosed `</script>` before `</body>`
+- Logo does not transform on scroll → scroll JS is inside the unclosed block
+- These two symptoms always appear together for this reason
+
+**Fix:** Added `</script>` before `</body>` on all three files.
+
+**Rule for new pages and edits:** The last `<script>` block must always end with:
+```
+  })();
+</script>
+</body>
+</html>
+```
+Never `})();` directly followed by `</body>` — that is always a bug.
