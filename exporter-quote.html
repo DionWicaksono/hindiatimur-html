@@ -66,31 +66,36 @@ body {
   line-height: 1.6;
 }
 
-/* ─── NAV ─────────────────────────────── */
+/* ─── NAV ──────────────────────────────────────────── */
 nav#nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; flex-direction: column; align-items: center;
-  padding: 18px 5vw 12px;
+  padding: 20px 5vw 14px;
   transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
-  background: rgba(245,239,228,0.97);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 var(--border);
+  background: transparent;
 }
 nav#nav.scrolled {
   flex-direction: row; justify-content: space-between; align-items: center;
   padding: 0 5vw; height: 64px;
-  box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+  background: rgba(245,239,228,0.97);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.08);
 }
-.nav-logo { display: block; text-decoration: none; line-height: 0; margin-bottom: 10px; }
+.nav-logo {
+  display: block; text-decoration: none; line-height: 0;
+  margin-bottom: 12px;
+}
 nav#nav.scrolled .nav-logo { margin-bottom: 0; }
 .nav-logo-img-main {
-  display: block; width: 110px; height: auto;
+  display: block; width: 130px; height: auto;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.45));
   transition: opacity 0.25s, width 0.25s;
 }
 nav#nav.scrolled .nav-logo-img-main { width: 0; opacity: 0; pointer-events: none; overflow: hidden; }
 .nav-logo-img-scrolled {
   display: block; font-family: 'Cormorant Garamond', serif;
   font-size: 1.55rem; font-weight: 600; color: var(--forest);
+  white-space: nowrap; line-height: 1;
   width: 0; opacity: 0; overflow: hidden;
   transition: opacity 0.25s, width 0.25s; pointer-events: none;
 }
@@ -100,17 +105,57 @@ nav#nav.scrolled .nav-logo-img-scrolled { width: auto; opacity: 1; pointer-event
   display: flex; gap: 2rem; list-style: none; align-items: center;
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
 }
-nav#nav.scrolled .nav-links { background: transparent; backdrop-filter: none; padding: 0; }
-.nav-links a { text-decoration: none; color: var(--text-mid); transition: color 0.2s; }
-.nav-links a:hover { color: var(--gold); }
-.nav-links a.active { color: var(--forest); }
+.nav-links a {
+  text-decoration: none; color: rgba(245,240,232,0.88); transition: color 0.2s;
+}
+nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+.nav-links a:hover { color: var(--gold-light); }
+nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold-light); }
+nav#nav.scrolled .nav-links a.active { color: var(--forest); }
 .nav-cta {
   background: var(--gold) !important; color: var(--forest) !important;
   padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
 }
 nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
-.nav-cta:hover { background: var(--gold-light) !important; }
+.nav-cta:hover { background: var(--gold-light) !important; color: var(--forest) !important; }
 nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+/* ─── DROPDOWN ─────────────────────────────────────── */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  display: flex; align-items: center; gap: 0.3rem; cursor: pointer;
+}
+.dropdown-chevron {
+  width: 10px; height: 6px; transition: transform 0.2s;
+}
+.nav-dropdown:hover .dropdown-chevron { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute; top: calc(100% + 0.75rem); left: 50%;
+  transform: translateX(-50%);
+  list-style: none; padding: 0.6rem 0;
+  background: var(--forest);
+  border: 1px solid rgba(245,240,232,0.1);
+  border-radius: 2px;
+  min-width: 170px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  z-index: 201;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu li a {
+  display: block; padding: 0.55rem 1.2rem;
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.75) !important; white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-dropdown-menu li a:hover {
+  color: var(--gold-light) !important;
+  background: rgba(245,240,232,0.05);
+}
+
+/* ─── HAMBURGER ─────────────────────────────────────── */
 .nav-hamburger {
   display: none;
   flex-direction: column; justify-content: center; align-items: center;
@@ -119,30 +164,120 @@ nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var
 }
 .nav-hamburger span {
   display: block; width: 22px; height: 1.5px;
-  background: var(--gold);
-  border-radius: 2px;
+  background: var(--gold); border-radius: 2px;
   transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
   transform-origin: center;
 }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ─── MOBILE MENU ───────────────────────────────────── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: var(--forest); flex-direction: column;
+  justify-content: center; align-items: center;
+  opacity: 0; transform: translateY(-12px);
+  transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s cubic-bezier(0.23,1,0.32,1);
+  pointer-events: none;
+}
+.mobile-menu::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
+  pointer-events: none;
+}
+.mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+.mobile-menu-logo-wrap { margin-bottom: 1.5rem; }
+.mobile-menu-logo-wrap img {
+  display: block; width: 110px; height: auto;
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); opacity: 0.92;
+}
+.mobile-menu-close {
+  display: block; margin-bottom: 1.5rem;
+  background: none; border: none; cursor: pointer; padding: 0;
+  color: var(--gold-light); font-size: 2rem; line-height: 1;
+  opacity: 0.85; transition: opacity 0.2s, transform 0.2s;
+}
+.mobile-menu-close:hover { opacity: 1; transform: scale(1.15); }
+.mobile-menu ul {
+  list-style: none; display: flex; flex-direction: column;
+  align-items: center; gap: 0; width: 100%; padding: 0 8vw;
+}
+.mobile-menu ul li { width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08); overflow: hidden; text-align: center; }
+.mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+.mobile-menu ul li a,
+.mobile-dropdown-toggle {
+  display: block; width: 100%;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 300;
+  color: rgba(245,240,232,0.75); text-decoration: none;
+  letter-spacing: 0.02em; padding: 0.9rem 0; text-align: center;
+  transform: translateY(20px); opacity: 0;
+  transition: color 0.2s, transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.4s ease;
+  background: none; border: none; cursor: pointer;
+}
+.mobile-menu.open ul li a,
+.mobile-menu.open .mobile-dropdown-toggle { transform: translateY(0); opacity: 1; }
+.mobile-menu ul li:nth-child(1) a, .mobile-menu ul li:nth-child(1) button { transition-delay: 0.06s; }
+.mobile-menu ul li:nth-child(2) a, .mobile-menu ul li:nth-child(2) button { transition-delay: 0.10s; }
+.mobile-menu ul li:nth-child(3) a, .mobile-menu ul li:nth-child(3) button { transition-delay: 0.14s; }
+.mobile-menu ul li:nth-child(4) a, .mobile-menu ul li:nth-child(4) button { transition-delay: 0.18s; }
+.mobile-menu ul li:nth-child(5) a, .mobile-menu ul li:nth-child(5) button { transition-delay: 0.22s; }
+.mobile-menu ul li:nth-child(6) a, .mobile-menu ul li:nth-child(6) button { transition-delay: 0.26s; }
+.mobile-menu ul li a:hover, .mobile-dropdown-toggle:hover { color: var(--gold-light); }
+.mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+.mobile-dropdown-toggle { display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
+.mobile-dropdown-toggle .dropdown-chevron { transition: transform 0.25s; }
+.mobile-dropdown-toggle[aria-expanded="true"] .dropdown-chevron { transform: rotate(180deg); }
+.mobile-dropdown-menu {
+  display: none; list-style: none; padding: 0;
+  background: rgba(245,240,232,0.04); border-top: 1px solid rgba(245,240,232,0.06);
+}
+.mobile-dropdown-menu.open { display: block; }
+.mobile-dropdown-menu li { border-bottom: none !important; border-top: none !important; }
+.mobile-dropdown-menu li a {
+  font-size: 0.85rem !important; letter-spacing: 0.12em !important;
+  text-transform: uppercase !important; color: rgba(245,240,232,0.5) !important;
+  padding: 0.6rem 0 !important;
+  transform: none !important; opacity: 1 !important;
+}
+.mobile-dropdown-menu li a:hover { color: var(--gold-light) !important; }
+.mobile-menu-footer {
+  position: absolute; bottom: 2.5rem;
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.2);
+}
+.mobile-menu-logo-wrap,
+.mobile-menu-close,
+.mobile-menu ul,
+.mobile-menu-footer { position: relative; z-index: 1; }
+
+/* ─── MOBILE MENU LOGO-WRAP CSS ─────────────────────── */
+.mobile-menu-logo-wrap { margin-bottom: 2rem; }
+.mobile-menu-logo-wrap img {
+  display: block; width: 110px; height: auto;
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); opacity: 0.92;
+}
+
 @media (max-width: 768px) {
   .nav-links { display: none !important; }
   .nav-hamburger { display: flex; }
   .mobile-menu { display: flex; }
   nav#nav {
     flex-direction: column !important; align-items: center !important;
-    padding: 14px 5vw 10px !important;
-    background: rgba(245,239,228,0.97) !important;
+    padding: 16px 5vw 12px !important;
+    background: rgba(0,0,0,0.15) !important;
+    backdrop-filter: blur(8px) !important;
   }
   nav#nav.scrolled {
     flex-direction: row !important; justify-content: space-between !important;
     padding: 0 5vw !important; height: 56px !important;
+    background: rgba(245,239,228,0.97) !important;
+    backdrop-filter: blur(14px) !important;
   }
   .nav-logo { margin-bottom: 6px; }
   nav#nav.scrolled .nav-logo { margin-bottom: 0; }
-  .nav-logo-img-main { width: 80px; }
+  .nav-logo-img-main { width: 100px; }
 }
 
 /* ─── PAGE HEADER ─────────────────────── */
@@ -778,9 +913,18 @@ footer {
   </a>
   <ul class="nav-links">
     <li><a href="products.html">Products</a></li>
-    <li><a href="index.html#compliance">Compliance</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="exporter-quote.html" class="active nav-cta">Request a Quote</a></li>
+    <li class="nav-dropdown">
+      <a href="about.html" class="nav-dropdown-toggle">About <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact" class="active">Contact</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -793,13 +937,21 @@ footer {
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
   <ul>
     <li><a href="products.html">Products</a></li>
-    <li><a href="index.html#compliance">Compliance</a></li>
-    <li><a href="about.html">About</a></li>
+    <li class="mobile-dropdown">
+      <button class="mobile-dropdown-toggle" aria-expanded="false">About <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+      <ul class="mobile-dropdown-menu">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact" class="active">Contact</a></li>
     <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
   </ul>
   <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
 </div>
-
 <!-- ─── PAGE HEADER ────────────────────────── -->
 <header class="page-header">
   <div class="header-left">
@@ -1247,37 +1399,36 @@ footer {
 <!-- ─── FOOTER ─────────────────────────────── -->
 <footer>
   <div class="footer-top">
-    <div>
-      <a href="index.html"><img src="hindia-timur-logo.webp" alt="Hindia Timur" style="width:90px;height:auto;display:block;margin-bottom:1rem;opacity:0.85;"></a>
-      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo-link">
+        <img src="hindia-timur-logo.webp" alt="Hindia Timur" class="footer-logo-img">
+      </a>
+      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth -- with integrity, compliance, and consistency.</p>
     </div>
     <div>
-      <div class="footer-col-title">Products</div>
+      <div class="footer-col-title">Source</div>
       <ul class="footer-links">
         <li><a href="coffee.html">Specialty Coffee</a></li>
-        <li><a href="products.html">Moringa &amp; Superfoods</a></li>
-        <li><a href="products.html">Agarwood &amp; Oud</a></li>
-        <li><a href="products.html">Spices &amp; Extracts</a></li>
-        <li><a href="products.html">View Full Catalog</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">For Importers</div>
-      <ul class="footer-links">
-        <li><a href="index.html#compliance">Compliance &amp; Certifications</a></li>
-        <li><a href="index.html#process">Sourcing Process</a></li>
-        <li><a href="exporter-quote.html">Request Samples</a></li>
-        <li><a href="exporter-quote.html">OEM &amp; Private Label</a></li>
+        <li><a href="products.html">Full Product Catalog</a></li>
+        <li><a href="exporter-quote.html">Request a Quote</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Company</div>
       <ul class="footer-links">
         <li><a href="about.html">About Hindia Timur</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
         <li><a href="about.html#farmers">For Farmers</a></li>
-        <li><a href="#">Blog &amp; Insights</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="exporter-quote.html">Contact Us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="blog.html">Blog &amp; Insights</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -1289,186 +1440,47 @@ footer {
 
 <script>
 // ── NAV SCROLL SHADOW ─────────────────────
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
+  // ── SCROLL TRANSFORM ────────────────────────────────
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
 
-// ── FADE-UP ANIMATIONS ────────────────────
-if ('IntersectionObserver' in window) {
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
-  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-  setTimeout(() => {
-    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
-  }, 900);
-}
-
-// ── PRODUCT CHECKBOXES ────────────────────
-function toggleCheck(label) {
-  // Prevent double-fire from native label behavior
-  event.preventDefault();
-  label.classList.toggle('checked');
-  const cb = label.querySelector('input[type="checkbox"]');
-  cb.checked = !cb.checked;
-  // Show "Other" field if selected
-  if (cb.value === 'Other') {
-    document.getElementById('otherProductWrap').style.display = cb.checked ? 'block' : 'none';
-  }
-  // Clear product error
-  document.getElementById('fg-products').classList.remove('has-error');
-}
-
-// ── CERT TOGGLES ──────────────────────────
-function toggleCert(label) {
-  event.preventDefault();
-  label.classList.toggle('checked');
-  const cb = label.querySelector('input[type="checkbox"]');
-  cb.checked = !cb.checked;
-}
-
-// ── FORM VALIDATION ───────────────────────
-function validateForm() {
-  let valid = true;
-
-  // Company
-  const company = document.getElementById('company');
-  setError('fg-company', !company.value.trim(), 'Please enter your company name.');
-  if (!company.value.trim()) valid = false;
-
-  // Contact
-  const contact = document.getElementById('contact');
-  setError('fg-contact', !contact.value.trim(), 'Please enter a contact name.');
-  if (!contact.value.trim()) valid = false;
-
-  // Email
-  const email = document.getElementById('email');
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
-  setError('fg-email', !emailOk, 'Please enter a valid email address.');
-  if (!emailOk) valid = false;
-
-  // Country
-  const country = document.getElementById('country');
-  setError('fg-country', !country.value, 'Please select a destination country.');
-  if (!country.value) valid = false;
-
-  // Products
-  const checkedProducts = document.querySelectorAll('#productCheckGrid input[type="checkbox"]:checked');
-  const prodError = checkedProducts.length === 0;
-  document.getElementById('fg-products').classList.toggle('has-error', prodError);
-  if (prodError) valid = false;
-
-  // Quantity
-  const qty = document.getElementById('quantity');
-  setError('fg-quantity', !qty.value || parseFloat(qty.value) <= 0, 'Please enter an estimated quantity.');
-  if (!qty.value || parseFloat(qty.value) <= 0) valid = false;
-
-  // Timeline
-  const timeline = document.getElementById('timeline');
-  setError('fg-timeline', !timeline.value, 'Please select a delivery timeline.');
-  if (!timeline.value) valid = false;
-
-  return valid;
-}
-
-function setError(groupId, hasError, message) {
-  const group = document.getElementById(groupId);
-  if (!group) return;
-  group.classList.toggle('has-error', hasError);
-  const msg = group.querySelector('.error-msg');
-  if (msg && message) msg.textContent = message;
-}
-
-// ── FORM SUBMIT ───────────────────────────
-document.getElementById('quoteForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  if (!validateForm()) {
-    const firstError = document.querySelector('.has-error');
-    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return;
-  }
-
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.innerHTML = `
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" style="animation:spin 0.8s linear infinite"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" opacity="0.25"/><path d="M10 2a8 8 0 018 8" stroke-linecap="round"/></svg>
-    Sending…
-  `;
-
-  try {
-    const res = await fetch('https://formspree.io/f/xwvrzkaz', {
-      method: 'POST',
-      body: new FormData(this),
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      const ref = 'HT-' + Math.floor(100000 + Math.random() * 900000);
-      document.getElementById('successRef').textContent = 'REF: ' + ref;
-      document.getElementById('successOverlay').classList.add('show');
-      document.body.style.overflow = 'hidden';
-    } else {
-      throw new Error('Server error');
-    }
-  } catch(err) {
-    btn.disabled = false;
-    btn.innerHTML = `
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><circle cx="10" cy="10" r="8"/><path d="M10 6v4m0 4h.01" stroke-linecap="round"/></svg>
-      Submission failed — please try again
-    `;
-    btn.style.background = 'var(--earth)';
-    setTimeout(() => {
-      btn.innerHTML = 'Send Inquiry &rarr;';
-      btn.style.background = '';
-    }, 4000);
-  }
-});
-
-function closeSuccess() {
-  window.location.href = 'index.html';
-}
-
-// Close success on overlay click
-document.getElementById('successOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeSuccess();
-});
-
-// ── SPIN KEYFRAME ─────────────────────────
-const style = document.createElement('style');
-style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
-document.head.appendChild(style);
-
-  // ── HAMBURGER MENU ──────────────────────────────
+  // ── HAMBURGER MENU ───────────────────────────────────
   (function() {
-    var btn = document.getElementById('navHamburger');
+    var btn  = document.getElementById('navHamburger');
     var menu = document.getElementById('mobileMenu');
     if (!btn || !menu) return;
     function openMenu() {
-      btn.classList.add('open');
-      menu.classList.add('open');
+      btn.classList.add('open'); menu.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
     }
     function closeMenu() {
-      btn.classList.remove('open');
-      menu.classList.remove('open');
+      btn.classList.remove('open'); menu.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
     btn.addEventListener('click', function() {
-      if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+      menu.classList.contains('open') ? closeMenu() : openMenu();
     });
-    // Close on link click
-    menu.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', closeMenu);
-    });
+    menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
     var closeBtn = document.getElementById('mobileMenuClose');
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-    // Close on Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeMenu();
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+
+    // ── MOBILE DROPDOWN ─────────────────────────────────
+    menu.querySelectorAll('.mobile-dropdown-toggle').forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var submenu = this.nextElementSibling;
+        var isOpen = submenu.classList.contains('open');
+        // Close all others
+        menu.querySelectorAll('.mobile-dropdown-menu.open').forEach(function(m) { m.classList.remove('open'); });
+        menu.querySelectorAll('.mobile-dropdown-toggle').forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        if (!isOpen) {
+          submenu.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
     });
   })();
 

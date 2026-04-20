@@ -257,3 +257,38 @@ Using `<nav>` causes the element to inherit all `nav` tag CSS (`position: fixed`
 **Updated rule — Span bar colour:**
 - ~~`var(--forest)` on light-bar pages, `rgba(245,240,232,0.9)` on transparent-overlay pages~~
 - **All pages: `var(--gold)` (`#B8924A`)** — uniform, always visible, on-brand
+
+---
+
+## Redesign — April 20, 2026
+
+### Changes applied sitewide (all 13 pages)
+
+**Nav links — new uniform structure:**
+```
+Logo | Products | About ▾ | FAQ | Contact | [Request a Quote]
+```
+
+About dropdown (desktop hover / mobile tap-to-expand):
+- Our Story → `about.html`
+- How It Works → `index.html#process`
+- Compliance → `index.html#compliance`
+- For Farmers → `about.html#farmers`
+
+Contact → `index.html#contact`
+
+**Nav style:** Transparent overlay on all pages. Collapses to opaque warm-white bar on scroll.
+
+**Logo size:** 130px default (up from 110px), 100px on mobile. Collapses to logotype text on scroll.
+
+**Hamburger bars:** `var(--gold)` on all pages.
+
+**Footer — new uniform 4-column structure:**
+- Col 1: Brand logo + tagline
+- Col 2 Source: Specialty Coffee · Full Product Catalog · Request a Quote
+- Col 3 Company: About · How It Works · For Farmers · FAQ
+- Col 4 Connect: hello@hindiatimur.com · WhatsApp · Blog & Insights · Contact Us
+
+All footer links resolve to real pages — no `href="#"` except WhatsApp (pending real number).
+
+**Mobile overlay:** Logo centered at 110px, × close button, About sub-links expand inline on tap.

@@ -342,13 +342,20 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
   <a href="index.html" class="nav-logo">
     <img class="nav-logo-img-main" src="hindia-timur-logo.webp" alt="Hindia Timur">
     <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
-    
   </a>
   <ul class="nav-links">
     <li><a href="products.html">Products</a></li>
-    <li><a href="index.html#compliance">Compliance</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="blog.html">Blog</a></li>
+    <li class="nav-dropdown">
+      <a href="about.html" class="nav-dropdown-toggle">About <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
     <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
@@ -362,13 +369,23 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
   <ul>
     <li><a href="products.html">Products</a></li>
-    <li><a href="index.html#compliance">Compliance</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="blog.html">Blog</a></li>
+    <li class="mobile-dropdown">
+      <button class="mobile-dropdown-toggle" aria-expanded="false">About <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+      <ul class="mobile-dropdown-menu">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
     <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
   </ul>
   <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
-</div><article>
+</div>
+
+<article>
 <section class="post-hero">
   <div class="hero-image">
     <img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=1100&q=85&fit=crop" alt="Seasonal Availability Guide: When to Source Premium Indonesian Produce">
@@ -475,33 +492,36 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
 </div>
 <footer>
   <div class="footer-top">
-    <div>
-      <a href="index.html"><img src="hindia-timur-logo.webp" alt="Hindia Timur" style="width:90px;height:auto;display:block;margin-bottom:1rem;opacity:0.85;"></a></a>
-      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo-link">
+        <img src="hindia-timur-logo.webp" alt="Hindia Timur" class="footer-logo-img">
+      </a>
+      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth -- with integrity, compliance, and consistency.</p>
     </div>
     <div>
-      <div class="footer-col-title">Products</div>
+      <div class="footer-col-title">Source</div>
       <ul class="footer-links">
         <li><a href="coffee.html">Specialty Coffee</a></li>
-        <li><a href="products.html">View Full Catalog</a></li>
+        <li><a href="products.html">Full Product Catalog</a></li>
         <li><a href="exporter-quote.html">Request a Quote</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Insights</div>
-      <ul class="footer-links">
-        <li><a href="blog.html">All Articles</a></li>
-        <li><a href="blog-sustainable-coconut-farming.html">Sustainable Farming</a></li>
-        <li><a href="blog-vanilla-sourcing-journey.html">Vanilla Sourcing</a></li>
-        <li><a href="blog-coffee-heritage-volcanic.html">Coffee Heritage</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Company</div>
       <ul class="footer-links">
         <li><a href="about.html">About Hindia Timur</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
         <li><a href="about.html#farmers">For Farmers</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
         <li><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="blog.html">Blog &amp; Insights</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -543,34 +563,48 @@ footer{background:#111612;padding:3.5rem 8vw 2rem;}
   })();
 </script><script>
   // Sticky nav shadow
+    // ── SCROLL TRANSFORM ────────────────────────────────
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-  });
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
 
-  // Fade-up scroll animations — opt-in only, content always visible without JS
+  // ── HAMBURGER MENU ───────────────────────────────────
   (function() {
-    // Only enable animation if IntersectionObserver is supported
-    if (!('IntersectionObserver' in window)) return;
+    var btn  = document.getElementById('navHamburger');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    function openMenu() {
+      btn.classList.add('open'); menu.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      btn.classList.remove('open'); menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    btn.addEventListener('click', function() {
+      menu.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+    var closeBtn = document.getElementById('mobileMenuClose');
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
 
-    // Add class to body to enable CSS animations
-    document.body.classList.add('js-animate');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    // ── MOBILE DROPDOWN ─────────────────────────────────
+    menu.querySelectorAll('.mobile-dropdown-toggle').forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var submenu = this.nextElementSibling;
+        var isOpen = submenu.classList.contains('open');
+        // Close all others
+        menu.querySelectorAll('.mobile-dropdown-menu.open').forEach(function(m) { m.classList.remove('open'); });
+        menu.querySelectorAll('.mobile-dropdown-toggle').forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        if (!isOpen) {
+          submenu.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
         }
       });
-    }, { threshold: 0, rootMargin: '0px' });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Safety net: after 800ms force-reveal anything still hidden
-    setTimeout(() => {
-      document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
-    }, 800);
+    });
   })();
 </script>
 </body>
