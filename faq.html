@@ -207,20 +207,21 @@ body {
 /* ─── NAV ──────────────────────────────────────────── */
 nav#nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; flex-direction: row; justify-content: space-between; align-items: center;
-  padding: 0 5vw; height: 80px;
-  transition: background 0.35s, box-shadow 0.35s, height 0.35s;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 5vw 14px;
+  transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
   background: transparent;
 }
 nav#nav.scrolled {
-  height: 64px;
+  flex-direction: row; justify-content: space-between; align-items: center;
+  padding: 0 5vw; height: 64px;
   background: rgba(245,239,228,0.97);
   backdrop-filter: blur(14px);
   box-shadow: 0 1px 12px rgba(0,0,0,0.08);
 }
-
 /* Logo */
-.nav-logo { display: block; text-decoration: none; line-height: 0; }
+.nav-logo { display: block; text-decoration: none; line-height: 0; margin-bottom: 10px; }
+nav#nav.scrolled .nav-logo { margin-bottom: 0; }
 .nav-logo-img-main {
   display: block; width: 130px; height: auto;
   filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
