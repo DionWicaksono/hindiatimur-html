@@ -175,7 +175,12 @@ nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
   background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
   pointer-events: none;
 }
-.mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+.mobile-menu.open {
+  display: flex; 
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
 .mobile-menu-logo-wrap { margin-bottom: 1.5rem; position: relative; z-index: 1; }
 .mobile-menu-logo-wrap img {
   display: block; width: 110px; height: auto;
@@ -794,10 +799,18 @@ footer {
   </div>
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
   <ul>
-    <li><a href="products.html" class="active">Products</a></li>
-    <li><a href="index.html#compliance">Compliance</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="blog.html">Blog</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li class="mobile-dropdown">
+      <button class="mobile-dropdown-toggle" aria-expanded="false">About <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+      <ul class="mobile-dropdown-menu">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
     <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
   </ul>
   <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
@@ -1452,41 +1465,60 @@ footer {
 </div>
 
 <script>
-// ── NAV SCROLL ────────────────────────────
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
+// ── NAV TRANSFORMATION ────────────────────────────────
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
-// ── HAMBURGER MENU ────────────────────────
-(function() {
-  var btn = document.getElementById('navHamburger');
-  var menu = document.getElementById('mobileMenu');
-  if (!btn || !menu) return;
-  function openMenu() {
-    btn.classList.add('open');
-    menu.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMenu() {
-    btn.classList.remove('open');
-    menu.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-  btn.addEventListener('click', function() {
-    if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
-  });
-  menu.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', closeMenu);
-  });
-  var closeBtn = document.getElementById('mobileMenuClose');
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeMenu();
-  });
-})();
+  // ── MOBILE MENU & DROPDOWN LOGIC ──────────────────────
+  (function() {
+    const btn = document.getElementById('navHamburger');
+    const menu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('mobileMenuClose');
+
+    if (!btn || !menu) return;
+
+    function toggleMenu() {
+      const isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleMenu();
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMenu();
+      });
+    }
+
+    // Handle Mobile Dropdown
+    menu.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const submenu = this.nextElementSibling;
+        const isOpen = submenu.classList.toggle('open');
+        this.setAttribute('aria-expanded', isOpen);
+      });
+    });
+
+    // Close menu when clicking links
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) toggleMenu();
+    });
+  })();
 
 // ── FILTER LOGIC ─────────────────────────
 const tabs = document.querySelectorAll('.filter-tab');
