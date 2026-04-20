@@ -1496,5 +1496,75 @@ footer {
   })();
 
 </script>
+  <script>
+// ── 1. FORM VISIBILITY (Intersection Observer) ──
+// This script looks for any element with the 'fade-up' class. 
+// Since your CSS sets .fade-up to opacity: 0, this script 
+// adds the 'visible' class when the element scrolls into view.
+document.addEventListener('DOMContentLoaded', () => {
+  const observerOptions = {
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  // Target all elements that are currently hidden
+  document.querySelectorAll('.fade-up').forEach(el => {
+    observer.observe(el);
+  });
+});
+
+// ── 2. PRODUCT CHECKBOX LOGIC ──
+// This handles the custom checkboxes in the product grid.
+// It toggles the 'checked' class for styling and updates the hidden input.
+function toggleCheck(el) {
+  const checkbox = el.querySelector('input[type="checkbox"]');
+  if (!checkbox) return;
+  
+  checkbox.checked = !checkbox.checked;
+  el.classList.toggle('checked', checkbox.checked);
+  
+  // Show/Hide the "Other Product" text input specifically
+  const otherWrap = document.getElementById('otherProductWrap');
+  if (el.id === 'otherCheckItem' && otherWrap) {
+    otherWrap.style.display = checkbox.checked ? 'block' : 'none';
+  }
+}
+
+// ── 3. CERTIFICATION TAG LOGIC ──
+// This handles the pill-shaped toggles in the certifications section.
+function toggleCert(el) {
+  const checkbox = el.querySelector('input[type="checkbox"]');
+  if (!checkbox) return;
+  
+  checkbox.checked = !checkbox.checked;
+  el.classList.toggle('checked', checkbox.checked);
+}
+
+// ── 4. FORM SUBMISSION (Optional but Recommended) ──
+// Prevents the page from reloading if you want to show the Success Modal.
+const quoteForm = document.getElementById('quoteForm');
+if (quoteForm) {
+  quoteForm.addEventListener('submit', function(e) {
+    // If you are using Formspree, it will handle the redirect. 
+    // If you want to show your own success modal first, add logic here.
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending...';
+    }
+  });
+}
+
+function closeSuccess() {
+  document.getElementById('successOverlay').classList.remove('show');
+}
+</script>
 </body>
 </html>
