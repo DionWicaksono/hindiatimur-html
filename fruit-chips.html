@@ -761,7 +761,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
     <div class="hero-image-badges">
       <div class="origin-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-        Java &middot; Sulawesi &middot; Bali
+        Java &middot; Sulawesi &middot; Bali &middot; Maluku
       </div>
       <div class="score-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
@@ -782,7 +782,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 
     <div class="product-eyebrow">Tropical Fruit Chips</div>
     <h1 class="product-h1">Indonesia's Finest<br><em>Fruit Chips</em></h1>
-    <p class="product-tagline">Jackfruit, Banana, Pineapple &amp; More -- Preserved at Peak Ripeness</p>
+    <p class="product-tagline">Jackfruit, Banana, Pineapple, Coconut &amp; More -- Preserved at Peak Ripeness</p>
     <p class="product-desc">
       Sourced from family farms across Java, Sulawesi, and Bali, our fruit chips are processed within hours of harvest to lock in natural flavour, colour, and nutritional value. Available in vacuum-fried and air-dried formats to meet clean-label, organic, and conventional market requirements.
     </p>
@@ -792,6 +792,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
       <button class="variety-btn active" onclick="switchVariety('jackfruit', this)">Jackfruit</button>
       <button class="variety-btn" onclick="switchVariety('banana', this)">Banana</button>
       <button class="variety-btn" onclick="switchVariety('pineapple', this)">Pineapple</button>
+      <button class="variety-btn" onclick="switchVariety('coconut', this)">Coconut</button>
       <button class="variety-btn" onclick="switchVariety('mixed', this)">Mixed</button>
     </div>
 
@@ -875,6 +876,34 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
           <span class="profile-label">Bromelain</span>
           <div class="profile-bar-track"><div class="profile-bar-fill" style="width:65%"></div></div>
           <span class="profile-val">Present</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coconut -->
+    <div class="profile-panel variety-content" id="vc-coconut">
+      <div class="profile-title">Coconut Chips — Flavour &amp; Nutrition Profile</div>
+      <div class="profile-tags">
+        <span class="profile-tag">Naturally Sweet</span>
+        <span class="profile-tag">MCT-Rich</span>
+        <span class="profile-tag">Toasted &amp; Raw Options</span>
+        <span class="profile-tag">Keto-Friendly</span>
+      </div>
+      <div class="profile-bars">
+        <div class="profile-row">
+          <span class="profile-label">Healthy Fats</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:85%"></div></div>
+          <span class="profile-val">~64g/100g</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-label">Dietary Fibre</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:73%"></div></div>
+          <span class="profile-val">~9g/100g</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-label">Manganese</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:60%"></div></div>
+          <span class="profile-val">~1.5mg/100g</span>
         </div>
       </div>
     </div>
@@ -964,7 +993,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
     <div class="specs-grid">
       <div class="spec-item">
         <div class="spec-key">Available Varieties</div>
-        <div class="spec-val">Jackfruit, Banana, Pineapple, Mango, Salak, Mixed</div>
+        <div class="spec-val">Jackfruit, Banana, Pineapple, Coconut, Mango, Salak, Mixed</div>
       </div>
       <div class="spec-item">
         <div class="spec-key">Processing Method</div>
@@ -1079,7 +1108,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 <section class="varieties-section">
   <div class="varieties-header fade-up">
     <div class="section-label">Available Varieties</div>
-    <h2 class="section-h2">Six Tropical Fruits,<br><em>One Reliable Source</em></h2>
+    <h2 class="section-h2">Seven Tropical Fruits,<br><em>One Reliable Source</em></h2>
     <p class="section-lead">Each variety is grown in its ideal micro-climate across the Indonesian archipelago, harvested at peak ripeness, and processed locally to guarantee freshness and flavour integrity from farm to port.</p>
   </div>
   <div class="varieties-grid">
@@ -1103,18 +1132,24 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
     </div>
     <div class="variety-card fade-up">
       <div class="variety-number">04</div>
+      <div class="variety-name">Coconut Chips</div>
+      <div class="variety-type">North Sulawesi &middot; Maluku &middot; Riau Islands</div>
+      <p class="variety-desc">Wide-shaved flakes from mature Dalam coconuts, available raw or lightly toasted with an optional coconut sugar or sea salt glaze. High in MCTs and dietary fibre. A fast-growing SKU in keto, paleo, and clean-label snack markets globally.</p>
+    </div>
+    <div class="variety-card fade-up">
+      <div class="variety-number">05</div>
       <div class="variety-name">Harum Manis Mango Chips</div>
       <div class="variety-type">East Java &middot; East Nusa Tenggara</div>
       <p class="variety-desc">Made from the aromatic Harum Manis variety, renowned for its deep sweetness and fragrance. Vacuum-fried to a light golden chip. Premium positioning in the gift and gourmet snack market.</p>
     </div>
     <div class="variety-card fade-up">
-      <div class="variety-number">05</div>
+      <div class="variety-number">06</div>
       <div class="variety-name">Salak (Snake Fruit) Chips</div>
       <div class="variety-type">Bali &middot; Yogyakarta &middot; Tapanuli</div>
       <p class="variety-desc">A uniquely Indonesian delicacy. Salak's tannic, honey-like flavour concentrates beautifully when air-dried. A high-value niche product for specialty importers seeking differentiation.</p>
     </div>
-    <div class="variety-card fade-up">
-      <div class="variety-number">06</div>
+    <div class="variety-card fade-up" style="grid-column: span 2;">
+      <div class="variety-number">07</div>
       <div class="variety-name">Custom Mixed Blends</div>
       <div class="variety-type">Fully Configurable &middot; OEM Ready</div>
       <p class="variety-desc">Design your own blend from any combination of the above varieties. We handle blending, seasoning, retail packaging, and nutritional labelling. Minimum 500 kg per custom SKU.</p>
@@ -1275,6 +1310,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
         <option>Jackfruit Chips — Vacuum-Fried</option>
         <option>Banana Chips — Vacuum-Fried</option>
         <option>Pineapple Chips — Air-Dried</option>
+        <option>Coconut Chips — Toasted or Raw</option>
         <option>Mango Chips — Vacuum-Fried</option>
         <option>Salak (Snake Fruit) Chips</option>
         <option>Custom Mixed Blend / OEM</option>
