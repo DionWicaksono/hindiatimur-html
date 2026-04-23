@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cashew Nuts | Hindia Timur — Premium Indonesian Produce</title>
+<meta name="description" content="Export-grade Indonesian cashew nuts — W180 to W450, whole kernels and splits. Sourced from East Java and East Nusa Tenggara with full compliance documentation. Request a B2B quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:      #F5F0E8;
+  --warm-white: #FAF8F3;
+  --forest:     #1C2B1E;
+  --moss:       #2D4A32;
+  --sage:       #4A6741;
+  --gold:       #B8924A;
+  --gold-light: #D4AC6E;
+  --earth:      #6B4E2A;
+  --text:       #1A1A18;
+  --text-mid:   #3D3D38;
+  --text-light: #6B6B60;
+  --border:     rgba(28,43,30,0.12);
+  --border-strong: rgba(28,43,30,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--text);
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ─── NAV ───────────────────────────────────────────────────────────────────
+ *
+ *  The nav starts as a fixed cream bar and transitions to a lighter frosted
+ *  bar on scroll (with logo → logotype swap). The scroll transform is handled
+ *  by the .scrolled class added via JS when window.scrollY > 40.
+ *
+ *  TO CHANGE THE DEFAULT (unscrolled) NAV BACKGROUND:
+ *  Find the line marked  ← NAV BG  below and swap to any of:
+ *
+ *    Cream  (current)  : rgba(245,239,228,0.97)
+ *    Forest (dark)     : rgba(28,43,30,0.97)
+ *    Moss   (mid-green): rgba(45,74,50,0.97)
+ *    Transparent       : transparent
+ *
+ *  If you switch to a DARK background (forest / moss / transparent over dark hero),
+ *  also update these three link-colour lines marked  ← LINK COLOUR  below:
+ *    .nav-links a           → color: rgba(245,240,232,0.9)
+ *    .nav-links a:hover     → color: var(--gold-light)
+ *    .nav-links a.active    → color: var(--gold-light)
+ *    .nav-dropdown-toggle   → color: rgba(245,240,232,0.9)
+ *  And the hamburger bars:
+ *    .nav-hamburger span    → background: var(--gold)
+ *
+ * ─────────────────────────────────────────────────────────────────────────── */
+nav#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 12px 5vw 10px;
+  background: rgba(245,239,228,0.97);  /* ← NAV BG  swap this value */
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.07);
+  transition: background 0.35s, box-shadow 0.35s, padding 0.35s, flex-direction 0.35s;
+}
+nav#nav.scrolled {
+  flex-direction: row; justify-content: space-between; align-items: center;
+  padding: 0 5vw; height: 64px;
+  background: rgba(245,239,228,0.97);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.09);
+}
+
+/* Logo */
+.nav-logo { display: block; text-decoration: none; line-height: 0; margin-bottom: 6px; }
+nav#nav.scrolled .nav-logo { margin-bottom: 0; }
+.nav-logo-img-main {
+  display: block; width: 110px; height: auto;
+  transition: opacity 0.25s, width 0.25s;
+}
+nav#nav.scrolled .nav-logo-img-main { width: 0; opacity: 0; pointer-events: none; overflow: hidden; }
+.nav-logo-img-scrolled {
+  display: block; font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 600; color: var(--forest);
+  white-space: nowrap; line-height: 1;
+  width: 0; opacity: 0; overflow: hidden;
+  transition: opacity 0.25s, width 0.25s; pointer-events: none;
+}
+.nav-logo-img-scrolled span { color: var(--gold); }
+nav#nav.scrolled .nav-logo-img-scrolled { width: auto; opacity: 1; pointer-events: auto; overflow: visible; }
+
+/* Links — dark coloured for light nav */
+.nav-links {
+  display: flex; gap: 2rem; list-style: none; align-items: center;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-mid);            /* ← LINK COLOUR  swap for dark nav */
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active {
+  color: var(--forest);              /* ← LINK COLOUR  swap for dark nav */
+}
+.nav-cta {
+  background: var(--forest) !important; color: var(--cream) !important;
+  padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+/* Dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  display: flex; align-items: center; gap: 0.3rem; cursor: pointer;
+  background: none; border: none; padding: 0;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-mid);            /* ← LINK COLOUR  swap for dark nav */
+  transition: color 0.2s;
+}
+.nav-dropdown-toggle:hover { color: var(--gold); }
+.dropdown-chevron { width: 10px; height: 6px; transition: transform 0.2s; flex-shrink: 0; }
+.nav-dropdown:hover .dropdown-chevron,
+.nav-dropdown:focus-within .dropdown-chevron { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  display: none; list-style: none; padding: 0.5rem 0;
+  position: absolute; top: calc(100% + 1rem); left: 50%;
+  transform: translateX(-50%);
+  min-width: 175px; background: var(--forest);
+  border: 1px solid rgba(245,240,232,0.1); border-radius: 2px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 201;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu li a {
+  display: block; padding: 0.55rem 1.2rem;
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.7) !important; white-space: nowrap;
+  transition: color 0.2s, background 0.2s; text-decoration: none;
+}
+.nav-dropdown-menu li a:hover { color: var(--gold-light) !important; background: rgba(245,240,232,0.05); }
+
+/* ─── HAMBURGER ─────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px;
+  background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--forest);   /* ← dark bars for cream nav; swap to var(--gold) for dark nav */
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ─── MOBILE MENU ────────────────────────────────── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: var(--forest); flex-direction: column;
+  justify-content: center; align-items: center;
+  opacity: 0; transform: translateY(-12px);
+  transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s cubic-bezier(0.23,1,0.32,1);
+  pointer-events: none;
+}
+.mobile-menu::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
+  pointer-events: none;
+}
+.mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+.mobile-menu-logo-wrap { margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.mobile-menu-logo-wrap img { display: block; width: 110px; height: auto; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); opacity: 0.92; }
+.mobile-menu-close {
+  display: block; margin-bottom: 1.5rem; position: relative; z-index: 1;
+  background: none; border: none; cursor: pointer; padding: 0;
+  color: var(--gold-light); font-size: 2rem; line-height: 1;
+  opacity: 0.85; transition: opacity 0.2s, transform 0.2s;
+}
+.mobile-menu-close:hover { opacity: 1; transform: scale(1.15); }
+.mobile-menu ul {
+  list-style: none; display: flex; flex-direction: column;
+  align-items: center; gap: 0; width: 100%; padding: 0 8vw;
+  position: relative; z-index: 1;
+}
+.mobile-menu ul li { width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08); overflow: hidden; text-align: center; }
+.mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+.mobile-menu ul li a,
+.mobile-dropdown-toggle {
+  display: block; width: 100%;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 300;
+  color: rgba(245,240,232,0.75); text-decoration: none;
+  letter-spacing: 0.02em; padding: 0.9rem 0; text-align: center;
+  transform: translateY(20px); opacity: 0;
+  transition: color 0.2s, transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.4s ease;
+  background: none; border: none; cursor: pointer;
+}
+.mobile-menu.open ul li a,
+.mobile-menu.open .mobile-dropdown-toggle { transform: translateY(0); opacity: 1; }
+.mobile-menu ul li:nth-child(1) a,
+.mobile-menu ul li:nth-child(1) button { transition-delay: 0.06s; }
+.mobile-menu ul li:nth-child(2) button  { transition-delay: 0.10s; }
+.mobile-menu ul li:nth-child(3) a       { transition-delay: 0.14s; }
+.mobile-menu ul li:nth-child(4) a       { transition-delay: 0.18s; }
+.mobile-menu ul li:nth-child(5) a       { transition-delay: 0.22s; }
+.mobile-menu ul li:nth-child(6) a       { transition-delay: 0.26s; }
+.mobile-menu ul li a:hover,
+.mobile-dropdown-toggle:hover { color: var(--gold-light); }
+.mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+.mobile-dropdown-toggle { display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
+.mobile-dropdown-toggle .dropdown-chevron { transition: transform 0.25s; }
+.mobile-dropdown-toggle[aria-expanded="true"] .dropdown-chevron { transform: rotate(180deg); }
+.mobile-dropdown-menu {
+  display: none; list-style: none; padding: 0;
+  background: rgba(245,240,232,0.04); border-top: 1px solid rgba(245,240,232,0.06);
+}
+.mobile-dropdown-menu.open { display: block; }
+.mobile-dropdown-menu li { border-bottom: none !important; border-top: none !important; }
+.mobile-dropdown-menu li a {
+  font-size: 0.85rem !important; letter-spacing: 0.12em !important;
+  text-transform: uppercase !important; color: rgba(245,240,232,0.5) !important;
+  padding: 0.6rem 0 !important; transform: none !important; opacity: 1 !important;
+}
+.mobile-dropdown-menu li a:hover { color: var(--gold-light) !important; }
+.mobile-menu-footer {
+  position: absolute; bottom: 2.5rem;
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.2); z-index: 1;
+}
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer { background: #111612; padding: 3.5rem 8vw 2rem; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(245,240,232,0.06); }
+.footer-logo-img { width: 110px; height: auto; display: block; margin-bottom: 1rem; opacity: 0.85; }
+.footer-tagline { font-size: 0.8rem; font-weight: 300; line-height: 1.7; color: rgba(245,240,232,0.28); max-width: 280px; }
+.footer-col-title { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,240,232,0.25); margin-bottom: 1.2rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.footer-links a { font-size: 0.8rem; color: rgba(245,240,232,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold-light); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.72rem; color: rgba(245,240,232,0.18); }
+
+/* ─── HERO ───────────────────────────────────────────
+ *  padding-top: 72px offsets the fixed nav.
+ *  No white-bar risk because the nav is already opaque. ─ */
+.product-hero {
+  padding-top: 72px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+}
+.hero-image-panel {
+  position: relative; overflow: hidden; background: var(--forest);
+}
+.hero-image-panel img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(0.87) contrast(1.04);
+  transition: transform 8s ease;
+}
+.hero-image-panel:hover img { transform: scale(1.04); }
+.hero-image-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(28,43,30,0.4) 0%, transparent 55%),
+              linear-gradient(0deg, rgba(28,43,30,0.55) 0%, transparent 40%);
+}
+.hero-image-badges {
+  position: absolute; bottom: 2.5rem; left: 2.5rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.origin-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(250,248,243,0.92); backdrop-filter: blur(6px);
+  padding: 0.55rem 1rem; border-radius: 2px;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--forest);
+}
+.origin-badge svg { width: 12px; height: 12px; color: var(--gold); flex-shrink: 0; }
+.score-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); padding: 0.55rem 1rem; border-radius: 2px;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--forest);
+}
+.hero-content {
+  background: var(--forest);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 7vw 6vw 7vw 7vw;
+  position: relative; overflow: hidden;
+}
+.hero-content::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 10%, rgba(184,146,74,0.15) 0%, transparent 55%),
+              radial-gradient(ellipse at 10% 90%, rgba(45,74,50,0.7) 0%, transparent 50%);
+  pointer-events: none;
+}
+.breadcrumb {
+  position: relative;
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.3); margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.breadcrumb a { color: rgba(245,240,232,0.4); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold-light); }
+.breadcrumb span { opacity: 0.5; }
+.product-eyebrow {
+  position: relative;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.product-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+.product-h1 {
+  position: relative;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 3.8vw, 3.8rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--cream); margin-bottom: 1rem; letter-spacing: -0.01em;
+}
+.product-h1 em { font-style: italic; color: var(--gold-light); }
+.product-tagline {
+  position: relative;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 1.05rem; color: rgba(245,240,232,0.5); margin-bottom: 1.8rem;
+}
+.product-desc {
+  position: relative;
+  font-size: 0.9rem; font-weight: 300; line-height: 1.75;
+  color: rgba(245,240,232,0.7); max-width: 460px; margin-bottom: 2.5rem;
+}
+
+/* Grade selector panel */
+.grade-panel {
+  position: relative;
+  background: rgba(245,240,232,0.05);
+  border: 1px solid rgba(245,240,232,0.1); border-radius: 2px;
+  padding: 1.4rem 1.6rem; margin-bottom: 2.5rem;
+}
+.grade-title {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 0.9rem;
+}
+.grade-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.grade-tag {
+  font-size: 0.7rem; letter-spacing: 0.08em;
+  background: rgba(184,146,74,0.12); color: var(--gold-light);
+  border: 1px solid rgba(184,146,74,0.25);
+  padding: 0.22rem 0.7rem; border-radius: 20px;
+}
+.grade-bars { display: flex; flex-direction: column; gap: 0.6rem; }
+.grade-row {
+  display: grid; grid-template-columns: 90px 1fr 70px;
+  align-items: center; gap: 0.8rem;
+}
+.grade-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.4); }
+.grade-bar-track { height: 3px; background: rgba(245,240,232,0.1); border-radius: 2px; overflow: hidden; }
+.grade-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 2px; }
+.grade-val { font-size: 0.65rem; color: rgba(245,240,232,0.4); text-align: right; }
+
+/* Grade switch */
+.grade-switch { position: relative; display: flex; gap: 0; margin-bottom: 2rem; }
+.grade-btn {
+  flex: 1; padding: 0.7rem 0.6rem;
+  border: 1px solid rgba(245,240,232,0.15); background: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(245,240,232,0.45); cursor: pointer; transition: all 0.25s;
+}
+.grade-btn:first-child { border-radius: 2px 0 0 2px; }
+.grade-btn:last-child  { border-radius: 0 2px 2px 0; border-left: none; }
+.grade-btn:not(:first-child):not(:last-child) { border-left: none; }
+.grade-btn.active { background: var(--gold); border-color: var(--gold); color: var(--forest); }
+.grade-btn:hover:not(.active) { border-color: rgba(245,240,232,0.3); color: rgba(245,240,232,0.7); }
+.grade-content { display: none; }
+.grade-content.active { display: block; }
+
+.hero-actions {
+  position: relative; display: flex; gap: 0.8rem; flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--forest);
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1rem 1.8rem; border-radius: 2px; text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: var(--cream);
+  border: 1px solid rgba(245,240,232,0.25);
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1rem 1.8rem; border-radius: 2px; text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+
+/* ─── TRUST BAR ──────────────────────────────────── */
+.trust-bar {
+  background: var(--cream); border-bottom: 1px solid var(--border);
+  padding: 1.4rem 8vw;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-mid);
+}
+.trust-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(184,146,74,0.12);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.trust-icon svg { width: 13px; height: 13px; color: var(--gold); }
+.trust-divider { width: 1px; height: 24px; background: var(--border); }
+
+/* ─── SPECS SECTION ──────────────────────────────── */
+.specs-section {
+  padding: 7rem 8vw;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+}
+.section-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.2rem;
+}
+.section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+.section-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 300; line-height: 1.2; color: var(--forest); margin-bottom: 1rem;
+}
+.section-h2 em { font-style: italic; color: var(--earth); }
+.section-lead {
+  font-size: 0.92rem; font-weight: 300; line-height: 1.75;
+  color: var(--text-light); margin-bottom: 2.5rem; max-width: 500px;
+}
+.specs-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2rem;
+}
+.spec-item { background: var(--warm-white); padding: 1.1rem 1.3rem; transition: background 0.2s; }
+.spec-item:hover { background: var(--cream); }
+.spec-key {
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.3rem;
+}
+.spec-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-weight: 400; color: var(--forest); line-height: 1.3;
+}
+.certs-title {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.8rem;
+}
+.certs-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cert-tag {
+  font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+  background: rgba(74,103,65,0.07); color: var(--sage);
+  border: 1px solid rgba(74,103,65,0.2); padding: 0.3rem 0.75rem; border-radius: 20px;
+}
+
+/* Supply options list */
+.supply-list {
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--border); border: 1px solid var(--border); margin-bottom: 2.5rem;
+}
+.supply-item {
+  background: var(--warm-white); padding: 1.4rem 1.6rem;
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  transition: background 0.2s;
+}
+.supply-item:hover { background: var(--cream); }
+.supply-icon {
+  width: 36px; height: 36px; border-radius: 2px;
+  background: rgba(184,146,74,0.1);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.supply-name {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--forest); margin-bottom: 0.25rem;
+}
+.supply-desc {
+  font-size: 0.8rem; font-weight: 300; color: var(--text-light); line-height: 1.6;
+}
+
+/* ─── GRADES SECTION (dark) ──────────────────────── */
+.grades-section {
+  background: var(--forest); padding: 7rem 8vw;
+  position: relative; overflow: hidden;
+}
+.grades-section::before {
+  content: ''; position: absolute; top: -20%; right: -5%;
+  width: 50vw; height: 50vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,146,74,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.grades-header { max-width: 600px; margin-bottom: 4rem; }
+.grades-header .section-label { color: var(--gold-light); }
+.grades-header .section-label::before { background: var(--gold); }
+.grades-header .section-h2 { color: var(--cream); }
+.grades-header .section-h2 em { color: var(--gold-light); }
+.grades-header .section-lead { color: rgba(245,240,232,0.55); }
+.grades-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: rgba(245,240,232,0.07);
+  border: 1px solid rgba(245,240,232,0.07);
+}
+.grade-card {
+  background: transparent; padding: 2rem 2rem 2.4rem;
+  transition: background 0.3s; position: relative;
+}
+.grade-card:hover { background: rgba(245,240,232,0.04); }
+.grade-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s;
+}
+.grade-card:hover::after { transform: scaleX(1); }
+.grade-card-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; font-weight: 300; color: rgba(184,146,74,0.2);
+  line-height: 1; margin-bottom: 1rem;
+}
+.grade-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 400; color: var(--cream); margin-bottom: 0.35rem;
+}
+.grade-card-sub {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 1rem;
+}
+.grade-card-desc {
+  font-size: 0.82rem; font-weight: 300; line-height: 1.7;
+  color: rgba(245,240,232,0.5);
+}
+
+/* ─── PROCESS SECTION ────────────────────────────── */
+.process-section {
+  padding: 7rem 8vw; background: var(--warm-white);
+}
+.process-header { max-width: 580px; margin-bottom: 4rem; }
+.process-steps {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0; position: relative;
+}
+.process-steps::before {
+  content: ''; position: absolute;
+  top: 28px; left: calc(10% + 18px); right: calc(10% + 18px); height: 1px;
+  background: var(--border); z-index: 0;
+}
+.process-step { text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
+.step-circle {
+  width: 56px; height: 56px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--warm-white);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-weight: 300; color: var(--gold);
+  transition: border-color 0.3s, background 0.3s;
+}
+.process-step:hover .step-circle { border-color: var(--gold); background: rgba(184,146,74,0.06); }
+.step-title {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--forest); margin-bottom: 0.5rem;
+}
+.step-desc { font-size: 0.78rem; font-weight: 300; line-height: 1.65; color: var(--text-light); }
+
+/* ─── FAQ ────────────────────────────────────────── */
+.faq-section { background: var(--cream); padding: 7rem 8vw; }
+.faq-header { max-width: 520px; margin-bottom: 4rem; }
+.faq-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+}
+.faq-item {
+  background: var(--warm-white); padding: 1.6rem 1.8rem;
+  cursor: pointer; transition: background 0.2s;
+}
+.faq-item:hover { background: var(--cream); }
+.faq-q {
+  font-size: 0.85rem; font-weight: 500; color: var(--forest);
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+}
+.faq-chevron {
+  width: 16px; height: 16px; flex-shrink: 0; color: var(--gold);
+  transition: transform 0.25s;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a {
+  font-size: 0.82rem; font-weight: 300; line-height: 1.7; color: var(--text-light);
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.3s ease;
+}
+.faq-item.open .faq-a { max-height: 300px; margin-top: 0.8rem; }
+
+/* ─── CTA / CONTACT ──────────────────────────────── */
+.cta-section {
+  background: var(--forest); padding: 7rem 8vw;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 90% 50%, rgba(74,103,65,0.15) 0%, transparent 55%);
+  pointer-events: none;
+}
+.cta-left { position: relative; }
+.cta-left .section-label { color: var(--gold-light); }
+.cta-left .section-label::before { background: var(--gold); }
+.cta-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2;
+  color: var(--cream); margin-bottom: 1rem;
+}
+.cta-h2 em { font-style: italic; color: var(--gold-light); }
+.cta-lead { font-size: 0.9rem; font-weight: 300; line-height: 1.75; color: rgba(245,240,232,0.55); margin-bottom: 2rem; max-width: 420px; }
+.cta-checklist { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2.5rem; }
+.cta-check { display: flex; align-items: center; gap: 0.8rem; font-size: 0.83rem; color: rgba(245,240,232,0.6); }
+.cta-check svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; }
+.cta-contact { padding-top: 2rem; border-top: 1px solid rgba(245,240,232,0.08); }
+.cta-contact-label { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,240,232,0.3); margin-bottom: 0.5rem; }
+.cta-contact p { font-size: 0.85rem; color: rgba(245,240,232,0.5); }
+.cta-contact a { color: rgba(245,240,232,0.5); text-decoration: none; }
+.cta-contact a:hover { color: var(--gold-light); }
+.cta-form {
+  position: relative; background: var(--warm-white); padding: 2.8rem 3rem; border-radius: 2px;
+}
+.form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--forest); margin-bottom: 0.3rem; }
+.form-sub { font-size: 0.8rem; color: var(--text-light); margin-bottom: 1.8rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.8rem; }
+.form-group label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1px solid var(--border); background: var(--warm-white); color: var(--text);
+  font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 300;
+  padding: 0.65rem 0.9rem; border-radius: 2px; outline: none; transition: border-color 0.2s; width: 100%;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group select { cursor: pointer; }
+.btn-submit {
+  width: 100%; background: var(--forest); color: var(--cream);
+  border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 1rem; border-radius: 2px; cursor: pointer; transition: background 0.2s; margin-top: 0.4rem;
+}
+.btn-submit:hover { background: var(--gold); color: var(--forest); }
+.form-privacy { font-size: 0.68rem; color: var(--text-light); text-align: center; margin-top: 0.8rem; line-height: 1.5; }
+
+/* ─── ANIMATIONS ─────────────────────────────────── */
+.fade-up { opacity: 1; transform: none; }
+.js-animate .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.js-animate .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 1024px) {
+  .product-hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-image-panel { height: 60vw; min-height: 360px; order: -1; }
+  .hero-content { padding: 4rem 8vw 5rem; }
+  .specs-section { grid-template-columns: 1fr; gap: 3.5rem; }
+  .grades-grid { grid-template-columns: 1fr 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 3rem 2rem; }
+  .process-steps::before { display: none; }
+  .cta-section { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .nav-hamburger { display: flex; }
+  .mobile-menu { display: flex; }
+  nav#nav { padding: 0 5vw; height: 64px; flex-direction: row; justify-content: space-between; }
+  .trust-bar { gap: 1.2rem; }
+  .trust-divider { display: none; }
+  .specs-grid { grid-template-columns: 1fr; }
+  .grades-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .cta-form { padding: 2rem 1.8rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .hero-content { padding: 4rem 6vw 4rem; }
+  .hero-image-badges { left: 1.2rem; bottom: 1.2rem; }
+  .grade-switch { flex-wrap: wrap; }
+  .grade-btn { border-left: 1px solid rgba(245,240,232,0.15) !important; border-radius: 2px !important; margin-bottom: 0.4rem; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.webp" alt="Hindia Timur">
+    <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="products.html" class="active">Products</a></li>
+    <li class="nav-dropdown">
+      <a href="about.html" class="nav-dropdown-toggle">About
+        <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-menu-logo-wrap">
+    <img src="hindia-timur-logo.webp" alt="Hindia Timur">
+  </div>
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="products.html" class="active">Products</a></li>
+    <li class="mobile-dropdown">
+      <button class="mobile-dropdown-toggle" aria-expanded="false">About
+        <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+      <ul class="mobile-dropdown-menu">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────── -->
+<section class="product-hero">
+  <div class="hero-image-panel">
+    <img
+      src="https://images.unsplash.com/photo-1563412885-139e4045ec52?w=1400&q=85&fit=crop"
+      alt="Premium Indonesian cashew nuts"
+      loading="eager">
+    <div class="hero-image-overlay"></div>
+    <div class="hero-image-badges">
+      <div class="origin-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        East Java &middot; East Nusa Tenggara
+      </div>
+      <div class="score-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
+        W180 to W450 &mdash; Raw &amp; Roasted
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <p class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="products.html">Products</a>
+      <span>/</span>
+      Cashew Nuts
+    </p>
+
+    <div class="product-eyebrow">Cashew Nuts</div>
+    <h1 class="product-h1">Indonesian<br><em>Cashew Kernels</em></h1>
+    <p class="product-tagline">Whole, Splits &amp; Pieces -- W180 to W450, Raw or Roasted</p>
+    <p class="product-desc">
+      Sourced from smallholder farms across East Java and East Nusa Tenggara, our cashews are processed at HACCP-certified facilities to international grade standards. Available as raw kernels, dry-roasted, salted, or flavoured -- with full traceability from orchard to export container.
+    </p>
+
+    <!-- Grade selector -->
+    <div class="grade-switch">
+      <button class="grade-btn active" onclick="switchGrade('w240', this)">W240</button>
+      <button class="grade-btn" onclick="switchGrade('w320', this)">W320</button>
+      <button class="grade-btn" onclick="switchGrade('w450', this)">W450</button>
+      <button class="grade-btn" onclick="switchGrade('splits', this)">Splits</button>
+    </div>
+
+    <!-- W240 -->
+    <div class="grade-panel grade-content active" id="gc-w240">
+      <div class="grade-title">W240 — Large Whole Kernel</div>
+      <div class="grade-tags">
+        <span class="grade-tag">240 kernels/lb</span>
+        <span class="grade-tag">Premium Grade</span>
+        <span class="grade-tag">Food Service &amp; Retail</span>
+        <span class="grade-tag">Gourmet Positioning</span>
+      </div>
+      <div class="grade-bars">
+        <div class="grade-row">
+          <span class="grade-label">Kernel Size</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:90%"></div></div>
+          <span class="grade-val">Large</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-label">Whole Count</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:95%"></div></div>
+          <span class="grade-val">≥ 95%</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-label">Moisture</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:30%"></div></div>
+          <span class="grade-val">≤ 5%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- W320 -->
+    <div class="grade-panel grade-content" id="gc-w320">
+      <div class="grade-title">W320 — Standard Whole Kernel</div>
+      <div class="grade-tags">
+        <span class="grade-tag">320 kernels/lb</span>
+        <span class="grade-tag">Most Traded Grade</span>
+        <span class="grade-tag">Snack &amp; Confectionery</span>
+        <span class="grade-tag">High Availability</span>
+      </div>
+      <div class="grade-bars">
+        <div class="grade-row">
+          <span class="grade-label">Kernel Size</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:70%"></div></div>
+          <span class="grade-val">Medium</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-label">Whole Count</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:90%"></div></div>
+          <span class="grade-val">≥ 90%</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-label">Moisture</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:30%"></div></div>
+          <span class="grade-val">≤ 5%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- W450 -->
+    <div class="grade-panel grade-content" id="gc-w450">
+      <div class="grade-title">W450 — Small Whole Kernel</div>
+      <div class="grade-tags">
+        <span class="grade-tag">450 kernels/lb</span>
+        <span class="grade-tag">Bakery &amp; Food Mfg</span>
+        <span class="grade-tag">Competitive Pricing</span>
+        <span class="grade-tag">Steady Supply</span>
+      </div>
+      <div class="grade-bars">
+        <div class="grade-row">
+          <span class="grade-label">Kernel Size</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:45%"></div></div>
+          <span class="grade-val">Small</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-label">Whole Count</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:85%"></div></div>
+          <span class="grade-val">≥ 85%</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-label">Moisture</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:30%"></div></div>
+          <span class="grade-val">≤ 5%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Splits -->
+    <div class="grade-panel grade-content" id="gc-splits">
+      <div class="grade-title">Splits &amp; Pieces — Value Grade</div>
+      <div class="grade-tags">
+        <span class="grade-tag">SW / LP / SP / BB</span>
+        <span class="grade-tag">Ingredient Use</span>
+        <span class="grade-tag">Lower MOQ Option</span>
+        <span class="grade-tag">Cost Efficient</span>
+      </div>
+      <div class="grade-bars">
+        <div class="grade-row">
+          <span class="grade-label">Splits (SW)</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:80%"></div></div>
+          <span class="grade-val">Halves</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-label">Large Pieces</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:55%"></div></div>
+          <span class="grade-val">LP / SP</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-label">Baby Bits</span>
+          <div class="grade-bar-track"><div class="grade-bar-fill" style="width:30%"></div></div>
+          <span class="grade-val">BB / SB</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="exporter-quote.html" class="btn-primary">
+        Request B2B Quote
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="products.html" class="btn-secondary">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ──────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    </div>
+    Phytosanitary Certified
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    HACCP-Certified Processing
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    </div>
+    24h Quote Turnaround
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+    </div>
+    Min. Order 1 MT
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 3v4M8 3v4"/></svg>
+    </div>
+    OEM &amp; Private Label
+  </div>
+</div>
+
+<!-- ─── SPECIFICATIONS ─────────────────────────────── -->
+<section class="specs-section">
+  <div class="fade-up">
+    <div class="section-label">Technical Specifications</div>
+    <h2 class="section-h2">Cashew Kernels<br><em>Export Specifications</em></h2>
+    <p class="section-lead">All grades are processed at HACCP-certified facilities and tested per AFMPC / CODEX Alimentarius standards. Full certificate of analysis and aflatoxin test report provided per consignment.</p>
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-key">Available Grades</div>
+        <div class="spec-val">W180, W210, W240, W320, W450 · SW, LP, SP, BB</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Processing</div>
+        <div class="spec-val">Raw · Dry-roasted · Salted · Flavoured (on request)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Origin</div>
+        <div class="spec-val">East Java &middot; East Nusa Tenggara &middot; West Timor</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Moisture Content</div>
+        <div class="spec-val">≤ 5% (raw) · ≤ 3% (roasted)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Aflatoxin</div>
+        <div class="spec-val">≤ 10 ppb total (EU compliant)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Colour</div>
+        <div class="spec-val">White to light ivory — W grade</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Foreign Matter</div>
+        <div class="spec-val">Nil (zero tolerance)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Shelf Life</div>
+        <div class="spec-val">12 months raw · 6 months roasted (vacuum-sealed)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Min. Order Quantity</div>
+        <div class="spec-val">1 MT per grade</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Packaging</div>
+        <div class="spec-val">25 kg vacuum tins · 10 kg foil bags · custom retail</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Lead Time</div>
+        <div class="spec-val">1 – 3 weeks from order confirmation</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Incoterms</div>
+        <div class="spec-val">FOB Tanjung Priok · CIF · DDP</div>
+      </div>
+    </div>
+    <div class="certs-title">Certifications &amp; Documentation</div>
+    <div class="certs-list">
+      <span class="cert-tag">Phytosanitary Certificate</span>
+      <span class="cert-tag">Certificate of Origin</span>
+      <span class="cert-tag">Certificate of Analysis (ISO 17025)</span>
+      <span class="cert-tag">Aflatoxin Test Report</span>
+      <span class="cert-tag">Heavy Metal Test Report</span>
+      <span class="cert-tag">Pesticide Residue Analysis</span>
+      <span class="cert-tag">HACCP (processing facility)</span>
+      <span class="cert-tag">Halal (MUI) — on request</span>
+      <span class="cert-tag">Organic (IMO / USDA NOP) — on request</span>
+    </div>
+  </div>
+
+  <!-- Right col: supply formats -->
+  <div>
+    <div class="section-label fade-up">Supply Formats</div>
+    <h2 class="section-h2 fade-up">Flexible<br><em>Order Options</em></h2>
+    <p class="section-lead fade-up">We supply raw kernels for direct-to-retail, processed and seasoned kernels for branded snack brands, and ingredient-grade splits and pieces for food manufacturers and bakeries.</p>
+
+    <div class="supply-list fade-up">
+      <div class="supply-item">
+        <div class="supply-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg>
+        </div>
+        <div>
+          <div class="supply-name">Raw Whole Kernels — W Grade</div>
+          <div class="supply-desc">Vacuum-packed in 25 kg tins. W180 through W450 in stock year-round. Ideal for direct retail, health food brands, and re-packers. COA and aflatoxin report per lot. MOQ: 1 MT.</div>
+        </div>
+      </div>
+      <div class="supply-item">
+        <div class="supply-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 14s1.5-2 4-2 4 2 4 2"/><path d="M9 9h.01M15 9h.01"/></svg>
+        </div>
+        <div>
+          <div class="supply-name">Dry-Roasted &amp; Salted</div>
+          <div class="supply-desc">Drum-roasted at HACCP facility. Available plain, lightly salted, or sea-salt finish. Nitrogen-flushed packaging for maximum shelf life. MOQ: 1 MT. Lead time +1 week over raw.</div>
+        </div>
+      </div>
+      <div class="supply-item">
+        <div class="supply-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <div class="supply-name">OEM / Private Label</div>
+          <div class="supply-desc">Custom flavour development (chilli-lime, honey-glazed, cinnamon), retail-ready packaging with buyer branding, and nutritional declaration for EU/US/ME markets. MOQ: 2 MT per SKU.</div>
+        </div>
+      </div>
+      <div class="supply-item">
+        <div class="supply-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <div>
+          <div class="supply-name">Splits &amp; Pieces — Ingredient Grade</div>
+          <div class="supply-desc">SW (splits/halves), LP, SP, and BB grades. Cost-efficient for bakery, confectionery, granola, and food-service applications. Same COA and aflatoxin documentation as whole grades. MOQ: 500 kg.</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="exporter-quote.html" class="btn-primary fade-up" style="background: var(--forest); color: var(--cream);">
+      Discuss Your Requirements
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ─── GRADES SECTION ─────────────────────────────── -->
+<section class="grades-section">
+  <div class="grades-header fade-up">
+    <div class="section-label">Grade Reference</div>
+    <h2 class="section-h2">Every Grade,<br><em>Consistently Supplied</em></h2>
+    <p class="section-lead">Indonesian cashews are traded under the AFMPC grading system. We stock the six most commercially active grades year-round and can source the full range on a contract basis.</p>
+  </div>
+  <div class="grades-grid">
+    <div class="grade-card fade-up">
+      <div class="grade-card-number">W180</div>
+      <div class="grade-card-name">Jumbo Whole</div>
+      <div class="grade-card-sub">≤ 180 kernels / lb &middot; Largest Grade</div>
+      <p class="grade-card-desc">The prestige grade. Maximum kernel size commands a significant premium. Suited to luxury gifting, premium retail packs, and upscale food service. Limited seasonal availability -- advise your volume early.</p>
+    </div>
+    <div class="grade-card fade-up">
+      <div class="grade-card-number">W240</div>
+      <div class="grade-card-name">Large Whole</div>
+      <div class="grade-card-sub">181–240 kernels / lb &middot; Premium</div>
+      <p class="grade-card-desc">Strong retail positioning with consistent supply. The preferred grade for branded health snack products and gourmet nut mixes entering the EU, US, and Middle East markets.</p>
+    </div>
+    <div class="grade-card fade-up">
+      <div class="grade-card-number">W320</div>
+      <div class="grade-card-name">Standard Whole</div>
+      <div class="grade-card-sub">241–320 kernels / lb &middot; Most Traded</div>
+      <p class="grade-card-desc">The global benchmark grade -- highest volume, most competitive pricing, widest buyer base. Available year-round in quantity. The default recommendation for first-time importers.</p>
+    </div>
+    <div class="grade-card fade-up">
+      <div class="grade-card-number">W450</div>
+      <div class="grade-card-name">Small Whole</div>
+      <div class="grade-card-sub">321–450 kernels / lb &middot; Bakery</div>
+      <p class="grade-card-desc">Ideal for bakery applications, trail mixes, and ingredient blends where kernel size is less critical than cost. Full compliance documentation identical to premium grades.</p>
+    </div>
+    <div class="grade-card fade-up">
+      <div class="grade-card-number">SW</div>
+      <div class="grade-card-name">Splits</div>
+      <div class="grade-card-sub">Natural halves &middot; Value Grade</div>
+      <p class="grade-card-desc">Kernels split naturally during processing. Full flavour, same nutritional profile as whole. Widely used in confectionery, granola bars, and trail mix at significantly lower cost per kilo.</p>
+    </div>
+    <div class="grade-card fade-up">
+      <div class="grade-card-number">LP/SP</div>
+      <div class="grade-card-name">Pieces</div>
+      <div class="grade-card-sub">Large &amp; small pieces &middot; Ingredient</div>
+      <p class="grade-card-desc">Pre-broken kernels for food manufacturing. Consistent piece size per grade. Used in nut butters, pralines, toppings, and ice cream inclusions. MOQ 500 kg, fastest lead time in the range.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ────────────────────────────────────── -->
+<section class="process-section">
+  <div class="process-header fade-up">
+    <div class="section-label">From Orchard to Container</div>
+    <h2 class="section-h2">How We Deliver<br><em>Consistent Quality</em></h2>
+    <p style="font-size:0.92rem;font-weight:300;line-height:1.75;color:var(--text-light);max-width:500px;">Cashew quality is determined at five points between harvest and loading. We own the process at every stage -- no blind sourcing, no third-party aggregation without audit.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step fade-up">
+      <div class="step-circle">01</div>
+      <div class="step-title">Farm Audit</div>
+      <p class="step-desc">Partner orchards are audited annually for pesticide usage, soil health, and harvest practice. Only audited farms supply into our export chain.</p>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-circle">02</div>
+      <div class="step-title">Shelling &amp; Grading</div>
+      <p class="step-desc">Raw nuts are mechanically shelled and electronically graded at our HACCP-certified partner facility. Rejects are removed at machine level before human inspection.</p>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-circle">03</div>
+      <div class="step-title">Lab Testing</div>
+      <p class="step-desc">Every lot is tested for aflatoxin (≤10 ppb), heavy metals, pesticide residue, and moisture at ISO 17025-accredited laboratories before packing approval.</p>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-circle">04</div>
+      <div class="step-title">Vacuum Packing</div>
+      <p class="step-desc">Approved kernels are vacuum-sealed in 25 kg food-grade tins or nitrogen-flushed foil bags. Roasted variants are packed within 2 hours of processing.</p>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-circle">05</div>
+      <div class="step-title">Pre-Shipment Inspection</div>
+      <p class="step-desc">Final documentation package assembled: phytosanitary certificate, COA, aflatoxin report, certificate of origin, and packing list. Container loaded under team supervision.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────────── -->
+<section class="faq-section">
+  <div class="faq-header fade-up">
+    <div class="section-label">Common Questions</div>
+    <h2 class="section-h2">Buyer <em>FAQ</em></h2>
+    <p style="font-size:0.92rem;font-weight:300;line-height:1.75;color:var(--text-light);">The questions importers ask most when sourcing Indonesian cashews for the first time.</p>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        How does Indonesian cashew compare to Vietnamese or Indian origin?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="faq-a">Indonesian cashew is grown in a distinct volcanic and tropical terroir that produces a slightly creamier kernel with lower shrinkage on roasting compared to some Vietnamese grades. While Vietnam dominates global volume, Indonesian origin commands a small premium in markets that value traceability and shorter supply chains to Southeast Asia. Our NTT-origin cashews are increasingly sought by EU buyers seeking non-Vietnam diversification.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        What aflatoxin standard do you comply with?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="faq-a">We test to EU Regulation (EC) No 1881/2006 limits: total aflatoxin ≤ 10 ppb and aflatoxin B1 ≤ 5 ppb. Testing is performed at ISO 17025-accredited laboratories and the report is provided with every shipment. For US-bound shipments we also provide documentation to meet FDA / FSMA requirements on request.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        Can I request a specific grade not listed here?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="faq-a">Yes. We can supply the full AFMPC grade range including W180, W210, W240, W280, W320, W450, and all split and piece grades (SW, SSW, LP, SP, BB, SB). W180 and W210 are seasonal -- contact us with your timeline and we will confirm availability and indicative pricing within 24 hours.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        Do you offer halal or organic certification?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="faq-a">Halal certification (MUI) is available on request for all grades and processing types. Organic certification (IMO / USDA NOP) is available for select origin farms in East Nusa Tenggara with 4–6 weeks additional lead time for certification documentation to be prepared. Both can be included in the pre-shipment documentation package.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        What is the minimum order and lead time?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="faq-a">Minimum order is 1 MT for whole kernel grades, and 500 kg for splits and pieces. Standard lead time is 1–3 weeks from order confirmation for in-stock grades. Roasted and flavoured variants add approximately one week. We recommend 4 weeks lead time for first orders to allow for documentation preparation and any buyer-specific requirements.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        What packaging options are available?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="faq-a">Standard bulk export packaging is 25 kg vacuum-sealed tins or 10 kg nitrogen-flushed foil bags. For OEM and private label orders, we can produce retail-ready packaging from 100g consumer bags to 1 kg resealable pouches with buyer branding, nutritional declarations, and barcode integration. Packaging artwork and proofing is included in the OEM service at MOQ 2 MT.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA / CONTACT ──────────────────────────────── -->
+<section class="cta-section" id="contact">
+  <div class="cta-left">
+    <div class="section-label">Start Your Partnership</div>
+    <h2 class="cta-h2">Ready to Source<br>Indonesian <em>Cashews?</em></h2>
+    <p class="cta-lead">Tell us your grade, volume, processing preference, and destination market. We'll respond within 24 hours with indicative pricing, stock availability, and a full compliance documentation overview. No obligation.</p>
+    <div class="cta-checklist">
+      <div class="cta-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Free samples for qualified importers (250g per grade)
+      </div>
+      <div class="cta-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Response within 24 business hours
+      </div>
+      <div class="cta-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Aflatoxin &amp; full compliance docs before commitment
+      </div>
+      <div class="cta-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Dedicated account manager from day one
+      </div>
+    </div>
+    <div class="cta-contact">
+      <p class="cta-contact-label">Direct Contact</p>
+      <p><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></p>
+      <p style="margin-top:0.3rem;"><a href="#">WhatsApp: +62 (XXX) XXX-XXXX</a></p>
+    </div>
+  </div>
+  <div class="cta-form">
+    <div class="form-title">Request a Cashew Quote</div>
+    <div class="form-sub">Fill in your requirements and we'll be in touch shortly.</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Jane">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Smith">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Company Name</label>
+      <input type="text" placeholder="Nut Importers GmbH">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Country</label>
+        <input type="text" placeholder="Germany">
+      </div>
+      <div class="form-group">
+        <label>Business Email</label>
+        <input type="email" placeholder="jane@company.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Grade &amp; Format</label>
+      <select>
+        <option value="" disabled selected>Select a grade</option>
+        <option>W180 — Jumbo Whole (Raw)</option>
+        <option>W240 — Large Whole (Raw)</option>
+        <option>W320 — Standard Whole (Raw)</option>
+        <option>W450 — Small Whole (Raw)</option>
+        <option>W320 — Dry-Roasted / Salted</option>
+        <option>SW — Splits (Raw)</option>
+        <option>LP / SP / BB — Pieces (Ingredient)</option>
+        <option>OEM / Private Label — Custom</option>
+        <option>Multiple grades — advise me</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea placeholder="Tell us your required volume, destination market, certification requirements (halal, organic), packaging preferences, or target price per kg..."></textarea>
+    </div>
+    <button class="btn-submit" onclick="handleSubmit(this)">Send Inquiry</button>
+    <p class="form-privacy">By submitting, you agree to our privacy policy. We never share your data with third parties.</p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ──────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo-link">
+        <img src="hindia-timur-logo.webp" alt="Hindia Timur" class="footer-logo-img">
+      </a>
+      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth -- with integrity, compliance, and consistency.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Source</div>
+      <ul class="footer-links">
+        <li><a href="coffee.html">Specialty Coffee</a></li>
+        <li><a href="moringa.html">Moringa Powder</a></li>
+        <li><a href="fruit-chips.html">Fruit Chips</a></li>
+        <li><a href="cashew.html">Cashew Nuts</a></li>
+        <li><a href="products.html">Full Product Catalog</a></li>
+        <li><a href="exporter-quote.html">Request a Quote</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Hindia Timur</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="blog.html">Blog &amp; Insights</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Hindia Timur. All rights reserved.</span>
+    <span>Sourced from Indonesia. Delivered to the World.</span>
+  </div>
+</footer>
+
+<script>
+// ── SCROLL TRANSFORM ─────────────────────────────────
+// Adds .scrolled at 40px — triggers logotype swap and shadow intensify.
+// The background stays cream in both states on this page.
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+// ── HAMBURGER MENU ───────────────────────────────────
+(function() {
+  var btn  = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  function openMenu() {
+    btn.classList.add('open'); menu.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open'); menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', function() {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  var closeBtn = document.getElementById('mobileMenuClose');
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+
+  menu.querySelectorAll('.mobile-dropdown-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault(); e.stopPropagation();
+      var submenu = toggle.parentElement.querySelector('.mobile-dropdown-menu');
+      if (!submenu) return;
+      var isOpen = submenu.classList.contains('open');
+      menu.querySelectorAll('.mobile-dropdown-menu').forEach(function(m) { m.classList.remove('open'); });
+      menu.querySelectorAll('.mobile-dropdown-toggle').forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+      if (!isOpen) { submenu.classList.add('open'); toggle.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+})();
+
+// ── GRADE SWITCHER ───────────────────────────────────
+function switchGrade(id, btn) {
+  document.querySelectorAll('.grade-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.grade-btn').forEach(function(b) { b.classList.remove('active'); });
+  var target = document.getElementById('gc-' + id);
+  if (target) target.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// ── FAQ TOGGLE ───────────────────────────────────────
+function toggleFaq(item) {
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── FORM SUBMIT ──────────────────────────────────────
+function handleSubmit(btn) {
+  var original = btn.textContent;
+  btn.textContent = 'Sending\u2026';
+  btn.disabled = true;
+  setTimeout(function() {
+    btn.textContent = '\u2713 Inquiry Sent';
+    btn.style.background = 'var(--sage)';
+    setTimeout(function() {
+      btn.textContent = original;
+      btn.disabled = false;
+      btn.style.background = '';
+    }, 3000);
+  }, 1200);
+}
+
+// ── FADE-UP ANIMATIONS ───────────────────────────────
+(function() {
+  if (!('IntersectionObserver' in window)) {
+    document.body.classList.add('js-animate');
+    document.querySelectorAll('.fade-up').forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  document.body.classList.add('js-animate');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+  setTimeout(function() {
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(function(el) { el.classList.add('visible'); });
+  }, 800);
+})();
+</script>
+</body>
+</html>
