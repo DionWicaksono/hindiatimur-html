@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tropical Fruit Chips | Hindia Timur — Premium Indonesian Produce</title>
-<meta name="description" content="Export-grade Indonesian tropical fruit chips — jackfruit, banana, pineapple, and more. Vacuum-fried and air-dried. Full compliance documentation. Request a B2B quote.">
+<title>Vanilla Beans | Hindia Timur — Direct-Exporter Indonesian Vanilla</title>
+<meta name="description" content="Direct-exporter Indonesian vanilla beans from our own farms in North Sulawesi and East Java. Planifolia and Tahitensis. Grade A whole pods and extract-grade splits. B2B export with full compliance documentation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream:      #F5F0E8;
-  --warm-white: #FAF8F3;
-  --forest:     #1C2B1E;
-  --moss:       #2D4A32;
-  --sage:       #4A6741;
-  --gold:       #B8924A;
-  --gold-light: #D4AC6E;
-  --earth:      #6B4E2A;
-  --text:       #1A1A18;
-  --text-mid:   #3D3D38;
-  --text-light: #6B6B60;
-  --border:     rgba(28,43,30,0.12);
+  --cream:         #F5F0E8;
+  --warm-white:    #FAF8F3;
+  --forest:        #1C2B1E;
+  --moss:          #2D4A32;
+  --sage:          #4A6741;
+  --gold:          #B8924A;
+  --gold-light:    #D4AC6E;
+  --earth:         #6B4E2A;
+  --text:          #1A1A18;
+  --text-mid:      #3D3D38;
+  --text-light:    #6B6B60;
+  --border:        rgba(28,43,30,0.12);
   --border-strong: rgba(28,43,30,0.18);
 }
 
@@ -36,26 +36,43 @@ body {
   line-height: 1.6;
 }
 
-/* ─── NAV ──────────────────────────────────────────── */
+/* ─── NAV ───────────────────────────────────────────────────────────────────
+ *
+ *  CURRENT: Cream fixed bar — always visible, scroll swap triggers logotype.
+ *
+ *  TO CHANGE THE DEFAULT NAV BACKGROUND find the line marked  ← NAV BG  and
+ *  swap to one of:
+ *    Cream  (current)  : rgba(245,239,228,0.97)
+ *    Forest (dark)     : rgba(28,43,30,0.97)
+ *    Moss   (mid-green): rgba(45,74,50,0.97)
+ *    Transparent       : transparent
+ *
+ *  For a DARK background also update the four lines marked  ← LINK COLOUR
+ *  to rgba(245,240,232,0.9)  and the hamburger spans line to var(--gold).
+ *
+ * ─────────────────────────────────────────────────────────────────────────── */
 nav#nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; flex-direction: column; align-items: center;
-  padding: 20px 5vw 14px;
+  padding: 12px 5vw 10px;
+  background: rgba(245,239,228,0.97);  /* ← NAV BG */
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.07);
   transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
-  background: transparent;
 }
 nav#nav.scrolled {
   flex-direction: row; justify-content: space-between; align-items: center;
   padding: 0 5vw; height: 64px;
   background: rgba(245,239,228,0.97);
   backdrop-filter: blur(14px);
-  box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.09);
 }
-.nav-logo { display: block; text-decoration: none; line-height: 0; margin-bottom: 10px; }
+
+/* Logo */
+.nav-logo { display: block; text-decoration: none; line-height: 0; margin-bottom: 6px; }
 nav#nav.scrolled .nav-logo { margin-bottom: 0; }
 .nav-logo-img-main {
-  display: block; width: 130px; height: auto;
-  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+  display: block; width: 110px; height: auto;
   transition: opacity 0.25s, width 0.25s;
 }
 nav#nav.scrolled .nav-logo-img-main { width: 0; opacity: 0; pointer-events: none; overflow: hidden; }
@@ -68,32 +85,35 @@ nav#nav.scrolled .nav-logo-img-main { width: 0; opacity: 0; pointer-events: none
 }
 .nav-logo-img-scrolled span { color: var(--gold); }
 nav#nav.scrolled .nav-logo-img-scrolled { width: auto; opacity: 1; pointer-events: auto; overflow: visible; }
+
+/* Links */
 .nav-links {
   display: flex; gap: 2rem; list-style: none; align-items: center;
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
 }
-.nav-links a { text-decoration: none; color: rgba(245,240,232,0.9); transition: color 0.2s; }
-nav#nav.scrolled .nav-links a { color: var(--text-mid); }
-.nav-links a:hover { color: var(--gold-light); }
-nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
-.nav-links a.active { color: var(--gold-light); }
-nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-mid);          /* ← LINK COLOUR */
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--forest); }  /* ← LINK COLOUR */
 .nav-cta {
-  background: var(--gold) !important; color: var(--forest) !important;
+  background: var(--forest) !important; color: var(--cream) !important;
   padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
 }
-nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
-.nav-cta:hover { background: var(--gold-light) !important; color: var(--forest) !important; }
-nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--forest) !important; }
+
+/* Dropdown */
 .nav-dropdown { position: relative; }
 .nav-dropdown-toggle {
-  display: flex; align-items: center; gap: 0.3rem; cursor: pointer; background: none; border: none;
+  display: flex; align-items: center; gap: 0.3rem; cursor: pointer;
+  background: none; border: none; padding: 0;
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(245,240,232,0.9); transition: color 0.2s; padding: 0;
+  color: var(--text-mid);          /* ← LINK COLOUR */
+  transition: color 0.2s;
 }
-nav#nav.scrolled .nav-dropdown-toggle { color: var(--text-mid); }
-.nav-dropdown-toggle:hover { color: var(--gold-light); }
-nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
+.nav-dropdown-toggle:hover { color: var(--gold); }
 .dropdown-chevron { width: 10px; height: 6px; transition: transform 0.2s; flex-shrink: 0; }
 .nav-dropdown:hover .dropdown-chevron,
 .nav-dropdown:focus-within .dropdown-chevron { transform: rotate(180deg); }
@@ -115,7 +135,7 @@ nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
 }
 .nav-dropdown-menu li a:hover { color: var(--gold-light) !important; background: rgba(245,240,232,0.05); }
 
-/* ─── HAMBURGER ──────────────────────────────────── */
+/* ─── HAMBURGER ─────────────────────────────────── */
 .nav-hamburger {
   display: none;
   flex-direction: column; justify-content: center; align-items: center;
@@ -124,7 +144,8 @@ nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
 }
 .nav-hamburger span {
   display: block; width: 22px; height: 1.5px;
-  background: var(--gold); border-radius: 2px;
+  background: var(--gold);   /* var(--gold) on all pages per NAV-SPEC */
+  border-radius: 2px;
   transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
   transform-origin: center;
 }
@@ -148,10 +169,7 @@ nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
 }
 .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
 .mobile-menu-logo-wrap { margin-bottom: 1.5rem; position: relative; z-index: 1; }
-.mobile-menu-logo-wrap img {
-  display: block; width: 110px; height: auto;
-  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); opacity: 0.92;
-}
+.mobile-menu-logo-wrap img { display: block; width: 110px; height: auto; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); opacity: 0.92; }
 .mobile-menu-close {
   display: block; margin-bottom: 1.5rem; position: relative; z-index: 1;
   background: none; border: none; cursor: pointer; padding: 0;
@@ -164,10 +182,7 @@ nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
   align-items: center; gap: 0; width: 100%; padding: 0 8vw;
   position: relative; z-index: 1;
 }
-.mobile-menu ul li {
-  width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08);
-  overflow: hidden; text-align: center;
-}
+.mobile-menu ul li { width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08); overflow: hidden; text-align: center; }
 .mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
 .mobile-menu ul li a,
 .mobile-dropdown-toggle {
@@ -184,17 +199,15 @@ nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
 .mobile-menu.open .mobile-dropdown-toggle { transform: translateY(0); opacity: 1; }
 .mobile-menu ul li:nth-child(1) a,
 .mobile-menu ul li:nth-child(1) button { transition-delay: 0.06s; }
-.mobile-menu ul li:nth-child(2) button { transition-delay: 0.10s; }
-.mobile-menu ul li:nth-child(3) a { transition-delay: 0.14s; }
-.mobile-menu ul li:nth-child(4) a { transition-delay: 0.18s; }
-.mobile-menu ul li:nth-child(5) a { transition-delay: 0.22s; }
-.mobile-menu ul li:nth-child(6) a { transition-delay: 0.26s; }
+.mobile-menu ul li:nth-child(2) button  { transition-delay: 0.10s; }
+.mobile-menu ul li:nth-child(3) a       { transition-delay: 0.14s; }
+.mobile-menu ul li:nth-child(4) a       { transition-delay: 0.18s; }
+.mobile-menu ul li:nth-child(5) a       { transition-delay: 0.22s; }
+.mobile-menu ul li:nth-child(6) a       { transition-delay: 0.26s; }
 .mobile-menu ul li a:hover,
 .mobile-dropdown-toggle:hover { color: var(--gold-light); }
 .mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
-.mobile-dropdown-toggle {
-  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
-}
+.mobile-dropdown-toggle { display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
 .mobile-dropdown-toggle .dropdown-chevron { transition: transform 0.25s; }
 .mobile-dropdown-toggle[aria-expanded="true"] .dropdown-chevron { transform: rotate(180deg); }
 .mobile-dropdown-menu {
@@ -226,26 +239,39 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .footer-links a:hover { color: var(--gold-light); }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.72rem; color: rgba(245,240,232,0.18); }
 
-/* ─── HERO ──────────────────────────────────────── */
-/* FIX: No padding-top on the grid — that would expose body background behind nav.
-   padding-top lives on .hero-content only, so the image panel fills flush to top. */
+/* ─── DIRECT EXPORTER BADGE (unique to vanilla) ─── */
+/* Vanilla is one of three products Hindia Timur grows directly.
+   This banner communicates that clearly at the top of the hero. */
+.direct-exporter-bar {
+  background: var(--gold);
+  padding: 0.55rem 8vw;
+  display: flex; align-items: center; gap: 0.7rem;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--forest);
+  margin-top: 72px; /* push below fixed nav */
+}
+.direct-exporter-bar svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ─── HERO ───────────────────────────────────────────
+ *  The direct-exporter bar sits between the nav and the hero,
+ *  so .product-hero has no padding-top of its own. ─ */
 .product-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
+  min-height: calc(90vh - 36px); /* subtract bar height */
 }
 .hero-image-panel {
   position: relative; overflow: hidden; background: var(--forest);
 }
 .hero-image-panel img {
   width: 100%; height: 100%; object-fit: cover;
-  filter: saturate(0.88) contrast(1.04);
+  filter: saturate(0.85) contrast(1.06);
   transition: transform 8s ease;
 }
 .hero-image-panel:hover img { transform: scale(1.04); }
 .hero-image-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(28,43,30,0.45) 0%, transparent 55%),
+  background: linear-gradient(135deg, rgba(28,43,30,0.35) 0%, transparent 55%),
               linear-gradient(0deg, rgba(28,43,30,0.6) 0%, transparent 40%);
 }
 .hero-image-badges {
@@ -269,8 +295,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .hero-content {
   background: var(--forest);
   display: flex; flex-direction: column; justify-content: center;
-  /* padding-top accounts for nav height — image panel is full bleed */
-  padding: 15rem 6vw 7vw 7vw;
+  padding: 5rem 6vw 6rem 7vw;
   position: relative; overflow: hidden;
 }
 .hero-content::before {
@@ -314,7 +339,24 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   color: rgba(245,240,232,0.7); max-width: 460px; margin-bottom: 2.5rem;
 }
 
-/* Variety profile panel */
+/* Variety switcher */
+.variety-switch { display: flex; gap: 0; margin-bottom: 2rem; position: relative; }
+.variety-btn {
+  flex: 1; padding: 0.7rem 0.6rem;
+  border: 1px solid rgba(245,240,232,0.15); background: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(245,240,232,0.45); cursor: pointer; transition: all 0.25s;
+}
+.variety-btn:first-child { border-radius: 2px 0 0 2px; }
+.variety-btn:last-child  { border-radius: 0 2px 2px 0; border-left: none; }
+.variety-btn:not(:first-child):not(:last-child) { border-left: none; }
+.variety-btn.active { background: var(--gold); border-color: var(--gold); color: var(--forest); }
+.variety-btn:hover:not(.active) { border-color: rgba(245,240,232,0.3); color: rgba(245,240,232,0.7); }
+.variety-content { display: none; }
+.variety-content.active { display: block; }
+
+/* Profile panel */
 .profile-panel {
   position: relative;
   background: rgba(245,240,232,0.05);
@@ -342,23 +384,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .profile-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 2px; }
 .profile-val { font-size: 0.65rem; color: rgba(245,240,232,0.4); text-align: right; }
 
-/* Variant switch */
-.variety-switch { position: relative; display: flex; gap: 0; margin-bottom: 2rem; }
-.variety-btn {
-  flex: 1; padding: 0.7rem 0.8rem;
-  border: 1px solid rgba(245,240,232,0.15); background: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-  color: rgba(245,240,232,0.45); cursor: pointer; transition: all 0.25s;
-}
-.variety-btn:first-child { border-radius: 2px 0 0 2px; }
-.variety-btn:last-child { border-radius: 0 2px 2px 0; border-left: none; }
-.variety-btn:not(:first-child):not(:last-child) { border-left: none; }
-.variety-btn.active { background: var(--gold); border-color: var(--gold); color: var(--forest); }
-.variety-btn:hover:not(.active) { border-color: rgba(245,240,232,0.3); color: rgba(245,240,232,0.7); }
-.variety-content { display: none; }
-.variety-content.active { display: block; }
-
+/* Hero actions */
 .hero-actions {
   position: relative; display: flex; gap: 0.8rem; flex-wrap: wrap;
 }
@@ -399,11 +425,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .trust-icon svg { width: 13px; height: 13px; color: var(--gold); }
 .trust-divider { width: 1px; height: 24px; background: var(--border); }
 
-/* ─── SPECS SECTION ──────────────────────────────── */
-.specs-section {
-  padding: 7rem 8vw;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
-}
+/* ─── SECTION SHARED ─────────────────────────────── */
 .section-label {
   font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--gold); display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.2rem;
@@ -419,24 +441,21 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   font-size: 0.92rem; font-weight: 300; line-height: 1.75;
   color: var(--text-light); margin-bottom: 2.5rem; max-width: 500px;
 }
+
+/* ─── SPECS SECTION ──────────────────────────────── */
+.specs-section {
+  padding: 7rem 8vw;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+}
 .specs-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2rem;
 }
 .spec-item { background: var(--warm-white); padding: 1.1rem 1.3rem; transition: background 0.2s; }
 .spec-item:hover { background: var(--cream); }
-.spec-key {
-  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-light); margin-bottom: 0.3rem;
-}
-.spec-val {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem; font-weight: 400; color: var(--forest); line-height: 1.3;
-}
-.certs-title {
-  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--text-light); margin-bottom: 0.8rem;
-}
+.spec-key { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.3rem; }
+.spec-val { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; color: var(--forest); line-height: 1.3; }
+.certs-title { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.8rem; }
 .certs-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .cert-tag {
   font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
@@ -444,7 +463,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   border: 1px solid rgba(74,103,65,0.2); padding: 0.3rem 0.75rem; border-radius: 20px;
 }
 
-/* Supply options list */
+/* Supply list */
 .supply-list {
   display: flex; flex-direction: column; gap: 1px;
   background: var(--border); border: 1px solid var(--border); margin-bottom: 2.5rem;
@@ -460,15 +479,10 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   background: rgba(184,146,74,0.1);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.supply-name {
-  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--forest); margin-bottom: 0.25rem;
-}
-.supply-desc {
-  font-size: 0.8rem; font-weight: 300; color: var(--text-light); line-height: 1.6;
-}
+.supply-name { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest); margin-bottom: 0.25rem; }
+.supply-desc { font-size: 0.8rem; font-weight: 300; color: var(--text-light); line-height: 1.6; }
 
-/* ─── VARIETIES SECTION ──────────────────────────── */
+/* ─── VARIETIES (DARK) ───────────────────────────── */
 .varieties-section {
   background: var(--forest); padding: 7rem 8vw;
   position: relative; overflow: hidden;
@@ -485,7 +499,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .varieties-header .section-h2 { color: var(--cream); }
 .varieties-header .section-h2 em { color: var(--gold-light); }
 .varieties-header .section-lead { color: rgba(245,240,232,0.55); max-width: 520px; }
-
 .varieties-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: rgba(245,240,232,0.07);
@@ -502,28 +515,13 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   transition: transform 0.35s;
 }
 .variety-card:hover::after { transform: scaleX(1); }
-.variety-number {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem; font-weight: 300; color: rgba(184,146,74,0.2);
-  line-height: 1; margin-bottom: 1rem;
-}
-.variety-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 400; color: var(--cream); margin-bottom: 0.4rem;
-}
-.variety-type {
-  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--gold-light); margin-bottom: 1rem;
-}
-.variety-desc {
-  font-size: 0.82rem; font-weight: 300; line-height: 1.7;
-  color: rgba(245,240,232,0.5);
-}
+.variety-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(184,146,74,0.2); line-height: 1; margin-bottom: 1rem; }
+.variety-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--cream); margin-bottom: 0.35rem; }
+.variety-type { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem; }
+.variety-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.7; color: rgba(245,240,232,0.5); }
 
-/* ─── PROCESS SECTION ────────────────────────────── */
-.process-section {
-  padding: 7rem 8vw; background: var(--warm-white);
-}
+/* ─── CURING PROCESS ─────────────────────────────── */
+.process-section { padding: 7rem 8vw; background: var(--warm-white); }
 .process-header { max-width: 580px; margin-bottom: 4rem; }
 .process-steps {
   display: grid; grid-template-columns: repeat(5, 1fr);
@@ -538,50 +536,60 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .step-circle {
   width: 56px; height: 56px; border-radius: 50%;
   border: 1px solid var(--border); background: var(--warm-white);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem; font-weight: 300; color: var(--gold);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; color: var(--gold);
   transition: border-color 0.3s, background 0.3s;
 }
 .process-step:hover .step-circle { border-color: var(--gold); background: rgba(184,146,74,0.06); }
-.step-title {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--forest); margin-bottom: 0.5rem;
+.step-title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--forest); margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.78rem; font-weight: 300; line-height: 1.65; color: var(--text-light); }
+
+/* ─── VANILLIN CALLOUT (unique to vanilla) ───────── */
+/* A standalone stat strip between process and FAQ.
+   Communicates analytical quality proof points. */
+.vanillin-strip {
+  background: var(--forest); padding: 4rem 8vw;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background-color: var(--forest);
+  position: relative;
 }
-.step-desc {
-  font-size: 0.78rem; font-weight: 300; line-height: 1.65; color: var(--text-light);
+.vanillin-strip::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(184,146,74,0.10) 0%, transparent 60%);
+  pointer-events: none;
+}
+.vanillin-stat {
+  padding: 2.5rem 2rem; text-align: center; position: relative;
+  border-right: 1px solid rgba(245,240,232,0.07);
+}
+.vanillin-stat:last-child { border-right: none; }
+.vanillin-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 3.5vw, 3rem); font-weight: 300; color: var(--gold-light);
+  line-height: 1; margin-bottom: 0.6rem;
+}
+.vanillin-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.4); margin-bottom: 0.4rem;
+}
+.vanillin-sub {
+  font-size: 0.72rem; font-weight: 300; color: rgba(245,240,232,0.25); line-height: 1.5;
 }
 
 /* ─── FAQ ────────────────────────────────────────── */
-.faq-section {
-  background: var(--cream); padding: 7rem 8vw;
-}
+.faq-section { background: var(--cream); padding: 7rem 8vw; }
 .faq-header { max-width: 520px; margin-bottom: 4rem; }
 .faq-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
   background: var(--border); border: 1px solid var(--border);
 }
-.faq-item {
-  background: var(--warm-white); padding: 1.6rem 1.8rem;
-  cursor: pointer; transition: background 0.2s; position: relative;
-}
+.faq-item { background: var(--warm-white); padding: 1.6rem 1.8rem; cursor: pointer; transition: background 0.2s; }
 .faq-item:hover { background: var(--cream); }
-.faq-q {
-  font-size: 0.85rem; font-weight: 500; color: var(--forest);
-  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  padding-right: 0.4rem;
-}
-.faq-chevron {
-  width: 16px; height: 16px; flex-shrink: 0; color: var(--gold);
-  transition: transform 0.25s;
-}
+.faq-q { font-size: 0.85rem; font-weight: 500; color: var(--forest); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-chevron { width: 16px; height: 16px; flex-shrink: 0; color: var(--gold); transition: transform 0.25s; }
 .faq-item.open .faq-chevron { transform: rotate(180deg); }
-.faq-a {
-  font-size: 0.82rem; font-weight: 300; line-height: 1.7; color: var(--text-light);
-  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.3s ease;
-}
-.faq-item.open .faq-a { max-height: 300px; margin-top: 0.8rem; }
+.faq-a { font-size: 0.82rem; font-weight: 300; line-height: 1.7; color: var(--text-light); max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.3s ease; }
+.faq-item.open .faq-a { max-height: 320px; margin-top: 0.8rem; }
 
 /* ─── CTA / CONTACT ──────────────────────────────── */
 .cta-section {
@@ -597,16 +605,9 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .cta-left { position: relative; }
 .cta-left .section-label { color: var(--gold-light); }
 .cta-left .section-label::before { background: var(--gold); }
-.cta-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2;
-  color: var(--cream); margin-bottom: 1rem;
-}
+.cta-h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2; color: var(--cream); margin-bottom: 1rem; }
 .cta-h2 em { font-style: italic; color: var(--gold-light); }
-.cta-lead {
-  font-size: 0.9rem; font-weight: 300; line-height: 1.75;
-  color: rgba(245,240,232,0.55); margin-bottom: 2rem; max-width: 420px;
-}
+.cta-lead { font-size: 0.9rem; font-weight: 300; line-height: 1.75; color: rgba(245,240,232,0.55); margin-bottom: 2rem; max-width: 420px; }
 .cta-checklist { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2.5rem; }
 .cta-check { display: flex; align-items: center; gap: 0.8rem; font-size: 0.83rem; color: rgba(245,240,232,0.6); }
 .cta-check svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; }
@@ -615,20 +616,12 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .cta-contact p { font-size: 0.85rem; color: rgba(245,240,232,0.5); }
 .cta-contact a { color: rgba(245,240,232,0.5); text-decoration: none; }
 .cta-contact a:hover { color: var(--gold-light); }
-.cta-form {
-  position: relative; background: var(--warm-white); padding: 2.8rem 3rem; border-radius: 2px;
-}
-.form-title {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400;
-  color: var(--forest); margin-bottom: 0.3rem;
-}
+.cta-form { position: relative; background: var(--warm-white); padding: 2.8rem 3rem; border-radius: 2px; }
+.form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--forest); margin-bottom: 0.3rem; }
 .form-sub { font-size: 0.8rem; color: var(--text-light); margin-bottom: 1.8rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.8rem; }
-.form-group label {
-  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text-light);
-}
+.form-group label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); }
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -664,6 +657,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   .varieties-grid { grid-template-columns: 1fr 1fr; }
   .process-steps { grid-template-columns: 1fr 1fr; gap: 3rem 2rem; }
   .process-steps::before { display: none; }
+  .vanillin-strip { grid-template-columns: 1fr 1fr; }
   .cta-section { grid-template-columns: 1fr; gap: 3rem; }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
@@ -671,24 +665,25 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   .nav-links { display: none !important; }
   .nav-hamburger { display: flex; }
   .mobile-menu { display: flex; }
-  nav#nav { padding: 0 5vw; height: 64px; background: rgba(0,0,0,0.2) !important; backdrop-filter: blur(8px); }
-  nav#nav.scrolled { background: rgba(245,239,228,0.97) !important; }
-  .nav-logo-img-main { width: 100px; }
+  nav#nav { padding: 0 5vw; height: 64px; flex-direction: row; justify-content: space-between; }
+  .direct-exporter-bar { margin-top: 64px; padding: 0.55rem 6vw; flex-wrap: wrap; }
   .trust-bar { gap: 1.2rem; }
   .trust-divider { display: none; }
   .specs-grid { grid-template-columns: 1fr; }
   .varieties-grid { grid-template-columns: 1fr; }
   .process-steps { grid-template-columns: 1fr; }
+  .vanillin-strip { grid-template-columns: 1fr 1fr; }
   .faq-grid { grid-template-columns: 1fr; }
   .cta-form { padding: 2rem 1.8rem; }
   .form-row { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
-  .hero-content { padding: 4rem 6vw 4rem; }
+  .hero-content { padding: 3rem 6vw 4rem; }
   .hero-image-badges { left: 1.2rem; bottom: 1.2rem; }
   .variety-switch { flex-wrap: wrap; }
   .variety-btn { border-left: 1px solid rgba(245,240,232,0.15) !important; border-radius: 2px !important; margin-bottom: 0.4rem; }
+  .vanillin-strip { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1fr; }
 }
 </style>
@@ -748,190 +743,136 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
 </div>
 
+<!-- ─── DIRECT EXPORTER BAR ───────────────────────── -->
+<div class="direct-exporter-bar">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  Direct Exporter &mdash; We grow, cure, and export our own vanilla. No middlemen, no blind sourcing.
+</div>
+
 <!-- ─── HERO ──────────────────────────────────────── -->
 <section class="product-hero">
 
-  <!-- Image panel — flush to top, no padding-top gap -->
   <div class="hero-image-panel">
     <img
-      src="https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=1400&q=85&fit=crop"
-      alt="Tropical fruit chips — jackfruit, banana, pineapple"
+      src="https://images.unsplash.com/photo-1607897441350-dc0d3ce3d517?w=1400&q=85&fit=crop"
+      alt="Premium Indonesian vanilla beans — whole cured pods"
       loading="eager">
     <div class="hero-image-overlay"></div>
     <div class="hero-image-badges">
       <div class="origin-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-        Java &middot; Sulawesi &middot; Bali &middot; Maluku
+        North Sulawesi &middot; East Java
       </div>
       <div class="score-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
-        Vacuum-Fried &amp; Air-Dried
+        Vanillin Content 1.8 – 2.6%
       </div>
     </div>
   </div>
 
-  <!-- Content panel — padding-top here, not on the grid -->
   <div class="hero-content">
     <p class="breadcrumb">
       <a href="index.html">Home</a>
       <span>/</span>
       <a href="products.html">Products</a>
       <span>/</span>
-      Fruit Chips
+      Vanilla Beans
     </p>
 
-    <div class="product-eyebrow">Tropical Fruit Chips</div>
-    <h1 class="product-h1">Indonesia's Finest<br><em>Fruit Chips</em></h1>
-    <p class="product-tagline">Jackfruit, Banana, Pineapple, Coconut &amp; More -- Preserved at Peak Ripeness</p>
+    <div class="product-eyebrow">Vanilla Beans &mdash; Direct Exporter</div>
+    <h1 class="product-h1">Indonesian<br><em>Vanilla Beans</em></h1>
+    <p class="product-tagline">Planifolia &amp; Tahitensis &mdash; Whole Pods, Cuts &amp; Splits</p>
     <p class="product-desc">
-      Sourced from family farms across Java, Sulawesi, and Bali, our fruit chips are processed within hours of harvest to lock in natural flavour, colour, and nutritional value. Available in vacuum-fried and air-dried formats to meet clean-label, organic, and conventional market requirements.
+      Grown on our own farms in North Sulawesi and East Java -- not aggregated from unknown sources. Every pod is hand-pollinated, vine-ripened for 9 months, and slow-cured over 4–6 weeks using the traditional sweating method. No shortcuts at any stage. Vanillin content verified per lot by ISO 17025 laboratory analysis.
     </p>
 
-    <!-- Variety selector -->
+    <!-- Variety switcher -->
     <div class="variety-switch">
-      <button class="variety-btn active" onclick="switchVariety('jackfruit', this)">Jackfruit</button>
-      <button class="variety-btn" onclick="switchVariety('banana', this)">Banana</button>
-      <button class="variety-btn" onclick="switchVariety('pineapple', this)">Pineapple</button>
-      <button class="variety-btn" onclick="switchVariety('coconut', this)">Coconut</button>
-      <button class="variety-btn" onclick="switchVariety('mixed', this)">Mixed</button>
+      <button class="variety-btn active" onclick="switchVariety('planifolia', this)">Planifolia</button>
+      <button class="variety-btn" onclick="switchVariety('tahitensis', this)">Tahitensis</button>
+      <button class="variety-btn" onclick="switchVariety('cuts', this)">Cuts &amp; Splits</button>
     </div>
 
-    <!-- Jackfruit -->
-    <div class="profile-panel variety-content active" id="vc-jackfruit">
-      <div class="profile-title">Jackfruit Chips — Flavour &amp; Nutrition Profile</div>
+    <!-- Planifolia -->
+    <div class="profile-panel variety-content active" id="vc-planifolia">
+      <div class="profile-title">Planifolia (V. planifolia) — Flavour Profile</div>
       <div class="profile-tags">
-        <span class="profile-tag">Subtly Sweet</span>
-        <span class="profile-tag">Fibrous &amp; Satisfying</span>
-        <span class="profile-tag">Natural Caramel Notes</span>
-        <span class="profile-tag">Vegan</span>
+        <span class="profile-tag">Classic Vanilla</span>
+        <span class="profile-tag">Rich &amp; Creamy</span>
+        <span class="profile-tag">Woody Undertone</span>
+        <span class="profile-tag">High Vanillin</span>
       </div>
       <div class="profile-bars">
         <div class="profile-row">
-          <span class="profile-label">Natural Sugars</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:62%"></div></div>
-          <span class="profile-val">~15g/100g</span>
+          <span class="profile-label">Vanillin</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:88%"></div></div>
+          <span class="profile-val">1.8 – 2.6%</span>
         </div>
         <div class="profile-row">
-          <span class="profile-label">Dietary Fibre</span>
+          <span class="profile-label">Moisture</span>
           <div class="profile-bar-track"><div class="profile-bar-fill" style="width:55%"></div></div>
-          <span class="profile-val">~8g/100g</span>
+          <span class="profile-val">25 – 35%</span>
         </div>
         <div class="profile-row">
-          <span class="profile-label">Vitamin C</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:45%"></div></div>
-          <span class="profile-val">~14mg/100g</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Banana -->
-    <div class="profile-panel variety-content" id="vc-banana">
-      <div class="profile-title">Banana Chips — Flavour &amp; Nutrition Profile</div>
-      <div class="profile-tags">
-        <span class="profile-tag">Rich &amp; Sweet</span>
-        <span class="profile-tag">Crisp Texture</span>
-        <span class="profile-tag">Potassium Rich</span>
-        <span class="profile-tag">Gluten Free</span>
-      </div>
-      <div class="profile-bars">
-        <div class="profile-row">
-          <span class="profile-label">Natural Sugars</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:70%"></div></div>
-          <span class="profile-val">~20g/100g</span>
-        </div>
-        <div class="profile-row">
-          <span class="profile-label">Potassium</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:78%"></div></div>
-          <span class="profile-val">~358mg/100g</span>
-        </div>
-        <div class="profile-row">
-          <span class="profile-label">Dietary Fibre</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:42%"></div></div>
-          <span class="profile-val">~6g/100g</span>
+          <span class="profile-label">Pod Length</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:80%"></div></div>
+          <span class="profile-val">14 – 20 cm</span>
         </div>
       </div>
     </div>
 
-    <!-- Pineapple -->
-    <div class="profile-panel variety-content" id="vc-pineapple">
-      <div class="profile-title">Pineapple Chips — Flavour &amp; Nutrition Profile</div>
+    <!-- Tahitensis -->
+    <div class="profile-panel variety-content" id="vc-tahitensis">
+      <div class="profile-title">Tahitensis (V. tahitensis) — Flavour Profile</div>
       <div class="profile-tags">
-        <span class="profile-tag">Tangy &amp; Tropical</span>
-        <span class="profile-tag">Enzyme-Rich</span>
-        <span class="profile-tag">Vitamin C</span>
-        <span class="profile-tag">No Added Sugar</span>
+        <span class="profile-tag">Floral &amp; Fruity</span>
+        <span class="profile-tag">Anise Notes</span>
+        <span class="profile-tag">Perfumery Grade</span>
+        <span class="profile-tag">Specialty Use</span>
       </div>
       <div class="profile-bars">
         <div class="profile-row">
-          <span class="profile-label">Vitamin C</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:72%"></div></div>
-          <span class="profile-val">~47mg/100g</span>
+          <span class="profile-label">Vanillin</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:50%"></div></div>
+          <span class="profile-val">0.8 – 1.4%</span>
         </div>
         <div class="profile-row">
-          <span class="profile-label">Natural Sugars</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:58%"></div></div>
-          <span class="profile-val">~10g/100g</span>
-        </div>
-        <div class="profile-row">
-          <span class="profile-label">Bromelain</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:65%"></div></div>
+          <span class="profile-label">Heliotropin</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:75%"></div></div>
           <span class="profile-val">Present</span>
         </div>
+        <div class="profile-row">
+          <span class="profile-label">Pod Length</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:55%"></div></div>
+          <span class="profile-val">10 – 15 cm</span>
+        </div>
       </div>
     </div>
 
-    <!-- Coconut -->
-    <div class="profile-panel variety-content" id="vc-coconut">
-      <div class="profile-title">Coconut Chips — Flavour &amp; Nutrition Profile</div>
+    <!-- Cuts & Splits -->
+    <div class="profile-panel variety-content" id="vc-cuts">
+      <div class="profile-title">Cuts &amp; Splits — Extract &amp; Industrial Grade</div>
       <div class="profile-tags">
-        <span class="profile-tag">Naturally Sweet</span>
-        <span class="profile-tag">MCT-Rich</span>
-        <span class="profile-tag">Toasted &amp; Raw Options</span>
-        <span class="profile-tag">Keto-Friendly</span>
+        <span class="profile-tag">TK Grade Cuts</span>
+        <span class="profile-tag">Extract-Grade</span>
+        <span class="profile-tag">Food Mfg</span>
+        <span class="profile-tag">Lower MOQ</span>
       </div>
       <div class="profile-bars">
         <div class="profile-row">
-          <span class="profile-label">Healthy Fats</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:85%"></div></div>
-          <span class="profile-val">~64g/100g</span>
+          <span class="profile-label">Vanillin</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:80%"></div></div>
+          <span class="profile-val">≥ 1.5%</span>
         </div>
         <div class="profile-row">
-          <span class="profile-label">Dietary Fibre</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:73%"></div></div>
-          <span class="profile-val">~9g/100g</span>
+          <span class="profile-label">Moisture</span>
+          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:50%"></div></div>
+          <span class="profile-val">≤ 30%</span>
         </div>
         <div class="profile-row">
-          <span class="profile-label">Manganese</span>
+          <span class="profile-label">Format</span>
           <div class="profile-bar-track"><div class="profile-bar-fill" style="width:60%"></div></div>
-          <span class="profile-val">~1.5mg/100g</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mixed -->
-    <div class="profile-panel variety-content" id="vc-mixed">
-      <div class="profile-title">Mixed Tropical Chips — Custom Blend</div>
-      <div class="profile-tags">
-        <span class="profile-tag">Fully Customisable</span>
-        <span class="profile-tag">Private Label Ready</span>
-        <span class="profile-tag">OEM Available</span>
-        <span class="profile-tag">Branded Packaging</span>
-      </div>
-      <div class="profile-bars">
-        <div class="profile-row">
-          <span class="profile-label">Jackfruit %</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:40%"></div></div>
-          <span class="profile-val">Adjustable</span>
-        </div>
-        <div class="profile-row">
-          <span class="profile-label">Banana %</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:35%"></div></div>
-          <span class="profile-val">Adjustable</span>
-        </div>
-        <div class="profile-row">
-          <span class="profile-label">Pineapple %</span>
-          <div class="profile-bar-track"><div class="profile-bar-fill" style="width:25%"></div></div>
-          <span class="profile-val">Adjustable</span>
+          <span class="profile-val">2–5 cm cuts</span>
         </div>
       </div>
     </div>
@@ -950,6 +891,13 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 <div class="trust-bar">
   <div class="trust-item">
     <div class="trust-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    Own-Farm Grown
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
     </div>
     Phytosanitary Certified
@@ -957,9 +905,9 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   <div class="trust-divider"></div>
   <div class="trust-item">
     <div class="trust-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
     </div>
-    Direct Farm Partnership
+    Vanillin % Per Lot
   </div>
   <div class="trust-divider"></div>
   <div class="trust-item">
@@ -971,16 +919,9 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   <div class="trust-divider"></div>
   <div class="trust-item">
     <div class="trust-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
     </div>
-    Min. Order 100 kg
-  </div>
-  <div class="trust-divider"></div>
-  <div class="trust-item">
-    <div class="trust-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 3v4M8 3v4M12 12h4"/></svg>
-    </div>
-    OEM &amp; Private Label
+    OEM &amp; Extract-Grade
   </div>
 </div>
 
@@ -988,56 +929,56 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 <section class="specs-section">
   <div class="fade-up">
     <div class="section-label">Technical Specifications</div>
-    <h2 class="section-h2">Fruit Chips<br><em>Export Specifications</em></h2>
-    <p class="section-lead">All varieties are available in vacuum-fried or air-dried formats. Moisture, oil content, and particle size are adjustable to buyer specification. Full certificate of analysis provided per consignment.</p>
+    <h2 class="section-h2">Vanilla Beans<br><em>Export Specifications</em></h2>
+    <p class="section-lead">All beans are graded, cured, and packed at our own post-harvest facility in North Sulawesi. Vanillin content, moisture, and bean length are tested per lot. Full certificate of analysis provided before shipment commitment.</p>
     <div class="specs-grid">
       <div class="spec-item">
-        <div class="spec-key">Available Varieties</div>
-        <div class="spec-val">Jackfruit, Banana, Pineapple, Coconut, Mango, Salak, Mixed</div>
+        <div class="spec-key">Species</div>
+        <div class="spec-val">Vanilla planifolia · Vanilla tahitensis</div>
       </div>
       <div class="spec-item">
-        <div class="spec-key">Processing Method</div>
-        <div class="spec-val">Vacuum-fried (100–120°C) or Air-dried (50–60°C)</div>
+        <div class="spec-key">Grade</div>
+        <div class="spec-val">Grade A (Gourmet) · Grade B (Extract) · TK Cuts</div>
       </div>
       <div class="spec-item">
         <div class="spec-key">Origin</div>
-        <div class="spec-val">Java &middot; Sulawesi &middot; Bali &middot; Sumatra</div>
+        <div class="spec-val">North Sulawesi · East Java · Own farms</div>
       </div>
       <div class="spec-item">
-        <div class="spec-key">Moisture Content</div>
-        <div class="spec-val">≤ 5% (vacuum-fried) · ≤ 8% (air-dried)</div>
+        <div class="spec-key">Vanillin Content</div>
+        <div class="spec-val">1.8–2.6% planifolia · 0.8–1.4% tahitensis</div>
       </div>
       <div class="spec-item">
-        <div class="spec-key">Oil Content (VF)</div>
-        <div class="spec-val">≤ 25% (palm-oil-free option available)</div>
+        <div class="spec-key">Moisture</div>
+        <div class="spec-val">25–35% (Grade A) · ≤ 30% (Grade B / TK)</div>
       </div>
       <div class="spec-item">
-        <div class="spec-key">Colour</div>
-        <div class="spec-val">Variety-natural, no artificial colours</div>
+        <div class="spec-key">Pod Length</div>
+        <div class="spec-val">14–20 cm (Grade A) · 10–14 cm (Grade B)</div>
       </div>
       <div class="spec-item">
-        <div class="spec-key">Additives</div>
-        <div class="spec-val">No artificial additives — flavour variants on request</div>
+        <div class="spec-key">Appearance</div>
+        <div class="spec-val">Dark brown, supple, oily, fully cured</div>
       </div>
       <div class="spec-item">
-        <div class="spec-key">Shelf Life</div>
-        <div class="spec-val">12 months (sealed, ambient)</div>
+        <div class="spec-key">Curing Method</div>
+        <div class="spec-val">Traditional sweat-cure (blanching → sweating → drying → conditioning)</div>
       </div>
       <div class="spec-item">
         <div class="spec-key">Min. Order Quantity</div>
-        <div class="spec-val">100 kg per variety</div>
+        <div class="spec-val">1 kg (Grade A) · 5 kg (Grade B / TK Cuts)</div>
       </div>
       <div class="spec-item">
         <div class="spec-key">Packaging</div>
-        <div class="spec-val">Bulk 10 kg foil · Custom retail packs available</div>
+        <div class="spec-val">Vacuum-sealed glass vials (retail) · foil pouches (bulk)</div>
       </div>
       <div class="spec-item">
-        <div class="spec-key">Lead Time</div>
-        <div class="spec-val">2 – 4 weeks from order confirmation</div>
+        <div class="spec-key">Shelf Life</div>
+        <div class="spec-val">2 years sealed · 6 months once opened</div>
       </div>
       <div class="spec-item">
         <div class="spec-key">Incoterms</div>
-        <div class="spec-val">FOB Tanjung Priok · CIF · DDP</div>
+        <div class="spec-val">FOB Makassar · CIF · DDP</div>
       </div>
     </div>
     <div class="certs-title">Certifications &amp; Documentation</div>
@@ -1045,36 +986,47 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
       <span class="cert-tag">Phytosanitary Certificate</span>
       <span class="cert-tag">Certificate of Origin</span>
       <span class="cert-tag">Certificate of Analysis (ISO 17025)</span>
-      <span class="cert-tag">Heavy Metal Test Report</span>
+      <span class="cert-tag">Vanillin % by HPLC</span>
+      <span class="cert-tag">Moisture Analysis</span>
       <span class="cert-tag">Pesticide Residue Analysis</span>
+      <span class="cert-tag">Heavy Metal Test Report</span>
       <span class="cert-tag">Halal (MUI) — on request</span>
-      <span class="cert-tag">Organic (IMO / USDA NOP) — select varieties</span>
+      <span class="cert-tag">Organic (IMO / USDA NOP) — on request</span>
     </div>
   </div>
 
   <!-- Right col: supply formats -->
   <div>
     <div class="section-label fade-up">Supply Formats</div>
-    <h2 class="section-h2 fade-up">Flexible<br><em>Order Options</em></h2>
-    <p class="section-lead fade-up">We supply to importers, health food brands, snack manufacturers, and private label buyers. Processing format, packaging, and labelling are all configurable to your market requirements.</p>
+    <h2 class="section-h2 fade-up">From Gourmet<br><em>to Industrial Scale</em></h2>
+    <p class="section-lead fade-up">We supply directly to pastry chefs, flavour houses, food manufacturers, extract producers, and fragrance brands. Because we grow our own, there is no minimum we cannot meet -- and no provenance claim we cannot verify.</p>
 
     <div class="supply-list fade-up">
       <div class="supply-item">
         <div class="supply-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M12 12h.01"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
         </div>
         <div>
-          <div class="supply-name">Vacuum-Fried — Standard</div>
-          <div class="supply-desc">Low-temperature vacuum frying preserves colour, taste, and nutrients at a fraction of conventional deep-fry oil absorption. Crisp texture, long shelf life. MOQ: 100 kg per variety.</div>
+          <div class="supply-name">Grade A — Whole Pods (Gourmet)</div>
+          <div class="supply-desc">Our finest planifolia beans: 14–20 cm, supple, oily, fully cured. Vanillin ≥ 1.8%. Packed in vacuum-sealed glass vials for retail or 500g foil pouches for food service. MOQ: 1 kg.</div>
         </div>
       </div>
       <div class="supply-item">
         <div class="supply-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
         </div>
         <div>
-          <div class="supply-name">Air-Dried — Clean Label</div>
-          <div class="supply-desc">No frying oil. Dried at 50–60°C to retain bioactive compounds. Ideal for organic, health-conscious, and clean-label positioning. MOQ: 100 kg per variety.</div>
+          <div class="supply-name">Grade B — Extract &amp; Manufacturing</div>
+          <div class="supply-desc">Shorter pods (10–14 cm) with the same vanillin specification. Ideal for extract production, flavour compounding, and bakery ingredient use. Cost-efficient. MOQ: 5 kg.</div>
+        </div>
+      </div>
+      <div class="supply-item">
+        <div class="supply-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div>
+          <div class="supply-name">TK Cuts — High-Volume Industrial</div>
+          <div class="supply-desc">2–5 cm cuts from Grade A/B pods. Highest vanillin density per cost unit. Supplied loose in foil-lined cartons. Used by extract houses, flavour manufacturers, and fragrance compounders. MOQ: 10 kg.</div>
         </div>
       </div>
       <div class="supply-item">
@@ -1083,16 +1035,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
         </div>
         <div>
           <div class="supply-name">OEM / Private Label</div>
-          <div class="supply-desc">Custom blend ratios, flavour additions (chilli, coconut sugar glaze, sea salt), retail-ready packaging with buyer branding. Full product development support included. MOQ: 500 kg.</div>
-        </div>
-      </div>
-      <div class="supply-item">
-        <div class="supply-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
-        </div>
-        <div>
-          <div class="supply-name">Bulk Ingredient Supply</div>
-          <div class="supply-desc">10 kg foil-lined master bags for food manufacturers, processors, and re-packers. Custom sizes available. Consistent batch records and COA per shipment. MOQ: 500 kg.</div>
+          <div class="supply-desc">Retail-ready packaging with buyer branding -- glass vials, kraft-paper tubes, or biodegradable pouches. Vanilla paste and vanilla powder available as processed derivatives. MOQ by format.</div>
         </div>
       </div>
     </div>
@@ -1107,141 +1050,159 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 <!-- ─── VARIETIES ──────────────────────────────────── -->
 <section class="varieties-section">
   <div class="varieties-header fade-up">
-    <div class="section-label">Available Varieties</div>
-    <h2 class="section-h2">Seven Tropical Fruits,<br><em>One Reliable Source</em></h2>
-    <p class="section-lead">Each variety is grown in its ideal micro-climate across the Indonesian archipelago, harvested at peak ripeness, and processed locally to guarantee freshness and flavour integrity from farm to port.</p>
+    <div class="section-label">Our Varieties</div>
+    <h2 class="section-h2">Two Species,<br><em>One Traceable Source</em></h2>
+    <p class="section-lead">Both varieties are grown on our own land, hand-pollinated, and processed at our own curing facility. No third-party aggregation. Every lot carries full chain-of-custody documentation from vine to export container.</p>
   </div>
   <div class="varieties-grid">
     <div class="variety-card fade-up">
       <div class="variety-number">01</div>
-      <div class="variety-name">Young Jackfruit Chips</div>
-      <div class="variety-type">Java &middot; West Java &middot; Yogyakarta</div>
-      <p class="variety-desc">Indonesia's native giant fruit, vacuum-fried at peak ripeness. Subtly sweet with a satisfying fibrous bite. The most in-demand variety for health snack importers in Europe and the Middle East.</p>
+      <div class="variety-name">Vanilla planifolia</div>
+      <div class="variety-type">North Sulawesi &middot; East Java &middot; Own Farms</div>
+      <p class="variety-desc">The world's dominant commercial vanilla species. Our Sulawesi-grown planifolia is recognised for a rich, creamy, tobacco-noted profile with vanillin content consistently in the 1.8–2.6% range -- higher than the Madagascan average. Grade A pods are plump, dark, and oily after our 5-week traditional cure.</p>
     </div>
     <div class="variety-card fade-up">
       <div class="variety-number">02</div>
-      <div class="variety-name">Cavendish Banana Chips</div>
-      <div class="variety-type">Sulawesi &middot; Lampung &middot; East Java</div>
-      <p class="variety-desc">Thin-sliced from ripe Cavendish bananas. Available salted, unsalted, or lightly sweetened with coconut sugar. The foundational SKU for most mixed tropical snack portfolios.</p>
+      <div class="variety-name">Vanilla tahitensis</div>
+      <div class="variety-type">North Sulawesi &middot; Small-batch harvest</div>
+      <p class="variety-desc">A rarer, more aromatic species with floral, fruity, and anise-like notes derived from heliotropin and piperonal alongside vanillin. Lower vanillin content than planifolia but highly prized by pastry chefs and perfumers. Small-batch seasonal availability -- advise volume requirements early.</p>
     </div>
     <div class="variety-card fade-up">
       <div class="variety-number">03</div>
-      <div class="variety-name">Pineapple Chips</div>
-      <div class="variety-type">Lampung &middot; South Sulawesi &middot; West Java</div>
-      <p class="variety-desc">Air-dried for maximum Vitamin C and bromelain retention. Bright golden colour with a tangy tropical flavour. No added sugar. Strong appeal in organic and functional snack categories.</p>
+      <div class="variety-name">Grade A Whole — Gourmet</div>
+      <div class="variety-type">14–20 cm · Vanillin ≥ 1.8% · Premium</div>
+      <p class="variety-desc">Visually perfect pods for retail-facing products, artisan bakeries, and luxury food brands. Supple, heavily frosted with vanillin crystals on the surface -- a quality indicator often absent from commodity-grade beans.</p>
     </div>
     <div class="variety-card fade-up">
       <div class="variety-number">04</div>
-      <div class="variety-name">Coconut Chips</div>
-      <div class="variety-type">North Sulawesi &middot; Maluku &middot; Riau Islands</div>
-      <p class="variety-desc">Wide-shaved flakes from mature Dalam coconuts, available raw or lightly toasted with an optional coconut sugar or sea salt glaze. High in MCTs and dietary fibre. A fast-growing SKU in keto, paleo, and clean-label snack markets globally.</p>
+      <div class="variety-name">Grade B — Extract</div>
+      <div class="variety-type">10–14 cm · Vanillin ≥ 1.5% · Industrial</div>
+      <p class="variety-desc">Identical provenance and curing process to Grade A. Shorter or slightly irregular pods that are analytically equivalent. The rational choice for extract production, flavour compounding, and any application where pod appearance is not the end-use criterion.</p>
     </div>
     <div class="variety-card fade-up">
       <div class="variety-number">05</div>
-      <div class="variety-name">Harum Manis Mango Chips</div>
-      <div class="variety-type">East Java &middot; East Nusa Tenggara</div>
-      <p class="variety-desc">Made from the aromatic Harum Manis variety, renowned for its deep sweetness and fragrance. Vacuum-fried to a light golden chip. Premium positioning in the gift and gourmet snack market.</p>
+      <div class="variety-name">TK Cuts &amp; Splits</div>
+      <div class="variety-type">2–5 cm · Highest vanillin density per cost</div>
+      <p class="variety-desc">Cross-cut pieces from Grade A/B pods. Maximum vanillin extraction yield per kilo. Standard input format for commercial extract houses and fragrance compounders. Full COA and vanillin % per lot.</p>
     </div>
     <div class="variety-card fade-up">
       <div class="variety-number">06</div>
-      <div class="variety-name">Salak (Snake Fruit) Chips</div>
-      <div class="variety-type">Bali &middot; Yogyakarta &middot; Tapanuli</div>
-      <p class="variety-desc">A uniquely Indonesian delicacy. Salak's tannic, honey-like flavour concentrates beautifully when air-dried. A high-value niche product for specialty importers seeking differentiation.</p>
-    </div>
-    <div class="variety-card fade-up" style="grid-column: span 2;">
-      <div class="variety-number">07</div>
-      <div class="variety-name">Custom Mixed Blends</div>
-      <div class="variety-type">Fully Configurable &middot; OEM Ready</div>
-      <p class="variety-desc">Design your own blend from any combination of the above varieties. We handle blending, seasoning, retail packaging, and nutritional labelling. Minimum 500 kg per custom SKU.</p>
+      <div class="variety-name">Processed Derivatives</div>
+      <div class="variety-type">Paste &middot; Powder &middot; On-Request</div>
+      <p class="variety-desc">Vanilla paste (seed paste in sugar or glycerol base) and vanilla powder (spray-dried extract on a starch carrier) available as contract processing. Custom specifications on request. Lead time 3–5 weeks. MOQ: 50 kg.</p>
     </div>
   </div>
 </section>
 
-<!-- ─── PROCESS ────────────────────────────────────── -->
+<!-- ─── CURING PROCESS ─────────────────────────────── -->
 <section class="process-section">
   <div class="process-header fade-up">
-    <div class="section-label">From Farm to Port</div>
-    <h2 class="section-h2">How We Deliver<br><em>Consistent Quality</em></h2>
-    <p style="font-size:0.92rem;font-weight:300;line-height:1.75;color:var(--text-light);max-width:500px;">Every batch of fruit chips passes through the same five-stage quality chain -- from harvest scheduling to pre-shipment inspection. No shortcuts, no blind sourcing.</p>
+    <div class="section-label">The Curing Process</div>
+    <h2 class="section-h2">Five Weeks to<br><em>Full Flavour Development</em></h2>
+    <p style="font-size:0.92rem;font-weight:300;line-height:1.75;color:var(--text-light);max-width:500px;">Vanilla flavour does not exist in the freshly harvested pod. It develops through enzymatic reactions triggered by the curing process. We use the traditional Bourbon-style sweat-cure -- the same method that built Madagascar's reputation, applied to our own Indonesian harvest.</p>
   </div>
   <div class="process-steps">
     <div class="process-step fade-up">
       <div class="step-circle">01</div>
-      <div class="step-title">Harvest Scheduling</div>
-      <p class="step-desc">Partner farms are visited 2 weeks pre-harvest. Ripeness, pest-free status, and field hygiene are assessed before commitment.</p>
+      <div class="step-title">Harvest</div>
+      <p class="step-desc">Pods harvested by hand when the tip begins to yellow -- 9 months after pollination. Timing is critical: too early and vanillin precursors are insufficient; too late and pods split.</p>
     </div>
     <div class="process-step fade-up">
       <div class="step-circle">02</div>
-      <div class="step-title">Same-Day Processing</div>
-      <p class="step-desc">Fruit is transported to processing facility within 6 hours of harvest. Slicing, washing, and frying or drying begins immediately to preserve quality.</p>
+      <div class="step-title">Blanching</div>
+      <p class="step-desc">Green pods are immersed in 65°C water for 3 minutes. This kills the living tissue and halts further ripening, while activating the enzyme glucovanillin glucosidase.</p>
     </div>
     <div class="process-step fade-up">
       <div class="step-circle">03</div>
-      <div class="step-title">QC &amp; Lab Testing</div>
-      <p class="step-desc">Every batch is tested for moisture, oil content, microbial load, heavy metals, and pesticide residue at ISO 17025-accredited laboratories.</p>
+      <div class="step-title">Sweating</div>
+      <p class="step-desc">Blanched pods are wrapped in wool blankets and stored in airtight wooden boxes for 1–2 weeks at 45–65°C. Enzymatic conversion of glucovanillin to vanillin occurs here. This stage determines the final flavour depth.</p>
     </div>
     <div class="process-step fade-up">
       <div class="step-circle">04</div>
-      <div class="step-title">Packing &amp; Labelling</div>
-      <p class="step-desc">Packed into foil-lined bags with nitrogen flushing. Custom retail packaging and private label printing completed at this stage.</p>
+      <div class="step-title">Slow Drying</div>
+      <p class="step-desc">Pods are spread on racks in the shade for 2–3 weeks, then briefly exposed to morning sun. Moisture reduces from ~80% to the target 25–35%. Rushed drying destroys the flavour.</p>
     </div>
     <div class="process-step fade-up">
       <div class="step-circle">05</div>
-      <div class="step-title">Pre-Shipment Inspection</div>
-      <p class="step-desc">Final inspection by our export team. Phytosanitary certificate, certificate of analysis, and all compliance documents prepared before container loading.</p>
+      <div class="step-title">Conditioning &amp; Grading</div>
+      <p class="step-desc">Dried pods rest in closed containers for a further 2–4 weeks to develop complexity, then are graded by length, pliability, and vanillin content. Each lot is lab-tested before release.</p>
     </div>
   </div>
 </section>
+
+<!-- ─── VANILLIN STATS STRIP ───────────────────────── -->
+<div class="vanillin-strip">
+  <div class="vanillin-stat fade-up">
+    <div class="vanillin-number">1.8–2.6%</div>
+    <div class="vanillin-label">Vanillin Content</div>
+    <div class="vanillin-sub">Planifolia Grade A, verified by HPLC per lot</div>
+  </div>
+  <div class="vanillin-stat fade-up">
+    <div class="vanillin-number">9 mo.</div>
+    <div class="vanillin-label">Vine Ripening</div>
+    <div class="vanillin-sub">Hand-pollinated, harvested at peak maturity only</div>
+  </div>
+  <div class="vanillin-stat fade-up">
+    <div class="vanillin-number">5 wk.</div>
+    <div class="vanillin-label">Traditional Cure</div>
+    <div class="vanillin-sub">Blanch → sweat → dry → condition. No shortcuts.</div>
+  </div>
+  <div class="vanillin-stat fade-up">
+    <div class="vanillin-number">100%</div>
+    <div class="vanillin-label">Own-Farm</div>
+    <div class="vanillin-sub">No third-party aggregation. Full chain-of-custody.</div>
+  </div>
+</div>
 
 <!-- ─── FAQ ───────────────────────────────────────── -->
 <section class="faq-section">
   <div class="faq-header fade-up">
     <div class="section-label">Common Questions</div>
     <h2 class="section-h2">Buyer <em>FAQ</em></h2>
-    <p style="font-size:0.92rem;font-weight:300;line-height:1.75;color:var(--text-light);">Answers to the questions importers ask most when sourcing fruit chips from Indonesia for the first time.</p>
+    <p style="font-size:0.92rem;font-weight:300;line-height:1.75;color:var(--text-light);">The questions importers, flavour houses, and food brands ask most when sourcing Indonesian vanilla for the first time.</p>
   </div>
   <div class="faq-grid">
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
-        What is the difference between vacuum-fried and air-dried chips?
+        How does Indonesian vanilla compare to Madagascar Bourbon?
         <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </div>
-      <div class="faq-a">Vacuum-fried chips are cooked at low temperature (100–120°C) under vacuum pressure, resulting in a crispy texture with relatively low oil absorption. Air-dried chips use no oil at all -- fruit is dehydrated at 50–60°C, making them ideal for clean-label and organic positioning. Air-dried chips have a chewier texture and higher nutrient retention.</div>
+      <div class="faq-a">Both are V. planifolia and share the same base flavour profile -- rich, creamy, and sweet. Indonesian vanilla typically carries a slightly smokier, woodier secondary note due to soil and climate differences, which some buyers and chefs specifically prefer. Vanillin content from our Sulawesi farms is consistently competitive with premium Madagascan beans. The key practical advantage is supply chain resilience -- our direct-exporter model means no broker markups and no provenance uncertainty.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        What does "direct exporter" mean in practice?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="faq-a">We own the farms, manage the pollination and harvest, operate the curing facility, and handle the export documentation ourselves. There is no intermediary aggregator, broker, or trader between the vine and your container. This means we can provide full chain-of-custody documentation, respond directly to any quality query, and offer pricing that reflects actual production cost rather than a traded commodity margin.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        How is vanillin content measured and verified?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="faq-a">Every lot is tested by HPLC (High-Performance Liquid Chromatography) at an ISO 17025-accredited third-party laboratory. The certificate of analysis stating vanillin percentage by weight is provided before shipment commitment -- not after. We do not ship a lot whose COA you have not reviewed and approved.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
         What is the minimum order quantity?
         <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </div>
-      <div class="faq-a">The standard MOQ is 100 kg per variety for bulk orders. For OEM / private label and custom mixed blends, the minimum is 500 kg per SKU. We can accommodate trial orders at 50 kg for qualified buyers -- request this when submitting your quote.</div>
+      <div class="faq-a">Grade A whole pods: 1 kg. Grade B and TK Cuts: 5 kg. TK Cuts high-volume: 10 kg. Processed derivatives (paste, powder): 50 kg per format. For first-time buyers we offer a 100g sample pack of Grade A planifolia before committing to a full order -- contact us to arrange this.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
-        Can I request custom flavours or seasoning?
+        What compliance documentation is included?
         <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </div>
-      <div class="faq-a">Yes. Common seasoning additions include sea salt, coconut sugar glaze, chilli, cinnamon, and lime. We can also develop custom flavour profiles for private label buyers. Flavour development is included in the OEM package at MOQ 500 kg per variant. All flavourings use natural ingredients only unless otherwise specified.</div>
+      <div class="faq-a">Every shipment includes: Phytosanitary Certificate (Ministry of Agriculture), Certificate of Origin, Certificate of Analysis with vanillin % by HPLC, moisture content, and pesticide residue analysis. Heavy metal report available on request. Halal certification (MUI) and Organic certification (IMO / USDA NOP) available with 3–4 weeks additional lead time.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
-        Do you offer halal or organic certification?
+        When is vanilla available, and how far in advance should I order?
         <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </div>
-      <div class="faq-a">Halal certification (MUI) is available on request for all varieties. Organic certification (IMO / USDA NOP) is available for pineapple and air-dried banana. Other varieties can be sourced from certified organic farms with 4–6 weeks additional lead time. Certification documents are provided prior to shipment.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">
-        What compliance documentation is provided?
-        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">Every shipment includes a Phytosanitary Certificate, Certificate of Origin, Certificate of Analysis (ISO 17025), Heavy Metal Test Report, and Pesticide Residue Analysis. Nutritional declarations, allergen statements, and country-of-origin labelling can be provided for EU, US, or Middle East market requirements on request.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">
-        How long is the lead time from order to shipment?
-        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">Standard lead time is 2–4 weeks from order confirmation for in-season varieties. OEM and custom blend orders allow 4–6 weeks for product development, testing, and packaging. We will confirm exact availability and lead time within 24 hours of receiving your inquiry.</div>
+      <div class="faq-a">Indonesian vanilla is typically harvested June–August, with cured beans available from September onwards. We carry inventory year-round from the prior harvest. For contract buyers requiring guaranteed volumes, we recommend placing orders 3–4 months before required delivery date. Tahitensis is small-batch only -- contact us early in the season to reserve allocation.</div>
     </div>
   </div>
 </section>
@@ -1250,20 +1211,20 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 <section class="cta-section" id="contact">
   <div class="cta-left">
     <div class="section-label">Start Your Partnership</div>
-    <h2 class="cta-h2">Ready to Source<br>Indonesian <em>Fruit Chips?</em></h2>
-    <p class="cta-lead">Tell us your variety preference, volume, packaging format, and destination market. We'll respond within 24 hours with pricing, sample availability, and full compliance documentation. No obligation.</p>
+    <h2 class="cta-h2">Source Vanilla<br><em>Direct from the Farm</em></h2>
+    <p class="cta-lead">Tell us your species preference, grade, volume, intended use, and destination market. We'll respond within 24 hours with pricing, sample availability, and the full COA from our most recent lot. No obligation.</p>
     <div class="cta-checklist">
       <div class="cta-check">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        Free product samples for qualified importers
+        100g sample pack for qualified buyers
+      </div>
+      <div class="cta-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        COA with vanillin % provided before commitment
       </div>
       <div class="cta-check">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         Response within 24 business hours
-      </div>
-      <div class="cta-check">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        Full compliance documentation before commitment
       </div>
       <div class="cta-check">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -1277,7 +1238,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
     </div>
   </div>
   <div class="cta-form">
-    <div class="form-title">Request a Fruit Chips Quote</div>
+    <div class="form-title">Request a Vanilla Quote</div>
     <div class="form-sub">Fill in your requirements and we'll be in touch shortly.</div>
     <div class="form-row">
       <div class="form-group">
@@ -1291,7 +1252,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
     </div>
     <div class="form-group">
       <label>Company Name</label>
-      <input type="text" placeholder="Healthy Snacks Co.">
+      <input type="text" placeholder="Pastry Collective GmbH">
     </div>
     <div class="form-row">
       <div class="form-group">
@@ -1304,22 +1265,35 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
       </div>
     </div>
     <div class="form-group">
-      <label>Product Interest</label>
+      <label>Product &amp; Grade</label>
       <select>
-        <option value="" disabled selected>Select a variety</option>
-        <option>Jackfruit Chips — Vacuum-Fried</option>
-        <option>Banana Chips — Vacuum-Fried</option>
-        <option>Pineapple Chips — Air-Dried</option>
-        <option>Coconut Chips — Toasted or Raw</option>
-        <option>Mango Chips — Vacuum-Fried</option>
-        <option>Salak (Snake Fruit) Chips</option>
-        <option>Custom Mixed Blend / OEM</option>
-        <option>Multiple varieties — advise me</option>
+        <option value="" disabled selected>Select a product</option>
+        <option>Planifolia Grade A — Whole Pods (Gourmet)</option>
+        <option>Planifolia Grade B — Extract &amp; Manufacturing</option>
+        <option>Tahitensis Grade A — Whole Pods</option>
+        <option>TK Cuts — Industrial / Extract Grade</option>
+        <option>Vanilla Paste — Processed Derivative</option>
+        <option>Vanilla Powder — Processed Derivative</option>
+        <option>OEM / Private Label — Advise me</option>
+        <option>Multiple grades — advise me</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Intended Use</label>
+      <select>
+        <option value="" disabled selected>Select intended use</option>
+        <option>Retail / Consumer Packaged Goods</option>
+        <option>Artisan Bakery / Pastry</option>
+        <option>Extract Production</option>
+        <option>Flavour Compounding</option>
+        <option>Fragrance / Perfumery</option>
+        <option>Food Manufacturing</option>
+        <option>Other / Not specified</option>
       </select>
     </div>
     <div class="form-group">
       <label>Message</label>
-      <textarea placeholder="Tell us your required volume, processing preference (vacuum-fried / air-dried), target markets, certification requirements, or packaging needs..."></textarea>
+      <textarea placeholder="Tell us your required volume, frequency of supply, target vanillin %, certification requirements (halal, organic), packaging preferences, or any other specifics..."></textarea>
     </div>
     <button class="btn-submit" onclick="handleSubmit(this)">Send Inquiry</button>
     <p class="form-privacy">By submitting, you agree to our privacy policy. We never share your data with third parties.</p>
@@ -1342,6 +1316,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
         <li><a href="moringa.html">Moringa Powder</a></li>
         <li><a href="vanilla.html">Vanilla Beans</a></li>
         <li><a href="fruit-chips.html">Fruit Chips</a></li>
+        <li><a href="cashew.html">Cashew Nuts</a></li>
         <li><a href="products.html">Full Product Catalog</a></li>
         <li><a href="exporter-quote.html">Request a Quote</a></li>
       </ul>
@@ -1399,7 +1374,6 @@ window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
 
-  // ── MOBILE DROPDOWN ───────────────────────────────
   menu.querySelectorAll('.mobile-dropdown-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function(e) {
       e.preventDefault(); e.stopPropagation();
