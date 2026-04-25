@@ -909,6 +909,9 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
   .page-header { padding: 120px 7vw 50px; }
   .page-title { font-size: clamp(2rem, 8vw, 2.6rem); }
   .header-topics { display: none; }
+  .tabs { flex-wrap: wrap; }
+  .tabs-right { display: none; }
+  .tab-btn { padding: 0.7rem 0.8rem; font-size: 0.68rem; }
 }
 @media (max-width: 480px) {
   .footer-top { grid-template-columns: 1fr; }
@@ -1016,7 +1019,7 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
 </header>
 
 <!-- SEARCH + FILTER BAR -->
-<div style="background: var(--cream); border-bottom: 1px solid var(--border); padding: 1.4rem 8vw; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+<div style="background: var(--cream); border-bottom: 1px solid var(--border); padding: 1.4rem 8vw; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; overflow: hidden;">
   <div class="search-inner" style="flex: 1; min-width: 220px; max-width: 380px;">
     <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M15 15l3 3" stroke-linecap="round"/></svg>
     <input class="search-input" type="text" id="searchInput" placeholder="Search questions…" autocomplete="off">
