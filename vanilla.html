@@ -239,26 +239,28 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .footer-links a:hover { color: var(--gold-light); }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.72rem; color: rgba(245,240,232,0.18); }
 
-/* ─── DIRECT EXPORTER BADGE (unique to vanilla) ─── */
-/* Vanilla is one of three products Hindia Timur grows directly.
-   This banner communicates that clearly at the top of the hero. */
+/* ─── DIRECT EXPORTER BADGE ─── */
 .direct-exporter-bar {
   background: var(--gold);
   padding: 0.55rem 8vw;
   display: flex; align-items: center; gap: 0.7rem;
   font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--forest);
-  margin-top: 72px; /* push below fixed nav */
+  /* Offset = column nav height: logo (~110px) + padding-top(12px) + padding-bottom(10px) + links row(~36px) + margin-bottom(6px) ≈ 108px.
+     Use padding-top on a wrapper div instead — see HTML. */
 }
 .direct-exporter-bar svg { width: 13px; height: 13px; flex-shrink: 0; }
 
-/* ─── HERO ───────────────────────────────────────────
- *  The direct-exporter bar sits between the nav and the hero,
- *  so .product-hero has no padding-top of its own. ─ */
+/* Wrapper that carries the padding-top to clear the fixed nav */
+.page-offset {
+  padding-top: 108px; /* unscrolled column-nav height */
+}
+
+/* ─── HERO ─── */
 .product-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: calc(90vh - 36px); /* subtract bar height */
+  min-height: calc(90vh - 36px);
 }
 .hero-image-panel {
   position: relative; overflow: hidden; background: var(--forest);
@@ -667,7 +669,11 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   .nav-hamburger { display: flex; }
   .mobile-menu { display: flex; }
   nav#nav { padding: 0 5vw; height: 64px; flex-direction: row; justify-content: space-between; }
-  .direct-exporter-bar { margin-top: 64px; padding: 0.55rem 6vw; flex-wrap: wrap; }
+  /* Center the logo between the left edge and the hamburger */
+  nav#nav .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); margin-bottom: 0; }
+  nav#nav { position: fixed; } /* ensure positioning context */
+  .direct-exporter-bar { padding: 0.55rem 6vw; flex-wrap: wrap; }
+  .page-offset { padding-top: 64px; } /* flat row nav on mobile = 64px */
   .trust-bar { gap: 1.2rem; }
   .trust-divider { display: none; }
   .specs-grid { grid-template-columns: 1fr; }
@@ -743,6 +749,9 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   </ul>
   <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
 </div>
+
+<!-- ─── PAGE OFFSET WRAPPER (clears fixed column nav) ── -->
+<div class="page-offset">
 
 <!-- ─── DIRECT EXPORTER BAR ───────────────────────── -->
 <div class="direct-exporter-bar">
@@ -886,9 +895,8 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
       <a href="products.html" class="btn-secondary">View All Products</a>
     </div>
   </div>
-</section>
-
-<!-- ─── TRUST BAR ──────────────────────────────────── -->
+</section><!-- end .product-hero -->
+</div><!-- end .page-offset --> ──────────────────────────────────── -->
 <div class="trust-bar">
   <div class="trust-item">
     <div class="trust-icon">
