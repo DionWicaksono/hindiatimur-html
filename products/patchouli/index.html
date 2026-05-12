@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patchouli Oil | Hindia Timur — Premium Indonesian Produce</title>
+<meta name="description" content="Export-grade Indonesian patchouli oil. PA content 30-35%, ISO GC-MS certified. Light and dark varieties from Sulawesi and Sumatra. Direct farm partnership. Request a B2B quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:      #F5F0E8;
+  --warm-white: #FAF8F3;
+  --forest:     #1C2B1E;
+  --moss:       #2D4A32;
+  --sage:       #4A6741;
+  --gold:       #B8924A;
+  --gold-light: #D4AC6E;
+  --earth:      #6B4E2A;
+  --text:       #1A1A18;
+  --text-mid:   #3D3D38;
+  --text-light: #6B6B60;
+  --border:     rgba(28,43,30,0.12);
+  --border-strong: rgba(28,43,30,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--text);
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ─── NAV ──────────────────────────────────────────── */
+nav#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 18px 5vw 12px;
+  background: transparent;
+  backdrop-filter: none;
+  transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+}
+nav#nav.scrolled {
+  flex-direction: row; justify-content: space-between; align-items: center;
+  padding: 0 5vw; height: 64px;
+  background: rgba(245,239,228,0.97);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.09);
+}
+.nav-logo { display: block; text-decoration: none; line-height: 0; margin-bottom: 10px; }
+nav#nav.scrolled .nav-logo { margin-bottom: 0; }
+.nav-logo-img-main {
+  display: block; width: 130px; height: auto;
+  transition: opacity 0.25s, width 0.25s;
+}
+nav#nav.scrolled .nav-logo-img-main { width: 0; opacity: 0; pointer-events: none; overflow: hidden; }
+.nav-logo-img-scrolled {
+  display: block; font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 600; color: var(--forest);
+  white-space: nowrap; line-height: 1;
+  width: 0; opacity: 0; overflow: hidden;
+  transition: opacity 0.25s, width 0.25s; pointer-events: none;
+}
+.nav-logo-img-scrolled span { color: var(--gold); }
+nav#nav.scrolled .nav-logo-img-scrolled { width: auto; opacity: 1; pointer-events: auto; overflow: visible; }
+
+.nav-links {
+  display: flex; gap: 2rem; list-style: none; align-items: center;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.nav-links a { text-decoration: none; color: rgba(245,240,232,0.85); transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a.active { color: var(--cream); }
+nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+
+.nav-cta {
+  background: rgba(245,240,232,0.15) !important; color: var(--cream) !important;
+  border: 1px solid rgba(245,240,232,0.35);
+  padding: 0.4rem 1.1rem; border-radius: 2px;
+  transition: background 0.2s, border-color 0.2s !important;
+}
+.nav-cta:hover { background: var(--gold) !important; border-color: var(--gold) !important; color: var(--forest) !important; }
+nav#nav.scrolled .nav-cta { background: var(--forest) !important; border-color: var(--forest) !important; color: var(--cream) !important; }
+nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; border-color: var(--gold) !important; color: var(--forest) !important; }
+
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  display: flex; align-items: center; gap: 0.3rem; cursor: pointer;
+  background: none; border: none; padding: 0;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(245,240,232,0.85); transition: color 0.2s;
+}
+.nav-dropdown-toggle:hover { color: var(--gold-light); }
+nav#nav.scrolled .nav-dropdown-toggle { color: var(--text-mid); }
+nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
+.dropdown-chevron { width: 10px; height: 6px; transition: transform 0.2s; flex-shrink: 0; }
+.nav-dropdown:hover .dropdown-chevron,
+.nav-dropdown:focus-within .dropdown-chevron { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  display: none; list-style: none; padding: 0.5rem 0;
+  position: absolute; top: calc(100% + 1rem); left: 50%;
+  transform: translateX(-50%);
+  min-width: 175px; background: var(--forest);
+  border: 1px solid rgba(245,240,232,0.1); border-radius: 2px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 201;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu li a {
+  display: block; padding: 0.55rem 1.2rem;
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.7) !important; white-space: nowrap;
+  transition: color 0.2s, background 0.2s; text-decoration: none;
+}
+.nav-dropdown-menu li a:hover { color: var(--gold-light) !important; background: rgba(245,240,232,0.05); }
+
+/* ─── HAMBURGER ──────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px;
+  background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--gold); border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ─── MOBILE MENU ────────────────────────────────── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: var(--forest); flex-direction: column;
+  justify-content: center; align-items: center;
+  opacity: 0; transform: translateY(-12px);
+  transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s cubic-bezier(0.23,1,0.32,1);
+  pointer-events: none;
+}
+.mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+.mobile-menu-logo-wrap { margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.mobile-menu-logo-wrap img {
+  display: block; width: 100px; height: auto;
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); opacity: 0.92;
+}
+.mobile-menu-close {
+  display: block; margin-bottom: 1.5rem; position: relative; z-index: 1;
+  background: none; border: none; cursor: pointer; padding: 0;
+  color: var(--gold-light); font-size: 2rem; line-height: 1;
+  opacity: 0.85; transition: opacity 0.2s, transform 0.2s;
+}
+.mobile-menu ul {
+  list-style: none; display: flex; flex-direction: column;
+  align-items: center; gap: 0; width: 100%; padding: 0 8vw;
+  position: relative; z-index: 1;
+}
+.mobile-menu ul li {
+  width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08);
+  overflow: hidden; text-align: center;
+}
+.mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+.mobile-menu ul li a,
+.mobile-dropdown-toggle {
+  display: block; width: 100%;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 300;
+  color: rgba(245,240,232,0.75); text-decoration: none;
+  letter-spacing: 0.02em; padding: 0.9rem 0; text-align: center;
+  background: none; border: none; cursor: pointer;
+}
+.mobile-menu ul li a:hover,
+.mobile-dropdown-toggle:hover { color: var(--gold-light); }
+.mobile-dropdown-menu {
+  display: none; list-style: none; padding: 0;
+  background: rgba(245,240,232,0.04);
+}
+.mobile-dropdown-menu.open { display: block; }
+.mobile-dropdown-menu li a {
+  font-size: 0.85rem !important; letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: rgba(245,240,232,0.5) !important;
+  padding: 0.6rem 0 !important;
+}
+
+/* ─── PAGE OFFSET ────────────────────────────────── */
+.page-offset { padding-top: 0; }
+
+/* ─── DIRECT EXPORTER BAR ────────────────────────── */
+.direct-exporter-bar {
+  background: var(--gold); color: var(--forest);
+  padding: 0.6rem 8vw; display: flex; align-items: center; justify-content: center;
+  gap: 0.8rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;
+  position: relative; z-index: 10;
+}
+.direct-exporter-bar svg { width: 14px; height: 14px; }
+
+/* ─── HERO ──────────────────────────────────────────── */
+.product-hero {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: calc(90vh - 36px); background: var(--forest);
+  position: relative; overflow: hidden;
+}
+.hero-image-panel {
+  position: relative; overflow: hidden; background: var(--cream);
+}
+.hero-image-panel img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.hero-image-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(28,43,30,0.4) 0%, transparent 60%),
+              linear-gradient(0deg, rgba(28,43,30,0.4) 0%, transparent 40%);
+  pointer-events: none;
+}
+.hero-image-badges {
+  position: absolute; bottom: 2rem; left: 2rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.origin-badge, .score-badge {
+  font-size: 0.62rem; padding: 0.4rem 0.75rem; letter-spacing: 0.12em;
+  text-transform: uppercase; border-radius: 2px; display: flex; align-items: center; gap: 0.6rem;
+}
+.origin-badge { background: rgba(250,248,243,0.92); color: var(--forest); }
+.score-badge { background: var(--gold); color: var(--forest); }
+.origin-badge svg { width: 10px; height: 10px; flex-shrink: 0; }
+
+.hero-content {
+  padding: 0 8vw; display: flex; flex-direction: column; justify-content: center;
+  color: var(--cream); position: relative;
+}
+.hero-content::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(184,146,74,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.breadcrumb {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.4); margin-bottom: 2rem; padding-top: 5rem;
+}
+.breadcrumb a { color: rgba(245,240,232,0.6); text-decoration: none; }
+.breadcrumb a:hover { color: var(--gold-light); }
+.breadcrumb span { margin: 0 0.6rem; }
+
+.product-eyebrow {
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 0.8rem;
+}
+.product-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 3.8vw, 3.8rem); font-weight: 300;
+  line-height: 1.15; margin-bottom: 1rem; color: var(--cream);
+}
+.product-h1 em { font-style: italic; color: var(--gold-light); }
+.product-tagline {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 1.1rem; font-weight: 300; line-height: 1.6;
+  color: rgba(245,240,232,0.75); margin-bottom: 1.5rem;
+}
+.product-desc {
+  font-size: 0.95rem; font-weight: 300; line-height: 1.8;
+  color: rgba(245,240,232,0.6); margin-bottom: 3rem; max-width: 520px;
+}
+
+.hero-actions {
+  display: flex; gap: 1.2rem; flex-wrap: wrap;
+}
+.btn-primary, .btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.65rem 1.2rem; border-radius: 2px;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none;
+  transition: all 0.2s; border: none; cursor: pointer;
+}
+.btn-primary { background: var(--gold); color: var(--forest); }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-primary svg { width: 13px; height: 13px; }
+.btn-secondary {
+  background: transparent; color: var(--cream);
+  border: 1px solid rgba(245,240,232,0.3);
+}
+.btn-secondary:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+/* ─── TRUST BAR ──────────────────────────────────── */
+.trust-bar {
+  background: var(--cream); padding: 2.5rem 8vw;
+  display: flex; align-items: center; justify-content: space-around;
+  gap: 2rem; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 0.8rem;
+  font-size: 0.85rem; font-weight: 400; color: var(--text-mid);
+}
+.trust-icon { width: 20px; height: 20px; color: var(--gold); flex-shrink: 0; }
+.trust-icon svg { width: 100%; height: 100%; stroke: currentColor; }
+.trust-divider { width: 1px; height: 40px; background: var(--border); }
+
+/* ─── SPECS SECTION ──────────────────────────────── */
+.specs-section {
+  padding: 7rem 8vw;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+}
+.section-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.2rem;
+}
+.section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+.section-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 300; line-height: 1.2; color: var(--forest); margin-bottom: 1rem;
+}
+.section-h2 em { font-style: italic; color: var(--earth); }
+.section-lead {
+  font-size: 0.92rem; font-weight: 300; line-height: 1.75;
+  color: var(--text-light); margin-bottom: 2.5rem; max-width: 500px;
+}
+.specs-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2rem;
+}
+.spec-item { background: var(--warm-white); padding: 1.1rem 1.3rem; }
+.spec-key {
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.3rem;
+}
+.spec-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-weight: 400; color: var(--forest); line-height: 1.3;
+}
+.certs-title {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.8rem;
+}
+.certs-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cert-tag {
+  font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+  background: rgba(74,103,65,0.07); color: var(--sage);
+  border: 1px solid rgba(74,103,65,0.2); padding: 0.3rem 0.75rem; border-radius: 20px;
+}
+
+.supply-list { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3rem; }
+.supply-item { display: flex; gap: 1.2rem; }
+.supply-icon { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; margin-top: 0.2rem; }
+.supply-name {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--forest); margin-bottom: 0.4rem;
+}
+.supply-desc { font-size: 0.8rem; font-weight: 300; line-height: 1.6; color: var(--text-light); }
+
+/* ─── FAQ ────────────────────────────────────────── */
+.faq-section { background: var(--cream); padding: 7rem 8vw; }
+.faq-header { max-width: 520px; margin-bottom: 4rem; }
+.faq-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+}
+.faq-item {
+  background: var(--warm-white); padding: 1.6rem 1.8rem;
+  cursor: pointer; transition: background 0.2s;
+}
+.faq-q {
+  font-size: 0.85rem; font-weight: 500; color: var(--forest);
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+}
+.faq-chevron { width: 16px; height: 16px; color: var(--gold); transition: transform 0.25s; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a {
+  font-size: 0.82rem; font-weight: 300; line-height: 1.7; color: var(--text-light);
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.3s ease;
+}
+.faq-item.open .faq-a { max-height: 300px; margin-top: 0.8rem; }
+
+/* ─── CTA / CONTACT ──────────────────────────────── */
+.cta-section {
+  background: var(--forest); padding: 7rem 8vw;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 90% 50%, rgba(74,103,65,0.15) 0%, transparent 55%);
+  pointer-events: none;
+}
+.cta-left { position: relative; }
+.cta-left .section-label { color: var(--gold-light); }
+.cta-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2;
+  color: var(--cream); margin-bottom: 1rem;
+}
+.cta-h2 em { font-style: italic; color: var(--gold-light); }
+.cta-lead {
+  font-size: 0.9rem; font-weight: 300; line-height: 1.75;
+  color: rgba(245,240,232,0.55); margin-bottom: 2rem; max-width: 420px;
+}
+.cta-form {
+  position: relative; background: var(--warm-white); padding: 2.8rem 3rem; border-radius: 2px;
+}
+.form-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400;
+  color: var(--forest); margin-bottom: 0.3rem;
+}
+.form-sub { font-size: 0.8rem; color: var(--text-light); margin-bottom: 1.8rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.8rem; }
+.form-group label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); }
+.form-group input, .form-group select, .form-group textarea {
+  border: 1px solid var(--border); background: var(--warm-white); color: var(--text);
+  font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 300;
+  padding: 0.65rem 0.9rem; border-radius: 2px; outline: none; width: 100%;
+}
+.btn-submit {
+  width: 100%; background: var(--forest); color: var(--cream);
+  border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 1rem; border-radius: 2px; cursor: pointer; transition: background 0.2s; margin-top: 0.4rem;
+}
+.btn-submit:hover { background: var(--gold); color: var(--forest); }
+
+/* ─── FOOTER ──────────────────────────────────────── */
+footer { background: #111612; padding: 3.5rem 8vw 2rem; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(245,240,232,0.06); }
+.footer-logo-img { width: 110px; height: auto; display: block; margin-bottom: 1rem; opacity: 0.85; }
+.footer-tagline { font-size: 0.8rem; font-weight: 300; line-height: 1.7; color: rgba(245,240,232,0.28); max-width: 280px; }
+.footer-col-title { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.5); margin-bottom: 1.2rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-links li a { font-size: 0.8rem; color: rgba(245,240,232,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-links li a:hover { color: var(--gold-light); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(245,240,232,0.2); }
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 1024px) {
+  .product-hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-image-panel { height: 60vw; min-height: 360px; order: -1; }
+  .hero-content { padding: 0 8vw 5rem; }
+  .breadcrumb { padding-top: 5.5rem; }
+  .specs-section { grid-template-columns: 1fr; gap: 3.5rem; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .cta-section { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .nav-hamburger { display: flex; }
+  .mobile-menu { display: flex; }
+  .breadcrumb { padding-top: 5rem; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img class="nav-logo-img-main" src="/hindia-timur-logo.webp" alt="Hindia Timur">
+    <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/products/" class="active">Products</a></li>
+    <li class="nav-dropdown">
+      <a href="/about/" class="nav-dropdown-toggle">About
+        <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="/about/">Our Story</a></li>
+        <li><a href="/#process">How It Works</a></li>
+        <li><a href="/#compliance">Compliance</a></li>
+        <li><a href="/about/#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="/faq/">FAQ</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/exporter-quote/" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-logo-wrap"><img src="/hindia-timur-logo.webp" alt="Hindia Timur"></div>
+  <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+  <ul>
+    <li><a href="/products/" class="active">Products</a></li>
+    <li class="mobile-dropdown">
+      <button class="mobile-dropdown-toggle">About
+        <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+      <ul class="mobile-dropdown-menu">
+        <li><a href="/about/">Our Story</a></li>
+        <li><a href="/#process">How It Works</a></li>
+        <li><a href="/#compliance">Compliance</a></li>
+        <li><a href="/about/#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="/faq/">FAQ</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/exporter-quote/" class="nav-cta">Request a Quote</a></li>
+  </ul>
+</div>
+
+<div class="page-offset">
+  <div class="direct-exporter-bar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    GC-MS Certified — ISO Standard Compliance Documentation Included.
+  </div>
+
+  <section class="product-hero">
+    <div class="hero-image-panel">
+      <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1400&q=85&fit=crop" alt="Indonesian Patchouli Oil" loading="eager">
+      <div class="hero-image-overlay"></div>
+      <div class="hero-image-badges">
+        <div class="origin-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+          Sulawesi &middot; Sumatra
+        </div>
+        <div class="score-badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
+          PA Content 30-35%
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <p class="breadcrumb"><a href="/">Home</a><span>/</span><a href="/products/">Products</a><span>/</span>Patchouli Oil</p>
+      <div class="product-eyebrow">Essential Oils</div>
+      <h1 class="product-h1">Premium Indonesian<br><em>Patchouli Oil</em></h1>
+      <p class="product-tagline">ISO-Certified Essential Oil -- Direct from Distilleries in Sulawesi and Sumatra</p>
+      <p class="product-desc">Indonesia supplies over 90% of the world's patchouli oil. Our supply is sourced through direct partnerships with local distillers, ensuring consistent patchoulol (PA) levels and full traceability for fragrance houses and cosmetic manufacturers globally.</p>
+      <div class="hero-actions">
+        <a href="/exporter-quote/" class="btn-primary">Request B2B Quote<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="/products/" class="btn-secondary">View All Products</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>GC-MS Lab Tested</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>Direct Distillery Partnership</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>24h Quote Turnaround</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>Min. Order 25 kg</div>
+</div>
+
+<section class="specs-section">
+  <div>
+    <div class="section-label">Technical Specifications</div>
+    <h2 class="section-h2">Patchouli Oil<br><em>Export Specifications</em></h2>
+    <p class="section-lead">Our patchouli oil is steam-distilled and refined to meet international fragrance standards. Full GC-MS analysis provided per consignment.</p>
+    <div class="specs-grid">
+      <div class="spec-item"><div class="spec-key">Patchoulol (PA)</div><div class="spec-val">30% – 35% (Standard)</div></div>
+      <div class="spec-item"><div class="spec-key">Specific Gravity</div><div class="spec-val">0.950 – 0.975 @ 25°C</div></div>
+      <div class="spec-item"><div class="spec-key">Refractive Index</div><div class="spec-val">1.505 – 1.515 @ 20°C</div></div>
+      <div class="spec-item"><div class="spec-key">Optical Rotation</div><div class="spec-val">-48° to -65°</div></div>
+      <div class="spec-item"><div class="spec-key">Acid Value</div><div class="spec-val">Max 5.0</div></div>
+      <div class="spec-item"><div class="spec-key">Solubility</div><div class="spec-val">1:10 in 90% Ethanol</div></div>
+      <div class="spec-item"><div class="spec-key">Origin</div><div class="spec-val">Sulawesi &middot; Sumatra</div></div>
+      <div class="spec-item"><div class="spec-key">Lead Time</div><div class="spec-val">2 – 3 Weeks</div></div>
+    </div>
+    <div class="certs-title">Certifications &amp; Documentation</div>
+    <div class="certs-list">
+      <span class="cert-tag">GC-MS Analysis</span>
+      <span class="cert-tag">MSDS</span>
+      <span class="cert-tag">ISO 9001:2015</span>
+      <span class="cert-tag">Phytosanitary</span>
+      <span class="cert-tag">COA</span>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Supply Formats</div>
+    <h2 class="section-h2">Flexible<br><em>Order Options</em></h2>
+    <p class="section-lead">We supply to fragrance houses, cosmetic manufacturers, and wholesale distributors. Packaging is designed for maximum stability during transit.</p>
+    <div class="supply-list">
+      <div class="supply-item">
+        <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M12 12h.01"/></svg></div>
+        <div><div class="supply-name">Light Patchouli Oil</div><div class="supply-desc">Steam-distilled in stainless steel equipment to prevent iron contamination. Preferred for light-coloured formulations.</div></div>
+      </div>
+      <div class="supply-item">
+        <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/></svg></div>
+        <div><div class="supply-name">Dark Patchouli Oil</div><div class="supply-desc">Traditional distillation in iron stills, resulting in a deeper, earthier aroma profile. Highly sought after for classic perfumery.</div></div>
+      </div>
+    </div>
+    <a href="/exporter-quote/" class="btn-primary" style="background: var(--forest); color: var(--cream);">Discuss Your Requirements</a>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="faq-header">
+    <div class="section-label">Common Questions</div>
+    <h2 class="section-h2">Buyer <em>FAQ</em></h2>
+    <p>Essential information for fragrance and essential oil importers.</p>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What is the difference between Light and Dark Patchouli? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="faq-a">Light Patchouli is distilled in stainless steel to avoid iron contact, preserving a clearer colour and cleaner scent. Dark Patchouli is distilled in traditional iron vats, which gives it a darker hue and a more robust, "classic" earthy aroma.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Do you provide GC-MS reports? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="faq-a">Yes. Every batch is tested at an ISO-accredited laboratory. A full GC-MS report showing patchoulol content and chemical profile is included with every shipment.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What is the minimum order quantity? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="faq-a">Our standard MOQ is 25 kg (one drum). For trial orders or specialized high-PA batches, please contact our team to discuss availability.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">How do you handle shipping stability? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="faq-a">We use epoxy-lined steel drums or HDPE containers designed for essential oils. All shipments are climate-controlled where necessary to ensure the oil arrives in peak condition.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-left">
+    <div class="section-label">Ready to Source?</div>
+    <h2 class="cta-h2">Premium Patchouli<br><em>Direct from Distilleries</em></h2>
+    <p class="cta-lead">Get a detailed quote within 24 hours. Our specialists are ready to discuss your PA requirements and volume.</p>
+  </div>
+  <form class="cta-form" onsubmit="handleSubmit(event)">
+    <div class="form-title">Inquiry Form</div>
+    <div class="form-sub">B2B Quote Request</div>
+    <div class="form-row">
+      <div class="form-group"><label>Company</label><input type="text" name="company" required></div>
+      <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
+    </div>
+    <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+    <div class="form-group"><label>Grade</label><select name="grade"><option>Light Patchouli</option><option>Dark Patchouli</option></select></div>
+    <div class="form-group"><label>Message</label><textarea name="message"></textarea></div>
+    <button type="submit" id="patchouliSubmitBtn" class="btn-submit">Send Inquiry</button>
+  </form>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><img src="/hindia-timur-logo.webp" alt="Hindia Timur" class="footer-logo-img"><p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth.</p></div>
+    <div><div class="footer-col-title">Source</div><ul class="footer-links"><li><a href="/coffee/">Specialty Coffee</a></li><li><a href="/products/">Full Product Catalog</a></li><li><a href="/exporter-quote/">Request a Quote</a></li></ul></div>
+    <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="/about/">About Hindia Timur</a></li><li><a href="/#process">How It Works</a></li><li><a href="/about/#farmers">For Farmers</a></li><li><a href="/faq/">FAQ</a></li></ul></div>
+    <div><div class="footer-col-title">Connect</div><ul class="footer-links"><li><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></li><li><a href="#">WhatsApp</a></li><li><a href="/blog/">Blog &amp; Insights</a></li><li><a href="/#contact">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 Hindia Timur. All rights reserved.</span><span>Sourced from Indonesia. Delivered to the World.</span></div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
+
+(function() {
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  function openMenu() { btn.classList.add('open'); menu.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { btn.classList.remove('open'); menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+  btn.addEventListener('click', function() { menu.classList.contains('open') ? closeMenu() : openMenu(); });
+  menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  document.getElementById('mobileMenuClose').addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+
+  menu.querySelectorAll('.mobile-dropdown-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault(); e.stopPropagation();
+      var submenu = toggle.parentElement.querySelector('.mobile-dropdown-menu');
+      if (!submenu) return;
+      var isOpen = submenu.classList.contains('open');
+      menu.querySelectorAll('.mobile-dropdown-menu').forEach(function(m) { m.classList.remove('open'); });
+      if (!isOpen) { submenu.classList.add('open'); }
+    });
+  });
+})();
+
+function toggleFaq(item) {
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  var btn = document.getElementById('patchouliSubmitBtn');
+  var original = btn.textContent;
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  try {
+    var response = await fetch('https://formspree.io/f/xwvrzkaz', {
+      method: 'POST',
+      body: new FormData(e.target),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      btn.textContent = '✓ Inquiry Sent';
+      btn.style.background = 'var(--sage)';
+      e.target.reset();
+    } else {
+      btn.textContent = 'Error — Try Again';
+      btn.style.background = '#c0392b';
+    }
+    setTimeout(function() { btn.textContent = original; btn.disabled = false; btn.style.background = ''; }, 3000);
+  } catch(err) {
+    btn.textContent = 'Error — Try Again'; btn.style.background = '#c0392b';
+    setTimeout(function() { btn.textContent = original; btn.disabled = false; btn.style.background = ''; }, 3000);
+  }
+}
+</script>
+</body>
+</html>
