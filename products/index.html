@@ -750,7 +750,7 @@ footer {
 @media (max-width: 1200px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 900px) {
   .products-grid { grid-template-columns: repeat(2, 1fr); }
-  .modal { grid-template-columns: 1fr; }
+  .modal { grid-template-columns: 1fr; max-height: 92vh; overflow-y: auto; }
   .modal-image { height: 220px; }
   .cta-strip { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -1464,7 +1464,7 @@ footer {
       <div class="modal-cert-list" id="modalCerts"></div>
       <div class="modal-variant-switcher" id="modalVariantSwitcher" style="display:none;"></div>
       <div class="modal-actions">
-        <button class="modal-btn-primary" onclick="closeModal()">Request Quote for This Product</button>
+        <a id="modalQuoteBtn" class="modal-btn-primary" href="/exporter-quote/" style="text-align:center;text-decoration:none;">Request Quote for This Product</a>
         <button class="modal-btn-secondary" onclick="closeModal()">Close</button>
       </div>
     </div>
@@ -1942,6 +1942,8 @@ document.querySelectorAll('.product-card').forEach(card => {
       }
     }
 
+    const quoteBtn = document.getElementById('modalQuoteBtn');
+    if (quoteBtn) quoteBtn.href = `/products/${id}/`;
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   });
