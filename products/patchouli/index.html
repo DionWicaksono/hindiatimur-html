@@ -41,14 +41,14 @@ nav#nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; flex-direction: column; align-items: center;
   padding: 18px 5vw 12px;
-  background: transparent;
+  background: #1C2B1E;
   backdrop-filter: none;
   transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
 }
 nav#nav.scrolled {
   flex-direction: row; justify-content: space-between; align-items: center;
   padding: 0 5vw; height: 64px;
-  background: rgba(245,239,228,0.97);
+  background: #1C2B1E;
   backdrop-filter: blur(14px);
   box-shadow: 0 1px 12px rgba(0,0,0,0.09);
 }
@@ -76,9 +76,9 @@ nav#nav.scrolled .nav-logo-img-scrolled { width: auto; opacity: 1; pointer-event
 .nav-links a { text-decoration: none; color: rgba(245,240,232,0.85); transition: color 0.2s; }
 .nav-links a:hover { color: var(--gold-light); }
 .nav-links a.active { color: var(--cream); }
-nav#nav.scrolled .nav-links a { color: var(--text-mid); }
-nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
-nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+nav#nav.scrolled .nav-links a { color: rgba(245,240,232,0.9); }
+nav#nav.scrolled .nav-links a:hover { color: var(--gold-light); }
+nav#nav.scrolled .nav-links a.active { color: var(--gold-light); }
 
 .nav-cta {
   background: rgba(245,240,232,0.15) !important; color: var(--cream) !important;
@@ -517,7 +517,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 
   <section class="product-hero">
     <div class="hero-image-panel">
-      <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1400&q=85&fit=crop" alt="Indonesian Patchouli Oil" loading="eager">
+      <img src="/assets/products/patchouli.webp" alt="Indonesian Patchouli Oil" loading="eager">
       <div class="hero-image-overlay"></div>
       <div class="hero-image-badges">
         <div class="origin-badge">

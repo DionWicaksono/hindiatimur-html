@@ -42,12 +42,12 @@ nav#nav {
   display: flex; flex-direction: column; align-items: center;
   padding: 20px 5vw 14px;
   transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
-  background: transparent;
+  background: #1C2B1E;
 }
 nav#nav.scrolled {
   flex-direction: row; justify-content: space-between; align-items: center;
   padding: 0 5vw; height: 64px;
-  background: rgba(245,239,228,0.97);
+  background: #1C2B1E;
   backdrop-filter: blur(14px);
   box-shadow: 0 1px 12px rgba(0,0,0,0.08);
 }
@@ -73,16 +73,16 @@ nav#nav.scrolled .nav-logo-img-scrolled { width: auto; opacity: 1; pointer-event
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
 }
 .nav-links a { text-decoration: none; color: rgba(245,240,232,0.9); transition: color 0.2s; }
-nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+nav#nav.scrolled .nav-links a { color: rgba(245,240,232,0.9); }
 .nav-links a:hover { color: var(--gold-light); }
-nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+nav#nav.scrolled .nav-links a:hover { color: var(--gold-light); }
 .nav-links a.active { color: var(--gold-light); }
-nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+nav#nav.scrolled .nav-links a.active { color: var(--gold-light); }
 .nav-cta {
   background: var(--gold) !important; color: var(--forest) !important;
   padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
 }
-nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
+nav#nav.scrolled .nav-cta { background: var(--gold) !important; color: var(--forest) !important; }
 .nav-cta:hover { background: var(--gold-light) !important; color: var(--forest) !important; }
 nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; }
 .nav-dropdown { position: relative; }
@@ -229,7 +229,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   .nav-hamburger { display: flex; }
   .mobile-menu { display: flex; }
   nav#nav { padding: 0 5vw; height: 64px; background: rgba(0,0,0,0.2) !important; backdrop-filter: blur(8px); }
-  nav#nav.scrolled { background: rgba(245,239,228,0.97) !important; }
+  nav#nav.scrolled { background: #1C2B1E; }
   .nav-logo-img-main { width: 100px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
@@ -664,7 +664,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 <!-- ─── HERO ─────────────────────────────────────────── -->
 <section class="product-hero">
   <div class="hero-image-panel">
-    <img src="https://images.unsplash.com/photo-1615485500704-8e3b9e9b9b8c?w=1200&q=85&fit=crop" alt="Fresh moringa leaves and powder" loading="eager">
+    <img src="/assets/products/moringa.webp" alt="Fresh moringa leaves and powder" loading="eager">
     <div class="hero-image-overlay"></div>
     <div class="hero-image-badges">
       <div class="origin-badge">
