@@ -5,6 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Specialty Coffee | Hindia Timur — Premium Indonesian Produce</title>
 <meta name="description" content="Single-origin Indonesian specialty coffee from volcanic highlands. Export-grade Arabica and Robusta with full compliance documentation. Request a B2B quote.">
+<meta name="keywords" content="Indonesian coffee export, bulk green coffee beans supplier, wholesale Arabica coffee Indonesia, robusta coffee beans exporter, single origin Indonesian coffee, unroasted coffee beans bulk, Sumatra Gayo Arabica wholesale, premium Indonesian Robusta supplier">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.hindiatimur.com/products/coffee/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="product">
+<meta property="og:title" content="Arabica & Robusta Coffee | Hindia Timur — Premium Indonesian Produce">
+<meta property="og:description" content="Source premium, sustainably grown Indonesian Coffee. Exporting high-grade Arabica and robust, full-bodied Robusta green beans from Indonesia's finest volcanic regions. Available for global bulk export.">
+<meta property="og:url" content="https://www.hindiatimur.com/products/coffee/">
+<meta property="og:image" content="https://www.hindiatimur.com/assets/products/coffee-premium.webp">
+<meta property="og:site_name" content="Hindia Timur">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arabica & Robusta Coffee | Hindia Timur — Premium Indonesian Produce">
+<meta name="twitter:description" content="Source premium, sustainably grown Indonesian Coffee. Exporting high-grade Arabica and robust, full-bodied Robusta green beans from Indonesia's finest volcanic regions. Available for global bulk export.">
+<meta name="twitter:image" content="https://www.hindiatimur.com/assets/products/coffee-premium.webp">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Premium Indonesian Coffee Beans (Arabica and Robusta)",
+  "description": "Source premium, sustainably grown Indonesian Coffee. Exporting high-grade Arabica and robust, full-bodied Robusta green beans from Indonesia's finest volcanic regions. Available for global bulk export.",
+  "image": "https://www.hindiatimur.com/assets/products/coffee-premium.webp",
+  "brand": { 
+    "@type": "Brand", 
+    "name": "Hindia Timur" 
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "USD",
+    "seller": { 
+      "@type": "Organization", 
+      "name": "Hindia Timur" 
+    }
+  },
+  "countryOfOrigin": { 
+    "@type": "Country", 
+    "name": "Indonesia" 
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
@@ -246,17 +291,21 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.72rem; color: rgba(245,240,232,0.18); }
 
 @media (max-width: 1024px) {
+  .breadcrumb { padding-top: 5rem; 
+  .breadcrumb { padding-top: 5.5rem; }}
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 768px) {
-  .nav-links { display: none !important; }
+@media (max-width: 768px) {.nav-links { display: none !important;
+  .breadcrumb { padding-top: 5rem; }
+}
   .nav-hamburger { display: flex; }
   .mobile-menu { display: flex; }
-  nav#nav { padding: 0 5vw; height: 64px; background: rgba(0,0,0,0.2) !important; backdrop-filter: blur(8px); }
   nav#nav.scrolled { background: rgba(245,239,228,0.97) !important; }
   .nav-logo-img-main { width: 100px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
+  .breadcrumb { padding-top: 5rem; }
 }
+
 @media (max-width: 480px) {
   .footer-top { grid-template-columns: 1fr; }
 }
@@ -264,10 +313,9 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 
 /* ─── HERO ──────────────────────────────────────── */
 .product-hero {
-  padding-top: 0px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 90vh;
+  min-height: calc(90vh - 36px);
 }
 
 .hero-image-panel {
@@ -327,6 +375,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: rgba(245,240,232,0.3); margin-bottom: 2rem;
   display: flex; align-items: center; gap: 0.5rem;
+  padding-top: 5rem;
 }
 .breadcrumb a { color: rgba(245,240,232,0.4); text-decoration: none; transition: color 0.2s; }
 .breadcrumb a:hover { color: var(--gold-light); }
@@ -428,7 +477,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: var(--gold); color: var(--forest);
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 1rem 1.8rem; border-radius: 2px; text-decoration: none;
+  padding: 0.8rem 1.5rem; border-radius: 2px; text-decoration: none;
   transition: background 0.2s, transform 0.2s;
 }
 .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
@@ -437,7 +486,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   background: transparent; color: var(--cream);
   border: 1px solid rgba(245,240,232,0.25);
   font-size: 0.78rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 1rem 1.8rem; border-radius: 2px; text-decoration: none;
+  padding: 0.8rem 1.5rem; border-radius: 2px; text-decoration: none;
   transition: border-color 0.2s, color 0.2s;
 }
 .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
@@ -522,6 +571,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .certs-list {
   display: flex; flex-wrap: wrap; gap: 0.5rem;
 }
+.certs-title, .certs-list { grid-column: 1 / -1; }
 .cert-tag {
   font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
   background: rgba(74,103,65,0.07); color: var(--sage);
@@ -531,7 +581,7 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 
 /* variety content switching */
 .variety-content { display: none; }
-.variety-content.active { display: block; }
+.variety-content.active { display: block !important; }
 
 /* ─── ORIGINS SECTION ────────────────────────────── */
 .origins-section {
@@ -859,6 +909,7 @@ footer {
   .cta-form { padding: 2rem 1.8rem; }
   .form-row { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .breadcrumb { padding-top: 5rem; }
 }
 @media (max-width: 480px) {
   .hero-content { padding: 4rem 6vw; }
@@ -871,7 +922,7 @@ footer {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up { opacity: 1 !important; transform: none !important; transition: opacity 0.6s ease, transform 0.6s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* stagger helper */
@@ -886,24 +937,24 @@ footer {
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="/" class="nav-logo">
-    <img class="nav-logo-img-main" src="/hindia-timur-logo.webp" alt="Hindia Timur">
+  <a href="index.html" class="nav-logo">
+    <img class="nav-logo-img-main" src="hindia-timur-logo.webp" alt="Hindia Timur">
     <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="/products/" class="active">Products</a></li>
+    <li><a href="products.html" class="active">Products</a></li>
     <li class="nav-dropdown">
-      <a href="/about/" class="nav-dropdown-toggle">About <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></a>
+      <a href="about.html" class="nav-dropdown-toggle">About <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></a>
       <ul class="nav-dropdown-menu">
-        <li><a href="/about/">Our Story</a></li>
-        <li><a href="/#process">How It Works</a></li>
-        <li><a href="/#compliance">Compliance</a></li>
-        <li><a href="/about/#farmers">For Farmers</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
       </ul>
     </li>
-    <li><a href="/faq/">FAQ</a></li>
-    <li><a href="/#contact">Contact</a></li>
-    <li><a href="/exporter-quote/" class="nav-cta">Request a Quote</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -912,23 +963,23 @@ footer {
 
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
   <div class="mobile-menu-logo-wrap">
-    <img src="/hindia-timur-logo.webp" alt="Hindia Timur">
+    <img src="hindia-timur-logo.webp" alt="Hindia Timur">
   </div>
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
   <ul>
-    <li><a href="/products/" class="active">Products</a></li>
+    <li><a href="products.html" class="active">Products</a></li>
     <li class="mobile-dropdown">
       <button class="mobile-dropdown-toggle" aria-expanded="false">About <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
       <ul class="mobile-dropdown-menu">
-        <li><a href="/about/">Our Story</a></li>
-        <li><a href="/#process">How It Works</a></li>
-        <li><a href="/#compliance">Compliance</a></li>
-        <li><a href="/about/#farmers">For Farmers</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="index.html#compliance">Compliance</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
       </ul>
     </li>
-    <li><a href="/faq/">FAQ</a></li>
-    <li><a href="/#contact">Contact</a></li>
-    <li><a href="/exporter-quote/" class="nav-cta">Request a Quote</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="exporter-quote.html" class="nav-cta">Request a Quote</a></li>
   </ul>
   <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
 </div>
@@ -954,9 +1005,9 @@ footer {
   <!-- Right: Content -->
   <div class="hero-content">
     <p class="breadcrumb">
-      <a href="/">Home</a>
+      <a href="index.html">Home</a>
       <span>/</span>
-      <a href="/products/">Products</a>
+      <a href="products.html">Products</a>
       <span>/</span>
       Specialty Coffee
     </p>
@@ -1004,11 +1055,11 @@ footer {
     </div>
 
     <div class="hero-actions">
-      <a href="/exporter-quote/" class="btn-primary">
+      <a href="exporter-quote.html" class="btn-primary">
         Request B2B Quote
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="/products/" class="btn-secondary">View All Products</a>
+      <a href="products.html" class="btn-secondary">View All Products</a>
     </div>
   </div>
 </section>
@@ -1107,7 +1158,7 @@ footer {
         <div class="spec-key">Lead Time</div>
         <div class="spec-val">2 – 4 weeks</div>
       </div>
-    </div>
+      </div>
     <div class="certs-title">Certifications &amp; Documentation</div>
     <div class="certs-list">
       <span class="cert-tag">Phytosanitary Certificate</span>
@@ -1173,7 +1224,7 @@ footer {
         <div class="spec-key">Lead Time</div>
         <div class="spec-val">2 – 3 weeks</div>
       </div>
-    </div>
+      </div>
     <div class="certs-title">Certifications &amp; Documentation</div>
     <div class="certs-list">
       <span class="cert-tag">Phytosanitary Certificate</span>
@@ -1403,7 +1454,7 @@ footer {
       <p style="margin-top:0.3rem;"><a href="#">WhatsApp: +62 (XXX) XXX-XXXX</a></p>
     </div>
   </div>
-  <div class="cta-form">
+  <form id="productForm" class="cta-form" action="https://formspree.io/f/xwvrzkaz" method="POST" onsubmit="handleSubmit(event)">
     <div class="form-title">Request a Coffee Quote</div>
     <div class="form-sub">Fill in your requirements and we'll be in touch shortly.</div>
     <div class="form-row">
@@ -1446,35 +1497,35 @@ footer {
       <label>Message</label>
       <textarea placeholder="Tell us your preferred origin, volume, roast profile, target price, or any specific certification requirements..."></textarea>
     </div>
-    <button class="btn-submit" onclick="handleSubmit(this)">Send Inquiry</button>
+    <button class="btn-submit">Send Inquiry</button>
     <p class="form-privacy">By submitting, you agree to our privacy policy. We never share your data with third parties.</p>
-  </div>
+  </form>
 </section>
 
 <!-- ─── FOOTER ──────────────────────────────────────── -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="/" class="footer-logo-link">
-        <img src="/hindia-timur-logo.webp" alt="Hindia Timur" class="footer-logo-img">
+      <a href="index.html" class="footer-logo-link">
+        <img src="hindia-timur-logo.webp" alt="Hindia Timur" class="footer-logo-img">
       </a>
       <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth -- with integrity, compliance, and consistency.</p>
     </div>
     <div>
       <div class="footer-col-title">Source</div>
       <ul class="footer-links">
-        <li><a href="/coffee/">Specialty Coffee</a></li>
-        <li><a href="/products/">Full Product Catalog</a></li>
-        <li><a href="/exporter-quote/">Request a Quote</a></li>
+        <li><a href="coffee.html">Specialty Coffee</a></li>
+        <li><a href="products.html">Full Product Catalog</a></li>
+        <li><a href="exporter-quote.html">Request a Quote</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Company</div>
       <ul class="footer-links">
-        <li><a href="/about/">About Hindia Timur</a></li>
-        <li><a href="/#process">How It Works</a></li>
-        <li><a href="/about/#farmers">For Farmers</a></li>
-        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="about.html">About Hindia Timur</a></li>
+        <li><a href="index.html#process">How It Works</a></li>
+        <li><a href="about.html#farmers">For Farmers</a></li>
+        <li><a href="faq.html">FAQ</a></li>
       </ul>
     </div>
     <div>
@@ -1482,8 +1533,8 @@ footer {
       <ul class="footer-links">
         <li><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></li>
         <li><a href="#">WhatsApp</a></li>
-        <li><a href="/blog/">Blog &amp; Insights</a></li>
-        <li><a href="/#contact">Contact Us</a></li>
+        <li><a href="blog.html">Blog &amp; Insights</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -1540,19 +1591,56 @@ footer {
   })();
 
 // ── FORM SUBMIT ───────────────────────────────
-function handleSubmit(btn) {
-  const original = btn.textContent;
-  btn.textContent = 'Sending…';
+function handleSubmit(event) {
+  event.preventDefault();
+  var form = event.target;
+  var btn = form.querySelector(".btn-submit");
+  if (!btn) return;
+  var original = btn.textContent;
+  btn.textContent = "Sending…";
   btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = '✓ Inquiry Sent';
-    btn.style.background = 'var(--sage)';
-    setTimeout(() => {
+  fetch("https://formspree.io/f/xwvrzkaz", {
+    method: "POST",
+    body: new FormData(form),
+    headers: { "Accept": "application/json" }
+  }).then(function(res) {
+    if (res.ok) {
+      btn.textContent = "✓ Inquiry Sent";
+      btn.style.background = "var(--sage)";
+      form.reset();
+      setTimeout(function() {
+        btn.textContent = original;
+        btn.disabled = false;
+        btn.style.background = "";
+      }, 4000);
+    } else {
+      throw new Error("Server error");
+    }
+  }).catch(function() {
+    btn.textContent = "Error — please try again";
+    btn.style.background = "var(--earth)";
+    btn.disabled = false;
+    setTimeout(function() {
       btn.textContent = original;
-      btn.disabled = false;
-      btn.style.background = '';
+      btn.style.background = "";
     }, 3000);
-  }, 1200);
+  });
+}
+
+
+
+// ── VARIETY SWITCHER ───────────────────────────────
+function switchVariety(variety, btn) {
+  // Remove active class from all buttons
+  document.querySelectorAll('.variety-btn').forEach(b => b.classList.remove('active'));
+  // Add active class to clicked button
+  btn.classList.add('active');
+  
+  // Hide all variety content
+  document.querySelectorAll('.variety-content').forEach(c => c.classList.remove('active'));
+  // Show selected variety content
+  const content = document.getElementById('specs-' + variety);
+  if (content) content.classList.add('active');
 }
 </script>
 </body>
