@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Portal | Hindia Timur</title>
+<meta name="description" content="Track your orders, view on-chain provenance records, and manage your supply chain with Hindia Timur's B2B client portal.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/x-icon" href="/hindia-timur.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+/* ── TOKENS (verbatim from index.html) ──────────────────── */
+:root {
+  --cream: #F5F0E8;
+  --warm-white: #FAF8F3;
+  --forest: #1C2B1E;
+  --moss: #2D4A32;
+  --sage: #4A6741;
+  --gold: #B8924A;
+  --gold-light: #D4AC6E;
+  --earth: #6B4E2A;
+  --text: #1A1A18;
+  --text-mid: #3D3D38;
+  --text-light: #6B6B60;
+  --border: rgba(28,43,30,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--text);
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── NAV (verbatim from index.html) ─────────────────────── */
+nav#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 5vw 14px;
+  transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+  background: transparent;
+}
+nav#nav.scrolled {
+  flex-direction: row; justify-content: space-between; align-items: center;
+  padding: 0 5vw; height: 64px;
+  background: rgba(245,239,228,0.97);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+}
+.nav-logo { display: block; text-decoration: none; line-height: 0; margin-bottom: 10px; }
+nav#nav.scrolled .nav-logo { margin-bottom: 0; }
+.nav-logo-img-main {
+  display: block; width: 130px; height: auto;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+  transition: opacity 0.25s, width 0.25s;
+}
+nav#nav.scrolled .nav-logo-img-main { width: 0; opacity: 0; pointer-events: none; overflow: hidden; }
+.nav-logo-img-scrolled {
+  display: block; font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 600; color: var(--forest);
+  white-space: nowrap; line-height: 1;
+  width: 0; opacity: 0; overflow: hidden;
+  transition: opacity 0.25s, width 0.25s; pointer-events: none;
+}
+.nav-logo-img-scrolled span { color: var(--gold); }
+nav#nav.scrolled .nav-logo-img-scrolled { width: auto; opacity: 1; pointer-events: auto; overflow: visible; }
+.nav-links {
+  display: flex; gap: 2rem; list-style: none; align-items: center;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.nav-links a { text-decoration: none; color: rgba(245,240,232,0.9); transition: color 0.2s; }
+nav#nav.scrolled .nav-links a { color: var(--text-mid); }
+.nav-links a:hover { color: var(--gold-light); }
+nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold-light); }
+nav#nav.scrolled .nav-links a.active { color: var(--forest); }
+.nav-cta {
+  background: var(--gold) !important; color: var(--forest) !important;
+  padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
+}
+nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
+.nav-cta:hover { background: var(--gold-light) !important; color: var(--forest) !important; }
+nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  display: flex; align-items: center; gap: 0.3rem; cursor: pointer; background: none; border: none;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(245,240,232,0.9); transition: color 0.2s; padding: 0;
+}
+nav#nav.scrolled .nav-dropdown-toggle { color: var(--text-mid); }
+.nav-dropdown-toggle:hover { color: var(--gold-light); }
+nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
+.dropdown-chevron { width: 10px; height: 6px; transition: transform 0.2s; flex-shrink: 0; }
+.nav-dropdown:hover .dropdown-chevron, .nav-dropdown:focus-within .dropdown-chevron { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  display: none; list-style: none; padding: 0.5rem 0;
+  position: absolute; top: calc(100% + 1rem); left: 50%;
+  transform: translateX(-50%); min-width: 175px;
+  background: var(--forest);
+  border: 1px solid rgba(245,240,232,0.1);
+  border-radius: 2px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 201;
+}
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu li a {
+  display: block; padding: 0.55rem 1.2rem;
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.7) !important; white-space: nowrap;
+  transition: color 0.2s, background 0.2s; text-decoration: none;
+}
+.nav-dropdown-menu li a:hover { color: var(--gold-light) !important; background: rgba(245,240,232,0.05); }
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  align-items: center; gap: 5px; width: 40px; height: 40px;
+  background: none; border: none; cursor: pointer; padding: 4px; z-index: 301; position: relative;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1.5px; background: var(--gold); border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: var(--forest); flex-direction: column;
+  justify-content: center; align-items: center;
+  opacity: 0; transform: translateY(-12px);
+  transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s cubic-bezier(0.23,1,0.32,1);
+  pointer-events: none;
+}
+.mobile-menu::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
+  pointer-events: none;
+}
+.mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+.mobile-menu ul {
+  list-style: none; display: flex; flex-direction: column;
+  align-items: center; gap: 0; width: 100%; padding: 0 8vw; position: relative;
+}
+.mobile-menu ul li { width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08); overflow: hidden; }
+.mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+.mobile-menu ul li a {
+  display: block; font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 7vw, 2.4rem); font-weight: 300;
+  color: rgba(245,240,232,0.75); text-decoration: none; letter-spacing: 0.02em;
+  padding: 1.1rem 0; text-align: center;
+  transform: translateY(20px); opacity: 0;
+  transition: color 0.2s, transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.4s ease;
+}
+.mobile-menu.open ul li a { transform: translateY(0); opacity: 1; }
+.mobile-menu ul li:nth-child(1) a { transition-delay: 0.06s; }
+.mobile-menu ul li:nth-child(2) a { transition-delay: 0.10s; }
+.mobile-menu ul li:nth-child(3) a { transition-delay: 0.14s; }
+.mobile-menu ul li:nth-child(4) a { transition-delay: 0.18s; }
+.mobile-menu ul li:nth-child(5) a { transition-delay: 0.22s; }
+.mobile-menu ul li a:hover { color: var(--gold-light); }
+.mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
+.mobile-menu-logo-wrap { margin-bottom: 2rem; }
+.mobile-menu-logo-wrap img { display: block; width: 90px; height: auto; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); opacity: 0.92; }
+.mobile-menu-close {
+  display: block; margin-bottom: 2rem; background: none; border: none; cursor: pointer; padding: 0;
+  color: var(--gold-light); font-size: 2rem; line-height: 1; opacity: 0.85; transition: opacity 0.2s, transform 0.2s;
+}
+.mobile-menu-close:hover { opacity: 1; transform: scale(1.15); }
+.mobile-menu-footer { position: absolute; bottom: 2.5rem; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,240,232,0.2); }
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .nav-hamburger { display: flex; }
+  .mobile-menu { display: flex; }
+}
+
+/* ── FOOTER (verbatim from index.html) ──────────────────── */
+footer { background: #111612; padding: 5rem 8vw 3rem; color: rgba(245,240,232,0.5); }
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem; margin-bottom: 4rem; padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(245,240,232,0.08);
+}
+.footer-logo-img { width: 110px; height: auto; display: block; margin-bottom: 1rem; opacity: 0.85; }
+.footer-tagline { font-size: 0.85rem; font-weight: 300; line-height: 1.7; max-width: 280px; }
+.footer-col-title { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); margin-bottom: 1.4rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.footer-links a { text-decoration: none; color: rgba(245,240,232,0.45); font-size: 0.85rem; font-weight: 300; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold-light); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; letter-spacing: 0.06em; }
+@media (max-width: 1024px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+
+/* ── PORTAL PAGE HEADER ─────────────────────────────────── */
+.portal-header {
+  background: var(--forest);
+  padding: 140px 8vw 56px;
+  position: relative; overflow: hidden;
+}
+.portal-header::before {
+  content: '';
+  position: absolute; top: -30%; right: -5%;
+  width: 50vw; height: 50vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,146,74,0.09) 0%, transparent 70%);
+  pointer-events: none;
+}
+.portal-header-inner { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem; }
+.portal-eyebrow {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.portal-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+.portal-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.1;
+  color: var(--cream); letter-spacing: -0.01em;
+}
+.portal-h1 em { font-style: italic; color: var(--gold-light); }
+.portal-header-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+.portal-greeting { font-size: 0.82rem; color: rgba(245,240,232,0.5); letter-spacing: 0.06em; }
+.portal-account-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--cream); }
+.portal-account-id { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-top: 0.2rem; }
+
+/* ── PORTAL BODY ────────────────────────────────────────── */
+.portal-body { padding: 3rem 8vw 6rem; }
+
+/* stat bar */
+.stat-bar {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 2px;
+  overflow: hidden; margin-bottom: 3rem;
+}
+.stat-cell {
+  background: var(--warm-white);
+  padding: 1.6rem 2rem;
+  transition: background 0.2s;
+}
+.stat-cell:hover { background: var(--cream); }
+.stat-cell-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.5rem; }
+.stat-cell-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 300; color: var(--forest); line-height: 1;
+}
+.stat-cell-sub { font-size: 0.75rem; color: var(--text-light); margin-top: 0.3rem; }
+.stat-cell-value.gold { color: var(--gold); }
+.stat-cell-value.green { color: var(--sage); }
+
+/* section title */
+.portal-section-title {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.portal-section-title::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+
+/* orders table */
+.orders-wrap { margin-bottom: 3.5rem; }
+.orders-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.orders-table thead tr {
+  border-bottom: 1px solid var(--border);
+}
+.orders-table thead th {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-light); padding: 0 1rem 0.9rem; text-align: left; white-space: nowrap;
+}
+.orders-table thead th:first-child { padding-left: 0; }
+.orders-table tbody tr {
+  border-bottom: 1px solid rgba(28,43,30,0.06);
+  transition: background 0.18s;
+}
+.orders-table tbody tr:hover { background: var(--cream); cursor: pointer; }
+.orders-table tbody td { padding: 1.1rem 1rem; vertical-align: middle; color: var(--text-mid); }
+.orders-table tbody td:first-child { padding-left: 0; }
+.order-id { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--forest); }
+.order-products { font-size: 0.82rem; color: var(--text-light); margin-top: 0.15rem; }
+.order-amount { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; color: var(--forest); }
+
+/* status badge */
+.badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.3rem 0.7rem; border-radius: 2px; white-space: nowrap;
+}
+.badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.badge-harvested   { background: rgba(184,146,74,0.12);  color: #9B7520; }
+.badge-warehouse   { background: rgba(74,122,155,0.12);  color: #2D6A96; }
+.badge-in_transit  { background: rgba(122,90,155,0.12);  color: #6A3DAA; }
+.badge-delivered   { background: rgba(74,103,65,0.12);   color: #3A6632; }
+.badge-pending     { background: rgba(155,122,74,0.12);  color: #7A5A20; }
+.badge-escrow_locked { background: rgba(74,122,155,0.12); color: #2D6A96; }
+.badge-paid_out    { background: rgba(74,103,65,0.12);   color: #3A6632; }
+.badge-refunded    { background: rgba(155,74,74,0.12);   color: #9B2020; }
+
+/* chain link */
+.chain-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.72rem; font-weight: 400; color: var(--gold);
+  text-decoration: none; transition: color 0.2s, gap 0.2s;
+  white-space: nowrap;
+}
+.chain-link:hover { color: var(--gold-light); gap: 0.6rem; }
+.chain-link svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+/* detail panel */
+.detail-panel {
+  display: none;
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  margin-bottom: 3.5rem;
+  overflow: hidden;
+}
+.detail-panel.open { display: block; }
+.detail-header {
+  background: var(--forest); padding: 1.8rem 2rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.detail-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--cream); }
+.detail-close {
+  background: none; border: none; cursor: pointer;
+  color: rgba(245,240,232,0.5); font-size: 1.4rem; line-height: 1;
+  transition: color 0.2s; padding: 0;
+}
+.detail-close:hover { color: var(--gold-light); }
+.detail-body { padding: 2rem; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.detail-field-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.4rem; }
+.detail-field-value { font-size: 0.9rem; color: var(--text); }
+.detail-divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+/* milestone progress */
+.milestone-track { margin-bottom: 2rem; }
+.milestone-steps {
+  display: flex; align-items: flex-start; gap: 0; position: relative;
+}
+.milestone-steps::before {
+  content: ''; position: absolute;
+  top: 18px; left: 18px; right: 18px; height: 1px;
+  background: var(--border); z-index: 0;
+}
+.milestone-step { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
+.milestone-dot {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--warm-white);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 0.7rem;
+  transition: all 0.3s;
+}
+.milestone-dot svg { width: 14px; height: 14px; }
+.milestone-step.done .milestone-dot { background: var(--sage); border-color: var(--sage); }
+.milestone-step.done .milestone-dot svg { color: #fff; }
+.milestone-step.active .milestone-dot { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(184,146,74,0.2); }
+.milestone-step.active .milestone-dot svg { color: #fff; }
+.milestone-step.pending .milestone-dot svg { color: var(--text-light); }
+.milestone-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); text-align: center; line-height: 1.3; }
+.milestone-step.done .milestone-label { color: var(--sage); }
+.milestone-step.active .milestone-label { color: var(--gold); }
+.milestone-date { font-size: 0.65rem; color: var(--text-light); margin-top: 0.3rem; text-align: center; }
+
+/* provenance / batch cards */
+.batch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+.batch-card {
+  border: 1px solid var(--border); border-radius: 2px; padding: 1.4rem 1.6rem;
+  background: var(--warm-white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.batch-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(184,146,74,0.1); }
+.batch-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+.batch-qr { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--forest); }
+.batch-weight { font-size: 0.75rem; color: var(--text-light); margin-top: 0.15rem; }
+.batch-field { margin-bottom: 0.6rem; }
+.batch-field-label { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.15rem; }
+.batch-field-value { font-size: 0.82rem; color: var(--text-mid); }
+.batch-ipfs { margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+.batch-ipfs-label { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.3rem; }
+.batch-hash {
+  font-size: 0.72rem; color: var(--gold); word-break: break-all; line-height: 1.4;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* payment / escrow card */
+.payment-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+.payment-card {
+  border: 1px solid var(--border); border-radius: 2px; padding: 1.4rem 1.6rem;
+  background: var(--warm-white);
+}
+.payment-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.6rem; }
+.payment-card-amount { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--forest); line-height: 1; }
+.payment-card-amount.gold { color: var(--gold); }
+.payment-card-amount.green { color: var(--sage); }
+.payment-card-sub { font-size: 0.72rem; color: var(--text-light); margin-top: 0.4rem; }
+
+/* empty state */
+.empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-light); }
+.empty-state p { font-size: 0.88rem; margin-top: 0.5rem; }
+
+/* API notice */
+.api-notice {
+  background: rgba(184,146,74,0.08); border: 1px solid rgba(184,146,74,0.2);
+  border-radius: 2px; padding: 1rem 1.5rem;
+  font-size: 0.8rem; color: var(--text-mid); line-height: 1.6;
+  margin-bottom: 3rem; display: flex; align-items: flex-start; gap: 0.8rem;
+}
+.api-notice-icon { color: var(--gold); font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+/* login gate */
+.login-gate {
+  min-height: calc(100vh - 64px); display: flex; align-items: center; justify-content: center;
+  padding: 6rem 8vw; background: var(--warm-white);
+}
+.login-card {
+  background: var(--forest); border-radius: 2px;
+  padding: 3.5rem 3rem; width: 100%; max-width: 420px;
+  box-shadow: 0 12px 60px rgba(28,43,30,0.25);
+}
+.login-logo { width: 90px; margin-bottom: 2rem; display: block; opacity: 0.9; }
+.login-h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--cream); margin-bottom: 0.4rem; }
+.login-sub { font-size: 0.82rem; font-weight: 300; color: rgba(245,240,232,0.5); margin-bottom: 2.5rem; }
+.login-group { margin-bottom: 1.2rem; }
+.login-group label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.45); margin-bottom: 0.5rem; }
+.login-group input {
+  width: 100%; background: rgba(245,240,232,0.06); border: 1px solid rgba(245,240,232,0.15);
+  color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 300;
+  padding: 0.85rem 1rem; border-radius: 2px; outline: none; transition: border-color 0.2s;
+}
+.login-group input::placeholder { color: rgba(245,240,232,0.2); }
+.login-group input:focus { border-color: var(--gold); }
+.login-btn {
+  width: 100%; background: var(--gold); color: var(--forest); border: none;
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1rem; border-radius: 2px; cursor: pointer; margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.login-btn:hover { background: var(--gold-light); }
+.login-note { font-size: 0.72rem; color: rgba(245,240,232,0.25); margin-top: 1.5rem; text-align: center; line-height: 1.6; }
+
+@media (max-width: 1024px) {
+  .stat-bar { grid-template-columns: repeat(2, 1fr); }
+  .detail-grid { grid-template-columns: 1fr 1fr; }
+  .payment-row { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .portal-header { padding: 120px 6vw 44px; }
+  .portal-body { padding: 2rem 6vw 4rem; }
+  .stat-bar { grid-template-columns: 1fr 1fr; }
+  .milestone-steps { gap: 0.5rem; }
+  .milestone-label { font-size: 0.6rem; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .payment-row { grid-template-columns: 1fr; }
+  .orders-table thead th:nth-child(4),
+  .orders-table tbody td:nth-child(4) { display: none; }
+}
+@media (max-width: 480px) {
+  .stat-bar { grid-template-columns: 1fr; }
+  .orders-table thead th:nth-child(3),
+  .orders-table tbody td:nth-child(3) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV (verbatim from index.html) ───────────────────── -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img class="nav-logo-img-main" src="/hindia-timur-logo.webp" alt="Hindia Timur">
+    <span class="nav-logo-img-scrolled">Hindia <span>Timur</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/products/">Products</a></li>
+    <li class="nav-dropdown">
+      <a href="/about/" class="nav-dropdown-toggle">About
+        <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="/about/">Our Story</a></li>
+        <li><a href="/#process">How It Works</a></li>
+        <li><a href="/#compliance">Compliance</a></li>
+        <li><a href="/about/#farmers">For Farmers</a></li>
+      </ul>
+    </li>
+    <li><a href="/faq/">FAQ</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/portal/" class="active" style="color:var(--gold-light);">My Portal</a></li>
+    <li><a href="/exporter-quote/" class="nav-cta">Request a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-menu-logo-wrap"><img src="/hindia-timur-logo.webp" alt="Hindia Timur"></div>
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="/products/">Products</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/faq/">FAQ</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/portal/" class="nav-cta">My Portal</a></li>
+    <li><a href="/exporter-quote/">Request a Quote</a></li>
+  </ul>
+  <span class="mobile-menu-footer">Hindia Timur &mdash; Indonesia</span>
+</div>
+
+<!-- ── LOGIN GATE (shown when logged out) ─────────────────── -->
+<div id="loginGate" class="login-gate">
+  <div class="login-card">
+    <img src="/hindia-timur-logo.webp" alt="Hindia Timur" class="login-logo">
+    <div class="login-h2">Client Portal</div>
+    <div class="login-sub">Sign in with your account credentials to view your orders and provenance records.</div>
+    <div class="login-group">
+      <label>Business Email</label>
+      <input type="email" id="loginEmail" placeholder="you@company.com" autocomplete="email">
+    </div>
+    <div class="login-group">
+      <label>Access Code</label>
+      <input type="password" id="loginCode" placeholder="Provided by your account manager">
+    </div>
+    <button class="login-btn" id="loginBtn">Sign In</button>
+    <p class="login-note">
+      Don't have an account? <a href="/exporter-quote/" style="color:var(--gold-light);">Request a Quote</a> and your account manager will set up portal access.
+    </p>
+  </div>
+</div>
+
+<!-- ── PORTAL (shown when logged in) ──────────────────────── -->
+<div id="portalWrap" style="display:none;">
+
+  <div class="portal-header">
+    <div class="portal-header-inner">
+      <div>
+        <div class="portal-eyebrow">B2B Client Portal</div>
+        <h1 class="portal-h1">Your Orders &amp; <em>Supply Chain</em></h1>
+      </div>
+      <div class="portal-header-meta">
+        <span class="portal-greeting">Welcome back</span>
+        <span class="portal-account-name" id="accountName">Acme Imports GmbH</span>
+        <span class="portal-account-id">ACC-2024-0041</span>
+        <button id="logoutBtn" style="margin-top:0.8rem; background:none; border:1px solid rgba(245,240,232,0.2); color:rgba(245,240,232,0.45); font-family:'DM Sans',sans-serif; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.35rem 0.8rem; border-radius:2px; cursor:pointer; transition:all 0.2s;">Sign Out</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="portal-body">
+
+    <!-- API notice -->
+    <div class="api-notice">
+      <span class="api-notice-icon">&#9432;</span>
+      <span>This portal is connected live to the Hindia Timur Supabase backend. Orders, batch provenance, and blockchain transaction hashes are fetched in real time. Blockchain explorer links go live once batches are minted on-chain.</span>
+    </div>
+
+    <!-- Stat bar -->
+    <div class="stat-bar">
+      <div class="stat-cell">
+        <div class="stat-cell-label">Active Orders</div>
+        <div class="stat-cell-value gold" id="statActiveOrders">3</div>
+        <div class="stat-cell-sub">2 in transit</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-label">Total Value</div>
+        <div class="stat-cell-value" id="statTotalValue">$84,200</div>
+        <div class="stat-cell-sub">USD, all orders</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-label">Batches Tracked</div>
+        <div class="stat-cell-value green" id="statBatches">12</div>
+        <div class="stat-cell-sub">On-chain verified</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-label">Next Shipment</div>
+        <div class="stat-cell-value" id="statNextShipment" style="font-size:1.3rem;">14 Jun</div>
+        <div class="stat-cell-sub">HT-ORD-2024-003</div>
+      </div>
+    </div>
+
+    <!-- Orders table -->
+    <div class="orders-wrap">
+      <div class="portal-section-title">Orders</div>
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Products</th>
+            <th>Value (USD)</th>
+            <th>Payment</th>
+            <th>Shipment</th>
+            <th>On-Chain</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTableBody">
+          <!-- populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Order detail panel -->
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-header">
+        <div class="detail-title" id="detailTitle">Order Detail</div>
+        <button class="detail-close" id="detailClose">&times;</button>
+      </div>
+      <div class="detail-body">
+
+        <!-- Key fields -->
+        <div class="detail-grid" id="detailFields"></div>
+        <hr class="detail-divider">
+
+        <!-- Milestone progress -->
+        <div class="portal-section-title" style="margin-bottom:1.2rem;">Shipment Milestones</div>
+        <div class="milestone-track">
+          <div class="milestone-steps" id="milestoneSteps"></div>
+        </div>
+        <hr class="detail-divider">
+
+        <!-- Escrow / payment -->
+        <div class="portal-section-title" style="margin-bottom:1.2rem;">Payment &amp; Escrow</div>
+        <div class="payment-row" id="paymentRow"></div>
+        <hr class="detail-divider">
+
+        <!-- Batch / provenance cards -->
+        <div class="portal-section-title" style="margin-bottom:1.2rem;">Batch Provenance Records</div>
+        <div class="batch-grid" id="batchGrid"></div>
+
+      </div>
+    </div>
+
+  </div><!-- /portal-body -->
+</div><!-- /portalWrap -->
+
+<!-- ── FOOTER (verbatim from index.html) ────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="/"><img src="/hindia-timur-logo.webp" alt="Hindia Timur" class="footer-logo-img"></a>
+      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth -- with integrity, compliance, and consistency.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Source</div>
+      <ul class="footer-links">
+        <li><a href="/coffee/">Specialty Coffee</a></li>
+        <li><a href="/products/">Full Product Catalog</a></li>
+        <li><a href="/exporter-quote/">Request a Quote</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="/about/">About Hindia Timur</a></li>
+        <li><a href="/#process">How It Works</a></li>
+        <li><a href="/about/#farmers">For Farmers</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@hindiatimur.com">hello@hindiatimur.com</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="/blog/">Blog &amp; Insights</a></li>
+        <li><a href="/#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Hindia Timur. All rights reserved.</span>
+    <span>Sourced from Indonesia. Delivered to the World.</span>
+  </div>
+</footer>
+
+<script>
+/* ── SUPABASE INIT ───────────────────────────────────────── */
+const SUPABASE_URL     = 'https://ejefibfqazaqyavcysti.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_6ESeZkia_IVS30CSd8rqng_FyylC2gS';
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+console.log('Hindia Timur Portal Engine initialized.');
+
+const MILESTONES = ['Inquiry & QC', 'Production', 'Documentation', 'Shipped', 'Delivered'];
+const MILESTONE_STATUS_MAP = { harvested: 1, warehouse: 2, in_transit: 3, delivered: 4 };
+
+/* ── AUTH ────────────────────────────────────────────────── */
+const $ = id => document.getElementById(id);
+
+function showPortal(user) {
+  const name = (user.user_metadata?.full_name || user.email.split('@')[0])
+    .replace(/\./g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  $('accountName').textContent = name;
+  $('loginGate').style.display = 'none';
+  $('portalWrap').style.display = 'block';
+  loadBuyerDashboard(user.email);
+}
+
+function showLogin(errMsg) {
+  $('portalWrap').style.display = 'none';
+  $('loginGate').style.display = 'flex';
+  if (errMsg) {
+    $('loginCode').style.borderColor = 'rgba(155,74,74,0.7)';
+    $('loginCode').placeholder = errMsg;
+    setTimeout(() => {
+      $('loginCode').style.borderColor = '';
+      $('loginCode').placeholder = 'Provided by your account manager';
+    }, 2500);
+  }
+}
+
+/* Check existing session on page load */
+db.auth.getSession().then(({ data: { session } }) => {
+  if (session) showPortal(session.user);
+});
+
+/* Listen for auth state changes (e.g. magic link callback) */
+db.auth.onAuthStateChange((_event, session) => {
+  if (session) showPortal(session.user);
+  else showLogin();
+});
+
+$('loginBtn').addEventListener('click', async () => {
+  const email    = $('loginEmail').value.trim();
+  const password = $('loginCode').value.trim();
+  if (!email) { $('loginEmail').focus(); return; }
+  if (!password) { $('loginCode').focus(); return; }
+
+  $('loginBtn').textContent = 'Signing in…';
+  $('loginBtn').disabled = true;
+
+  const { error } = await db.auth.signInWithPassword({ email, password });
+
+  $('loginBtn').textContent = 'Sign In';
+  $('loginBtn').disabled = false;
+
+  if (error) showLogin(error.message === 'Invalid login credentials' ? 'Invalid email or password' : error.message);
+});
+
+[$('loginEmail'), $('loginCode')].forEach(el =>
+  el.addEventListener('keydown', e => { if (e.key === 'Enter') $('loginBtn').click(); })
+);
+
+$('logoutBtn').addEventListener('click', async () => {
+  await db.auth.signOut();
+  showLogin();
+});
+
+/* ── LOAD DASHBOARD ──────────────────────────────────────── */
+async function loadBuyerDashboard(buyerEmail) {
+  const tbody = $('ordersTableBody');
+  tbody.innerHTML = `<tr><td colspan="6" style="padding:2rem;text-align:center;color:var(--text-light);font-size:0.85rem;">Loading orders…</td></tr>`;
+
+  try {
+    const { data: orders, error } = await db
+      .from('b2b_orders')
+      .select('*')
+      .eq('buyer_email', buyerEmail)
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    if (!orders || orders.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6" style="padding:2rem;text-align:center;color:var(--text-light);font-size:0.85rem;">No orders found for this account.</td></tr>`;
+      updateStatBar([], []);
+      return;
+    }
+
+    /* Fetch all order_items + linked batches for stat bar */
+    const orderIds = orders.map(o => o.id);
+    const { data: allItems } = await db
+      .from('order_items')
+      .select('order_id, batches(status, blockchain_tx_hash)')
+      .in('order_id', orderIds);
+
+    updateStatBar(orders, allItems || []);
+    renderOrderRows(orders, allItems || []);
+
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="6" style="padding:2rem;text-align:center;color:var(--text-light);font-size:0.85rem;">Error loading orders: ${err.message}</td></tr>`;
+    console.error('Dashboard load error:', err);
+  }
+}
+
+/* ── STAT BAR ────────────────────────────────────────────── */
+function updateStatBar(orders, allItems) {
+  const active = orders.filter(o => o.payment_status !== 'paid_out' && o.payment_status !== 'refunded').length;
+  const total  = orders.reduce((s, o) => s + Number(o.total_amount_usd), 0);
+  const batches = allItems.length;
+
+  /* Find earliest non-delivered order's created_at as next shipment proxy */
+  const pending = orders.filter(o => o.payment_status === 'escrow_locked').sort((a,b) => new Date(a.created_at) - new Date(b.created_at));
+  const nextShip = pending.length ? new Date(pending[0].created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : '—';
+  const nextId   = pending.length ? pending[0].id.slice(-3) : '';
+
+  $('statActiveOrders').textContent = active;
+  $('statTotalValue').textContent   = '$' + total.toLocaleString();
+  $('statBatches').textContent      = batches;
+  $('statNextShipment').textContent = nextShip;
+  $('statNextShipment').nextElementSibling.textContent = nextId ? 'Order …' + nextId : '';
+}
+
+/* ── RENDER ORDER ROWS ───────────────────────────────────── */
+function renderOrderRows(orders, allItems) {
+  /* Build a tx_hash + network lookup from first batch per order */
+  const txMap = {};
+  allItems.forEach(item => {
+    if (!txMap[item.order_id] && item.batches?.blockchain_tx_hash) {
+      txMap[item.order_id] = { hash: item.batches.blockchain_tx_hash, network: 'Base' };
+    }
+  });
+
+  /* Derive shipment status from batches: worst-case status */
+  const statusOrder = ['harvested', 'warehouse', 'in_transit', 'delivered'];
+  const shipMap = {};
+  allItems.forEach(item => {
+    const s = item.batches?.status;
+    if (!s) return;
+    if (!shipMap[item.order_id] || statusOrder.indexOf(s) < statusOrder.indexOf(shipMap[item.order_id])) {
+      shipMap[item.order_id] = s;
+    }
+  });
+
+  $('ordersTableBody').innerHTML = orders.map(o => {
+    const tx = txMap[o.id];
+    const shipStatus = shipMap[o.id] || 'harvested';
+    return `
+      <tr data-id="${o.id}" onclick="openDetail('${o.id}')">
+        <td>
+          <div class="order-id">${o.id.slice(0,8).toUpperCase()}</div>
+          <div class="order-products">${o.buyer_name}</div>
+        </td>
+        <td><span style="font-size:0.8rem;color:var(--text-mid);">${new Date(o.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</span></td>
+        <td><span class="order-amount">$${Number(o.total_amount_usd).toLocaleString()}</span></td>
+        <td>${badge(o.payment_status)}</td>
+        <td>${badge(shipStatus)}</td>
+        <td>${tx ? chainLink(tx.hash, tx.network) : '<span style="font-size:0.75rem;color:var(--text-light);">Pending mint</span>'}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+/* ── OPEN ORDER DETAIL (live Supabase) ───────────────────── */
+async function openDetail(orderId) {
+  const panel = $('detailPanel');
+  $('detailTitle').textContent = 'Loading…';
+  panel.classList.add('open');
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+
+  try {
+    /* Fetch order */
+    const { data: order, error: oErr } = await db
+      .from('b2b_orders')
+      .select('*')
+      .eq('id', orderId)
+      .single();
+    if (oErr) throw oErr;
+
+    /* Fetch batches via order_items join */
+    const { data: items, error: iErr } = await db
+      .from('order_items')
+      .select('*, batches(*, farms(*))')
+      .eq('order_id', orderId);
+    if (iErr) throw iErr;
+
+    const batches = (items || []).map(i => i.batches).filter(Boolean);
+    const firstTx = batches.find(b => b.blockchain_tx_hash);
+    const network = 'Base'; /* update if you store network per batch */
+
+    /* Derive shipment status */
+    const statusOrder = ['harvested', 'warehouse', 'in_transit', 'delivered'];
+    const shipStatus = batches.reduce((worst, b) => {
+      return statusOrder.indexOf(b.status) < statusOrder.indexOf(worst) ? b.status : worst;
+    }, 'delivered');
+
+    $('detailTitle').textContent = order.id.slice(0,8).toUpperCase() + ' — ' + order.buyer_name;
+
+    /* Key fields */
+    $('detailFields').innerHTML = [
+      { label: 'Buyer',           value: order.buyer_name },
+      { label: 'Order Date',      value: new Date(order.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) },
+      { label: 'Payment Status',  value: badge(order.payment_status) },
+      { label: 'Shipment Status', value: badge(shipStatus) },
+      { label: 'Batches',         value: batches.length + ' batch' + (batches.length !== 1 ? 'es' : '') },
+      { label: 'Blockchain',      value: network },
+      { label: 'Transaction',     value: firstTx ? chainLink(firstTx.blockchain_tx_hash, network) : '<span style="font-size:0.75rem;color:var(--text-light);">Pending mint</span>' },
+      { label: 'Total Value',     value: '$' + Number(order.total_amount_usd).toLocaleString() + ' USD' },
+      { label: 'Ref',             value: order.id },
+    ].map(f => `<div><div class="detail-field-label">${f.label}</div><div class="detail-field-value">${f.value}</div></div>`).join('');
+
+    /* Milestones */
+    const reached = MILESTONE_STATUS_MAP[shipStatus] || 0;
+    const checkIcon = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l4 4 6-6"/></svg>`;
+    const dotIcon   = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="3"/></svg>`;
+    $('milestoneSteps').innerHTML = MILESTONES.map((label, i) => {
+      const cls = i < reached ? 'done' : i === reached ? 'active' : 'pending';
+      return `
+        <div class="milestone-step ${cls}">
+          <div class="milestone-dot">${cls === 'done' ? checkIcon : dotIcon}</div>
+          <div class="milestone-label">${label}</div>
+        </div>`;
+    }).join('');
+
+    /* Payment cards */
+    const total     = Number(order.total_amount_usd);
+    const farmerAmt = order.payment_status === 'paid_out' ? (total * 0.92).toLocaleString() : null;
+    const feeAmt    = (total * 0.08).toLocaleString();
+    $('paymentRow').innerHTML = `
+      <div class="payment-card">
+        <div class="payment-card-label">Total Order Value</div>
+        <div class="payment-card-amount">$${total.toLocaleString()}</div>
+        <div class="payment-card-sub">USD</div>
+      </div>
+      <div class="payment-card">
+        <div class="payment-card-label">Farmer Payout (92%)</div>
+        <div class="payment-card-amount green">${farmerAmt ? '$' + farmerAmt : '—'}</div>
+        <div class="payment-card-sub">${order.payment_status === 'paid_out' ? 'Settled via USDC' : 'Pending delivery'}</div>
+      </div>
+      <div class="payment-card">
+        <div class="payment-card-label">Platform Fee (8%)</div>
+        <div class="payment-card-amount gold">$${feeAmt}</div>
+        <div class="payment-card-sub">Hindia Timur treasury</div>
+      </div>`;
+
+    /* Batch cards */
+    $('batchGrid').innerHTML = batches.length ? batches.map(b => `
+      <div class="batch-card">
+        <div class="batch-card-header">
+          <div>
+            <div class="batch-qr">${b.qr_code_id}</div>
+            <div class="batch-weight">${b.weight_kg} kg</div>
+          </div>
+          ${badge(b.status)}
+        </div>
+        <div class="batch-field">
+          <div class="batch-field-label">Farm / Origin</div>
+          <div class="batch-field-value">${b.farms?.location_name || '—'}</div>
+        </div>
+        <div class="batch-field">
+          <div class="batch-field-label">Crop Type</div>
+          <div class="batch-field-value">${b.farms?.crop_type || '—'}</div>
+        </div>
+        <div class="batch-field">
+          <div class="batch-field-label">Moisture</div>
+          <div class="batch-field-value">${b.moisture_percentage}%</div>
+        </div>
+        <div class="batch-field">
+          <div class="batch-field-label">Recorded</div>
+          <div class="batch-field-value">${new Date(b.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div>
+        </div>
+        <div class="batch-ipfs">
+          <div class="batch-ipfs-label">IPFS / On-Chain Hash</div>
+          ${b.ipfs_metadata_hash
+            ? `<a class="batch-hash chain-link" href="https://gateway.pinata.cloud/ipfs/${b.ipfs_metadata_hash}" target="_blank" rel="noopener">
+                ${b.ipfs_metadata_hash.slice(0,12)}…${b.ipfs_metadata_hash.slice(-6)}
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V7"/><path d="M8 1h3v3"/><path d="M5 7l6-6"/></svg>
+              </a>`
+            : '<span style="font-size:0.75rem;color:var(--text-light);">Awaiting IPFS pin</span>'}
+        </div>
+      </div>`).join('')
+    : '<p style="font-size:0.85rem;color:var(--text-light);">No batch records linked to this order yet.</p>';
+
+  } catch (err) {
+    $('detailTitle').textContent = 'Error loading order';
+    console.error('Detail load error:', err);
+  }
+}
+
+/* ── NAV SCROLL (verbatim from index.html) ───────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+/* ── HAMBURGER (verbatim from index.html) ────────────────── */
+(function(){
+  var btn = $('navHamburger'), menu = $('mobileMenu');
+  if (!btn || !menu) return;
+  function open()  { btn.classList.add('open'); menu.classList.add('open'); btn.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+  function close() { btn.classList.remove('open'); menu.classList.remove('open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  btn.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  $('mobileMenuClose').addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
+/* ── BADGE HELPER ────────────────────────────────────────── */
+function badge(status) {
+  const labels = { harvested:'Harvested', warehouse:'At Warehouse', in_transit:'In Transit', delivered:'Delivered', pending:'Pending', escrow_locked:'Escrow Locked', paid_out:'Paid Out', refunded:'Refunded' };
+  return `<span class="badge badge-${status}">${labels[status] || status}</span>`;
+}
+
+/* ── CHAIN LINK HELPER ───────────────────────────────────── */
+function chainLink(hash, network) {
+  if (!hash) return '<span style="font-size:0.75rem;color:var(--text-light);">Pending mint</span>';
+  const explorers = { Base: 'https://basescan.org/tx/', Polygon: 'https://polygonscan.com/tx/' };
+  const base = explorers[network] || 'https://basescan.org/tx/';
+  const short = hash.slice(0,6) + '…' + hash.slice(-4);
+  return `<a class="chain-link" href="${base}${hash}" target="_blank" rel="noopener">
+    ${short}
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V7"/><path d="M8 1h3v3"/><path d="M5 7l6-6"/></svg>
+  </a>`;
+}
+
+$('detailClose').addEventListener('click', () => $('detailPanel').classList.remove('open'));
+</script>
+</body>
+</html>
