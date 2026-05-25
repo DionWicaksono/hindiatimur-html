@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Field Agent Portal | Hindia Timur</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/x-icon" href="/hindia-timur.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+<style>
+/* ── TOKENS (matching site) ─────────────────────────────── */
+:root {
+  --cream:      #F5F0E8;
+  --warm-white: #FAF8F3;
+  --forest:     #1C2B1E;
+  --moss:       #2D4A32;
+  --sage:       #4A6741;
+  --gold:       #B8924A;
+  --gold-light: #D4AC6E;
+  --text:       #1A1A18;
+  --text-mid:   #3D3D38;
+  --text-light: #6B6B60;
+  --border:     rgba(28,43,30,0.12);
+  --red:        #9B3A3A;
+  --red-pale:   rgba(155,58,58,0.10);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--forest);
+  color: var(--text);
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── LOGIN SCREEN ───────────────────────────────────────── */
+#loginScreen {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem 1.5rem;
+  background: var(--forest);
+  position: relative; overflow: hidden;
+}
+#loginScreen::before {
+  content: '';
+  position: absolute; top: -20%; right: -10%;
+  width: 60vw; height: 60vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,146,74,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.login-card {
+  background: var(--warm-white);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  width: 100%; max-width: 400px;
+  position: relative; z-index: 1;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+.login-logo {
+  width: 80px; display: block; margin: 0 auto 1.5rem;
+}
+.login-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem; font-weight: 300;
+  text-align: center; color: var(--forest);
+  margin-bottom: 0.25rem;
+}
+.login-sub {
+  font-size: 0.78rem; color: var(--text-light);
+  text-align: center; letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 2rem;
+}
+.form-group { margin-bottom: 1.1rem; }
+.form-group label {
+  display: block; font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.45rem;
+}
+.form-group input, .form-group select {
+  width: 100%;
+  background: var(--cream); border: 1px solid var(--border);
+  color: var(--text); font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; font-weight: 400;
+  padding: 0.8rem 1rem; border-radius: 4px; outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none; appearance: none;
+}
+.form-group input:focus, .form-group select:focus { border-color: var(--gold); background: #fff; }
+.btn-primary {
+  width: 100%; background: var(--forest); color: var(--cream);
+  border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.9rem;
+  border-radius: 4px; cursor: pointer; margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--moss); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.login-err {
+  font-size: 0.78rem; color: var(--red);
+  text-align: center; margin-top: 0.8rem; display: none;
+}
+
+/* ── APP SHELL ──────────────────────────────────────────── */
+#appShell { display: none; min-height: 100vh; background: var(--cream); }
+
+/* top bar */
+.topbar {
+  background: var(--forest); padding: 0 1.25rem;
+  height: 56px; display: flex; align-items: center;
+  justify-content: space-between; position: sticky; top: 0; z-index: 100;
+}
+.topbar-left { display: flex; align-items: center; gap: 0.75rem; }
+.topbar-logo { width: 70px; height: auto; display: block; opacity: 0.9; }
+.topbar-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400; color: var(--cream);
+  line-height: 1;
+}
+.topbar-agent {
+  font-size: 0.68rem; color: rgba(245,240,232,0.45);
+  letter-spacing: 0.06em; margin-top: 0.1rem;
+}
+.topbar-btn {
+  background: none; border: 1px solid rgba(245,240,232,0.2);
+  color: rgba(245,240,232,0.5); font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.3rem 0.7rem; border-radius: 3px; cursor: pointer;
+  transition: all 0.2s;
+}
+.topbar-btn:hover { border-color: rgba(245,240,232,0.4); color: rgba(245,240,232,0.8); }
+
+/* tab nav */
+.tabnav {
+  background: var(--forest); border-top: 1px solid rgba(245,240,232,0.07);
+  display: flex;
+}
+.tab-btn {
+  flex: 1; background: none; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 0.68rem;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.4); padding: 0.7rem 0.5rem;
+  border-bottom: 2px solid transparent; transition: all 0.2s;
+}
+.tab-btn.active { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+/* page panels */
+.page { display: none; padding: 1.25rem; padding-bottom: 4rem; }
+.page.active { display: block; }
+
+/* ── DASHBOARD ──────────────────────────────────────────── */
+.dash-greeting {
+  margin-bottom: 1.5rem;
+}
+.dash-greeting-eyebrow {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem;
+}
+.dash-greeting-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 300; color: var(--forest);
+}
+.stat-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.75rem; margin-bottom: 1.5rem;
+}
+.stat-card {
+  background: var(--warm-white); border: 1px solid var(--border);
+  border-radius: 4px; padding: 1rem 1.1rem;
+}
+.stat-card-label {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-light); margin-bottom: 0.4rem;
+}
+.stat-card-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 300; color: var(--forest); line-height: 1;
+}
+.stat-card-value.gold { color: var(--gold); }
+.stat-card-value.green { color: var(--sage); }
+
+.section-title {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.section-title::before { content: ''; display: block; width: 16px; height: 1px; background: var(--gold); }
+
+.batch-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.batch-list-item {
+  background: var(--warm-white); border: 1px solid var(--border);
+  border-radius: 4px; padding: 0.9rem 1rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.batch-list-qr { font-size: 0.82rem; font-weight: 500; color: var(--forest); }
+.batch-list-meta { font-size: 0.72rem; color: var(--text-light); margin-top: 0.15rem; }
+.empty-state {
+  text-align: center; padding: 3rem 1rem;
+  font-size: 0.82rem; color: var(--text-light);
+}
+
+/* ── BADGE ──────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.25rem 0.6rem;
+  border-radius: 3px; white-space: nowrap;
+}
+.badge::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+.badge-harvested  { background: rgba(184,146,74,0.12); color: #9B7520; }
+.badge-warehouse  { background: rgba(74,122,155,0.12); color: #2D6A96; }
+.badge-in_transit { background: rgba(122,90,155,0.12); color: #6A3DAA; }
+.badge-delivered  { background: rgba(74,103,65,0.12);  color: #3A6632; }
+.badge-pending    { background: rgba(155,122,74,0.12); color: #7A5A20; }
+
+/* ── INTAKE FORM ────────────────────────────────────────── */
+.card {
+  background: var(--warm-white); border: 1px solid var(--border);
+  border-radius: 4px; padding: 1.25rem; margin-bottom: 1rem;
+}
+.card-title {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-light); margin-bottom: 1rem;
+}
+
+/* GPS indicator */
+.gps-row {
+  display: flex; align-items: center; gap: 0.6rem;
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 4px; padding: 0.7rem 0.9rem; margin-bottom: 1rem;
+}
+.gps-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--text-light); flex-shrink: 0;
+  transition: background 0.3s;
+}
+.gps-dot.active { background: var(--sage); box-shadow: 0 0 0 3px rgba(74,103,65,0.2); }
+.gps-dot.error  { background: var(--red); }
+.gps-label { font-size: 0.72rem; color: var(--text-light); }
+.gps-coords { font-size: 0.75rem; color: var(--text-mid); font-weight: 500; }
+
+/* QR scanner */
+.qr-area { margin-top: 0.5rem; }
+.btn-secondary {
+  background: var(--moss); color: var(--cream);
+  border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.6rem 1rem;
+  border-radius: 4px; cursor: pointer; transition: background 0.2s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-secondary:hover { background: var(--forest); }
+#qrReader { margin-top: 0.75rem; border-radius: 4px; overflow: hidden; }
+.qr-confirmed {
+  display: none; margin-top: 0.5rem;
+  font-size: 0.75rem; color: var(--sage); font-weight: 500;
+}
+
+/* submit area — two buttons */
+.submit-area {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--warm-white); border-top: 1px solid var(--border);
+  padding: 0.75rem 1.25rem; z-index: 50;
+  display: none; gap: 0.6rem;
+}
+.submit-area.visible { display: flex; }
+.btn-submit {
+  flex: 1; background: var(--forest); color: var(--cream);
+  border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.9rem 0.5rem;
+  border-radius: 4px; cursor: pointer; transition: background 0.2s;
+  line-height: 1.2;
+}
+.btn-submit:hover { background: var(--moss); }
+.btn-submit:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-mint {
+  flex: 1; background: transparent; color: var(--gold);
+  border: 1.5px solid var(--gold); font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.9rem 0.5rem;
+  border-radius: 4px; cursor: pointer; transition: all 0.2s;
+  line-height: 1.2; display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+}
+.btn-mint:hover { background: var(--gold); color: var(--forest); }
+.btn-mint:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* history mint button */
+.btn-mint-sm {
+  background: transparent; color: var(--gold);
+  border: 1px solid rgba(184,146,74,0.5); font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.3rem 0.7rem;
+  border-radius: 3px; cursor: pointer; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+}
+.btn-mint-sm:hover { background: var(--gold); color: var(--forest); }
+.btn-mint-sm:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* toast */
+.toast {
+  position: fixed; bottom: 5.5rem; left: 50%; transform: translateX(-50%);
+  background: var(--forest); color: var(--cream);
+  font-size: 0.82rem; padding: 0.7rem 1.2rem; border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 999;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  white-space: nowrap;
+}
+.toast.show { opacity: 1; }
+.toast.success { background: var(--sage); }
+.toast.error   { background: var(--red); }
+
+/* field err */
+.field-err { font-size: 0.72rem; color: var(--red); margin-top: 0.3rem; display: none; }
+input.err, select.err { border-color: var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN SCREEN ──────────────────────────────────────── -->
+<div id="loginScreen">
+  <div class="login-card">
+    <img src="/hindia-timur-logo.webp" alt="Hindia Timur" class="login-logo">
+    <div class="login-h1">Field Agent Portal</div>
+    <div class="login-sub">Hindia Timur Intake Ledger</div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="agent@hindiatimur.com" autocomplete="email">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="Your password">
+    </div>
+    <button class="btn-primary" id="loginBtn">Sign In</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- ── APP SHELL ─────────────────────────────────────────── -->
+<div id="appShell">
+
+  <!-- top bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <img src="/hindia-timur-logo.webp" alt="Hindia Timur" class="topbar-logo">
+      <div>
+        <div class="topbar-title">Field Portal</div>
+        <div class="topbar-agent" id="agentLabel">—</div>
+      </div>
+    </div>
+    <button class="topbar-btn" id="signOutBtn">Sign Out</button>
+  </div>
+
+  <!-- tab nav -->
+  <div class="tabnav">
+    <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+    <button class="tab-btn" data-tab="intake">Log Batch</button>
+    <button class="tab-btn" data-tab="history">History</button>
+  </div>
+
+  <!-- ── DASHBOARD ────────────────────────────────────────── -->
+  <div class="page active" id="tab-dashboard">
+    <div class="dash-greeting">
+      <div class="dash-greeting-eyebrow">Good day</div>
+      <div class="dash-greeting-name" id="dashName">Agent</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-card-label">Today's Batches</div>
+        <div class="stat-card-value gold" id="statToday">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Total Logged</div>
+        <div class="stat-card-value green" id="statTotal">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Pending Mint</div>
+        <div class="stat-card-value" id="statPending">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Minted</div>
+        <div class="stat-card-value" id="statMinted">—</div>
+      </div>
+    </div>
+    <div class="section-title">Recent Batches</div>
+    <div class="batch-list" id="recentBatches">
+      <div class="empty-state">Loading batches…</div>
+    </div>
+  </div>
+
+  <!-- ── INTAKE FORM ───────────────────────────────────────── -->
+  <div class="page" id="tab-intake">
+    <div class="section-title" style="margin-bottom:1.25rem;">Register New Batch</div>
+
+    <!-- GPS -->
+    <div class="gps-row">
+      <div class="gps-dot" id="gpsDot"></div>
+      <div>
+        <div class="gps-label">GPS Location</div>
+        <div class="gps-coords" id="gpsCoords">Acquiring…</div>
+      </div>
+    </div>
+
+    <!-- Farm -->
+    <div class="card">
+      <div class="card-title">Source Farm</div>
+      <div class="form-group" style="margin:0">
+        <select id="farmSelect">
+          <option value="">Loading farms…</option>
+        </select>
+        <div class="field-err" id="errFarm">Please select a farm origin.</div>
+      </div>
+    </div>
+
+    <!-- QR -->
+    <div class="card">
+      <div class="card-title">Physical QR Serial ID</div>
+      <div class="form-group" style="margin:0">
+        <input type="text" id="qrCodeId" placeholder="e.g. HT-BALI-CACAO-001">
+        <div class="field-err" id="errQr">QR serial ID is required.</div>
+      </div>
+      <div class="qr-area">
+        <button class="btn-secondary" id="scanBtn" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="8" height="8"/><rect x="14" y="2" width="8" height="8"/><rect x="2" y="14" width="8" height="8"/><path d="M14 14h2v2h-2z"/><path d="M18 14h2v2h-2z"/><path d="M14 18h2v2h-2z"/><path d="M18 18h2v2h-2z"/></svg>
+          Open Camera Scanner
+        </button>
+        <div id="qrReader"></div>
+        <div class="qr-confirmed" id="qrConfirmed">✓ QR code scanned successfully</div>
+      </div>
+    </div>
+
+    <!-- Measurements -->
+    <div class="card">
+      <div class="card-title">Measurements</div>
+      <div class="form-group">
+        <label>Net Weight (kg)</label>
+        <input type="number" step="0.01" id="weight" placeholder="0.00">
+        <div class="field-err" id="errWeight">Please enter a valid weight.</div>
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label>Moisture (%)</label>
+        <input type="number" step="0.1" min="0" max="100" id="moisture" placeholder="0.0">
+        <div class="field-err" id="errMoisture">Please enter moisture % (0–100).</div>
+      </div>
+    </div>
+
+  </div><!-- /tab-intake -->
+
+  <!-- ── HISTORY ────────────────────────────────────────────── -->
+  <div class="page" id="tab-history">
+    <div class="section-title" style="margin-bottom:1.25rem;">Your Batch Records</div>
+    <div class="batch-list" id="historyList">
+      <div class="empty-state">Loading history…</div>
+    </div>
+  </div>
+
+  <!-- action bar (only visible on intake tab) -->
+  <div class="submit-area" id="submitArea">
+    <button class="btn-submit" id="submitBtn">Save to Database</button>
+    <button class="btn-mint" id="mintAfterSaveBtn">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Mint On-Chain
+    </button>
+  </div>
+
+</div><!-- /appShell -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── SUPABASE ───────────────────────────────────────────── */
+const SUPABASE_URL     = 'https://ejefibfqazaqyavcysti.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_6ESeZkia_IVS30CSd8rqng_FyylC2gS';
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+/* ── THIRDWEB CONFIG ────────────────────────────────────── */
+/* Fill these in once your contract is deployed.            */
+/* Leave blank to keep mint buttons in "not configured"    */
+const THIRDWEB_CLIENT_ID  = '';   /* e.g. 'abc123...' */
+const CONTRACT_ADDRESS    = '';   /* e.g. '0xABC...'  */
+const CHAIN_ID            = 8453; /* Base mainnet (84532 = Base Sepolia testnet) */
+
+const mintConfigured = () => THIRDWEB_CLIENT_ID !== '' && CONTRACT_ADDRESS !== '';
+
+/* ── MINT BATCH ─────────────────────────────────────────── */
+async function mintBatch(batchId) {
+  if (!mintConfigured()) {
+    toast('Contract not configured — contact admin', 'error');
+    return null;
+  }
+  /* ── Wire Thirdweb SDK here once contract is deployed ── */
+  /* Example:
+  const sdk = new ThirdwebSDK(CHAIN_ID, { clientId: THIRDWEB_CLIENT_ID });
+  const contract = await sdk.getContract(CONTRACT_ADDRESS);
+  const tx = await contract.erc1155.mint({ ... });
+  const txHash = tx.receipt.transactionHash;
+  await db.from('batches').update({ blockchain_tx_hash: txHash }).eq('id', batchId);
+  return txHash;
+  */
+  toast('Contract not configured — contact admin', 'error');
+  return null;
+}
+let currentUser = null;
+let currentAgentId = null;
+let gpsCoords = null;
+let qrScanner = null;
+
+const $ = id => document.getElementById(id);
+
+/* ── TOAST ─────────────────────────────────────────────── */
+function toast(msg, type = 'default') {
+  const el = $('toast');
+  el.textContent = msg;
+  el.className = 'toast show ' + type;
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+/* ── AUTH ──────────────────────────────────────────────── */
+db.auth.getSession().then(({ data: { session } }) => {
+  if (session) bootApp(session.user);
+});
+db.auth.onAuthStateChange((_e, session) => {
+  if (session) bootApp(session.user);
+});
+
+$('loginBtn').addEventListener('click', async () => {
+  const email    = $('loginEmail').value.trim();
+  const password = $('loginPassword').value.trim();
+  if (!email || !password) return;
+  $('loginBtn').disabled = true;
+  $('loginBtn').textContent = 'Signing in…';
+  const { error } = await db.auth.signInWithPassword({ email, password });
+  $('loginBtn').disabled = false;
+  $('loginBtn').textContent = 'Sign In';
+  if (error) {
+    $('loginErr').textContent = 'Invalid email or password.';
+    $('loginErr').style.display = 'block';
+  }
+});
+[$('loginEmail'), $('loginPassword')].forEach(el =>
+  el.addEventListener('keydown', e => { if (e.key === 'Enter') $('loginBtn').click(); })
+);
+
+$('signOutBtn').addEventListener('click', async () => {
+  await db.auth.signOut();
+  currentUser = null;
+  $('appShell').style.display = 'none';
+  $('loginScreen').style.display = 'flex';
+});
+
+/* ── BOOT ──────────────────────────────────────────────── */
+async function bootApp(user) {
+  currentUser = user;
+  $('loginScreen').style.display = 'none';
+  $('appShell').style.display = 'block';
+
+  /* Resolve agent name + ID from users table */
+  const { data: agent } = await db.from('users').select('id, name').eq('id', user.id).single();
+  const name = agent?.name || user.email.split('@')[0];
+  currentAgentId = agent?.id || user.id;
+
+  $('agentLabel').textContent = name;
+  $('dashName').textContent = name;
+
+  loadFarms();
+  loadDashboard();
+  loadHistory();
+  startGPS();
+}
+
+/* ── GPS ────────────────────────────────────────────────── */
+function startGPS() {
+  if (!navigator.geolocation) {
+    $('gpsCoords').textContent = 'Geolocation unavailable';
+    $('gpsDot').classList.add('error');
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(pos => {
+    gpsCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+    $('gpsCoords').textContent = `${gpsCoords.lat.toFixed(5)}, ${gpsCoords.lng.toFixed(5)}`;
+    $('gpsDot').classList.add('active');
+  }, () => {
+    $('gpsCoords').textContent = 'Location denied — not recorded';
+    $('gpsDot').classList.add('error');
+  });
+}
+
+/* ── LOAD FARMS ─────────────────────────────────────────── */
+async function loadFarms() {
+  const sel = $('farmSelect');
+  sel.innerHTML = '<option value="">Select verified farm origin…</option>';
+  const { data: farms, error } = await db.from('farms').select('id, farm_name, location_name').order('farm_name');
+  if (error || !farms?.length) {
+    sel.innerHTML = '<option value="">No farms registered yet</option>';
+    return;
+  }
+  farms.forEach(f => {
+    const opt = document.createElement('option');
+    opt.value = f.id;
+    opt.textContent = `${f.farm_name} — ${f.location_name}`;
+    sel.appendChild(opt);
+  });
+}
+
+/* ── LOAD DASHBOARD ─────────────────────────────────────── */
+async function loadDashboard() {
+  const { data: batches } = await db
+    .from('batches')
+    .select('id, qr_code_id, weight_kg, status, blockchain_tx_hash, created_at, farms(farm_name)')
+    .eq('field_agent_id', currentAgentId)
+    .order('created_at', { ascending: false });
+
+  if (!batches) return;
+
+  const today = new Date().toISOString().slice(0, 10);
+  const todayBatches  = batches.filter(b => b.created_at.slice(0, 10) === today);
+  const pendingMint   = batches.filter(b => !b.blockchain_tx_hash);
+  const minted        = batches.filter(b => b.blockchain_tx_hash);
+
+  $('statToday').textContent   = todayBatches.length;
+  $('statTotal').textContent   = batches.length;
+  $('statPending').textContent = pendingMint.length;
+  $('statMinted').textContent  = minted.length;
+
+  const recent = batches.slice(0, 8);
+  const list = $('recentBatches');
+  list.innerHTML = recent.length ? recent.map(b => `
+    <div class="batch-list-item">
+      <div>
+        <div class="batch-list-qr">${b.qr_code_id}</div>
+        <div class="batch-list-meta">${b.farms?.farm_name || '—'} · ${b.weight_kg} kg</div>
+      </div>
+      <span class="badge badge-${b.status}">${b.status.replace('_',' ')}</span>
+    </div>
+  `).join('') : '<div class="empty-state">No batches logged yet.</div>';
+}
+
+/* ── LOAD HISTORY ───────────────────────────────────────── */
+async function loadHistory() {
+  const { data: batches } = await db
+    .from('batches')
+    .select('id, qr_code_id, weight_kg, moisture_percentage, status, blockchain_tx_hash, created_at, farms(farm_name, location_name)')
+    .eq('field_agent_id', currentAgentId)
+    .order('created_at', { ascending: false });
+
+  const list = $('historyList');
+  if (!batches?.length) { list.innerHTML = '<div class="empty-state">No batches logged yet.</div>'; return; }
+
+  list.innerHTML = batches.map(b => `
+    <div class="batch-list-item" style="flex-direction:column;align-items:flex-start;gap:0.5rem;">
+      <div style="display:flex;justify-content:space-between;width:100%;align-items:center;">
+        <div class="batch-list-qr">${b.qr_code_id}</div>
+        <span class="badge badge-${b.status}">${b.status.replace('_',' ')}</span>
+      </div>
+      <div class="batch-list-meta">${b.farms?.farm_name || '—'} · ${b.farms?.location_name || ''}</div>
+      <div class="batch-list-meta">${b.weight_kg} kg · ${b.moisture_percentage}% moisture · ${new Date(b.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div>
+      ${b.blockchain_tx_hash
+        ? `<a href="https://basescan.org/tx/${b.blockchain_tx_hash}" target="_blank" rel="noopener"
+             style="font-size:0.68rem;color:var(--gold);">⬡ On-chain: ${b.blockchain_tx_hash.slice(0,10)}…</a>`
+        : `<div style="display:flex;align-items:center;gap:0.6rem;">
+             <span style="font-size:0.68rem;color:var(--text-light);">⬡ Not yet minted</span>
+             <button class="btn-mint-sm" onclick="handleHistoryMint('${b.id}', this)">
+               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+               Mint
+             </button>
+           </div>`
+      }
+    </div>
+  `).join('');
+}
+
+/* ── QR SCANNER ─────────────────────────────────────────── */
+$('scanBtn').addEventListener('click', () => {
+  if (qrScanner) { qrScanner.clear(); qrScanner = null; $('scanBtn').textContent = 'Open Camera Scanner'; return; }
+  qrScanner = new Html5QrcodeScanner('qrReader', { fps: 10, qrbox: 220 }, false);
+  qrScanner.render(decoded => {
+    $('qrCodeId').value = decoded;
+    $('qrConfirmed').style.display = 'block';
+    qrScanner.clear(); qrScanner = null;
+    toast('QR code scanned', 'success');
+  }, () => {});
+  $('scanBtn').textContent = 'Close Scanner';
+});
+
+/* ── TAB NAV ────────────────────────────────────────────── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    $('tab-' + btn.dataset.tab).classList.add('active');
+    $('submitArea').classList.toggle('visible', btn.dataset.tab === 'intake');
+  });
+});
+
+/* ── FORM VALIDATION ────────────────────────────────────── */
+function validate() {
+  let ok = true;
+  const check = (id, errId, test) => {
+    const el = $(id); const err = $(errId);
+    const pass = test(el.value);
+    el.classList.toggle('err', !pass);
+    err.style.display = pass ? 'none' : 'block';
+    if (!pass) ok = false;
+  };
+  check('farmSelect', 'errFarm', v => v !== '');
+  check('qrCodeId',   'errQr',   v => v.trim() !== '');
+  check('weight',     'errWeight', v => parseFloat(v) > 0);
+  check('moisture',   'errMoisture', v => parseFloat(v) >= 0 && parseFloat(v) <= 100);
+  return ok;
+}
+
+/* ── SAVE TO SUPABASE (shared) ──────────────────────────── */
+async function saveToSupabase() {
+  if (!validate()) return null;
+
+  const payload = {
+    farm_id:             $('farmSelect').value,
+    field_agent_id:      currentAgentId,
+    qr_code_id:          $('qrCodeId').value.trim(),
+    weight_kg:           parseFloat($('weight').value),
+    moisture_percentage: parseFloat($('moisture').value),
+    status:              'harvested',
+  };
+
+  const { data, error } = await db.from('batches').insert([payload]).select('id').single();
+  if (error) { toast('Error: ' + error.message, 'error'); return null; }
+  return data.id;
+}
+
+function resetIntakeForm() {
+  $('farmSelect').value = '';
+  $('qrCodeId').value = '';
+  $('weight').value = '';
+  $('moisture').value = '';
+  $('qrConfirmed').style.display = 'none';
+  loadDashboard();
+  loadHistory();
+}
+
+/* ── SAVE ONLY ──────────────────────────────────────────── */
+$('submitBtn').addEventListener('click', async () => {
+  $('submitBtn').disabled = true;
+  $('mintAfterSaveBtn').disabled = true;
+  $('submitBtn').textContent = 'Saving…';
+
+  const id = await saveToSupabase();
+
+  $('submitBtn').disabled = false;
+  $('mintAfterSaveBtn').disabled = false;
+  $('submitBtn').textContent = 'Save to Database';
+
+  if (!id) return;
+  toast('Batch saved to database', 'success');
+  resetIntakeForm();
+  document.querySelector('[data-tab="dashboard"]').click();
+});
+
+/* ── SAVE THEN MINT ─────────────────────────────────────── */
+$('mintAfterSaveBtn').addEventListener('click', async () => {
+  $('submitBtn').disabled = true;
+  $('mintAfterSaveBtn').disabled = true;
+  $('mintAfterSaveBtn').innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg> Saving…';
+
+  const id = await saveToSupabase();
+  if (!id) {
+    $('submitBtn').disabled = false;
+    $('mintAfterSaveBtn').disabled = false;
+    $('mintAfterSaveBtn').innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> Mint On-Chain';
+    return;
+  }
+
+  toast('Batch saved — minting…', 'default');
+  $('mintAfterSaveBtn').innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg> Minting…';
+
+  const txHash = await mintBatch(id);
+
+  $('submitBtn').disabled = false;
+  $('mintAfterSaveBtn').disabled = false;
+  $('mintAfterSaveBtn').innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> Mint On-Chain';
+
+  if (txHash) toast('Minted on-chain ✓', 'success');
+  resetIntakeForm();
+  document.querySelector('[data-tab="dashboard"]').click();
+});
+
+/* ── HISTORY MINT BUTTON ────────────────────────────────── */
+async function handleHistoryMint(batchId, btn) {
+  btn.disabled = true;
+  btn.textContent = 'Minting…';
+  const txHash = await mintBatch(batchId);
+  if (txHash) {
+    toast('Minted on-chain ✓', 'success');
+    loadHistory();
+    loadDashboard();
+  } else {
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg> Mint';
+  }
+}
+</script>
+</body>
+</html>
