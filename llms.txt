@@ -1,0 +1,26 @@
+# Hindia Timur
+
+> Hindia Timur is an Indonesian exporter of spices and specialty agricultural products — including coffee, vanilla, and coconut — connecting smallholder farmers in Indonesia with international buyers. The site provides product information, farmer partnership details, and a quote request tool for exporters and B2B buyers.
+
+## Core Pages
+
+- [Home](https://hindiatimur.com/index.html): Company overview, featured products, and contact form.
+- [Products](https://hindiatimur.com/products.html): Catalog of export products (coffee, vanilla, coconut, and other spices).
+- [Coffee](https://hindiatimur.com/coffee.html): Details on Indonesian coffee sourcing, origin, and varieties.
+- [About](https://hindiatimur.com/about.html): Company background and the Farmer Partnership Application for Indonesian growers.
+- [Request a Quote](https://hindiatimur.com/exporter-quote.html): Quote request form for international buyers and exporters.
+- [FAQ](https://hindiatimur.com/faq.html): Common questions about ordering, export logistics, and partnership.
+
+## Blog
+
+- [Blog Index](https://hindiatimur.com/blog.html): Articles on sourcing practices, sustainability, and product origin stories.
+- [Coffee Heritage on Volcanic Soil](https://hindiatimur.com/blog-coffee-heritage-volcanic.html)
+- [Organic Certification & Fair Trade](https://hindiatimur.com/blog-organic-certification-fair-trade.html)
+- [Seasonal Availability Guide](https://hindiatimur.com/blog-seasonal-availability-guide.html)
+- [Vanilla Sourcing Journey](https://hindiatimur.com/blog-vanilla-sourcing-journey.html)
+- [Water Conservation in the Tropics](https://hindiatimur.com/blog-water-conservation-tropical.html)
+- [Sustainable Coconut Farming](https://hindiatimur.com/blog-sustainable-coconut-farming.html)
+
+## Optional
+
+- [Contact / Business Inquiries](mailto:hello@hindiatimur.com): Direct email for partnership, press, or general inquiries not covered by the quote or partnership forms.
