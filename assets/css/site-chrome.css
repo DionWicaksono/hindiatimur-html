@@ -406,3 +406,12 @@ nav#nav:not(.scrolled) { background: var(--forest); }
   nav#nav:not(.scrolled) { padding: 8px 5vw 8px; }
   .nav-logo-img-main { width: 64px; }
 }
+
+/* phones: tighter vertical rhythm between content sections (was 112-128px top and bottom) */
+@media (max-width: 768px) {
+  .specs-section, .grades-section, .process-section, .faq-section:not([data-category]), .origins-section, .varieties-section,
+  .cta-section, .about-section, .values-section, .farmer-section, .form-section,
+  .sourcing-section, .products-section, .contact-strip, .cta-strip {
+    padding-top: 64px !important; padding-bottom: 64px !important;
+  }
+}
