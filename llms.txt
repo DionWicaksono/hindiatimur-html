@@ -1,26 +1,53 @@
 # Hindia Timur
 
-> Hindia Timur is an Indonesian exporter of spices and specialty agricultural products — including coffee, vanilla, and coconut — connecting smallholder farmers in Indonesia with international buyers. The site provides product information, farmer partnership details, and a quote request tool for exporters and B2B buyers.
+> Indonesian agricultural export partner: direct exporter of specialty coffee, moringa and vanilla, plus sourcing agent, QC/compliance, spot supply and private-label (OEM) services for 20+ export-grade commodities. Full phytosanitary documentation; FOB, CIF and DDP.
 
-## Core Pages
+Contact: hi@hindiatimur.com · WhatsApp +62 857 4661 4329 (https://wa.me/6285746614329)
 
-- [Home](https://hindiatimur.com/index.html): Company overview, featured products, and contact form.
-- [Products](https://hindiatimur.com/products.html): Catalog of export products (coffee, vanilla, coconut, and other spices).
-- [Coffee](https://hindiatimur.com/coffee.html): Details on Indonesian coffee sourcing, origin, and varieties.
-- [About](https://hindiatimur.com/about.html): Company background and the Farmer Partnership Application for Indonesian growers.
-- [Request a Quote](https://hindiatimur.com/exporter-quote.html): Quote request form for international buyers and exporters.
-- [FAQ](https://hindiatimur.com/faq.html): Common questions about ordering, export logistics, and partnership.
+## Key pages
 
-## Blog
+- [Home](https://www.hindiatimur.com/): Export-grade Indonesian produce with full phytosanitary compliance: specialty coffee, vanilla, moringa, agarwood, spices and 20+ more. FOB, CIF & DDP.
+- [Product catalogue](https://www.hindiatimur.com/products/): Browse 20+ Indonesian export commodities: specialty coffee, moringa, vanilla, agarwood, patchouli, sandalwood, spices, honey and more. FOB, CIF & DDP.
+- [Request a quote](https://www.hindiatimur.com/exporter-quote/): Get FOB, CIF or DDP pricing for export-grade Indonesian commodities. Free samples for qualified importers, 24-hour response, full compliance documents.
+- [About & farmer partnerships](https://www.hindiatimur.com/about/): Hindia Timur connects Indonesian smallholder farmers with global importers: our sourcing model, farmer partnerships, compliance standards and mission.
+- [FAQ](https://www.hindiatimur.com/faq/): Everything you need to know about sourcing premium Indonesian produce with Hindia Timur — compliance, certifications, MOQs, shipping, and how to get started.
+- [Blog & insights](https://www.hindiatimur.com/blog/): Insights on Indonesian agricultural exports, sustainable farming, compliance and commodity sourcing, written for importers and procurement teams.
 
-- [Blog Index](https://hindiatimur.com/blog.html): Articles on sourcing practices, sustainability, and product origin stories.
-- [Coffee Heritage on Volcanic Soil](https://hindiatimur.com/blog-coffee-heritage-volcanic.html)
-- [Organic Certification & Fair Trade](https://hindiatimur.com/blog-organic-certification-fair-trade.html)
-- [Seasonal Availability Guide](https://hindiatimur.com/blog-seasonal-availability-guide.html)
-- [Vanilla Sourcing Journey](https://hindiatimur.com/blog-vanilla-sourcing-journey.html)
-- [Water Conservation in the Tropics](https://hindiatimur.com/blog-water-conservation-tropical.html)
-- [Sustainable Coconut Farming](https://hindiatimur.com/blog-sustainable-coconut-farming.html)
+## Products
+
+- [Indonesian Agarwood (Oud)](https://www.hindiatimur.com/products/agarwood/): Export-grade Indonesian agarwood (oud) resin and chips from Sumatra and Kalimantan. GC-MS certified, CITES compliant. Request a B2B quote.
+- [Ambergris](https://www.hindiatimur.com/products/ambergris/): Indonesian-sourced ambergris for perfumery and fragrance. Aged, authenticated specimens for B2B buyers — tincture-ready and legally traded. Request a quote.
+- [Indonesian Avocado](https://www.hindiatimur.com/products/avocado/): Export-grade Indonesian avocados. Hass and Mentega varieties from East Java highlands. Cold-chain optimized, global GAP compliant. Request a B2B quote.
+- [Indonesian Cacao Beans](https://www.hindiatimur.com/products/cacao/): Export-grade Indonesian cacao: fermented, single-origin beans from Sulawesi and Bali with high fat content. Direct farm partnership. Request a quote.
+- [Indonesian Cashew Nut](https://www.hindiatimur.com/products/cashew/): Indonesian cashew kernels, W180 to W450, whole and splits, from East Java and East Nusa Tenggara with full export documents. Request a B2B quote.
+- [Coconut Charcoal Briquettes](https://www.hindiatimur.com/products/charcoal/): Export-grade Indonesian coconut charcoal briquettes. High heat, long burn time, low ash. Premium Shisha and BBQ grades available. Request a B2B quote.
+- [Indonesian Specialty Coffee](https://www.hindiatimur.com/products/coffee/): Single-origin Indonesian specialty coffee from volcanic highlands. Export-grade Arabica and Robusta with full compliance documentation. Request a B2B quote.
+- [Industrial Corncob](https://www.hindiatimur.com/products/corncob/): Indonesian corncob for industrial, agricultural and feed use: dried, ground and sized to spec. Sustainable biomass and substrate. Request a B2B quote.
+- [Indonesian Fruit Chips](https://www.hindiatimur.com/products/fruit-chips/): Export-grade Indonesian fruit chips: jackfruit, banana, pineapple and more, vacuum-fried or air-dried, with full compliance documents.
+- [Gula Aren (Palm Sugar)](https://www.hindiatimur.com/products/gula-aren/): Export-grade Gula Aren (Arenga palm sugar) from West Java and Sulawesi. Organic certified, low GI, granulated or block. Request a B2B quote.
+- [Rawn Forest Honey](https://www.hindiatimur.com/products/honey/): Raw Indonesian forest honey (Apis dorsata), wild-harvested in Sumatra and Kalimantan. Lab-tested purity, no additives, phytosanitary certified.
+- [Natural Indigo Paste](https://www.hindiatimur.com/products/indigo/): Natural Indonesian indigo paste (Indigofera tinctoria) from Central Java and Flores. Traditional extraction, high pigment, for textile dyeing.
+- [Indonesian Kratom](https://www.hindiatimur.com/products/kratom/): Export-grade Indonesian kratom (Mitragyna speciosa) from Kalimantan. Lab-tested alkaloid profile, sustainably harvested. Request a B2B quote.
+- [Indonesian Moringa Powder](https://www.hindiatimur.com/products/moringa/): Export-grade Indonesian Moringa oleifera powder from East Java and East Nusa Tenggara. Bulk superfood supply with full documents. Request a B2B quote.
+- [Indonesian Patchouli Oil](https://www.hindiatimur.com/products/patchouli/): Indonesian patchouli oil from Sulawesi and Sumatra: PA 30–35%, GC-MS tested, light and dark grades, direct from distillers. Request a B2B quote.
+- [Porang Konjac Flour](https://www.hindiatimur.com/products/porang/): Indonesian porang (Amorphophallus muelleri) konjac flour and chips from East Java and NTT. High glucomannan, lab-tested. Request a B2B quote.
+- [Indonesian Red Kidney Beans](https://www.hindiatimur.com/products/red-beans/): Export-grade Indonesian Red Kidney Beans. High protein, non-GMO, sustainably farmed. Premium Grade A beans from Java highlands. Request a B2B quote.
+- [Indonesian Sandalwood](https://www.hindiatimur.com/products/sandalwood/): Indonesian sandalwood (Santalum album) oil and logs from Timor and Sumba. ISO 3515, α-santalol 41–54%, CITES documents. Request a B2B quote.
+- [Indonesian Sorghum](https://www.hindiatimur.com/products/sorghum/): Export-grade Indonesian sorghum from East Java and NTT. Gluten-free, nutrient-rich ancient grain for food or industrial use. Request a B2B quote.
+- [Indonesian Cloves, Nutmeg & Pepper](https://www.hindiatimur.com/products/spices/): Indonesian cloves, nutmeg and pepper from Maluku and Sumatra. ABCD grades, origin-certified, direct from farm cooperatives. Request a B2B quote.
+- [Indonesian Tapioca Starch](https://www.hindiatimur.com/products/tapioca/): Export-grade Indonesian tapioca (cassava) starch from Lampung and Central Java. High viscosity, low moisture, food and industrial grades.
+- [Tengkawang (Illipe Butter)](https://www.hindiatimur.com/products/tengkawang/): Wild-harvested illipe butter (tengkawang) from Kalimantan's rainforests: cocoa butter substitute, cosmetic emollient and candle-grade fat.
+- [Indonesian Vanilla Beans](https://www.hindiatimur.com/products/vanilla/): Indonesian vanilla beans from our own farms in North Sulawesi and East Java. Planifolia and Tahitensis, Grade A pods and extract splits. Request a quote.
+
+## Articles
+
+- [Indonesia's Coffee Heritage & Volcanic Terroir](https://www.hindiatimur.com/blog/coffee-heritage-volcanic/): Indonesia's coffee regions (Sumatra, Java, Sulawesi, Flores) and how volcanic soil and altitude shape export-grade specialty coffee.
+- [Organic Certification & Fair Trade in Indonesia](https://www.hindiatimur.com/blog/organic-certification-fair-trade/): How we support farmers with organic certification (IMO/USDA NOP), fair trade and transparent supply chains, and what it means for importers.
+- [Indonesian Produce Seasonal Availability Guide](https://www.hindiatimur.com/blog/seasonal-availability-guide/): Seasonal sourcing calendar for Indonesian exports: harvest windows for coffee, vanilla, spices, moringa and 15+ commodities to plan your orders.
+- [Sustainable Coconut Farming in Indonesia](https://www.hindiatimur.com/blog/sustainable-coconut-farming/): How Indonesian coconut farmers blend tradition with sustainable practice: intercropping, organic pest control and biodiversity for export-grade output.
+- [The Journey of Premium Indonesian Vanilla](https://www.hindiatimur.com/blog/vanilla-sourcing-journey/): Inside export-grade Indonesian vanilla, from hand-pollination to months of curing, and what sets Indonesian beans apart.
+- [Water Conservation in Indonesian Farming](https://www.hindiatimur.com/blog/water-conservation-tropical/): How Indonesian farmers manage water in tropical agriculture: rainwater harvesting, irrigation and soil-moisture practices for sustainable exports.
 
 ## Optional
 
-- [Contact / Business Inquiries](mailto:hello@hindiatimur.com): Direct email for partnership, press, or general inquiries not covered by the quote or partnership forms.
+- [Sitemap](https://www.hindiatimur.com/sitemap.xml)
