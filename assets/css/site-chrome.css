@@ -75,8 +75,21 @@ nav#nav.scrolled .nav-dropdown-toggle.active { color: var(--forest); }
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   z-index: 201;
 }
+/* open on hover, and stay open briefly when the cursor leaves, so it is easy to reach */
+.nav-dropdown-menu {
+  display: block; visibility: hidden; opacity: 0;
+  transition: opacity 0.15s ease 0.3s, visibility 0s linear 0.45s;
+}
 .nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  visibility: visible; opacity: 1;
+  transition: opacity 0.15s ease, visibility 0s;
+}
+/* invisible bridge across the gap between "About" and the menu */
+.nav-dropdown-menu::before {
+  content: ''; position: absolute; left: -16px; right: -16px;
+  top: calc(-1rem - 4px); height: calc(1rem + 4px);
+}
 .nav-dropdown-menu li a {
   display: block; padding: 0.55rem 1.2rem;
   font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
