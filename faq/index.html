@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ — Frequently Asked Questions | Hindia Timur Indonesian Produce Export</title>
+<title>FAQ | Sourcing Indonesian Produce | Hindia Timur</title>
+<meta property="og:image" content="https://www.hindiatimur.com/hindia-timur-og.jpg">
 <meta name="description" content="Everything you need to know about sourcing premium Indonesian produce with Hindia Timur — compliance, certifications, MOQs, shipping, and how to get started.">
 <meta name="keywords" content="Indonesian produce export FAQ, phytosanitary certificate Indonesia, MOQ Indonesian spices, organic certification Indonesia, fair trade coffee Indonesia, bulk vanilla beans Indonesia, agarwood CITES export">
 <meta name="robots" content="index, follow">
@@ -11,14 +12,14 @@
 <link rel="icon" type="image/x-icon" href="/hindia-timur.ico">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="FAQ | Hindia Timur — Indonesian Produce Export">
+<meta property="og:title" content="FAQ | Sourcing Indonesian Produce | Hindia Timur">
 <meta property="og:description" content="Everything importers need to know about sourcing premium Indonesian produce — compliance, certifications, MOQs, and shipping.">
-<meta property="og:url" content="https://www.hindiatimur.com/faq.html">
+<meta property="og:url" content="https://www.hindiatimur.com/faq/">
 <meta property="og:site_name" content="Hindia Timur">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FAQ | Hindia Timur — Indonesian Produce Export">
+<meta name="twitter:title" content="FAQ | Sourcing Indonesian Produce | Hindia Timur">
 <meta name="twitter:description" content="Everything importers need to know about sourcing premium Indonesian produce — compliance, certifications, MOQs, and shipping.">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=1200&q=85&fit=crop">
+<meta name="twitter:image" content="https://www.hindiatimur.com/hindia-timur-og.jpg">
 
 <!-- JSON-LD: FAQPage -->
 <script type="application/ld+json">
@@ -156,7 +157,7 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Hindia Timur",
-  "url": "https://www.hindiatimur.com",
+  "url": "https://www.hindiatimur.com/",
   "logo": "https://www.hindiatimur.com/hindia-timur-logo.webp",
   "contactPoint": {
     "@type": "ContactPoint",
@@ -191,7 +192,6 @@
   --border: rgba(28,43,30,0.10);
   --border-strong: rgba(28,43,30,0.18);
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -202,234 +202,6 @@ body {
   font-size: 16px;
   line-height: 1.6;
 }
-
-/* ── NAV ─────────────────────────────── */
-/* ─── NAV ──────────────────────────────────────────── */
-nav#nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; flex-direction: column; align-items: center;
-  padding: 20px 5vw 14px;
-  transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
-  background: transparent;
-}
-nav#nav.scrolled {
-  flex-direction: row; justify-content: space-between; align-items: center;
-  padding: 0 5vw; height: 64px;
-  background: rgba(245,239,228,0.97);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 1px 12px rgba(0,0,0,0.08);
-}
-/* Logo */
-.nav-logo { display: block; text-decoration: none; line-height: 0; margin-bottom: 10px; }
-nav#nav.scrolled .nav-logo { margin-bottom: 0; }
-.nav-logo-img-main {
-  display: block; width: 130px; height: auto;
-  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
-  transition: opacity 0.25s, width 0.25s;
-}
-nav#nav.scrolled .nav-logo-img-main { width: 0; opacity: 0; pointer-events: none; overflow: hidden; }
-.nav-logo-img-scrolled {
-  display: block; font-family: 'Cormorant Garamond', serif;
-  font-size: 1.55rem; font-weight: 600; color: var(--forest);
-  white-space: nowrap; line-height: 1;
-  width: 0; opacity: 0; overflow: hidden;
-  transition: opacity 0.25s, width 0.25s; pointer-events: none;
-}
-.nav-logo-img-scrolled span { color: var(--gold); }
-nav#nav.scrolled .nav-logo-img-scrolled { width: auto; opacity: 1; pointer-events: auto; overflow: visible; }
-
-/* Links */
-.nav-links {
-  display: flex; gap: 2rem; list-style: none; align-items: center;
-  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-}
-.nav-links a {
-  text-decoration: none; color: rgba(245,240,232,0.9); transition: color 0.2s;
-}
-nav#nav.scrolled .nav-links a { color: var(--text-mid); }
-.nav-links a:hover { color: var(--gold-light); }
-nav#nav.scrolled .nav-links a:hover { color: var(--gold); }
-.nav-links a.active { color: var(--gold-light); }
-nav#nav.scrolled .nav-links a.active { color: var(--forest); }
-.nav-cta {
-  background: var(--gold) !important; color: var(--forest) !important;
-  padding: 0.4rem 1.1rem; border-radius: 2px; transition: background 0.2s !important;
-}
-nav#nav.scrolled .nav-cta { background: var(--forest) !important; color: var(--cream) !important; }
-.nav-cta:hover { background: var(--gold-light) !important; color: var(--forest) !important; }
-nav#nav.scrolled .nav-cta:hover { background: var(--gold) !important; }
-
-/* Dropdown */
-.nav-dropdown { position: relative; }
-.nav-dropdown-toggle {
-  display: flex; align-items: center; gap: 0.3rem; cursor: pointer; background: none; border: none;
-  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(245,240,232,0.9); transition: color 0.2s; padding: 0;
-}
-nav#nav.scrolled .nav-dropdown-toggle { color: var(--text-mid); }
-.nav-dropdown-toggle:hover { color: var(--gold-light); }
-nav#nav.scrolled .nav-dropdown-toggle:hover { color: var(--gold); }
-.nav-dropdown-toggle.active { color: var(--gold-light); }
-nav#nav.scrolled .nav-dropdown-toggle.active { color: var(--forest); }
-.dropdown-chevron { width: 10px; height: 6px; transition: transform 0.2s; flex-shrink: 0; }
-.nav-dropdown:hover .dropdown-chevron,
-.nav-dropdown:focus-within .dropdown-chevron { transform: rotate(180deg); }
-.nav-dropdown-menu {
-  display: none; list-style: none; padding: 0.5rem 0;
-  position: absolute; top: calc(100% + 1rem); left: 50%;
-  transform: translateX(-50%);
-  min-width: 175px;
-  background: var(--forest);
-  border: 1px solid rgba(245,240,232,0.1);
-  border-radius: 2px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  z-index: 201;
-}
-.nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
-.nav-dropdown-menu li a {
-  display: block; padding: 0.55rem 1.2rem;
-  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(245,240,232,0.7) !important; white-space: nowrap;
-  transition: color 0.2s, background 0.2s; text-decoration: none;
-}
-.nav-dropdown-menu li a:hover {
-  color: var(--gold-light) !important;
-  background: rgba(245,240,232,0.05);
-}
-
-/* Hamburger */
-.nav-hamburger {
-  display: none;
-  flex-direction: column; justify-content: center; align-items: center;
-  gap: 5px; width: 40px; height: 40px;
-  background: none; border: none; cursor: pointer; padding: 4px; z-index: 301;
-}
-.nav-hamburger span {
-  display: block; width: 22px; height: 1.5px;
-  background: var(--gold); border-radius: 2px;
-  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.25s, width 0.3s;
-  transform-origin: center;
-}
-.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
-.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-/* Mobile menu overlay */
-.mobile-menu {
-  display: none; position: fixed; inset: 0; z-index: 300;
-  background: var(--forest); flex-direction: column;
-  justify-content: center; align-items: center;
-  opacity: 0; transform: translateY(-12px);
-  transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s cubic-bezier(0.23,1,0.32,1);
-  pointer-events: none;
-}
-.mobile-menu::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 40%, rgba(184,146,74,0.13) 0%, transparent 65%);
-  pointer-events: none;
-}
-.mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
-.mobile-menu-logo-wrap { margin-bottom: 1.5rem; position: relative; z-index: 1; }
-.mobile-menu-logo-wrap img {
-  display: block; width: 110px; height: auto;
-  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); opacity: 0.92;
-}
-.mobile-menu-close {
-  display: block; margin-bottom: 1.5rem; position: relative; z-index: 1;
-  background: none; border: none; cursor: pointer; padding: 0;
-  color: var(--gold-light); font-size: 2rem; line-height: 1;
-  opacity: 0.85; transition: opacity 0.2s, transform 0.2s;
-}
-.mobile-menu-close:hover { opacity: 1; transform: scale(1.15); }
-.mobile-menu ul {
-  list-style: none; display: flex; flex-direction: column;
-  align-items: center; gap: 0; width: 100%; padding: 0 8vw;
-  position: relative; z-index: 1;
-}
-.mobile-menu ul li {
-  width: 100%; border-bottom: 1px solid rgba(245,240,232,0.08);
-  overflow: hidden; text-align: center;
-}
-.mobile-menu ul li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
-.mobile-menu ul li a,
-.mobile-dropdown-toggle {
-  display: block; width: 100%;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 300;
-  color: rgba(245,240,232,0.75); text-decoration: none;
-  letter-spacing: 0.02em; padding: 0.9rem 0; text-align: center;
-  transform: translateY(20px); opacity: 0;
-  transition: color 0.2s, transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.4s ease;
-  background: none; border: none; cursor: pointer;
-}
-.mobile-menu.open ul li a,
-.mobile-menu.open .mobile-dropdown-toggle { transform: translateY(0); opacity: 1; }
-.mobile-menu ul li:nth-child(1) a,
-.mobile-menu ul li:nth-child(1) button { transition-delay: 0.06s; }
-.mobile-menu ul li:nth-child(2) button { transition-delay: 0.10s; }
-.mobile-menu ul li:nth-child(3) a { transition-delay: 0.14s; }
-.mobile-menu ul li:nth-child(4) a { transition-delay: 0.18s; }
-.mobile-menu ul li:nth-child(5) a { transition-delay: 0.22s; }
-.mobile-menu ul li:nth-child(6) a { transition-delay: 0.26s; }
-.mobile-menu ul li a:hover,
-.mobile-dropdown-toggle:hover { color: var(--gold-light); }
-.mobile-menu ul li a.nav-cta { color: var(--gold-light); font-style: italic; }
-.mobile-dropdown-toggle {
-  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
-}
-.mobile-dropdown-toggle .dropdown-chevron { transition: transform 0.25s; }
-.mobile-dropdown-toggle[aria-expanded="true"] .dropdown-chevron { transform: rotate(180deg); }
-.mobile-dropdown-menu {
-  display: none; list-style: none; padding: 0;
-  background: rgba(245,240,232,0.04);
-  border-top: 1px solid rgba(245,240,232,0.06);
-}
-.mobile-dropdown-menu.open { display: block; }
-.mobile-dropdown-menu li { border-bottom: none !important; border-top: none !important; }
-.mobile-dropdown-menu li a {
-  font-size: 0.85rem !important; letter-spacing: 0.12em !important;
-  text-transform: uppercase !important;
-  color: rgba(245,240,232,0.5) !important;
-  padding: 0.6rem 0 !important;
-  transform: none !important; opacity: 1 !important;
-}
-.mobile-dropdown-menu li a:hover { color: var(--gold-light) !important; }
-.mobile-menu-footer {
-  position: absolute; bottom: 2.5rem;
-  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(245,240,232,0.2); z-index: 1;
-}
-
-/* Footer */
-footer { background: #111612; padding: 3.5rem 8vw 2rem; }
-.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(245,240,232,0.06); }
-.footer-brand { }
-.footer-logo-img { width: 110px; height: auto; display: block; margin-bottom: 1rem; opacity: 0.85; }
-.footer-tagline { font-size: 0.8rem; font-weight: 300; line-height: 1.7; color: rgba(245,240,232,0.28); max-width: 280px; }
-.footer-col-title { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,240,232,0.25); margin-bottom: 1.2rem; }
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-.footer-links a { font-size: 0.8rem; color: rgba(245,240,232,0.35); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(--gold-light); }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.72rem; color: rgba(245,240,232,0.18); }
-
-@media (max-width: 1024px) {
-  .footer-top { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 768px) {
-  .nav-links { display: none !important; }
-  .nav-hamburger { display: flex; }
-  .mobile-menu { display: flex; }
-  nav#nav { padding: 1 5vw; height: 120px; backdrop-filter: blur(8px); }
-  nav#nav.scrolled { background: rgba(245,239,228,0.97) !important; }
-  .nav-logo-img-main { width: 100px; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 480px) {
-  .footer-top { grid-template-columns: 1fr; }
-}
-
-
 .page-header {
   padding: 190px 8vw 80px;
   background: var(--forest);
@@ -474,8 +246,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   font-size: 0.95rem; font-weight: 300; line-height: 1.75;
   color: rgba(245,240,232,0.62); max-width: 480px;
 }
-
-/* Topic jump links */
 .header-topics {
   position: relative;
   display: flex; flex-direction: column; gap: 0;
@@ -506,8 +276,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 }
 .topic-link:hover .topic-link-text { color: var(--gold-light); }
 .topic-link:hover .topic-link-num { color: var(--gold-light); }
-
-/* ── CATEGORY TABS ──────────────────── */
 .tabs-bar {
   position: sticky; top: 72px; z-index: 100;
   background: rgba(250,248,243,0.97);
@@ -533,8 +301,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   font-size: 0.72rem; color: var(--text-light); white-space: nowrap; flex-shrink: 0;
 }
 .tabs-right strong { color: var(--forest); }
-
-/* ── FAQ MAIN LAYOUT ────────────────── */
 .faq-wrap {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -542,8 +308,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   padding: 5rem 8vw 8rem;
   align-items: start;
 }
-
-/* ── SIDEBAR NAV ────────────────────── */
 .faq-sidebar {
   position: sticky; top: 132px;
   padding-right: 3rem;
@@ -573,7 +337,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .sidebar-link.active { color: var(--forest); font-weight: 500; }
 .sidebar-link svg { width: 10px; height: 10px; opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
 .sidebar-link.active svg, .sidebar-link:hover svg { opacity: 1; color: var(--gold); }
-
 .sidebar-cta {
   background: var(--forest);
   padding: 1.6rem;
@@ -598,15 +361,11 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   transition: background 0.2s;
 }
 .sidebar-cta-btn:hover { background: var(--gold-light); }
-
-/* ── FAQ SECTIONS ───────────────────── */
 .faq-content { padding-left: 4rem; }
-
 .faq-section {
   margin-bottom: 5rem;
 }
 .faq-section.hidden { display: none; }
-
 .section-header {
   display: flex; align-items: flex-end; gap: 1.5rem;
   margin-bottom: 2rem;
@@ -631,16 +390,12 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   color: rgba(184,146,74,0.15);
   line-height: 1; margin-left: auto; flex-shrink: 0;
 }
-
-/* ── ACCORDION ITEMS ───────────────── */
 .faq-list { display: flex; flex-direction: column; gap: 0; }
-
 .faq-item {
   border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
 .faq-item:first-child { border-top: 1px solid var(--border); }
-
 .faq-question {
   display: flex; align-items: flex-start; gap: 1.2rem;
   padding: 1.4rem 0;
@@ -651,13 +406,11 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   transition: background 0.2s;
 }
 .faq-question::-webkit-details-marker { display: none; }
-
 .faq-item[open] { background: rgba(28,43,30,0.025); }
 .faq-item[open] .faq-question { padding-bottom: 0.8rem; }
 .faq-item[open] .q-icon { background: var(--forest); border-color: var(--forest); }
 .faq-item[open] .q-icon svg.plus { display: none; }
 .faq-item[open] .q-icon svg.minus { display: block; }
-
 .q-icon {
   width: 28px; height: 28px; flex-shrink: 0;
   border: 1px solid var(--border-strong);
@@ -670,14 +423,12 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .q-icon svg { width: 10px; height: 10px; color: var(--text-mid); }
 .q-icon svg.minus { display: none; color: var(--cream); }
 .faq-item[open] .q-icon svg.minus { color: var(--cream); }
-
 .q-text {
   font-size: 0.92rem; font-weight: 500; color: var(--forest);
   line-height: 1.45; flex: 1; padding-right: 1rem;
   transition: color 0.2s;
 }
 .faq-item[open] .q-text { color: var(--forest); }
-
 .faq-answer {
   padding: 0 0 1.8rem 2.6rem;
 }
@@ -704,8 +455,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   transition: color 0.2s;
 }
 .faq-answer a:hover { color: var(--gold); }
-
-/* Inline note pill */
 .answer-note {
   display: inline-flex; align-items: center; gap: 0.4rem;
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.06em;
@@ -714,8 +463,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   padding: 0.25rem 0.7rem; border-radius: 20px;
   margin-top: 0.5rem; margin-bottom: 0.3rem;
 }
-
-/* ── SEARCH BAR ─────────────────────── */
 .search-wrap {
   padding: 2.5rem 8vw 0;
   max-width: 640px; margin: 0 auto; padding-bottom: 0;
@@ -753,8 +500,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   font-size: 0.9rem; font-weight: 300;
 }
 .no-results.visible { display: block; }
-
-/* ── STILL HAVE QUESTIONS ─────────────── */
 .contact-strip {
   background: var(--cream);
   border-top: 1px solid var(--border);
@@ -804,8 +549,6 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
 .cs-ch-value {
   font-size: 0.88rem; font-weight: 400; color: var(--forest);
 }
-
-/* ── CTA STRIP ──────────────────────── */
 .cta-strip {
   background: var(--moss);
   padding: 5rem 8vw;
@@ -849,47 +592,17 @@ footer { background: #111612; padding: 3.5rem 8vw 2rem; }
   transition: border-color 0.2s, color 0.2s; white-space: nowrap;
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
-
-/* ── FOOTER ─────────────────────────── */
-footer { background: #111612; padding: 4rem 8vw 2.5rem; }
-.footer-top {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(245,240,232,0.06);
-}
 .footer-logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem; font-weight: 600; color: var(--cream);
   text-decoration: none; display: block; margin-bottom: 0.8rem;
 }
 .footer-logo span { color: var(--gold); }
-.footer-tagline {
-  font-size: 0.8rem; font-weight: 300; line-height: 1.7;
-  color: rgba(245,240,232,0.28); max-width: 280px;
-}
-.footer-col-title {
-  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-  color: rgba(245,240,232,0.25); margin-bottom: 1.2rem;
-}
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-.footer-links a {
-  font-size: 0.8rem; color: rgba(245,240,232,0.35); text-decoration: none; transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--gold-light); }
-.footer-bottom {
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 0.5rem;
-  font-size: 0.72rem; color: rgba(245,240,232,0.18);
-}
-
-/* ── FADE ANIMATION ─────────────────── */
 .fade-up { opacity: 1; transform: none; }
 .js-anim .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .js-anim .fade-up.visible { opacity: 1; transform: translateY(0); }
 .js-anim .fd2 { transition-delay: 0.1s; }
 .js-anim .fd3 { transition-delay: 0.2s; }
-
-/* ── RESPONSIVE ─────────────────────── */
 @media (max-width: 1100px) {
   .faq-wrap { grid-template-columns: 1fr; padding: 4rem 7vw 6rem; }
   .faq-sidebar { position: static; padding-right: 0; border-right: none; margin-bottom: 3rem; display: none; }
@@ -901,10 +614,6 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
   .cta-strip { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
-  .mobile-menu { display: flex; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
   .tabs-bar { overflow-x: auto; }
   .search-wrap { padding: 2rem 7vw 0; max-width: none; }
   .page-header { padding: 120px 7vw 50px; }
@@ -915,7 +624,6 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
   .tab-btn { padding: 0.7rem 0.8rem; font-size: 0.68rem; }
 }
 @media (max-width: 480px) {
-  .footer-top { grid-template-columns: 1fr; }
   .section-count { display: none; }
   .page-header { padding: 100px 6vw 40px; }
   .page-title { font-size: clamp(1.8rem, 9vw, 2.2rem); }
@@ -930,6 +638,7 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
 
   gtag('config', 'G-Q74VJMT131');
 </script>
+<link rel="stylesheet" href="/assets/css/site-chrome.css">
 </head>
 <body>
 
@@ -948,9 +657,10 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
         <li><a href="/#process">How It Works</a></li>
         <li><a href="/#compliance">Compliance</a></li>
         <li><a href="/about/#farmers">For Farmers</a></li>
+        <li><a href="/blog/">Blog &amp; Insights</a></li>
       </ul>
     </li>
-    <li><a href="/faq/" class="active">FAQ</a></li>
+    <li><a href="/faq/">FAQ</a></li>
     <li><a href="/#contact">Contact</a></li>
     <li><a href="/exporter-quote/" class="nav-cta">Request a Quote</a></li>
   </ul>
@@ -973,9 +683,10 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
         <li><a href="/#process">How It Works</a></li>
         <li><a href="/#compliance">Compliance</a></li>
         <li><a href="/about/#farmers">For Farmers</a></li>
+        <li><a href="/blog/">Blog &amp; Insights</a></li>
       </ul>
     </li>
-    <li><a href="/faq/" class="active">FAQ</a></li>
+    <li><a href="/faq/">FAQ</a></li>
     <li><a href="/#contact">Contact</a></li>
     <li><a href="/exporter-quote/" class="nav-cta">Request a Quote</a></li>
   </ul>
@@ -1533,7 +1244,7 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
           <div class="faq-answer">
             <p>The process is straightforward and designed for both individual smallholders and cooperatives:</p>
             <ul>
-              <li><strong>Step 1 — Apply:</strong> Complete the <a href="about.html#apply">Farmer Partnership Application</a> on our About page. Tell us what you grow, your approximate volume, and your location</li>
+              <li><strong>Step 1 — Apply:</strong> Complete the <a href="/about/#apply">Farmer Partnership Application</a> on our About page. Tell us what you grow, your approximate volume, and your location</li>
               <li><strong>Step 2 — Conversation:</strong> Our sourcing team contacts you within 24 hours to discuss your produce, practices, and any certification support you may need</li>
               <li><strong>Step 3 — Sample &amp; Assessment:</strong> We request a product sample for laboratory testing against export grade specifications</li>
               <li><strong>Step 4 — Supply Agreement:</strong> If the product meets standard, you receive a supply agreement with clear pricing, delivery terms, and a dedicated account manager</li>
@@ -1638,14 +1349,14 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
   <div class="footer-top">
     <div class="footer-brand">
       <a href="/" class="footer-logo-link">
-        <img src="/hindia-timur-logo.webp" alt="Hindia Timur" class="footer-logo-img">
+        <img src="/hindia-timur-logo.webp" alt="Hindia Timur" class="footer-logo-img" loading="lazy" decoding="async">
       </a>
-      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth -- with integrity, compliance, and consistency.</p>
+      <p class="footer-tagline">Indonesia's premium produce export partner. Connecting the world to the richest agricultural biodiversity on earth — with integrity, compliance, and consistency.</p>
     </div>
     <div>
       <div class="footer-col-title">Source</div>
       <ul class="footer-links">
-        <li><a href="/coffee/">Specialty Coffee</a></li>
+        <li><a href="/products/coffee/">Specialty Coffee</a></li>
         <li><a href="/products/">Full Product Catalog</a></li>
         <li><a href="/exporter-quote/">Request a Quote</a></li>
       </ul>
@@ -1663,7 +1374,7 @@ footer { background: #111612; padding: 4rem 8vw 2.5rem; }
       <div class="footer-col-title">Connect</div>
       <ul class="footer-links">
         <li><a href="mailto:hi@hindiatimur.com">hi@hindiatimur.com</a></li>
-        <li><a href="https://wa.me/6285746614329">WhatsApp</a></li>
+        <li><a href="https://wa.me/6285746614329" target="_blank" rel="noopener">WhatsApp</a></li>
         <li><a href="/blog/">Blog &amp; Insights</a></li>
         <li><a href="/#contact">Contact Us</a></li>
       </ul>
