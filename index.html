@@ -705,7 +705,7 @@ section { padding: 8rem 8vw; }
 #ringHero {--pw:min(440px,44vw);--page:#F5F0E8;--ink:#1C2B1E;--ink-mid:#3D3D38;--ink-soft:#6B6B60;
   --gold:#B8924A;--gold-light:#D4AC6E;--line:rgba(28,43,30,.14);
   --serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
-  position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;padding:0;
+  position:relative;height:100vh;height:100svh;min-height:480px;overflow:hidden;padding:0;
   background:var(--page);color:var(--ink);font-family:var(--sans);font-size:15px}
 #ringHero *,#ringHero *::before,#ringHero *::after {box-sizing:border-box;margin:0;padding:0}
 #ringHero h1 {color:var(--ink)}
@@ -804,8 +804,11 @@ section { padding: 8rem 8vw; }
   #ringHero .headline {top:calc(64px + 4vh)}
   #ringHero .headline h1 {font-size:1.75rem}
 }
+@media (max-height:760px) {
+  #ringHero .headline h1 {font-size:clamp(1.6rem,6.2vh,3rem)}
+}
 @media (max-height:560px) {
-  .headline {display:none}
+  #ringHero .headline .h1-kicker {margin-bottom:.3rem}
   #ringHero .d-figure-wrap {top:64px;bottom:140px}
 }
 @media (prefers-reduced-motion:reduce) {
