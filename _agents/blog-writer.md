@@ -11,9 +11,13 @@ Open `_agents/topics.md` and take the first row with status `todo`. If none are 
 - If sources disagree, or a rule is in flux, say so plainly in the post and give the date it applies.
 
 ## 3. What Hindia Timur may claim
-Hindia Timur's only confirmed certification is **Fair Trade**. Mention it only at company level, and never say a specific product or batch is Fair Trade certified.
-
-Never write any other certification or credential (organic, USDA, IMO, EU organic, HACCP, ISO 22000, GlobalG.A.P., Halal, Kosher, EUDR compliance, "our own farms"), **even where existing site pages say so**. Those claims are still being checked.
+- **Fair Trade** is Hindia Timur's own certification. Mention it only at company level, and never say a specific product or batch is Fair Trade certified.
+- **Other certifications are held by our partners, not by Hindia Timur.** Use the site's wording:
+  - organic, GlobalG.A.P. and Rainforest Alliance: "sourced from certified partner farms";
+  - HACCP, ISO 22000 and FSSC 22000: "certified partner facility";
+  - Halal (MUI): "certified partner processors".
+  Only mention one for a product whose page on the site already lists it.
+- Never write "our own farms", "Hindia Timur is certified organic", or any certification the product page does not list.
 
 Do not invent prices, MOQs, lead times, capacities, client names, testimonials, statistics or quotes. Where a buyer would need a figure from us, point them to the quote form (`/exporter-quote/`) instead.
 
