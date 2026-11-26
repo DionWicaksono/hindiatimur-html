@@ -1,5 +1,16 @@
 ---
 
+# Session Log — November 26, 2026 (2)
+
+## Content: certification claims reworded to partner-farm wording
+**Files:** homepage, About, FAQ, product catalogue, 16 product pages, `llms.txt`
+
+- Organic, GlobalG.A.P. and Rainforest Alliance claims now say the product is sourced from certified partner farms.
+- HACCP, ISO 22000 and FSSC 22000 now name a certified partner facility; Halal names certified partner processors.
+- Vanilla "own farms" changed to "partner farms".
+- Removed "Organic" from the moringa H1 and from the moringa and gula aren schema names; cacao "Fine Flavor Certified" changed to "Fine Flavor Grades"; sandalwood "Certified sustainable" changed to "Sourced from certified partner farms".
+- Shipping documents (phytosanitary, COO, COA, CITES) and farmer-support copy unchanged.
+
 # Session Log — November 26, 2026
 
 ## SEO: structured data additions
