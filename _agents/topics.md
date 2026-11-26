@@ -5,7 +5,7 @@ Edit this list freely: reorder rows, add new ones, or set a row to `skip`.
 
 | # | Status | Post | Target search | Link to | Category |
 |---|---|---|---|---|---|
-| 1 | todo | EUDR and Indonesian coffee and cacao: what EU importers need from their supplier before 30 December 2026 | EUDR Indonesia coffee; EUDR cocoa supplier | /products/coffee/, /products/cacao/ | sourcing |
+| 1 | pr #10 | EUDR and Indonesian coffee and cacao: what EU importers need from their supplier before 30 December 2026 | EUDR Indonesia coffee; EUDR cocoa supplier | /products/coffee/, /products/cacao/ | sourcing |
 | 2 | todo | Coconut charcoal briquettes for shisha: grades, ash content and burn time explained | coconut charcoal briquettes supplier Indonesia | /products/charcoal/ | sourcing |
 | 3 | todo | Indonesian vanilla grades: Grade A vs extraction grade, and what moisture content means | Indonesian vanilla beans grade A | /products/vanilla/ | sourcing |
 | 4 | todo | Patchouli oil PA 30-35%: how to read a GC-MS report before you buy | patchouli oil PA 30 supplier | /products/patchouli/ | sourcing |

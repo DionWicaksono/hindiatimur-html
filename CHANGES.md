@@ -1,5 +1,14 @@
 ---
 
+# Session Log — November 26, 2026 (3)
+
+## Blog: EUDR and Indonesian coffee and cacao
+**Files:** `blog/eudr-coffee-cacao-indonesia/index.html` (new), `blog/index.html`, `sitemap.xml`, `llms.txt`, `_agents/topics.md`
+
+- New post on what EU importers need from Indonesian coffee and cacao suppliers under the EUDR (application 30 December 2026), with Article, BreadcrumbList and FAQPage JSON-LD.
+- Added a post card at the top of the blog index (category: sourcing), a sitemap entry, and an `llms.txt` line; `/blog/` lastmod set to 2026-11-26.
+- Post page adds small CSS rules for its comparison tables and FAQ headings; template rules unchanged.
+
 # Session Log — November 26, 2026 (2)
 
 ## Content: certification claims reworded to partner-farm wording
