@@ -1,5 +1,16 @@
-
 ---
+
+# Session Log — November 26, 2026
+
+## SEO: structured data additions
+**Files:** 22 product pages, 6 blog posts, `sitemap.xml`
+
+- Added a `BreadcrumbList` JSON-LD block to every product page (Home > Products > product) and blog post (Home > Blog > article).
+- Product schema: added `category` and `url`.
+- Article schema: added `dateModified` (2026-11-13, the last change to each post).
+- `sitemap.xml`: `lastmod` set to 2026-11-26 for the 28 pages changed here.
+
+No visible page content changed.
 
 # Session Log — April 16, 2026
 
